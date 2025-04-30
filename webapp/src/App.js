@@ -1,30 +1,24 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from './context/AppThemeContext';
+import { LoadingProvider } from './context/AppLoadingContext';
 
 import './App.css';
 
-// importing components
-import Lander from './components/Lander';
 import Navbar from './components/Navbar';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import Music from './components/Music';
-import Curator from './components/Curator';
+import SpiralLoader from './components/SpiralLoader';
+import PageRoutes from './components/PageRoutes'; // <-- move routes into a separate file
 
 function App() {
   return (
     <ThemeProvider>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Lander />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/music" element={<Music />} />
-          <Route path="/curators" element={<Curator />} />
-        </Routes>
-      </Router>
+      <LoadingProvider>
+        <Router>
+          <Navbar />
+          <SpiralLoader />
+          <PageRoutes />
+        </Router>
+      </LoadingProvider>
     </ThemeProvider>
   );
 }
