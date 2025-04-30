@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import "./Navbar.css";
+import "./styles/Navbar.css";
+import { ThemeContext } from '../context/AppThemeContext';
 
 import mainLogo from './media/icons/logo192.png';
 
 export default function Navbar() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
     <>
       <div className="navbar-section">
@@ -22,22 +24,35 @@ export default function Navbar() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <a className="nav-link" href="/login">LOG IN</a>
+                  <Link to="/login" className='nav-link'>
+                    LOG IN
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/signup">CREATE ACCOUNT</a>
+                  <Link to="/signup" className='nav-link'>
+                    CREATE ACCOUNT
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/music">MUSIC</a>
+                  <Link to="/music" className='nav-link'>
+                    MUSIC
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/curators">CURATORS</a>
+                  <Link to="/curators" className='nav-link'>
+                    CURATORS
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <button className="btn btn-theme-toggle" onClick={toggleTheme} aria-label="Toggle dark/light mode">
+                    {theme === 'light' ? <span class="material-symbols-outlined"> dark_mode </span> : <span class="material-symbols-outlined"> light_mode </span>}
+                  </button>
                 </li>
               </ul>
             </div>
           </div>
-        </nav>
-      </div>
+        </nav >
+      </div >
     </>
   )
 }

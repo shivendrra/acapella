@@ -2,7 +2,7 @@
   background-color: transparent;
   width: 100%;
   margin: auto;
-  color: white;
+  background-color: #a6cdc6c2;
 }
 
 .navbar-brand {
@@ -21,7 +21,6 @@
 .navbar-brand-title {
   font-family: "Playwrite RO";
   font-weight: bolder;
-  color: white;
 }
 
 .navbar-toggler {
@@ -34,8 +33,16 @@
   box-shadow: none;
 }
 
-.nav-item .nav-link {
-  color: white;
+.navbar .btn-theme-toggle {
+  border: 2px solid;
+  margin: 0px 10px; 
+  padding: 5px;
+  border-radius: 100%;
+  display: flex;
+}
+
+.navbar .btn-theme-toggle span {
+  margin: auto;
 }
 
 .nav-item .nav-link:hover {

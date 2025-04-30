@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Lander.css";
+import "./styles/Lander.css";
 
 import Navbar from './Navbar';
 

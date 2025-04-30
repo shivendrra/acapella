@@ -27,3 +27,39 @@ body {
   margin: auto;
   max-width: 100%;
 }
+
+/* handling the dark & light themes */
+
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --primary: #1e90ff;
+}
+
+[data-theme='dark'] {
+  --bg: #000000;
+  --text: #f5f5f5;
+  --primary: #bb86fc;
+}
+
+/* styles/global.css */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.navbar {
+  background-color: var(--bg);
+}
+
+.navbar .nav-link, .navbar .navbar-brand {
+  color: var(--text);
+}
+
+.btn-theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--text);
+  cursor: pointer;
+}
