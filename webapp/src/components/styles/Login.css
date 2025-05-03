@@ -1,0 +1,58 @@
+.loginLander {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  width: 100vw;
+}
+
+.row {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.full-height .col-lg-7,
+.full-height .col-lg-5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-with-google {
+  color: #be3d2a;
+  width: 400px;
+  border: 1.5px solid #be3d2a;
+  border-radius: 20px;
+  padding: 8px 10px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  gap: 2px; /* optional spacing between icon and text */
+}
+
+.signup-with-google:hover {
+  color: black;
+  border: 1.5px solid black;
+  border-radius: 20px;
+  padding: 8px 10px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.signup-with-google:hover svg path {
+  fill: black; /* This now responds when the whole button is hovered */
+}
+
+.info-side, .form-side {
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}

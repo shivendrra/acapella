@@ -45,7 +45,7 @@ export default function Navbar() {
                 </li>
                 <li className="nav-item">
                   <button className="btn btn-theme-toggle" onClick={toggleTheme} aria-label="Toggle dark/light mode">
-                    {theme === 'light' ? <span class="material-symbols-outlined"> dark_mode </span> : <span class="material-symbols-outlined"> light_mode </span>}
+                    {theme === 'light' ? <span class="material-symbols-outlined"> light_mode </span> : <span class="material-symbols-outlined"> dark_mode </span>}
                   </button>
                 </li>
               </ul>
