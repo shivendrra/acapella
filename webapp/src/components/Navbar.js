@@ -1,16 +1,29 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import "./styles/Navbar.css";
 import { ThemeContext } from '../context/AppThemeContext';
 
 import mainLogo from './media/icons/logo192.png';
 
 export default function Navbar() {
+  const [showNav, setShowNav] = useState(true);
+  const location = useLocation();
   const { theme, toggleTheme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    if (location.pathname === '/login' || location.pathname === '/signup') {
+      setShowNav(false);
+    } else {
+      setShowNav(true);
+    }
+  }, [location.pathname]);
+  if (!showNav) {
+    return null;
+  }
   return (
     <>
       <div className="navbar-section">
-        <nav id="mainNavbar" className="navbar navbar-expand-md fixed-top">
+        <nav id="mainNavbar" className={`navbar navbar-expand-md fixed-top d-${showNav}`} style={{ display: `${showNav}`}}>
           <div className="container">
             <Link className="navbar-brand" to="/">
               <span className='navbar-brand-logo me-1 my-1'>

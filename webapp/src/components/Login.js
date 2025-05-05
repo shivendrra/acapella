@@ -1,18 +1,21 @@
 import React from "react";
 import "./styles/Login.css";
 
+// assets
+import WelcomeBack from "./media/pictures/Welcome.svg";
+
 export default function Login() {
   return (
     <>
       <div className="loginLander">
-        <div className="row">
-          <div className="col-lg-7 info-side">
-            <div className="ps-5 ms-5">
-              <h2 className="text-left">Welcome Back, User!</h2>
-              <p>Login in to your Account to Enjoy Acapella</p>
-            </div>
+        <div className="row gx-0 align-items-center w-100">
+          <div className="col-lg-6 d-none d-md-flex info-side">
+            <img src={WelcomeBack} alt="welcome back" className="welcome-img" />
           </div>
-          <div className="col-lg-5 form-side">
+          <div className="col-lg-6 col-md-12 form-side">
+            <h3>Welcome Back! User...</h3>
+            <br />
+            <br />
             <button className="btn btn-outline-danger mx-auto signup-with-google">
               <span className="px-5">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512" style={{ height: "28px", padding: "0px 10px", margin: "auto" }}>
@@ -21,6 +24,20 @@ export default function Login() {
                 Login with Google
               </span>
             </button>
+            <br />
+            <hr style={{ width: "60%", margin: "20px auto" }} />
+            <br />
+            <form className="mx-auto" style={{ width: "100%" }}>
+              <div className="mb-3">
+                <input type="email" className="form-control" placeholder="yourmail@example.com" aria-label="Email" />
+              </div>
+              <div className="mb-4">
+                <input type="password" className="form-control" placeholder="Password" aria-describedby="passwordHelp" />
+              </div>
+              <button className="btn btn-outline-info submit-button w-100">
+                Login
+              </button>
+            </form>
           </div>
         </div>
       </div>
