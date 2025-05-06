@@ -7,6 +7,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Music from './Music';
 import Curator from './Curator';
+import Profile from './Profile';
 
 export default function PageRoutes() {
   const location = useLocation();
@@ -25,6 +26,7 @@ export default function PageRoutes() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/music" element={<Music />} />
       <Route path="/curators" element={<Curator />} />
+      <Route path="/profile" element={<Profile />}/>
     </Routes>
   );
 }

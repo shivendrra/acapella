@@ -62,12 +62,16 @@ body {
   --bg: #ffffff;
   --text: #000000;
   --primary: #1e90ff;
+  --faded-text: #000;
+  --faded-bg: #F7F7F7;
 }
 
 [data-theme='dark'] {
   --bg: #000000;
   --text: #f5f5f5;
   --primary: #bb86fc;
+  --faded-text: #a0a0a0;
+  --faded-bg: #131010;
 }
 
 /* styles/global.css */
@@ -81,13 +85,13 @@ body {
 }
 
 .navbar .nav-link, .navbar .navbar-brand {
-  color: var(--text);
+  color: #ffffff;
 }
 
 .btn-theme-toggle {
   background: none;
   border: none;
   font-size: 1.25rem;
-  color: var(--text);
+  color: #ffffff;
   cursor: pointer;
 }
