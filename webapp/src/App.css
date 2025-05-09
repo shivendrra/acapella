@@ -45,7 +45,7 @@ body {
 .spiral-loader {
   width: 60px;
   height: 60px;
-  border: 10px solid #A6CDC6;
+  border: 10px solid #be3d2a;
   border-top: 10px solid transparent;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
