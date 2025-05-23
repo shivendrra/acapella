@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { ThemeProvider } from './context/AppThemeContext';
 import { LoadingProvider } from './context/AppLoadingContext';
 
 import './App.css';
@@ -11,15 +10,13 @@ import PageRoutes from './components/PageRoutes'; // <-- move routes into a sepa
 
 function App() {
   return (
-    <ThemeProvider>
-      <LoadingProvider>
-        <Router>
-          <Navbar />
-          <SpiralLoader />
-          <PageRoutes />
-        </Router>
-      </LoadingProvider>
-    </ThemeProvider>
+    <LoadingProvider>
+      <Router>
+        <Navbar />
+        <SpiralLoader />
+        <PageRoutes />
+      </Router>
+    </LoadingProvider>
   );
 }
 

@@ -4,7 +4,6 @@
   align-items: center;
   min-height: 100vh;
   width: 100vw;
-  padding: 1rem;
   box-sizing: border-box;
 }
 
@@ -12,6 +11,8 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  background: #3F5EFB;
+  background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
 }
 
 .welcome-img {
@@ -23,8 +24,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10rem 3rem;
-  background-color: #dee2e6;
+  padding: 10rem 0rem;
+  background-color: white;
 }
 
 .signup-with-google {
@@ -68,8 +69,8 @@ input {
 }
 
 .submit-button {
-  color: #00826f;
-  border: 1.5px solid #00826f;
+  color: #024CAA;
+  border: 1.5px solid #024CAA;
   border-radius: 0px;
   padding: 0.5rem;
   font-size: 1.1rem;
@@ -79,7 +80,7 @@ input {
 
 .submit-button:hover {
   color: #000;
-  background-color: #00826f;
+  background-color: #024CAA;
   border-color: #000;
 }
 
@@ -92,7 +93,7 @@ input {
 .form-side .form-control:hover,
 .form-side .form-control:focus,
 .form-side .form-control:active {
-  border-color: #00826f !important;
+  border-color: #024CAA !important;
   box-shadow: 0 0 0 0 !important;
   outline: none !important;
 }

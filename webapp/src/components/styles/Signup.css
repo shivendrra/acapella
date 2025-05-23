@@ -4,7 +4,6 @@
   align-items: center;
   min-height: 100vh;
   width: 100vw;
-  padding: 1rem;
   box-sizing: border-box;
 }
 
@@ -12,6 +11,9 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  height: 100vh;
+  background: #3F5EFB;
+  background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
 }
 
 .welcome-img {
@@ -24,7 +26,7 @@
   flex-direction: column;
   align-items: center;
   padding: 10rem 3rem;
-  background-color: #dee2e6;
+  background-color: white;
 }
 
 .signup-with-google {
