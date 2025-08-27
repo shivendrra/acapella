@@ -1,0 +1,97 @@
+/* pre-requisites */
+
+body {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  background-color: black;
+  color: white;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.row {
+  margin: auto;
+  max-width: 100%;
+}
+
+/* loading spinner */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.spiral-loader {
+  width: 60px;
+  height: 60px;
+  border: 10px solid #be3d2a;
+  border-top: 10px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* handling the dark & light themes */
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --primary: #1e90ff;
+  --faded-text: #000;
+  --faded-bg: #F7F7F7;
+}
+
+[data-theme='dark'] {
+  --bg: #000000;
+  --text: #f5f5f5;
+  --primary: #bb86fc;
+  --faded-text: #a0a0a0;
+  --faded-bg: #131010;
+}
+
+/* styles/global.css */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.navbar {
+  background-color: var(--bg);
+}
+
+.navbar .nav-link, .navbar .navbar-brand {
+  color: #ffffff;
+}
+
+.btn-theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: #ffffff;
+  cursor: pointer;
+}
