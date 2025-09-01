@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { LoadingContext } from '../context/AppLoadingContext';
+import { useAuth } from '../context/AuthContext';
 
 import Lander from './Lander';
 import Login from './Login';
@@ -8,6 +9,16 @@ import Signup from './Signup';
 import Music from './Music';
 import Curator from './Curator';
 import Profile from './Profile';
+
+// Protected Route wrapper component
+const ProtectedRoute = ({ children }) => {
+  const { currentUser, loading } = useAuth();
+
+  if (loading) {
+    return null;
+  }
+  return currentUser ? children : <Navigate to="/login" />;
+};
 
 export default function PageRoutes() {
   const location = useLocation();
@@ -21,12 +32,14 @@ export default function PageRoutes() {
 
   return (
     <Routes>
-      <Route path="/" element={<Lander />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/music" element={<Music />} />
-      <Route path="/curators" element={<Curator />} />
-      <Route path="/profile" element={<Profile />}/>
+      
+      {/* Protected Routes */}
+      <Route path="/" element={<ProtectedRoute><Lander /></ProtectedRoute>} />
+      <Route path="/music" element={<ProtectedRoute><Music /></ProtectedRoute>} />
+      <Route path="/curators" element={<ProtectedRoute><Curator /></ProtectedRoute>} />
+      <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
     </Routes>
   );
 }

@@ -4,6 +4,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
-  width: 100%;
-  background-color: yellow;
+  width: 100vw;
+  height: 100vh;
+  background-color: lightyellow;
 }
