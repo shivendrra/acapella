@@ -67,6 +67,7 @@ export default function Navbar() {
                       <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false"> {currentUser.displayName || currentUser.email} </a>
                       <ul className="dropdown-menu">
                         <li><Link className="dropdown-item" to="/profile">Profile</Link></li>
+                        <li><Link className="dropdown-item" to="/user">User</Link></li>
                         <li><Link className="dropdown-item" to="/settings">Settings</Link></li>
                         <li><hr className="dropdown-divider" /></li>
                         <li><button className="dropdown-item" onClick={handleLogout}>Logout</button></li>

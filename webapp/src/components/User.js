@@ -3,10 +3,10 @@ import { useAuth } from '../context/AuthContext';
 import { LoadingContext } from '../context/AppLoadingContext';
 import { updateProfile, updatePassword, deleteUser } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import './styles/Profile.css';
+import './styles/User.css';
 import ProfilePics from './media/pictures/ProfilePics.svg';
 
-export default function Profile() {
+export default function User() {
   const { currentUser, logout } = useAuth();
   const { setLoading } = useContext(LoadingContext);
   const navigate = useNavigate();
@@ -115,10 +115,10 @@ export default function Profile() {
   };
 
   return (
-    <div className="profileLander d-flex justify-content-center align-items-center">
-      <div className="profile-card card p-4 shadow-sm">
+    <div className="userLander d-flex justify-content-center align-items-center">
+      <div className="user-card card p-4 shadow-sm">
         <div className="d-flex justify-content-between align-items-center mb-4">
-          <h3 className="mb-0">My Profile</h3>
+          <h3 className="mb-0">User Settings</h3>
           {!isEditing && (
             <button className="btn btn-outline-primary btn-sm" onClick={() => setIsEditing(true)} >
               <i className="material-symbols-outlined me-1" style={{ fontSize: '16px' }}>edit</i>
@@ -128,7 +128,7 @@ export default function Profile() {
         </div>
 
         {/* Profile Picture */}
-        <div className="profile-circle mx-auto mb-4">
+        <div className="user-circle mx-auto mb-4">
           {currentUser?.photoURL ? (
             <img src={currentUser.photoURL} alt="Profile" />
           ) : (

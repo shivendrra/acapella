@@ -9,6 +9,7 @@ import Signup from './Signup';
 import Music from './Music';
 import Curator from './Curator';
 import Profile from './Profile';
+import User from './User';
 
 // Protected Route wrapper component
 const ProtectedRoute = ({ children }) => {
@@ -40,6 +41,7 @@ export default function PageRoutes() {
       <Route path="/music" element={<ProtectedRoute><Music /></ProtectedRoute>} />
       <Route path="/curators" element={<ProtectedRoute><Curator /></ProtectedRoute>} />
       <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+      <Route path="/user" element={<ProtectedRoute><User /></ProtectedRoute>} />
     </Routes>
   );
 }
