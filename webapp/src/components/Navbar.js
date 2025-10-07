@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import "./styles/Navbar.css";
 
 export default function Navbar() {
@@ -10,7 +10,7 @@ export default function Navbar() {
   const { currentUser, logout } = useAuth();
 
   useEffect(() => {
-    if (location.pathname === '/login' || location.pathname === '/signup') {
+    if (location.pathname === '/auth/login' || location.pathname === '/auth/signup') {
       setShowNav(false);
     } else {
       setShowNav(true);
@@ -20,7 +20,7 @@ export default function Navbar() {
   const handleLogout = async () => {
     try {
       await logout();
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.error('Logout failed:', error);
     }
@@ -78,12 +78,12 @@ export default function Navbar() {
                   // Show these items when user is not logged in
                   <>
                     <li className="nav-item">
-                      <Link to="/login" className='nav-link'>
+                      <Link to="/auth/login" className='nav-link'>
                         LOG IN
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link to="/signup" className='nav-link'>
+                      <Link to="/auth/signup" className='nav-link'>
                         CREATE ACCOUNT
                       </Link>
                     </li>

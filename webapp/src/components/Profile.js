@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { LoadingContext } from '../context/AppLoadingContext';
+import { useAuth } from '../contexts/AuthContext';
+import { LoadingContext } from '../contexts/AppLoadingContext';
 import { updateProfile, updatePassword, deleteUser } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import './styles/Profile.css';

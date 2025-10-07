@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { LoadingContext } from '../context/AppLoadingContext';
+import { LoadingContext } from '../contexts/AppLoadingContext';
 import '../App.css';
 
 export default function SpiralLoader() {

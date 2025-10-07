@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import { LoadingContext } from '../context/AppLoadingContext';
-import { useAuth } from '../context/AuthContext';
+import { LoadingContext } from '../contexts/AppLoadingContext';
+import { useAuth } from '../contexts/AuthContext';
 
 import Lander from './Lander';
 import Login from './Login';
@@ -10,15 +10,25 @@ import Music from './Music';
 import Curator from './Curator';
 import Profile from './Profile';
 import User from './User';
+import Home from './Home';
+import NotFound from './NotFound';
 
-// Protected Route wrapper component
 const ProtectedRoute = ({ children }) => {
   const { currentUser, loading } = useAuth();
+  if (loading) return null;
+  return currentUser ? children : <Navigate to="/" />;
+};
 
-  if (loading) {
-    return null;
-  }
-  return currentUser ? children : <Navigate to="/login" />;
+const PublicRoute = ({ children }) => {
+  const { currentUser, loading } = useAuth();
+  if (loading) return null;
+  return !currentUser ? children : <Navigate to="/home" />;
+};
+
+const HomeRoute = () => {
+  const { currentUser, loading } = useAuth();
+  if (loading) return null;
+  return currentUser ? <Home /> : <Lander />;
 };
 
 export default function PageRoutes() {
@@ -33,13 +43,14 @@ export default function PageRoutes() {
 
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      
-      {/* Protected Routes */}
-      <Route path="/" element={<ProtectedRoute><Lander /></ProtectedRoute>} />
-      <Route path="/music" element={<ProtectedRoute><Music /></ProtectedRoute>} />
-      <Route path="/curators" element={<ProtectedRoute><Curator /></ProtectedRoute>} />
+      <Route path="*" element={<NotFound />} />
+      <Route path="/" element={<HomeRoute />} />
+      <Route path="/auth/login" element={<PublicRoute><Login /></PublicRoute>} />
+      <Route path="/auth/signup" element={<PublicRoute><Signup /></PublicRoute>} />
+
+      <Route path='/music' element={<Music/>} />
+      <Route path='/curator' element={<Curator/>} />
+
       <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
       <Route path="/user" element={<ProtectedRoute><User /></ProtectedRoute>} />
     </Routes>

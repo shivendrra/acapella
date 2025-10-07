@@ -11,7 +11,5 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-console.log('API Key:', process.env.REACT_APP_FIREBASE_API_KEY);
-console.log('Auth Domain:', process.env.REACT_APP_FIREBASE_AUTH_DOMAIN);
 export const auth = getAuth(app);
 export default app;
