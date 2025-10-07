@@ -6,8 +6,6 @@ import { useAuth } from '../contexts/AuthContext';
 import Lander from './Lander';
 import Login from './Login';
 import Signup from './Signup';
-import Music from './Music';
-import Curator from './Curator';
 import Profile from './Profile';
 import User from './User';
 import Home from './Home';
@@ -48,8 +46,8 @@ export default function PageRoutes() {
       <Route path="/auth/login" element={<PublicRoute><Login /></PublicRoute>} />
       <Route path="/auth/signup" element={<PublicRoute><Signup /></PublicRoute>} />
 
-      <Route path='/music' element={<Music/>} />
-      <Route path='/curator' element={<Curator/>} />
+      {/* <Route path='/music' element={<Music/>} />
+      <Route path='/curator' element={<Curator/>} /> */}
 
       <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
       <Route path="/user" element={<ProtectedRoute><User /></ProtectedRoute>} />

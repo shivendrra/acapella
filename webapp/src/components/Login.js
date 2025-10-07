@@ -5,7 +5,7 @@ import { Navigate, Link } from "react-router-dom";
 import "./styles/Login.css";
 
 // assets
-import WelcomeBack from "./media/pictures/Welcome.svg";
+import WelcomeBack from "../assets/svg/Welcome.svg";
 
 export default function Login() {
   const [email, setEmail] = useState('');

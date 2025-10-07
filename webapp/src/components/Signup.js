@@ -5,7 +5,7 @@ import { Navigate, Link } from "react-router-dom";
 import "./styles/Signup.css";
 
 // assets
-import signup from "./media/pictures/UserSignup.svg";
+import signup from "../assets/svg/UserSignup.svg";
 
 export default function Signup() {
   const [firstName, setFirstName] = useState('');

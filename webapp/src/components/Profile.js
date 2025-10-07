@@ -4,7 +4,7 @@ import { LoadingContext } from '../contexts/AppLoadingContext';
 import { updateProfile, updatePassword, deleteUser } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import './styles/Profile.css';
-import ProfilePics from './media/pictures/ProfilePics.svg';
+import ProfilePics from '../assets/svg/ProfilePics.svg';
 
 export default function Profile() {
   const { currentUser, logout } = useAuth();
