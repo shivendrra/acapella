@@ -5,11 +5,9 @@ import { useAuth } from '../contexts/AuthContext';
 
 import Lander from './Lander';
 import Login from './Login';
-import Signup from './Signup';
 import Profile from './Profile';
-import User from './User';
 import Home from './Home';
-import NotFound from './NotFound';
+import NotFound from '../components/NotFound';
 
 const ProtectedRoute = ({ children }) => {
   const { currentUser, loading } = useAuth();
@@ -44,13 +42,13 @@ export default function PageRoutes() {
       <Route path="*" element={<NotFound />} />
       <Route path="/" element={<HomeRoute />} />
       <Route path="/auth/login" element={<PublicRoute><Login /></PublicRoute>} />
-      <Route path="/auth/signup" element={<PublicRoute><Signup /></PublicRoute>} />
+      {/* <Route path="/auth/signup" element={<PublicRoute><Signup /></PublicRoute>} /> */}
 
       {/* <Route path='/music' element={<Music/>} />
       <Route path='/curator' element={<Curator/>} /> */}
 
       <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-      <Route path="/user" element={<ProtectedRoute><User /></ProtectedRoute>} />
+      {/* <Route path="/user" element={<ProtectedRoute><User /></ProtectedRoute>} /> */}
     </Routes>
   );
 }
