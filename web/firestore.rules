@@ -1,0 +1,75 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // --- Helper Functions ---
+    // These functions help simplify role checks throughout the ruleset.
+    
+    // Checks if the currently authenticated user has a specific role.
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Gets the profile data for the currently authenticated user.
+    function getMyProfile() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    // Checks if the currently authenticated user's role is one of the roles in the provided list.
+    function isOneOfRoles(roles) {
+      return isSignedIn() && getMyProfile().role in roles;
+    }
+    
+    // --- Collection Rules ---
+
+    // USERS Collection
+    // - Anyone can read public user profiles.
+    // - A user can only create and update their OWN profile.
+    // - A user cannot change their own role; this must be done by an admin.
+    match /users/{userId} {
+      allow read: if true;
+      allow create: if request.auth.uid == userId;
+      allow update: if request.auth.uid == userId && request.resource.data.role == resource.data.role;
+      allow delete: if false; // Disallow users from deleting their own accounts.
+    }
+
+    // MUSIC CATALOG (artists, albums, songs)
+    // - Anyone, including unauthenticated visitors, can read the music catalog.
+    // - Only Admins and the Master Admin can create, update, or delete catalog items.
+    match /{collection}/{docId} where collection in ['artists', 'albums', 'songs'] {
+      allow read: if true;
+      allow write: if isOneOfRoles(['admin', 'master_admin']);
+    }
+
+    // REVIEWS Collection
+    // - Anyone can read reviews.
+    // - Any signed-in user can create a review for themselves.
+    // - Users can only update or delete their own reviews.
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+
+    // PLAYLISTS Collection
+    // - Anyone can read a playlist if it's public.
+    // - Users can always read their own private playlists.
+    // - Users can only create, update, or delete their own playlists.
+    match /playlists/{playlistId} {
+        allow read: if resource.data.isPublic == true || (isSignedIn() && resource.data.userId == request.auth.uid);
+        allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+        allow update, delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+
+    // ADMIN APPLICATIONS Collection
+    // - Users can submit an application for themselves.
+    // - Only the Master Admin can read all applications.
+    // - Only the Master Admin can update an application's status (approve/reject).
+    match /adminApplications/{appId} {
+      allow read: if isOneOfRoles(['master_admin']);
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isOneOfRoles(['master_admin']);
+    }
+  }
+}
