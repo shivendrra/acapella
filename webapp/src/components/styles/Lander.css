@@ -1,9 +1,0 @@
-.lander {
-  /* margin: auto; */
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: center;
-  width: 100%;
-  background-color: yellow;
-}

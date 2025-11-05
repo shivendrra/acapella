@@ -1,2 +1,3 @@
-# AmpList
+# Acapella
+
 Letterboxd, but for Music
