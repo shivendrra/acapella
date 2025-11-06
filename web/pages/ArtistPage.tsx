@@ -186,9 +186,16 @@ const ArtistPage = () => {
                             <ul className="divide-y divide-gray-200 dark:divide-gray-700">
                                 {songs.map(song => (
                                     <li key={song.id}>
-                                        <NavLink to={`/song/${song.id}`} className="block p-4 hover:bg-gray-50 dark:hover:bg-gray-800">
-                                            <p className="font-semibold">{song.title}</p>
-                                            <p className="text-sm text-gray-500">{new Date(song.releaseDate).getFullYear()}</p>
+                                        <NavLink to={`/song/${song.id}`} className="flex items-center space-x-4 p-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                            <img 
+                                                src={song.coverArtUrl || `https://placehold.co/100x100/131010/FAF8F1?text=${song.title.charAt(0)}`}
+                                                alt={song.title}
+                                                className="w-12 h-12 rounded-md object-cover flex-shrink-0"
+                                            />
+                                            <div>
+                                                <p className="font-semibold">{song.title}</p>
+                                                <p className="text-sm text-gray-500">{new Date(song.releaseDate).getFullYear()}</p>
+                                            </div>
                                         </NavLink>
                                     </li>
                                 ))}

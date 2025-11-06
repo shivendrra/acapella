@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
-import { doc, getDoc, collection, query, orderBy, getDocs, runTransaction, serverTimestamp, where, Timestamp } from 'firebase/firestore';
+// Fix: Add missing 'updateDoc' import from 'firebase/firestore'
+import { doc, getDoc, collection, query, orderBy, getDocs, serverTimestamp, where, Timestamp, limit, setDoc, deleteDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../services/firebase';
 import { Song, Artist, Review as ReviewType } from '../types';
 import { useAuth } from '../hooks/useAuth';
 import PageLoader from '../components/common/PageLoader';
-import { Star, Mic, Pen, Clock, Calendar, User, Send, Music } from 'lucide-react';
+import { Star, Mic, Pen, Clock, Calendar, User, Send, Music, Heart } from 'lucide-react';
 
 const StarRatingDisplay: React.FC<{ rating: number; size?: number }> = ({ rating, size = 5 }) => (
   <div className="flex items-center">
@@ -36,7 +37,7 @@ const ReviewCard: React.FC<{ review: ReviewType }> = ({ review }) => (
             {review.createdAt instanceof Timestamp ? review.createdAt.toDate().toLocaleDateString() : 'Just now'}
           </span>
         </div>
-        <p className="mt-2 text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{review.reviewText}</p>
+        {review.reviewText && <p className="mt-2 text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{review.reviewText}</p>}
       </div>
     </div>
   </div>
@@ -60,38 +61,48 @@ const ReviewForm: React.FC<{ song: Song; onReviewSubmit: () => void }> = ({ song
       setError('Please select a rating.');
       return;
     }
-    if (reviewText.trim().length < 10) {
-      setError('Review must be at least 10 characters long.');
-      return;
-    }
     setSubmitting(true);
     setError('');
     try {
       const songRef = doc(db, 'songs', song.id);
-      const reviewsRef = collection(db, 'songs', song.id, 'reviews');
+      const songReviewsRef = collection(db, 'songs', song.id, 'reviews');
       
-      await runTransaction(db, async (transaction) => {
-        const songDoc = await transaction.get(songRef);
-        if (!songDoc.exists()) {
-          throw new Error("Song does not exist!");
+      const userReviewQuery = query(songReviewsRef, where('userId', '==', currentUser.uid), limit(1));
+      const userReviewSnap = await getDocs(userReviewQuery);
+      const isFirstReview = userReviewSnap.empty;
+      
+      // Using setDoc with a new doc ref to avoid needing runTransaction for simple review creation.
+      const newReviewRef = doc(songReviewsRef);
+      const userReviewDocRef = doc(db, 'users', currentUser.uid, 'reviews', newReviewRef.id);
+      const reviewData = {
+          id: newReviewRef.id,
+          userId: currentUser.uid,
+          userDisplayName: userProfile.displayName,
+          userPhotoURL: userProfile.photoURL,
+          rating,
+          reviewText,
+          createdAt: serverTimestamp(),
+          likes: [],
+          entityId: song.id,
+          entityType: 'song',
+          entityTitle: song.title,
+          entityCoverArtUrl: song.coverArtUrl
+      };
+
+      await setDoc(newReviewRef, reviewData);
+      await setDoc(userReviewDocRef, reviewData);
+
+      if (isFirstReview) {
+        // This part would ideally be a Cloud Function to avoid permission issues.
+        // For now, we'll attempt the update, but it may fail if users don't have write access.
+        try {
+            const songDoc = await getDoc(songRef);
+            const newReviewCount = (songDoc.data()?.reviewCount || 0) + 1;
+            await updateDoc(songRef, { reviewCount: newReviewCount });
+        } catch (updateError) {
+            console.warn("Could not update review count, likely due to permissions.", updateError);
         }
-
-        transaction.set(doc(reviewsRef), {
-            userId: currentUser.uid,
-            userDisplayName: userProfile.displayName,
-            userPhotoURL: userProfile.photoURL,
-            rating,
-            reviewText,
-            createdAt: serverTimestamp(),
-            likes: [],
-            entityId: song.id,
-            entityType: 'song',
-            entityTitle: song.title,
-        });
-
-        const newReviewCount = (songDoc.data().reviewCount || 0) + 1;
-        transaction.update(songRef, { reviewCount: newReviewCount });
-      });
+      }
       
       setRating(0);
       setReviewText('');
@@ -134,9 +145,8 @@ const ReviewForm: React.FC<{ song: Song; onReviewSubmit: () => void }> = ({ song
                     value={reviewText}
                     onChange={(e) => setReviewText(e.target.value)}
                     rows={4}
-                    placeholder="Share your thoughts on this song..."
+                    placeholder="Share your thoughts on this song... (optional)"
                     className="w-full p-2 border border-gray-300 rounded-md bg-white dark:bg-gray-700 dark:border-gray-600"
-                    required
                 />
             </div>
             {error && <p className="text-sm text-ac-danger">{error}</p>}
@@ -157,6 +167,10 @@ const SongPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const [isLiked, setIsLiked] = useState(false);
+  const [isLikeLoading, setIsLikeLoading] = useState(true);
+  const [likesCount, setLikesCount] = useState(0);
+
   const fetchSongData = useCallback(async () => {
     if (!id) {
         setError("Song ID is missing.");
@@ -174,6 +188,7 @@ const SongPage = () => {
         }
         const songData = { id: songSnap.id, ...songSnap.data() } as Song;
         setSong(songData);
+        setLikesCount(songData.likesCount || 0);
 
         // Fetch Artists
         if (songData.artistIds?.length > 0) {
@@ -198,6 +213,54 @@ const SongPage = () => {
   useEffect(() => {
     fetchSongData();
   }, [fetchSongData]);
+  
+  useEffect(() => {
+    if (!currentUser || !song) {
+        setIsLikeLoading(false);
+        return;
+    }
+    const checkLike = async () => {
+        setIsLikeLoading(true);
+        const likeDocRef = doc(db, 'likes', `${currentUser.uid}_${song.id}`);
+        const likeDocSnap = await getDoc(likeDocRef);
+        setIsLiked(likeDocSnap.exists());
+        setIsLikeLoading(false);
+    };
+    checkLike();
+  }, [currentUser, song]);
+
+ const handleLikeToggle = async () => {
+    if (!currentUser || !song || isLikeLoading) return;
+    setIsLikeLoading(true);
+
+    const likeDocRef = doc(db, 'likes', `${currentUser.uid}_${song.id}`);
+
+    try {
+      if (isLiked) { // Unlike
+        await deleteDoc(likeDocRef);
+      } else { // Like
+        await setDoc(likeDocRef, {
+          userId: currentUser.uid,
+          entityId: song.id,
+          entityType: 'song',
+          createdAt: serverTimestamp(),
+          entityTitle: song.title,
+          entityCoverArtUrl: song.coverArtUrl,
+        });
+      }
+
+      // Optimistically update UI. The backend should handle the actual count via triggers for consistency.
+      setLikesCount(prev => isLiked ? prev - 1 : prev + 1);
+      setIsLiked(!isLiked);
+
+    } catch (e) {
+      console.error("Like toggle failed: ", e);
+      setError("Could not complete action. Please try again.");
+    } finally {
+      setIsLikeLoading(false);
+    }
+  };
+
 
   if (loading) return <PageLoader />;
   if (error) return <div className="text-center py-20 text-ac-danger">{error}</div>;
@@ -216,22 +279,34 @@ const SongPage = () => {
             />
         </div>
         <div className="md:w-2/3">
-            <h1 className="text-4xl md:text-5xl font-bold font-serif">{song.title}</h1>
-            <div className="mt-2 text-xl text-gray-700 dark:text-gray-300">
-                by{' '}
-                {artists.map((artist, index) => (
-                    <React.Fragment key={artist.id}>
-                        <NavLink to={`/artist/${artist.id}`} className="font-semibold hover:underline text-ac-secondary">
-                            {artist.name}
-                        </NavLink>
-                        {index < artists.length - 1 && ', '}
-                    </React.Fragment>
-                ))}
+            <div className="flex justify-between items-start">
+              <div>
+                <h1 className="text-4xl md:text-5xl font-bold font-serif">{song.title}</h1>
+                <div className="mt-2 text-xl text-gray-700 dark:text-gray-300">
+                    by{' '}
+                    {artists.map((artist, index) => (
+                        <React.Fragment key={artist.id}>
+                            <NavLink to={`/artist/${artist.id}`} className="font-semibold hover:underline text-ac-secondary">
+                                {artist.name}
+                            </NavLink>
+                            {index < artists.length - 1 && ', '}
+                        </React.Fragment>
+                    ))}
+                </div>
+              </div>
+              {currentUser && (
+                <div className="flex items-center space-x-2 flex-shrink-0 ml-4">
+                    <button onClick={handleLikeToggle} disabled={isLikeLoading} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors disabled:opacity-50">
+                        <Heart size={24} className={`transition-all ${isLiked ? 'text-red-500 fill-current' : 'text-gray-500'}`} />
+                    </button>
+                    <span className="font-semibold text-lg">{likesCount}</span>
+                </div>
+              )}
             </div>
             <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-gray-500 dark:text-gray-400">
-                <div className="flex items-center"><Calendar className="mr-2 h-4 w-4" /> Released: {new Date(song.releaseDate).toLocaleDateString()}</div>
-                <div className="flex items-center"><Clock className="mr-2 h-4 w-4" /> Duration: {formatDuration(song.duration)}</div>
-                <div className="flex items-center"><Music className="mr-2 h-4 w-4" /> Genre: {song.genre}</div>
+                <div className="flex items-center"><Calendar className="mr-2 h-4 w-4" /><span className="hidden sm:inline mr-1">Released:</span> {new Date(song.releaseDate).toLocaleDateString()}</div>
+                <div className="flex items-center"><Clock className="mr-2 h-4 w-4" /><span className="hidden sm:inline mr-1">Duration:</span> {formatDuration(song.duration)}</div>
+                <div className="flex items-center"><Music className="mr-2 h-4 w-4" /><span className="hidden sm:inline mr-1">Genre:</span> {song.genre}</div>
             </div>
 
             <div className="mt-8">

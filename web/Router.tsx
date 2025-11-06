@@ -10,6 +10,7 @@ import ProfileCompletionGuard from './components/auth/ProfileCompletionGuard';
 
 // Lazy load pages for code splitting and better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
+const DiscoverPage = lazy(() => import('./pages/DiscoverPage'));
 const AuthPage = lazy(() => import('./pages/AuthPage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 const SettingsPage = lazy(() => import('./pages/SettingsPage'));
@@ -25,6 +26,9 @@ const CuratorsPage = lazy(() => import('./pages/CuratorsPage'));
 const SongsIndexPage = lazy(() => import('./pages/SongsIndexPage'));
 const AlbumsIndexPage = lazy(() => import('./pages/AlbumsIndexPage'));
 const ArtistsIndexPage = lazy(() => import('./pages/ArtistsIndexPage'));
+const UserLikesPage = lazy(() => import('./pages/UserLikesPage'));
+const UserRatingsPage = lazy(() => import('./pages/UserRatingsPage'));
+const UserReviewsPage = lazy(() => import('./pages/UserReviewsPage'));
 
 // Settings Sub-pages
 const ProfileSettings = lazy(() => import('./pages/settings/ProfileSettings'));
@@ -53,7 +57,7 @@ const AppRouter: React.FC = () => {
             <Route element={<ProfileCompletionGuard />}>
               {/* Publicly viewable routes */}
               <Route path="/" element={<HomePage />} />
-              <Route path="/discover" element={<div>Discover Page</div>} />
+              <Route path="/discover" element={<DiscoverPage />} />
               <Route path="/songs" element={<SongsIndexPage />} />
               <Route path="/albums" element={<AlbumsIndexPage />} />
               <Route path="/artists" element={<ArtistsIndexPage />} />
@@ -62,6 +66,12 @@ const AppRouter: React.FC = () => {
               <Route path="/album/:id" element={<AlbumPage />} />
               <Route path="/artist/:id" element={<ArtistPage />} />
               <Route path="/search" element={<SearchPage />} />
+              
+              {/* User Activity Pages */}
+              <Route path="/:username/likes" element={<UserLikesPage />} />
+              <Route path="/:username/ratings" element={<UserRatingsPage />} />
+              <Route path="/:username/reviews" element={<UserReviewsPage />} />
+
 
               {/* Authenticated Routes */}
               <Route element={<ProtectedRoute />}>

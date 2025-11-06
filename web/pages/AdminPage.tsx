@@ -521,6 +521,7 @@ const AlbumFormModal: React.FC<{
         coverArtUrl: item?.coverArtUrl || '',
         artistIds: item?.artistIds || [],
         tracklist: item?.tracklist || [],
+        genre: item?.genre || '',
         platformLinks: {
             spotify: item?.platformLinks?.spotify || '',
             appleMusic: item?.platformLinks?.appleMusic || '',
@@ -529,7 +530,7 @@ const AlbumFormModal: React.FC<{
     });
     const [loading, setLoading] = useState(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
@@ -582,9 +583,18 @@ const AlbumFormModal: React.FC<{
                             placeholder="Select artists..."
                         />
                     </div>
-                    <div>
-                        <label className="block text-sm font-medium mb-1">Release Date</label>
-                        <input name="releaseDate" type="date" value={formData.releaseDate} onChange={handleChange} required className="w-full p-2 border rounded bg-transparent dark:border-gray-600"/>
+                    <div className="grid grid-cols-2 gap-4">
+                        <div>
+                            <label className="block text-sm font-medium mb-1">Release Date</label>
+                            <input name="releaseDate" type="date" value={formData.releaseDate} onChange={handleChange} required className="w-full p-2 border rounded bg-transparent dark:border-gray-600"/>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium mb-1">Genre</label>
+                            <select name="genre" value={formData.genre} onChange={handleChange} required className="w-full p-2 border rounded bg-transparent dark:border-gray-600 dark:bg-gray-800">
+                                <option value="">Select Genre</option>
+                                {GENRES.map(g => <option key={g} value={g}>{g}</option>)}
+                            </select>
+                        </div>
                     </div>
                     <div>
                         <label className="block text-sm font-medium mb-1">Cover Art URL</label>

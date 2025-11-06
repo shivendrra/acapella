@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { collection, query, where, getDocs, orderBy, limit, collectionGroup } from 'firebase/firestore';
+import { collection, query, where, getDocs, orderBy, limit, Timestamp } from 'firebase/firestore';
 import { db } from '../services/firebase';
 import { useAuth } from '../hooks/useAuth';
 import { Song, Review } from '../types';
@@ -55,20 +55,30 @@ const SongsIndexPage: React.FC = () => {
 
                 // Fetch reviews from followed users
                 if (currentUser) {
-                    const followsQuery = query(collection(db, 'follows'), where('followerId', '==', currentUser.uid));
-                    const followsSnap = await getDocs(followsQuery);
-                    const followingIds = followsSnap.docs.map(doc => doc.data().followingId);
+                    const followingRef = collection(db, 'users', currentUser.uid, 'following');
+                    const followingSnap = await getDocs(followingRef);
+                    const followingIds = followingSnap.docs.map(doc => doc.id);
 
                     if (followingIds.length > 0) {
-                        const reviewsQuery = query(
-                            collectionGroup(db, 'reviews'), 
-                            where('userId', 'in', followingIds),
-                            where('entityType', '==', 'song'),
-                            orderBy('createdAt', 'desc'),
-                            limit(10)
+                        const reviewPromises = followingIds.map(userId => {
+                            const userReviewsRef = collection(db, 'users', userId, 'reviews');
+                            const q = query(userReviewsRef, where('entityType', '==', 'song'));
+                            return getDocs(q);
+                        });
+
+                        const reviewSnapshots = await Promise.all(reviewPromises);
+                        const allReviews = reviewSnapshots.flatMap(snapshot =>
+                            snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Review))
                         );
-                        const reviewsSnap = await getDocs(reviewsQuery);
-                        setFollowingReviews(reviewsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Review)));
+                        
+                        // Sort and limit client-side
+                        allReviews.sort((a, b) => {
+                            const timeA = a.createdAt instanceof Timestamp ? a.createdAt.toMillis() : 0;
+                            const timeB = b.createdAt instanceof Timestamp ? b.createdAt.toMillis() : 0;
+                            return timeB - timeA;
+                        });
+
+                        setFollowingReviews(allReviews.slice(0, 10));
                     }
                 }
             } catch (err) {

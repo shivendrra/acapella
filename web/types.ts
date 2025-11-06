@@ -45,6 +45,7 @@ export interface Song {
     youtubeMusic?: string;
   };
   reviewCount?: number;
+  likesCount?: number;
 }
 
 export interface Album {
@@ -55,6 +56,7 @@ export interface Album {
   releaseDate: string;
   coverArtUrl: string;
   tracklist: string[]; // array of songIds
+  genre?: string;
   associatedFilm?: string;
   platformLinks?: {
     spotify?: string;
@@ -63,6 +65,7 @@ export interface Album {
     youtubeMusic?: string;
   };
   reviewCount?: number;
+  likesCount?: number;
 }
 
 export interface Artist {
@@ -95,6 +98,23 @@ export interface Review {
   entityType: 'song' | 'album';
   entityTitle?: string;
   entityCoverArtUrl?: string; // For albums
+}
+
+export interface Like {
+    id: string;
+    userId: string;
+    entityId: string;
+    entityType: 'song' | 'album';
+    createdAt: FieldValue | Timestamp;
+    // Denormalized data
+    entityTitle?: string;
+    entityCoverArtUrl?: string;
+}
+
+export interface Follow {
+    followerId: string;
+    followingId: string;
+    createdAt: FieldValue | Timestamp;
 }
 
 export interface Playlist {

@@ -1,12 +1,10 @@
-
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
-import { doc, getDoc, collection, query, where, getDocs, orderBy, runTransaction, serverTimestamp, Timestamp } from 'firebase/firestore';
+import { doc, getDoc, collection, query, where, getDocs, orderBy, runTransaction, serverTimestamp, Timestamp, limit, setDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../services/firebase';
 import { Album, Artist, Song, Review as ReviewType, Role } from '../types';
 import PageLoader from '../components/common/PageLoader';
-import { PlayCircle, Music, Star, Pen, Send } from 'lucide-react';
+import { PlayCircle, Music, Star, Pen, Send, Heart } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 
 const formatDuration = (seconds: number): string => {
@@ -44,7 +42,7 @@ const ReviewCard: React.FC<{ review: ReviewType }> = ({ review }) => (
                 {review.createdAt instanceof Timestamp ? review.createdAt.toDate().toLocaleDateString() : 'Just now'}
             </span>
             </div>
-            <p className="mt-2 text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{review.reviewText}</p>
+            {review.reviewText && <p className="mt-2 text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{review.reviewText}</p>}
         </div>
         </div>
     </div>
@@ -68,23 +66,28 @@ const AlbumReviewForm: React.FC<{ album: Album; onReviewSubmit: () => void }> = 
             setError('Please select a rating.');
             return;
         }
-        if (reviewText.trim().length < 10) {
-            setError('Review must be at least 10 characters long.');
-            return;
-        }
+        
         setSubmitting(true);
         setError('');
         try {
             const albumRef = doc(db, 'albums', album.id);
-            const reviewsRef = collection(db, 'albums', album.id, 'reviews');
-            
+            const albumReviewsRef = collection(db, 'albums', album.id, 'reviews');
+
+            const userReviewQuery = query(albumReviewsRef, where('userId', '==', currentUser.uid), limit(1));
+            const userReviewSnap = await getDocs(userReviewQuery);
+            const isFirstReview = userReviewSnap.empty;
+
             await runTransaction(db, async (transaction) => {
                 const albumDoc = await transaction.get(albumRef);
                 if (!albumDoc.exists()) {
                     throw new Error("Album does not exist!");
                 }
-        
-                transaction.set(doc(reviewsRef), {
+                
+                const newReviewRef = doc(albumReviewsRef);
+                const userReviewDocRef = doc(db, 'users', currentUser.uid, 'reviews', newReviewRef.id);
+
+                const reviewData = {
+                    id: newReviewRef.id,
                     userId: currentUser.uid,
                     userDisplayName: userProfile.displayName,
                     userPhotoURL: userProfile.photoURL,
@@ -96,10 +99,15 @@ const AlbumReviewForm: React.FC<{ album: Album; onReviewSubmit: () => void }> = 
                     entityType: 'album',
                     entityTitle: album.title,
                     entityCoverArtUrl: album.coverArtUrl,
-                });
+                };
         
-                const newReviewCount = (albumDoc.data().reviewCount || 0) + 1;
-                transaction.update(albumRef, { reviewCount: newReviewCount });
+                transaction.set(newReviewRef, reviewData);
+                transaction.set(userReviewDocRef, reviewData);
+        
+                if (isFirstReview) {
+                    const newReviewCount = (albumDoc.data().reviewCount || 0) + 1;
+                    transaction.update(albumRef, { reviewCount: newReviewCount });
+                }
             });
             
             setRating(0);
@@ -143,9 +151,8 @@ const AlbumReviewForm: React.FC<{ album: Album; onReviewSubmit: () => void }> = 
                       value={reviewText}
                       onChange={(e) => setReviewText(e.target.value)}
                       rows={4}
-                      placeholder="Share your thoughts on this album..."
+                      placeholder="Share your thoughts on this album... (optional)"
                       className="w-full p-2 border border-gray-300 rounded-md bg-white dark:bg-gray-700 dark:border-gray-600"
-                      required
                   />
               </div>
               {error && <p className="text-sm text-ac-danger">{error}</p>}
@@ -166,6 +173,10 @@ const AlbumPage: React.FC = () => {
     const [reviews, setReviews] = useState<ReviewType[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    
+    const [isLiked, setIsLiked] = useState(false);
+    const [isLikeLoading, setIsLikeLoading] = useState(true);
+    const [likesCount, setLikesCount] = useState(0);
 
     const fetchAlbumData = useCallback(async () => {
         if (!id) {
@@ -188,6 +199,7 @@ const AlbumPage: React.FC = () => {
             
             const albumData = { id: albumSnap.id, ...albumSnap.data() } as Album;
             setAlbum(albumData);
+            setLikesCount(albumData.likesCount || 0);
 
             // Fetch Artists
             if (albumData.artistIds && albumData.artistIds.length > 0) {
@@ -227,6 +239,53 @@ const AlbumPage: React.FC = () => {
         fetchAlbumData();
     }, [fetchAlbumData]);
 
+    useEffect(() => {
+        if (!currentUser || !album) {
+            setIsLikeLoading(false);
+            return;
+        }
+        const checkLike = async () => {
+            setIsLikeLoading(true);
+            const likeDocRef = doc(db, 'likes', `${currentUser.uid}_${album.id}`);
+            const likeDocSnap = await getDoc(likeDocRef);
+            setIsLiked(likeDocSnap.exists());
+            setIsLikeLoading(false);
+        };
+        checkLike();
+    }, [currentUser, album]);
+
+    const handleLikeToggle = async () => {
+        if (!currentUser || !album || isLikeLoading) return;
+        setIsLikeLoading(true);
+
+        const likeDocRef = doc(db, 'likes', `${currentUser.uid}_${album.id}`);
+
+        try {
+            if (isLiked) { // Unlike
+                await deleteDoc(likeDocRef);
+            } else { // Like
+                await setDoc(likeDocRef, {
+                    userId: currentUser.uid,
+                    entityId: album.id,
+                    entityType: 'album',
+                    createdAt: serverTimestamp(),
+                    entityTitle: album.title,
+                    entityCoverArtUrl: album.coverArtUrl,
+                });
+            }
+
+            // Optimistically update UI. The backend should handle the actual count via triggers for consistency.
+            setLikesCount(prev => isLiked ? prev - 1 : prev + 1);
+            setIsLiked(!isLiked);
+
+        } catch (e) {
+            console.error("Like toggle failed: ", e);
+            setError("Could not complete action. Please try again.");
+        } finally {
+            setIsLikeLoading(false);
+        }
+    };
+
     if (loading) return <PageLoader />;
     if (error) return <div className="text-center py-20 text-ac-danger">{error}</div>;
     if (!album) return null;
@@ -242,22 +301,34 @@ const AlbumPage: React.FC = () => {
                     />
                 </div>
                 <div className="md:w-2/3">
-                    <h1 className="text-4xl md:text-5xl font-bold font-serif">{album.title}</h1>
-                    <div className="mt-2 text-xl text-gray-700 dark:text-gray-300">
-                        by{' '}
-                        {artists.map((artist, index) => (
-                            <React.Fragment key={artist.id}>
-                                <NavLink to={`/artist/${artist.id}`} className="font-semibold hover:underline text-ac-secondary">
-                                    {artist.name}
-                                </NavLink>
-                                {index < artists.length - 1 && ', '}
-                            </React.Fragment>
-                        ))}
+                    <div className="flex justify-between items-start">
+                        <div>
+                            <h1 className="text-4xl md:text-5xl font-bold font-serif">{album.title}</h1>
+                            <div className="mt-2 text-xl text-gray-700 dark:text-gray-300">
+                                by{' '}
+                                {artists.map((artist, index) => (
+                                    <React.Fragment key={artist.id}>
+                                        <NavLink to={`/artist/${artist.id}`} className="font-semibold hover:underline text-ac-secondary">
+                                            {artist.name}
+                                        </NavLink>
+                                        {index < artists.length - 1 && ', '}
+                                    </React.Fragment>
+                                ))}
+                            </div>
+                            <p className="mt-2 text-gray-500 dark:text-gray-400">
+                                {new Date(album.releaseDate).getFullYear()}
+                            </p>
+                        </div>
+                        {currentUser && (
+                            <div className="flex items-center space-x-2 flex-shrink-0 ml-4">
+                                <button onClick={handleLikeToggle} disabled={isLikeLoading} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors disabled:opacity-50">
+                                    <Heart size={24} className={`transition-all ${isLiked ? 'text-red-500 fill-current' : 'text-gray-500'}`} />
+                                </button>
+                                <span className="font-semibold text-lg">{likesCount}</span>
+                            </div>
+                        )}
                     </div>
-                    <p className="mt-2 text-gray-500 dark:text-gray-400">
-                        {new Date(album.releaseDate).getFullYear()}
-                    </p>
-
+                    
                     <div className="mt-8">
                         <h2 className="text-2xl font-bold font-serif mb-4">Tracklist</h2>
                         <ul className="space-y-2">
