@@ -15,45 +15,67 @@ export interface UserProfile {
   displayName: string | null;
   photoURL: string | null;
   role: Role;
+  bio?: string;
   createdAt?: FieldValue | Timestamp;
+  profileComplete?: boolean;
   linkedAccounts?: {
     spotify?: string;
     appleMusic?: string;
     youtubeMusic?: string;
   };
+  followersCount?: number;
+  followingCount?: number;
 }
 
 export interface Song {
   id: string;
   title: string;
+  title_lowercase?: string;
   artistIds: string[];
   albumId?: string;
   duration: number; // in seconds
   releaseDate: string;
   genre: string;
   credits: Record<string, string[]>; // e.g., { "Producer": ["Name"], "Writer": ["Name1", "Name2"] }
+  platformLinks?: {
+    spotify?: string;
+    appleMusic?: string;
+    youtubeMusic?: string;
+  };
 }
 
 export interface Album {
   id: string;
   title: string;
+  title_lowercase?: string;
   artistIds: string[];
   releaseDate: string;
   coverArtUrl: string;
   tracklist: string[]; // array of songIds
+  associatedFilm?: string;
+  platformLinks?: {
+    spotify?: string;
+    appleMusic?: string;
+    youtubeMusic?: string;
+  };
 }
 
 export interface Artist {
-  id:string;
+  id: string;
   name: string;
-  bio: string;
+  name_lowercase?: string;
   imageUrl: string;
   genres: string[];
+  // Fix: Add optional bio property to the Artist interface.
+  bio?: string;
+  socials?: Record<string, string>; // e.g., { "twitter": "url", "instagram": "url" }
 }
 
 export interface Review {
   id: string;
   userId: string;
+  userDisplayName: string;
+  userPhotoURL: string | null;
   rating: number; // 1-5
   reviewText: string;
   createdAt: FieldValue | Timestamp;
@@ -70,7 +92,7 @@ export interface Playlist {
 }
 
 export interface AdminApplication {
-  id: string;
+  id:string;
   userId: string;
   userEmail: string;
   userName: string | null;

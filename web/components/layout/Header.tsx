@@ -4,14 +4,14 @@ import { useAuth } from '../../hooks/useAuth';
 import { useTheme } from '../../hooks/useTheme';
 import { auth } from '../../services/firebase';
 import { signOut } from 'firebase/auth';
-import { Sun, Moon, LogOut, User, Settings, Shield, Edit, Search } from 'lucide-react';
+import { Sun, Moon, LogOut, User, Settings, Shield, Edit, Search, Menu, X } from 'lucide-react';
 import { Role } from '../../types';
 
 const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const { currentUser, userProfile } = useAuth();
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -21,13 +21,13 @@ const Header: React.FC = () => {
       console.error("Error signing out: ", error);
     }
   };
+  
+  const navLinkClass = "text-gray-700 dark:text-gray-300 hover:text-ac-accent dark:hover:text-ac-accent px-3 py-2 rounded-md text-sm font-medium";
+  const navLinkActiveClass = "text-ac-accent font-semibold";
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-    }
-  };
+  const mobileNavLinkClass = "text-gray-700 dark:text-gray-300 hover:text-ac-accent dark:hover:text-ac-accent block px-3 py-2 rounded-md text-base font-medium";
+  const mobileNavLinkActiveClass = "text-ac-accent font-semibold bg-gray-100 dark:bg-gray-800";
+
 
   return (
     <header className="bg-ac-light dark:bg-ac-dark shadow-md sticky top-0 z-50 transition-colors duration-300 border-b border-ac-primary/20">
@@ -37,27 +37,20 @@ const Header: React.FC = () => {
             <NavLink to="/" className="text-2xl font-bold text-ac-primary dark:text-ac-secondary font-serif">
               Acapella
             </NavLink>
-            <div className="hidden md:flex md:ml-10 md:space-x-8">
-              <NavLink to="/songs" className={({isActive}) => `text-gray-700 dark:text-gray-300 hover:text-ac-accent dark:hover:text-ac-accent px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-ac-accent font-semibold' : ''}`}>Songs</NavLink>
-              <NavLink to="/albums" className={({isActive}) => `text-gray-700 dark:text-gray-300 hover:text-ac-accent dark:hover:text-ac-accent px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-ac-accent font-semibold' : ''}`}>Albums</NavLink>
-              <NavLink to="/artists" className={({isActive}) => `text-gray-700 dark:text-gray-300 hover:text-ac-accent dark:hover:text-ac-accent px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-ac-accent font-semibold' : ''}`}>Artists</NavLink>
-            </div>
           </div>
-          <div className="flex items-center space-x-2 sm:space-x-4">
-            <form onSubmit={handleSearch} className="relative">
-                <label htmlFor="search-header" className="sr-only">Search</label>
-                <input
-                    id="search-header"
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search..."
-                    className="w-28 sm:w-32 md:w-48 py-2 pl-10 pr-4 text-sm bg-gray-100 dark:bg-gray-800 border border-transparent rounded-full focus:outline-none focus:bg-white dark:focus:bg-gray-900 focus:border-ac-accent transition-all duration-300 ease-in-out focus:w-32 sm:focus:w-48 md:focus:w-64"
-                />
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Search className="h-5 w-5 text-gray-500" />
-                </div>
-            </form>
+          <div className="hidden md:flex md:space-x-8">
+            <NavLink to="/songs" className={({isActive}) => `${navLinkClass} ${isActive ? navLinkActiveClass : ''}`}>Songs</NavLink>
+            <NavLink to="/albums" className={({isActive}) => `${navLinkClass} ${isActive ? navLinkActiveClass : ''}`}>Albums</NavLink>
+            <NavLink to="/artists" className={({isActive}) => `${navLinkClass} ${isActive ? navLinkActiveClass : ''}`}>Artists</NavLink>
+          </div>
+          <div className="flex items-center justify-end space-x-2 sm:space-x-4">
+             <NavLink 
+                to="/search" 
+                className="p-2 flex-shrink-0 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ac-accent" 
+                aria-label="Search"
+            >
+                <Search className="h-6 w-6" />
+            </NavLink>
             <button
               onClick={toggleTheme}
               className="p-2 flex-shrink-0 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ac-accent"
@@ -97,9 +90,36 @@ const Header: React.FC = () => {
                 Log In
               </NavLink>
             )}
+
+            <div className="flex items-center md:hidden">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 inline-flex items-center justify-center rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-ac-accent"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+              >
+                <span className="sr-only">Open main menu</span>
+                {isMobileMenuOpen ? (
+                  <X className="block h-6 w-6" aria-hidden="true" />
+                ) : (
+                  <Menu className="block h-6 w-6" aria-hidden="true" />
+                )}
+              </button>
+            </div>
+
           </div>
         </div>
       </nav>
+
+      {isMobileMenuOpen && (
+        <div className="md:hidden" id="mobile-menu">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <NavLink to="/songs" onClick={() => setIsMobileMenuOpen(false)} className={({isActive}) => `${mobileNavLinkClass} ${isActive ? mobileNavLinkActiveClass : ''}`}>Songs</NavLink>
+              <NavLink to="/albums" onClick={() => setIsMobileMenuOpen(false)} className={({isActive}) => `${mobileNavLinkClass} ${isActive ? mobileNavLinkActiveClass : ''}`}>Albums</NavLink>
+              <NavLink to="/artists" onClick={() => setIsMobileMenuOpen(false)} className={({isActive}) => `${mobileNavLinkClass} ${isActive ? mobileNavLinkActiveClass : ''}`}>Artists</NavLink>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
