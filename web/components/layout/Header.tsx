@@ -42,6 +42,7 @@ const Header: React.FC = () => {
             <NavLink to="/songs" className={({isActive}) => `${navLinkClass} ${isActive ? navLinkActiveClass : ''}`}>Songs</NavLink>
             <NavLink to="/albums" className={({isActive}) => `${navLinkClass} ${isActive ? navLinkActiveClass : ''}`}>Albums</NavLink>
             <NavLink to="/artists" className={({isActive}) => `${navLinkClass} ${isActive ? navLinkActiveClass : ''}`}>Artists</NavLink>
+            <NavLink to="/curators" className={({isActive}) => `${navLinkClass} ${isActive ? navLinkActiveClass : ''}`}>Curators</NavLink>
           </div>
           <div className="flex items-center justify-end space-x-2 sm:space-x-4">
              <NavLink 
@@ -117,6 +118,7 @@ const Header: React.FC = () => {
               <NavLink to="/songs" onClick={() => setIsMobileMenuOpen(false)} className={({isActive}) => `${mobileNavLinkClass} ${isActive ? mobileNavLinkActiveClass : ''}`}>Songs</NavLink>
               <NavLink to="/albums" onClick={() => setIsMobileMenuOpen(false)} className={({isActive}) => `${mobileNavLinkClass} ${isActive ? mobileNavLinkActiveClass : ''}`}>Albums</NavLink>
               <NavLink to="/artists" onClick={() => setIsMobileMenuOpen(false)} className={({isActive}) => `${mobileNavLinkClass} ${isActive ? mobileNavLinkActiveClass : ''}`}>Artists</NavLink>
+              <NavLink to="/curators" onClick={() => setIsMobileMenuOpen(false)} className={({isActive}) => `${mobileNavLinkClass} ${isActive ? mobileNavLinkActiveClass : ''}`}>Curators</NavLink>
           </div>
         </div>
       )}

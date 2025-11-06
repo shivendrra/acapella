@@ -15,6 +15,7 @@ export interface UserProfile {
   displayName: string | null;
   photoURL: string | null;
   role: Role;
+  isCurator?: boolean;
   bio?: string;
   createdAt?: FieldValue | Timestamp;
   profileComplete?: boolean;
@@ -37,11 +38,13 @@ export interface Song {
   releaseDate: string;
   genre: string;
   credits: Record<string, string[]>; // e.g., { "Producer": ["Name"], "Writer": ["Name1", "Name2"] }
+  coverArtUrl?: string;
   platformLinks?: {
     spotify?: string;
     appleMusic?: string;
     youtubeMusic?: string;
   };
+  reviewCount?: number;
 }
 
 export interface Album {
@@ -56,8 +59,10 @@ export interface Album {
   platformLinks?: {
     spotify?: string;
     appleMusic?: string;
+
     youtubeMusic?: string;
   };
+  reviewCount?: number;
 }
 
 export interface Artist {
@@ -65,10 +70,15 @@ export interface Artist {
   name: string;
   name_lowercase?: string;
   imageUrl: string;
+  coverImageUrl?: string;
   genres: string[];
-  // Fix: Add optional bio property to the Artist interface.
   bio?: string;
   socials?: Record<string, string>; // e.g., { "twitter": "url", "instagram": "url" }
+  platformLinks?: {
+    spotify?: string;
+    appleMusic?: string;
+    youtubeMusic?: string;
+  };
 }
 
 export interface Review {
@@ -80,6 +90,11 @@ export interface Review {
   reviewText: string;
   createdAt: FieldValue | Timestamp;
   likes: string[]; // array of userIds
+  // Denormalized data for feeds
+  entityId: string; // songId or albumId
+  entityType: 'song' | 'album';
+  entityTitle?: string;
+  entityCoverArtUrl?: string; // For albums
 }
 
 export interface Playlist {

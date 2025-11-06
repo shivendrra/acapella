@@ -47,7 +47,7 @@ const AdminApplicationPage: React.FC = () => {
     } catch (err) {
       console.error(err);
       setStatus('error');
-      setErrorMessage('Failed to submit application. Please try again later.');
+      setErrorMessage('Failed to submit application. You may not have the required permissions. Please try again later.');
     }
   };
 
@@ -93,7 +93,7 @@ const AdminApplicationPage: React.FC = () => {
               id="reason"
               name="reason"
               rows={6}
-              className="shadow-sm focus:ring-ac-accent focus:border-ac-accent block w-full sm:text-sm border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+              className="shadow-sm focus:ring-ac-accent focus:border-ac-accent block w-full sm:text-sm border-gray-300 rounded-md bg-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               placeholder="Tell us about your passion for music and why you'd be a great contributor..."
               value={reason}
               onChange={(e) => setReason(e.target.value)}
@@ -104,7 +104,7 @@ const AdminApplicationPage: React.FC = () => {
           <p className="mt-2 text-sm text-gray-500">Please be descriptive (min. 50 characters).</p>
         </div>
 
-        {errorMessage && <p className="text-sm text-ac-danger">{errorMessage}</p>}
+        {errorMessage && <div className="p-3 my-2 text-center text-sm text-red-800 bg-red-100 dark:text-red-100 dark:bg-red-900/50 border border-red-200 dark:border-red-500/50 rounded-md">{errorMessage}</div>}
 
         <div>
           <button
