@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { useTheme } from '../../hooks/useTheme';
 import { auth } from '../../services/firebase';
 import { signOut } from 'firebase/auth';
-import { Sun, Moon, LogOut, User, Settings, Shield, Edit } from 'lucide-react';
+import { Sun, Moon, LogOut, User, Settings, Shield, Edit, Search } from 'lucide-react';
 import { Role } from '../../types';
 
 const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const { currentUser, userProfile } = useAuth();
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleLogout = async () => {
     try {
@@ -18,6 +19,13 @@ const Header: React.FC = () => {
       navigate('/login');
     } catch (error) {
       console.error("Error signing out: ", error);
+    }
+  };
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
     }
   };
 
@@ -35,10 +43,24 @@ const Header: React.FC = () => {
               <NavLink to="/artists" className={({isActive}) => `text-gray-700 dark:text-gray-300 hover:text-ac-accent dark:hover:text-ac-accent px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-ac-accent font-semibold' : ''}`}>Artists</NavLink>
             </div>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            <form onSubmit={handleSearch} className="relative">
+                <label htmlFor="search-header" className="sr-only">Search</label>
+                <input
+                    id="search-header"
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search..."
+                    className="w-28 sm:w-32 md:w-48 py-2 pl-10 pr-4 text-sm bg-gray-100 dark:bg-gray-800 border border-transparent rounded-full focus:outline-none focus:bg-white dark:focus:bg-gray-900 focus:border-ac-accent transition-all duration-300 ease-in-out focus:w-32 sm:focus:w-48 md:focus:w-64"
+                />
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Search className="h-5 w-5 text-gray-500" />
+                </div>
+            </form>
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ac-accent"
+              className="p-2 flex-shrink-0 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ac-accent"
               aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
               {theme === 'light' ? <Moon className="h-6 w-6" /> : <Sun className="h-6 w-6" />}
@@ -48,7 +70,7 @@ const Header: React.FC = () => {
                 <button className="flex items-center space-x-2 p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700" aria-haspopup="true" aria-expanded="false">
                    <img className="h-8 w-8 rounded-full object-cover" src={userProfile.photoURL || `https://ui-avatars.com/api/?name=${userProfile.displayName || userProfile.email}&background=random`} alt="User avatar" />
                 </button>
-                <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-20 hidden group-hover:block ring-1 ring-black ring-opacity-5">
+                <div className="absolute right-0 top-full pt-3 pb-1 w-56 bg-white dark:bg-gray-800 rounded-md shadow-lg z-20 hidden group-hover:block ring-1 ring-black ring-opacity-5">
                   <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
                     <p className="text-sm text-gray-700 dark:text-gray-200">Signed in as</p>
                     <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{userProfile.displayName || userProfile.email}</p>
