@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acapella - Your Music Diary</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Instrument Serif"', 'serif'],
+            sans: ['"Inter"', 'sans-serif'],
+          },
+          colors: {
+            'ac-primary': '#254D70',
+            'ac-secondary': '#6A9C89',
+            'ac-accent': '#FFA725',
+            'ac-danger': '#8E1616',
+            'ac-light': '#FAF8F1',
+            'ac-dark': '#131010',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+      /* Chrome, Safari, and Opera */
+    }
+
+    .profile-image-wrapper {
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+    }
+
+    .profile-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      filter: grayscale(100%) contrast(1.25) brightness(0.98);
+    }
+
+    .profile-image-wrapper::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NkY3NkIxNDM3NjhGMTFFN0JGNzE5Njg1NTNFN0M0QzMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NkY3NkIxNDQ3NjhGMTFFN0JGNzE5Njg1NTNFN0M0QzMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2Rjc2QjE0MTc2OEYxMUU3QkY3MTk2ODU1M0U3QzRDMyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo2Rjc2QjE0Mjc2OEYxMUU3QkY3MTk2ODU1M0U3QzRDMyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wYWNrZXQgZW5kPSJyIj8+TqT5rgAAAGFJREFUeNrs1kEOACAIQzHy+1+2hR86mCh3A8v23Q4A3Mssz/P8/z8vF/f9L8z3/B8+sQIAAAAAAIDzQ/39P8/z/D8vAAAAAP4/IAMAoKED8S8w5j8AAAAASUVORK5CYII=');
+      opacity: 0.18;
+      mix-blend-mode: multiply;
+      z-index: 1;
+    }
+  </style>
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body class="bg-ac-light text-ac-dark dark:bg-ac-dark dark:text-ac-light font-sans">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
