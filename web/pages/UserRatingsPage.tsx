@@ -5,6 +5,7 @@ import { db } from '../services/firebase';
 import { UserProfile, Review } from '../types';
 import PageLoader from '../components/common/PageLoader';
 import { Star } from 'lucide-react';
+import { useAuth } from '../hooks/useAuth';
 
 const RatedItemCard: React.FC<{ item: Review }> = ({ item }) => {
   const link = `/${item.entityType}/${item.entityId}`;
@@ -26,11 +27,11 @@ const RatedItemCard: React.FC<{ item: Review }> = ({ item }) => {
         <div className="flex items-center my-1">
           {[...Array(5)].map((_, i) => <Star key={i} size={16} className={`${i < item.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />)}
         </div>
-        <p className="text-sm text-gray-500 mb-2">
+        <NavLink to={`/review/${item.id}`} className="text-sm text-gray-500 mb-2 hover:underline">
           Rated on {item.createdAt instanceof Timestamp ? item.createdAt.toDate().toLocaleDateString() : 'a while ago'}
-        </p>
+        </NavLink>
         {item.reviewText && item.reviewText.trim() !== '' && (
-          <blockquote className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap line-clamp-4">
+          <blockquote className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap line-clamp-4 mt-2">
             "{item.reviewText}"
           </blockquote>
         )}
@@ -41,6 +42,7 @@ const RatedItemCard: React.FC<{ item: Review }> = ({ item }) => {
 
 const UserRatingsPage: React.FC = () => {
   const { username } = useParams<{ username: string }>();
+  const { currentUser } = useAuth();
   const [user, setUser] = useState<UserProfile | null>(null);
   const [ratings, setRatings] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
@@ -54,6 +56,12 @@ const UserRatingsPage: React.FC = () => {
       if (!username) return;
       setLoading(true);
       setError(null);
+
+      if (!currentUser) {
+        setError("You must be logged in to view a user's ratings.");
+        setLoading(false);
+        return;
+      }
 
       try {
         // Fetch user profile to get UID
@@ -91,7 +99,7 @@ const UserRatingsPage: React.FC = () => {
     };
 
     fetchUserAndInitialRatings();
-  }, [username]);
+  }, [username, currentUser]);
 
   const fetchMoreRatings = async () => {
     if (!user || !hasMore || loadingMore) return;
@@ -127,8 +135,14 @@ const UserRatingsPage: React.FC = () => {
       <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">All songs and albums this user has rated.</p>
 
       {ratings.length > 0 ? (
-        <div className="border rounded-lg dark:border-gray-700 divide-y dark:divide-gray-700">
-          {ratings.map(item => <RatedItemCard key={item.id} item={item} />)}
+        <div className="border rounded-lg dark:border-gray-700 overflow-hidden">
+          <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+            {ratings.map(item => (
+              <li key={item.id} className="transition-colors odd:bg-transparent even:bg-black/[.03] dark:even:bg-white/[.03]">
+                <RatedItemCard item={item} />
+              </li>
+            ))}
+          </ul>
         </div>
       ) : (
         <div className="text-center py-20 border-2 border-dashed rounded-lg text-gray-500">

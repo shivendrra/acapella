@@ -5,11 +5,12 @@ import { db } from '../services/firebase';
 import { UserProfile, Review } from '../types';
 import PageLoader from '../components/common/PageLoader';
 import { Star } from 'lucide-react';
+import { useAuth } from '../hooks/useAuth';
 
 const ReviewItemCard: React.FC<{ item: Review }> = ({ item }) => {
   const link = `/${item.entityType}/${item.entityId}`;
   return (
-    <div className="flex flex-col sm:flex-row items-start space-x-0 sm:space-x-6 space-y-4 sm:space-y-0 p-4 border-b dark:border-gray-700">
+    <div className="flex flex-col sm:flex-row items-start space-x-0 sm:space-x-6 space-y-4 sm:space-y-0 p-4">
       <NavLink to={link} className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 block">
         <img src={item.entityCoverArtUrl} alt={item.entityTitle} className="w-full h-full object-cover rounded-lg shadow-md" />
       </NavLink>
@@ -20,10 +21,10 @@ const ReviewItemCard: React.FC<{ item: Review }> = ({ item }) => {
         <div className="flex items-center my-1">
           {[...Array(5)].map((_, i) => <Star key={i} size={16} className={`${i < item.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />)}
         </div>
-        <p className="text-sm text-gray-500 mb-2">
+        <NavLink to={`/review/${item.id}`} className="text-sm text-gray-500 mb-2 hover:underline">
           Reviewed on {item.createdAt instanceof Timestamp ? item.createdAt.toDate().toLocaleDateString() : 'a while ago'}
-        </p>
-        <blockquote className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap">
+        </NavLink>
+        <blockquote className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap mt-2">
           {item.reviewText}
         </blockquote>
       </div>
@@ -33,6 +34,7 @@ const ReviewItemCard: React.FC<{ item: Review }> = ({ item }) => {
 
 const UserReviewsPage: React.FC = () => {
   const { username } = useParams<{ username: string }>();
+  const { currentUser } = useAuth();
   const [user, setUser] = useState<UserProfile | null>(null);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
@@ -47,6 +49,12 @@ const UserReviewsPage: React.FC = () => {
       setLoading(true);
       setError(null);
       setReviews([]);
+
+      if (!currentUser) {
+        setError("You must be logged in to view a user's written reviews.");
+        setLoading(false);
+        return;
+      }
 
       try {
         const usersRef = collection(db, 'users');
@@ -87,7 +95,7 @@ const UserReviewsPage: React.FC = () => {
     };
 
     fetchUserAndReviews();
-  }, [username]);
+  }, [username, currentUser]);
 
   const fetchMoreReviews = async () => {
     if (!user || !hasMore || loadingMore) return;
@@ -129,8 +137,14 @@ const UserReviewsPage: React.FC = () => {
       <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">All written reviews from this user.</p>
 
       {reviews.length > 0 ? (
-        <div className="border-t dark:border-gray-700">
-          {reviews.map(item => <ReviewItemCard key={item.id} item={item} />)}
+        <div className="border rounded-lg dark:border-gray-700 overflow-hidden">
+          <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+            {reviews.map(item => (
+              <li key={item.id} className="transition-colors odd:bg-transparent even:bg-black/[.03] dark:even:bg-white/[.03]">
+                <ReviewItemCard item={item} />
+              </li>
+            ))}
+          </ul>
         </div>
       ) : (
         <div className="text-center py-20 border-2 border-dashed rounded-lg text-gray-500">

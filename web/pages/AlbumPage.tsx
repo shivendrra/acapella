@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
-import { doc, getDoc, collection, query, where, getDocs, orderBy, serverTimestamp, Timestamp, limit, setDoc, deleteDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, collection, query, where, getDocs, orderBy, serverTimestamp, Timestamp, limit, setDoc, deleteDoc, updateDoc, arrayUnion, arrayRemove, increment, writeBatch } from 'firebase/firestore';
 import { db } from '../services/firebase';
 import { Album, Artist, Song, Review as ReviewType, Role } from '../types';
 import PageLoader from '../components/common/PageLoader';
-import { PlayCircle, Music, Star, Pen, Send, Heart } from 'lucide-react';
+import { MoreHorizontal, Music, Star, Pen, Send, Heart } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 
 const formatDuration = (seconds: number): string => {
@@ -24,29 +24,92 @@ const StarRatingDisplay: React.FC<{ rating: number; size?: number }> = ({ rating
   </div>
 );
 
-const ReviewCard: React.FC<{ review: ReviewType }> = ({ review }) => (
-  <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-    <div className="flex items-start space-x-4">
-      <img
-        src={review.userPhotoURL || `https://ui-avatars.com/api/?name=${review.userDisplayName}&background=random`}
-        alt={review.userDisplayName}
-        className="w-10 h-10 rounded-full object-cover"
-      />
-      <div className="flex-1">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="font-semibold">{review.userDisplayName}</p>
-            <StarRatingDisplay rating={review.rating} size={4} />
+const ReviewCard: React.FC<{ review: ReviewType; albumId: string }> = ({ review, albumId }) => {
+  const { currentUser } = useAuth();
+  const [isLiked, setIsLiked] = useState(false);
+  const [likesCount, setLikesCount] = useState(review.likesCount ?? review.likes?.length ?? 0);
+  const [isLikeLoading, setIsLikeLoading] = useState(false);
+
+  useEffect(() => {
+    if (currentUser && review.likes) {
+      setIsLiked(review.likes.includes(currentUser.uid));
+    }
+  }, [currentUser, review.likes]);
+
+  const handleLikeToggle = async () => {
+    if (!currentUser || isLikeLoading) return;
+    setIsLikeLoading(true);
+
+    const reviewRef = doc(db, 'albums', albumId, 'reviews', review.id);
+    const newIsLiked = !isLiked;
+
+    // Optimistic update
+    setIsLiked(newIsLiked);
+    setLikesCount(prev => newIsLiked ? prev + 1 : prev - 1);
+
+    try {
+      if (newIsLiked) {
+        await updateDoc(reviewRef, {
+          likes: arrayUnion(currentUser.uid),
+          likesCount: increment(1),
+        });
+      } else {
+        await updateDoc(reviewRef, {
+          likes: arrayRemove(currentUser.uid),
+          likesCount: increment(-1),
+        });
+      }
+    } catch (error) {
+      console.error("Failed to like review:", error);
+      // Revert optimistic update on error
+      setIsLiked(!newIsLiked);
+      setLikesCount(prev => newIsLiked ? prev - 1 : prev + 1);
+    } finally {
+      setIsLikeLoading(false);
+    }
+  };
+
+  return (
+    <div className="p-4">
+      <div className="flex items-start space-x-4">
+        <img
+          src={review.userPhotoURL || `https://ui-avatars.com/api/?name=${review.userDisplayName}&background=random`}
+          alt={review.userDisplayName}
+          className="w-10 h-10 rounded-full object-cover"
+        />
+        <div className="flex-1">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="font-semibold">{review.userDisplayName}</p>
+              <StarRatingDisplay rating={review.rating} size={4} />
+            </div>
+            <NavLink to={`/review/${review.id}`} className="text-xs text-gray-500 hover:underline">
+              {review.createdAt instanceof Timestamp ? review.createdAt.toDate().toLocaleDateString() : 'Just now'}
+            </NavLink>
           </div>
-          <span className="text-xs text-gray-500">
-            {review.createdAt instanceof Timestamp ? review.createdAt.toDate().toLocaleDateString() : 'Just now'}
-          </span>
+          {review.reviewText && <p className="mt-2 text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{review.reviewText}</p>}
+          <div className="flex items-center space-x-4 mt-3 text-gray-500">
+            {currentUser ? (
+              <button
+                onClick={handleLikeToggle}
+                disabled={isLikeLoading}
+                className="flex items-center space-x-1 hover:text-red-500 disabled:opacity-50 transition-colors"
+              >
+                <Heart size={16} className={`transition-all ${isLiked ? 'text-red-500 fill-current' : ''}`} />
+                <span className="text-sm font-medium">{likesCount}</span>
+              </button>
+            ) : (
+              <div className="flex items-center space-x-1">
+                <Heart size={16} />
+                <span className="text-sm font-medium">{likesCount}</span>
+              </div>
+            )}
+          </div>
         </div>
-        {review.reviewText && <p className="mt-2 text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{review.reviewText}</p>}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const AlbumReviewForm: React.FC<{ album: Album; onReviewSubmit: () => void }> = ({ album, onReviewSubmit }) => {
   const { currentUser, userProfile } = useAuth();
@@ -83,6 +146,7 @@ const AlbumReviewForm: React.FC<{ album: Album; onReviewSubmit: () => void }> = 
         reviewText,
         createdAt: serverTimestamp(),
         likes: [],
+        likesCount: 0,
         entityId: album.id,
         entityType: 'album',
         entityTitle: album.title,
@@ -90,6 +154,9 @@ const AlbumReviewForm: React.FC<{ album: Album; onReviewSubmit: () => void }> = 
       };
 
       await setDoc(newReviewRef, reviewData);
+
+      // This part would ideally be a Cloud Function to avoid permission issues.
+      // We attempt the update, but it may fail harmlessly if users don't have write access.
       try {
         const albumDoc = await getDoc(albumRef);
         const newReviewCount = (albumDoc.data()?.reviewCount || 0) + 1;
@@ -110,7 +177,7 @@ const AlbumReviewForm: React.FC<{ album: Album; onReviewSubmit: () => void }> = 
   };
 
   return (
-    <div className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
+    <div className="p-4 bg-transparent rounded-lg border-2 border-dashed border-gray-200 dark:border-gray-700">
       <h3 className="font-serif text-xl font-bold mb-2">Leave a Review</h3>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex items-center space-x-1">
@@ -246,12 +313,18 @@ const AlbumPage: React.FC = () => {
     setIsLikeLoading(true);
 
     const likeDocRef = doc(db, 'likes', `${currentUser.uid}_${album.id}`);
+    const albumRef = doc(db, 'albums', album.id);
+    const batch = writeBatch(db);
+
+    const newIsLiked = !isLiked;
+
+    // Optimistic UI update
+    setIsLiked(newIsLiked);
+    setLikesCount(prev => newIsLiked ? prev + 1 : prev - 1);
 
     try {
-      if (isLiked) { // Unlike
-        await deleteDoc(likeDocRef);
-      } else { // Like
-        await setDoc(likeDocRef, {
+      if (newIsLiked) { // Like
+        batch.set(likeDocRef, {
           userId: currentUser.uid,
           entityId: album.id,
           entityType: 'album',
@@ -259,15 +332,19 @@ const AlbumPage: React.FC = () => {
           entityTitle: album.title,
           entityCoverArtUrl: album.coverArtUrl,
         });
+        batch.update(albumRef, { likesCount: increment(1) });
+      } else { // Unlike
+        batch.delete(likeDocRef);
+        batch.update(albumRef, { likesCount: increment(-1) });
       }
-
-      // Optimistically update UI. The backend should handle the actual count via triggers for consistency.
-      setLikesCount(prev => isLiked ? prev - 1 : prev + 1);
-      setIsLiked(!isLiked);
+      await batch.commit();
 
     } catch (e) {
       console.error("Like toggle failed: ", e);
       setError("Could not complete action. Please try again.");
+      // Revert optimistic update on failure
+      setIsLiked(!newIsLiked);
+      setLikesCount(prev => newIsLiked ? prev - 1 : prev + 1);
     } finally {
       setIsLikeLoading(false);
     }
@@ -306,47 +383,46 @@ const AlbumPage: React.FC = () => {
                 {new Date(album.releaseDate).getFullYear()}
               </p>
             </div>
-            {currentUser && (
-              <div className="flex items-center space-x-2 flex-shrink-0 ml-4">
-                <button onClick={handleLikeToggle} disabled={isLikeLoading} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors disabled:opacity-50">
-                  <Heart size={24} className={`transition-all ${isLiked ? 'text-red-500 fill-current' : 'text-gray-500'}`} />
-                </button>
-                <span className="font-semibold text-lg">{likesCount}</span>
-              </div>
-            )}
+            <div className="flex items-center space-x-2 flex-shrink-0 ml-4">
+              <button onClick={handleLikeToggle} disabled={!currentUser || isLikeLoading} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                <Heart size={24} className={`transition-all ${isLiked ? 'text-red-500 fill-current' : 'text-gray-500'}`} />
+              </button>
+              <span className="font-semibold text-lg">{likesCount}</span>
+            </div>
           </div>
 
           <div className="mt-8">
             <h2 className="text-2xl font-bold font-serif mb-4">Tracklist</h2>
-            <ul className="space-y-2">
-              {tracklist.map((song, index) => (
-                <li
-                  key={song.id}
-                  className="flex items-center justify-between p-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group"
-                >
-                  <div className="flex items-center">
-                    <span className="text-gray-500 dark:text-gray-400 w-6 text-right mr-4">{index + 1}</span>
-                    <div>
-                      <NavLink to={`/song/${song.id}`} className="font-semibold text-ac-dark dark:text-ac-light hover:underline">{song.title}</NavLink>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">{formatDuration(song.duration)}</p>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => console.log(`Playing ${song.title}`)}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity text-ac-accent hover:text-ac-accent/80"
-                    aria-label={`Play ${song.title}`}
+            <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+              <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+                {tracklist.map((song, index) => (
+                  <li
+                    key={song.id}
+                    className="flex items-center justify-between px-3 py-3 group transition-colors odd:bg-transparent even:bg-black/[.03] dark:even:bg-white/[.03] hover:bg-black/[.05] dark:hover:bg-white/[.05]"
                   >
-                    <PlayCircle size={24} />
-                  </button>
-                </li>
-              ))}
-              {tracklist.length === 0 && (
-                <div className="text-center py-10 border-2 border-dashed rounded-lg text-gray-400 dark:text-gray-600">
-                  <Music className="mx-auto h-8 w-8" />
-                  <p className="mt-2">Tracklist is not available yet.</p>
-                </div>
-              )}
-            </ul>
+                    <div className="flex items-center flex-grow truncate">
+                      <span className="text-gray-500 dark:text-gray-400 w-8 text-center mr-3 flex-shrink-0">{index + 1}</span>
+                      <NavLink to={`/song/${song.id}`} className="font-semibold text-ac-dark dark:text-ac-light hover:underline truncate">{song.title}</NavLink>
+                    </div>
+                    <div className="flex items-center space-x-4 ml-4 flex-shrink-0">
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{formatDuration(song.duration)}</p>
+                      <button
+                        className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-500 hover:text-ac-accent"
+                        aria-label={`More options for ${song.title}`}
+                      >
+                        <MoreHorizontal size={20} />
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {tracklist.length === 0 && (
+              <div className="text-center py-10 border-2 border-dashed rounded-lg text-gray-400 dark:text-gray-600">
+                <Music className="mx-auto h-8 w-8" />
+                <p className="mt-2">Tracklist is not available yet.</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -356,7 +432,13 @@ const AlbumPage: React.FC = () => {
           {currentUser && <AlbumReviewForm album={album} onReviewSubmit={fetchAlbumData} />}
           {reviews.length > 0 ? (
             <div className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-              {reviews.map(review => <ReviewCard key={review.id} review={review} />)}
+              <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+                {reviews.map(review => (
+                  <li key={review.id} className="group transition-colors odd:bg-transparent even:bg-black/[.03] dark:even:bg-white/[.03] hover:bg-black/[.05] dark:hover:bg-white/[.05]">
+                    <ReviewCard review={review} albumId={album.id} />
+                  </li>
+                ))}
+              </ul>
             </div>
           ) : (
             <div className="text-center py-10 border-2 border-dashed rounded-lg text-gray-400 dark:text-gray-600">

@@ -70,6 +70,7 @@ const GENRES = [
   'Zouk',
 ].sort();
 
+
 interface ApplicationWithId extends AdminApplication {
   docId: string;
 }
@@ -125,25 +126,27 @@ const ApplicationReview: React.FC = () => {
       {applications.length === 0 ? (
         <p>No pending applications.</p>
       ) : (
-        <div className="space-y-4">
-          {applications.map(app => (
-            <div key={app.docId} className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="font-semibold">{app.userName || app.userEmail}</p>
-                  <p className="text-sm text-gray-500">{app.userEmail}</p>
+        <div className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+            {applications.map(app => (
+              <li key={app.docId} className="p-4 transition-colors odd:bg-transparent even:bg-black/[.03] dark:even:bg-white/[.03]">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <p className="font-semibold">{app.userName || app.userEmail}</p>
+                    <p className="text-sm text-gray-500">{app.userEmail}</p>
+                  </div>
+                  <div className="text-sm text-gray-400">
+                    {app.submittedAt instanceof Timestamp && app.submittedAt.toDate().toLocaleDateString()}
+                  </div>
                 </div>
-                <div className="text-sm text-gray-400">
-                  {app.submittedAt instanceof Timestamp && app.submittedAt.toDate().toLocaleDateString()}
+                <p className="mt-4 text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 p-3 rounded-md">{app.reason}</p>
+                <div className="mt-4 flex space-x-2">
+                  <button onClick={() => handleApplication(app, 'approved')} className="px-3 py-1 text-sm bg-ac-secondary text-white rounded-md hover:bg-ac-secondary/90">Approve</button>
+                  <button onClick={() => handleApplication(app, 'rejected')} className="px-3 py-1 text-sm bg-ac-danger text-white rounded-md hover:bg-ac-danger/90">Reject</button>
                 </div>
-              </div>
-              <p className="mt-4 text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 p-3 rounded-md">{app.reason}</p>
-              <div className="mt-4 flex space-x-2">
-                <button onClick={() => handleApplication(app, 'approved')} className="px-3 py-1 text-sm bg-ac-secondary text-white rounded-md hover:bg-ac-secondary/90">Approve</button>
-                <button onClick={() => handleApplication(app, 'rejected')} className="px-3 py-1 text-sm bg-ac-danger text-white rounded-md hover:bg-ac-danger/90">Reject</button>
-              </div>
-            </div>
-          ))}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>
@@ -279,10 +282,10 @@ const ManageContent: React.FC<{
           <Plus size={16} className="mr-1" /> Add New
         </button>
       </div>
-      <div className="bg-white dark:bg-ac-dark/50 rounded-lg shadow border border-gray-200 dark:border-gray-700">
+      <div className="rounded-lg shadow border border-gray-200 dark:border-gray-700 overflow-hidden">
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {items.map(item => (
-            <li key={item.id} className="p-4 flex justify-between items-center">
+            <li key={item.id} className="p-4 flex justify-between items-center transition-colors odd:bg-transparent even:bg-black/[.03] dark:even:bg-white/[.03] hover:bg-black/[.05] dark:hover:bg-white/[.05]">
               <div>
                 <p className="font-semibold">{item.title || item.name}</p>
                 <p className="text-sm text-gray-500">{item.id}</p>
@@ -800,8 +803,8 @@ const TabButton: React.FC<{ active: boolean; onClick: () => void; children: Reac
   <button
     onClick={onClick}
     className={`px-4 py-2 text-sm font-medium rounded-t-lg border-b-2 ${active
-        ? 'border-ac-secondary text-ac-secondary'
-        : 'border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
+      ? 'border-ac-secondary text-ac-secondary'
+      : 'border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
       }`}
   >
     {children}

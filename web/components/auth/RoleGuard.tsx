@@ -4,21 +4,21 @@ import { useAuth } from '../../hooks/useAuth';
 import { Role } from '../../types';
 
 interface RoleGuardProps {
-  allowedRoles: Role[];
+    allowedRoles: Role[];
 }
 
 const RoleGuard: React.FC<RoleGuardProps> = ({ allowedRoles }) => {
-  const { userProfile, loading } = useAuth();
+    const { userProfile, loading } = useAuth();
 
-  if (loading) {
-    return null;
-  }
+    if (loading) {
+        return null;
+    }
 
-  if (!userProfile || !allowedRoles.includes(userProfile.role)) {
-    return <Navigate to="/" replace />;
-  }
-
-  return <Outlet />;
+    if (!userProfile || !allowedRoles.includes(userProfile.role)) {
+        return <Navigate to="/" replace />;
+    }
+    
+    return <Outlet />;
 };
 
 export default RoleGuard;

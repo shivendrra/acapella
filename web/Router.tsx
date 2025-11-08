@@ -29,6 +29,8 @@ const ArtistsIndexPage = lazy(() => import('./pages/ArtistsIndexPage'));
 const UserLikesPage = lazy(() => import('./pages/UserLikesPage'));
 const UserRatingsPage = lazy(() => import('./pages/UserRatingsPage'));
 const UserReviewsPage = lazy(() => import('./pages/UserReviewsPage'));
+const ReviewPage = lazy(() => import('./pages/ReviewPage'));
+const UserActivityPage = lazy(() => import('./pages/UserActivityPage'));
 
 // Settings Sub-pages
 const ProfileSettings = lazy(() => import('./pages/settings/ProfileSettings'));
@@ -66,11 +68,13 @@ const AppRouter: React.FC = () => {
               <Route path="/album/:id" element={<AlbumPage />} />
               <Route path="/artist/:id" element={<ArtistPage />} />
               <Route path="/search" element={<SearchPage />} />
+              <Route path="/review/:id" element={<ReviewPage />} />
               
               {/* User Activity Pages */}
               <Route path="/:username/likes" element={<UserLikesPage />} />
               <Route path="/:username/ratings" element={<UserRatingsPage />} />
               <Route path="/:username/reviews" element={<UserReviewsPage />} />
+              <Route path="/:username/activity" element={<UserActivityPage />} />
 
 
               {/* Authenticated Routes */}

@@ -7,16 +7,37 @@ import { Song, Review } from '../types';
 import PageLoader from '../components/common/PageLoader';
 import { Star } from 'lucide-react';
 
-const TrendingSongCard: React.FC<{ song: Song }> = ({ song }) => (
-  <NavLink to={`/song/${song.id}`} className="block p-4 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-    <h3 className="font-bold truncate">{song.title}</h3>
-    <p className="text-sm text-gray-500">{song.genre}</p>
-    <div className="flex items-center mt-2 text-sm text-yellow-500">
-      <Star size={14} className="mr-1 fill-current" />
-      <span>{song.reviewCount || 0} Reviews</span>
-    </div>
-  </NavLink>
-);
+const TrendingSongCard: React.FC<{ song: Song }> = ({ song }) => {
+  const imageUrl = song.coverArtUrl || `https://placehold.co/400x400/131010/FAF8F1?text=${encodeURIComponent(song.title.charAt(0)) || '🎵'}`;
+
+  return (
+    <NavLink
+      to={`/song/${song.id}`}
+      className="group relative block aspect-square w-full overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-800 shadow-lg"
+    >
+      <img
+        src={imageUrl}
+        alt={song.title}
+        className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+      />
+      {/* Gradient overlay for text contrast */}
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"
+        aria-hidden="true"
+      />
+      {/* Text content */}
+      <div className="absolute inset-0 p-4 flex flex-col justify-end text-white">
+        <h3 className="font-bold text-lg leading-tight drop-shadow-sm">{song.title}</h3>
+        <p className="text-sm text-gray-300 drop-shadow-sm">{song.genre}</p>
+        <div className="flex items-center mt-1 text-sm text-yellow-400">
+          <Star size={16} className="mr-1.5 fill-current" />
+          <span className="font-semibold">{song.reviewCount || 0} Reviews</span>
+        </div>
+      </div>
+    </NavLink>
+  );
+};
+
 
 const FollowingReviewCard: React.FC<{ review: Review }> = ({ review }) => (
   <div className="p-4 border rounded-lg flex flex-col h-full">
@@ -115,7 +136,7 @@ const SongsIndexPage: React.FC = () => {
 
       <section>
         <h2 className="text-2xl font-bold font-serif mb-4">Trending Songs</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {trendingSongs.map(song => <TrendingSongCard key={song.id} song={song} />)}
         </div>
       </section>
