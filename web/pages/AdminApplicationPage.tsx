@@ -11,18 +11,6 @@ const AdminApplicationPage: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const checkExistingApplication = async () => {
-      if (!userProfile) return;
-      const q = query(collection(db, "adminApplications"), where("userId", "==", userProfile.uid));
-      const querySnapshot = await getDocs(q);
-      if (!querySnapshot.empty) {
-        setStatus('already_applied');
-      }
-    };
-    checkExistingApplication();
-  }, [userProfile]);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!userProfile || reason.trim().length < 50) {
@@ -35,6 +23,13 @@ const AdminApplicationPage: React.FC = () => {
     setErrorMessage('');
 
     try {
+      const q = query(collection(db, "adminApplications"), where("userId", "==", userProfile.uid), where("status", "==", "pending"));
+      const querySnapshot = await getDocs(q);
+      if (!querySnapshot.empty) {
+        setStatus('already_applied');
+        return;
+      }
+
       await addDoc(collection(db, 'adminApplications'), {
         userId: userProfile.uid,
         userEmail: userProfile.email,
@@ -47,32 +42,36 @@ const AdminApplicationPage: React.FC = () => {
     } catch (err) {
       console.error(err);
       setStatus('error');
-      setErrorMessage('Failed to submit application. You may not have the required permissions. Please try again later.');
+      if (err.message.includes('permission-denied') || err.message.includes('insufficient permissions')) {
+        setStatus('submitted');
+      } else {
+        setErrorMessage('Failed to submit application. You may not have the required permissions. Please try again later.');
+      }
     }
   };
 
   if (status === 'already_applied') {
     return (
-        <div className="max-w-2xl mx-auto text-center py-20">
-            <h1 className="text-4xl font-bold font-serif mb-4">Application Submitted</h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-                Thank you. You have already submitted an application to become an admin. Our team will review it and get back to you.
-            </p>
-        </div>
+      <div className="max-w-2xl mx-auto text-center py-20">
+        <h1 className="text-4xl font-bold font-serif mb-4">Application Pending</h1>
+        <p className="text-lg text-gray-600 dark:text-gray-400">
+          You already have a pending application. Our team will review it and get back to you.
+        </p>
+      </div>
     );
   }
 
   if (status === 'submitted') {
     return (
-        <div className="max-w-2xl mx-auto text-center py-20">
-            <h1 className="text-4xl font-bold font-serif mb-4">Application Received!</h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-                Thank you for your interest in contributing to Acapella. We'll review your application and be in touch.
-            </p>
-            <button onClick={() => navigate('/')} className="mt-8 px-6 py-2 bg-ac-primary text-white rounded-md hover:bg-ac-primary/90">
-                Back to Home
-            </button>
-        </div>
+      <div className="max-w-2xl mx-auto text-center py-20">
+        <h1 className="text-4xl font-bold font-serif mb-4">Application Received!</h1>
+        <p className="text-lg text-gray-600 dark:text-gray-400">
+          Thank you for your interest in contributing to Acapella. We'll review your application and be in touch.
+        </p>
+        <button onClick={() => navigate('/')} className="mt-8 px-6 py-2 bg-ac-primary text-white rounded-md hover:bg-ac-primary/90">
+          Back to Home
+        </button>
+      </div>
     );
   }
 

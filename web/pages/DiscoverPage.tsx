@@ -13,7 +13,7 @@ const SectionTitle: React.FC<{ title: string; subtitle: string }> = ({ title, su
   </div>
 );
 
-// Fix: Update Carousel component to pass index to renderItem prop to allow for ranked lists.
+// FIX: Update Carousel component to pass index to renderItem prop to allow for ranked lists.
 const Carousel: React.FC<{ items: (Album | Song)[]; renderItem: (item: any, index: number) => React.ReactNode }> = ({ items, renderItem }) => {
     const scrollRef = React.useRef<HTMLDivElement>(null);
 
@@ -138,7 +138,8 @@ const DiscoverPage: React.FC = () => {
         <SectionTitle title="New Releases by Genre" subtitle="The latest albums in your favorite genres" />
         <div className="space-y-8">
             {Object.entries(newReleases).map(([genre, albums]) => (
-                albums.length > 0 && (
+                // FIX: Check if `albums` is an array and has items before rendering, as its type might be `unknown`.
+                Array.isArray(albums) && albums.length > 0 && (
                     <div key={genre}>
                         <h3 className="text-xl font-semibold mb-4">{genre}</h3>
                         <Carousel items={albums} renderItem={(item) => <AlbumCard album={item} />} />

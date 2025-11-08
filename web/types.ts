@@ -93,11 +93,13 @@ export interface Review {
   reviewText: string;
   createdAt: FieldValue | Timestamp;
   likes: string[]; // array of userIds
+  likesCount?: number;
   // Denormalized data for feeds
   entityId: string; // songId or albumId
-  entityType: 'song' | 'album';
+  entityType: 'song' | 'album' | 'user';
   entityTitle?: string;
   entityCoverArtUrl?: string; // For albums
+  entityUsername?: string; // For user entities
 }
 
 export interface Like {

@@ -1,6 +1,6 @@
 
+
 import React, { useState, useEffect } from 'react';
-// Fix: Corrected import for useAuth from hooks directory
 import { useAuth } from '../hooks/useAuth';
 import { db } from '../services/firebase';
 import { collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore';

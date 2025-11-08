@@ -20,32 +20,32 @@ const newSongs = [
 ];
 
 const SectionTitle: React.FC<{ title: string; subtitle: string }> = ({ title, subtitle }) => (
-    <div className="mb-6">
-        <h2 className="text-3xl font-bold text-ac-dark dark:text-ac-light font-serif">{title}</h2>
-        <p className="text-ac-primary/80 dark:text-ac-light/70">{subtitle}</p>
-    </div>
+  <div className="mb-6">
+    <h2 className="text-3xl font-bold text-ac-dark dark:text-ac-light font-serif">{title}</h2>
+    <p className="text-ac-primary/80 dark:text-ac-light/70">{subtitle}</p>
+  </div>
 );
 
 const AlbumCard: React.FC<{ album: typeof featuredAlbums[0] }> = ({ album }) => (
-    <NavLink to={`/album/${album.id}`} className="group">
-        <div className="aspect-square w-full overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-800">
-            <img src={album.coverArtUrl} alt={album.title} className="h-full w-full object-cover object-center group-hover:opacity-75 transition-opacity" />
-        </div>
-        <h3 className="mt-2 text-base font-semibold text-gray-900 dark:text-white truncate">{album.title}</h3>
-        <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{album.artist}</p>
-    </NavLink>
+  <NavLink to={`/album/${album.id}`} className="group">
+    <div className="aspect-square w-full overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-800">
+      <img src={album.coverArtUrl} alt={album.title} className="h-full w-full object-cover object-center group-hover:opacity-75 transition-opacity" />
+    </div>
+    <h3 className="mt-2 text-base font-semibold text-gray-900 dark:text-white truncate">{album.title}</h3>
+    <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{album.artist}</p>
+  </NavLink>
 );
 
 const SongListItem: React.FC<{ song: typeof newSongs[0] }> = ({ song }) => (
-    <li className="flex items-center justify-between py-3 px-4 hover:bg-ac-primary/5 dark:hover:bg-ac-secondary/10 rounded-md transition-colors">
-        <div>
-            <p className="font-semibold text-ac-dark dark:text-ac-light">{song.title}</p>
-            <p className="text-sm text-gray-600 dark:text-gray-400">{song.artist} - <span className="italic">{song.album}</span></p>
-        </div>
-        <button className="p-2 text-sm border border-ac-accent text-ac-accent rounded-full hover:bg-ac-accent hover:text-white transition-colors">
-            <Plus className="h-4 w-4" />
-        </button>
-    </li>
+  <li className="flex items-center justify-between py-3 px-4 hover:bg-ac-primary/5 dark:hover:bg-ac-secondary/10 rounded-md transition-colors">
+    <div>
+      <p className="font-semibold text-ac-dark dark:text-ac-light">{song.title}</p>
+      <p className="text-sm text-gray-600 dark:text-gray-400">{song.artist} - <span className="italic">{song.album}</span></p>
+    </div>
+    <button className="p-2 text-sm border border-ac-accent text-ac-accent rounded-full hover:bg-ac-accent hover:text-white transition-colors">
+      <Plus className="h-4 w-4" />
+    </button>
+  </li>
 );
 
 export const HomePage: React.FC = () => {
@@ -63,9 +63,9 @@ export const HomePage: React.FC = () => {
       <section>
         <SectionTitle title="New Releases" subtitle="The latest tracks to hit the scene" />
         <div className="bg-ac-light dark:bg-ac-dark/50 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-            <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-                {newSongs.map(song => <SongListItem key={song.id} song={song} />)}
-            </ul>
+          <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+            {newSongs.map(song => <SongListItem key={song.id} song={song} />)}
+          </ul>
         </div>
       </section>
     </div>
