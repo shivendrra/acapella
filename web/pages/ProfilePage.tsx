@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate, NavLink } from 'react-router-dom';
-import { collection, query, where, getDocs, limit, doc, getDoc, runTransaction, serverTimestamp, orderBy, Timestamp, documentId, collectionGroup, writeBatch, deleteDoc, setDoc } from 'firebase/firestore';
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { collection, query, where, getDocs, limit, doc, getDoc, runTransaction, serverTimestamp, orderBy, Timestamp, documentId, collectionGroup, writeBatch, deleteDoc, setDoc } from '@firebase/firestore';
 import { db } from '../services/firebase';
 import { UserProfile, Role, Review, Like, Song, Album, Follow } from '../types';
 import { RESERVED_SLUGS } from '../utils/reserved-slugs';
@@ -8,6 +9,7 @@ import PageLoader from '../components/common/PageLoader';
 import { useAuth } from '../hooks/useAuth';
 import EditProfileModal from '../components/profile/EditProfileModal';
 import { UserCheck, UserPlus, X, Star, Heart, MessageSquare, AlertTriangle, Music, Activity } from 'lucide-react';
+import { formatDate } from '../utils/formatters';
 
 // A union type for our unified activity/diary feed
 type ActivityLog = (Review & { _activityType: 'review' }) | (Like & { _activityType: 'like' }) | (Review & { _activityType: 'follow' });
@@ -159,7 +161,7 @@ const FollowListModal: React.FC<{
 
 const DiaryItem: React.FC<{ activity: ActivityLog, profile: UserProfile }> = ({ activity, profile }) => {
   const userLink = <NavLink to={`/${profile.username}`} className="font-semibold hover:underline">{profile.displayName}</NavLink>;
-  const date = activity.createdAt instanceof Timestamp ? activity.createdAt.toDate().toLocaleDateString() : null;
+  const date = formatDate(activity.createdAt);
 
   let actionText;
   let entityLink;
@@ -274,6 +276,9 @@ const ProfilePage: React.FC = () => {
   const [activities, setActivities] = useState<ActivityLog[]>([]);
   const [likedItems, setLikedItems] = useState<Like[]>([]);
   const [ratedItems, setRatedItems] = useState<Review[]>([]);
+  const [favoriteSongs, setFavoriteSongs] = useState<Song[]>([]);
+  const [favoriteAlbums, setFavoriteAlbums] = useState<Album[]>([]);
+
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -285,7 +290,7 @@ const ProfilePage: React.FC = () => {
       setProfile(null);
 
       try {
-        // STEP 1: Fetch the core user profile. This must be public.
+        // STEP 1: Fetch the core user profile.
         const usersRef = collection(db, 'users');
         const q = query(usersRef, where('username', '==', username.toLowerCase()), limit(1));
         const querySnapshot = await getDocs(q);
@@ -295,7 +300,24 @@ const ProfilePage: React.FC = () => {
         const userProfileData = querySnapshot.docs[0].data() as UserProfile;
         setProfile(userProfileData);
 
-        // STEP 2: Fetch public data (reviews).
+        // STEP 2: Fetch Favorites
+        const { favoriteSongIds, favoriteAlbumIds } = userProfileData;
+        if (favoriteSongIds && favoriteSongIds.length > 0) {
+          const songsQuery = query(collection(db, 'songs'), where(documentId(), 'in', favoriteSongIds));
+          const songsSnap = await getDocs(songsQuery);
+          const songsData = songsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Song));
+          const orderedSongs = favoriteSongIds.map(id => songsData.find(s => s.id === id)).filter(Boolean) as Song[];
+          setFavoriteSongs(orderedSongs);
+        }
+        if (favoriteAlbumIds && favoriteAlbumIds.length > 0) {
+          const albumsQuery = query(collection(db, 'albums'), where(documentId(), 'in', favoriteAlbumIds));
+          const albumsSnap = await getDocs(albumsQuery);
+          const albumsData = albumsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Album));
+          const orderedAlbums = favoriteAlbumIds.map(id => albumsData.find(a => a.id === id)).filter(Boolean) as Album[];
+          setFavoriteAlbums(orderedAlbums);
+        }
+
+        // STEP 3: Fetch public data (reviews).
         const reviewsQuery = query(collectionGroup(db, 'reviews'), where('userId', '==', userProfileData.uid), orderBy('createdAt', 'desc'), limit(5)); // Limit for preview
         const reviewsSnap = await getDocs(reviewsQuery);
         const reviewsData = reviewsSnap.docs.map(doc => doc.data() as Review);
@@ -304,7 +326,7 @@ const ProfilePage: React.FC = () => {
 
         let allActivities: ActivityLog[] = [...reviewActivities];
 
-        // STEP 3: Conditionally fetch protected data if a user is logged in.
+        // STEP 4: Conditionally fetch protected data if a user is logged in.
         if (currentUserProfile) {
           const followsRef = collection(db, 'follows');
           const followersQuery = query(followsRef, where('followingId', '==', userProfileData.uid));
@@ -337,16 +359,18 @@ const ProfilePage: React.FC = () => {
               usersSnap.docs.forEach(doc => { followedUsers[doc.id] = doc.data() as UserProfile; });
             }
           }
-          const followActivities: ActivityLog[] = followsByUserSnap.docs.map(doc => {
+          // FIX: Explicitly type the return value of the map callback to prevent incorrect type inference that invalidates the type guard in `.filter`.
+          const followActivities: ActivityLog[] = followsByUserSnap.docs.map((doc): ActivityLog | null => {
             const follow = doc.data() as Follow;
             const followedUser = followedUsers[follow.followingId];
             if (!followedUser) return null;
-            return {
-              id: doc.id, userId: userProfileData.uid, userDisplayName: userProfileData.displayName, userPhotoURL: userProfileData.photoURL,
-              createdAt: follow.createdAt, entityId: followedUser.uid, entityType: 'user', entityTitle: followedUser.displayName,
+            const activity: ActivityLog = {
+              id: doc.id, userId: userProfileData.uid, userDisplayName: userProfileData.displayName || userProfileData.username, userPhotoURL: userProfileData.photoURL,
+              createdAt: follow.createdAt, entityId: followedUser.uid, entityType: 'user', entityTitle: followedUser.displayName || followedUser.username,
               entityUsername: followedUser.username, entityCoverArtUrl: followedUser.photoURL, rating: 0, reviewText: '', likes: [],
               _activityType: 'follow'
             };
+            return activity;
           }).filter((item): item is ActivityLog => !!item);
 
           allActivities.push(...likeActivities, ...followActivities);
@@ -357,7 +381,7 @@ const ProfilePage: React.FC = () => {
           setLikedItems([]);
         }
 
-        // STEP 4: Combine, sort, and set the final diary feed.
+        // STEP 5: Combine, sort, and set the final diary feed.
         allActivities.sort((a, b) => {
           const timeA = (a.createdAt as Timestamp)?.toMillis() || 0;
           const timeB = (b.createdAt as Timestamp)?.toMillis() || 0;
@@ -415,8 +439,8 @@ const ProfilePage: React.FC = () => {
         await setDoc(followDocRef, followData);
 
         const newFollowActivity: ActivityLog = {
-          id: `${currentUserProfile.uid}_${profile.uid}`, userId: currentUserProfile.uid, userDisplayName: currentUserProfile.displayName, userPhotoURL: currentUserProfile.photoURL,
-          createdAt: Timestamp.now(), entityId: profile.uid, entityType: 'user', entityTitle: profile.displayName,
+          id: `${currentUserProfile.uid}_${profile.uid}`, userId: currentUserProfile.uid, userDisplayName: currentUserProfile.displayName || currentUserProfile.username, userPhotoURL: currentUserProfile.photoURL,
+          createdAt: Timestamp.now(), entityId: profile.uid, entityType: 'user', entityTitle: profile.displayName || profile.username,
           entityUsername: profile.username, entityCoverArtUrl: profile.photoURL, rating: 0, reviewText: '', likes: [], _activityType: 'follow'
         };
         setActivities(prev => [newFollowActivity, ...prev].sort((a, b) => {
@@ -435,15 +459,43 @@ const ProfilePage: React.FC = () => {
     }
   };
 
-  const handleProfileUpdate = (updatedData: Partial<UserProfile>) => {
-    setProfile(prevProfile => prevProfile ? { ...prevProfile, ...updatedData } : null);
+  const handleProfileUpdate = async (updatedData: Partial<UserProfile>) => {
+    const currentProfile = profile;
+    if (!currentProfile) return;
+
+    const newProfile = { ...currentProfile, ...updatedData };
+    setProfile(newProfile);
+
+    // Re-fetch favorites to update the UI instantly after edit
+    const { favoriteSongIds, favoriteAlbumIds } = newProfile;
+    if (favoriteSongIds && favoriteSongIds.length > 0) {
+      const songsQuery = query(collection(db, 'songs'), where(documentId(), 'in', favoriteSongIds));
+      const songsSnap = await getDocs(songsQuery);
+      const songsData = songsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Song));
+      const orderedSongs = favoriteSongIds.map(id => songsData.find(s => s.id === id)).filter(Boolean) as Song[];
+      setFavoriteSongs(orderedSongs);
+    } else {
+      setFavoriteSongs([]);
+    }
+
+    if (favoriteAlbumIds && favoriteAlbumIds.length > 0) {
+      const albumsQuery = query(collection(db, 'albums'), where(documentId(), 'in', favoriteAlbumIds));
+      const albumsSnap = await getDocs(albumsQuery);
+      const albumsData = albumsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Album));
+      const orderedAlbums = favoriteAlbumIds.map(id => albumsData.find(a => a.id === id)).filter(Boolean) as Album[];
+      setFavoriteAlbums(orderedAlbums);
+    } else {
+      setFavoriteAlbums([]);
+    }
   };
+
 
   if (loading) return <PageLoader />;
   if (error) return <div className="text-center py-20 text-ac-danger">{error}</div>;
   if (!profile) return null;
 
   const isOwnProfile = currentUserProfile?.uid === profile.uid;
+  const hasFavorites = favoriteSongs.length > 0 || favoriteAlbums.length > 0;
 
   return (
     <div>
@@ -503,6 +555,35 @@ const ProfilePage: React.FC = () => {
       {profile.bio && (<div className="mt-8"><p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{profile.bio}</p></div>)}
 
       <div className="mt-12 space-y-12">
+        {hasFavorites && (
+          <section>
+            <h2 className="text-2xl font-bold font-serif mb-4">Favorites</h2>
+            <div className="space-y-6">
+              {favoriteSongs.length > 0 && (
+                <div>
+                  <div className="grid grid-cols-4 gap-4">
+                    {favoriteSongs.map(song => (
+                      <NavLink to={`/song/${song.id}`} key={song.id} className="aspect-square block">
+                        <img src={song.coverArtUrl} alt={song.title} className="w-full h-full object-cover rounded-lg shadow-md hover:scale-105 transition-transform bg-gray-200 dark:bg-gray-800" />
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {favoriteAlbums.length > 0 && (
+                <div>
+                  <div className="grid grid-cols-4 gap-4">
+                    {favoriteAlbums.map(album => (
+                      <NavLink to={`/album/${album.id}`} key={album.id} className="aspect-square block">
+                        <img src={album.coverArtUrl} alt={album.title} className="w-full h-full object-cover rounded-lg shadow-md hover:scale-105 transition-transform bg-gray-200 dark:bg-gray-800" />
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <ProfilePreviewSection title="Liked Items" items={likedItems} link={`/${username}/likes`} />
           <ProfilePreviewSection title="Reviews" items={ratedItems} link={`/${username}/ratings`} />

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { db } from '../../services/firebase';
-import { doc, updateDoc } from 'firebase/firestore';
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { doc, updateDoc } from '@firebase/firestore';
 
 const ProfileSettings: React.FC = () => {
   const { userProfile, currentUser } = useAuth();

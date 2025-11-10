@@ -1,9 +1,11 @@
 
 
+
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { db } from '../services/firebase';
-import { collection, query, where, getDocs, doc, updateDoc, writeBatch, Timestamp } from 'firebase/firestore';
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { collection, query, where, getDocs, doc, updateDoc, writeBatch, Timestamp } from '@firebase/firestore';
 import { Role, AdminApplication } from '../types';
 
 interface ApplicationWithId extends AdminApplication {

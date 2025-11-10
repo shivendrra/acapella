@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { collection, query, where, getDocs } from '@firebase/firestore';
 import { db } from '../services/firebase';
 import { UserProfile } from '../types';
 import PageLoader from '../components/common/PageLoader';

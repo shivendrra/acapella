@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSearchParams, NavLink } from 'react-router-dom';
-import { collection, query, where, getDocs, limit, orderBy } from 'firebase/firestore';
+import { collection, query, where, getDocs, limit, orderBy } from '@firebase/firestore';
 import { db } from '../services/firebase';
 import { UserProfile, Artist, Album, Song } from '../types';
 import PageLoader from '../components/common/PageLoader';

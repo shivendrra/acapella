@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { db, auth } from '../../services/firebase';
-import { doc, updateDoc, collection, query, where, getDocs, limit, deleteDoc } from 'firebase/firestore';
-import { deleteUser } from 'firebase/auth';
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { doc, updateDoc, collection, query, where, getDocs, limit, deleteDoc } from '@firebase/firestore';
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { deleteUser } from '@firebase/auth';
 import { RESERVED_SLUGS } from '../../utils/reserved-slugs';
 import { Role } from '../../types';
 import { useNavigate } from 'react-router-dom';

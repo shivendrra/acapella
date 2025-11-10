@@ -1,9 +1,11 @@
 
 
+
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { db } from '../services/firebase';
-import { collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore';
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { collection, addDoc, serverTimestamp, query, where, getDocs } from '@firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 export const AdminApplicationPage: React.FC = () => {

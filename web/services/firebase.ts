@@ -1,8 +1,13 @@
 
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { initializeApp } from "@firebase/app";
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { getAuth } from "@firebase/auth";
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { getFirestore } from "@firebase/firestore";
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { getStorage } from "@firebase/storage";
 import 'uuid'; // Although not directly used, it ensures the module is available for consumers
 
 const firebaseConfig = {

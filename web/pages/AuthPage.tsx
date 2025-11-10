@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// FIX: Changed firebase imports to use the '@firebase' scope.
 import { 
     GoogleAuthProvider, 
     signInWithPopup, 
@@ -6,7 +7,7 @@ import {
     signInWithEmailAndPassword,
     fetchSignInMethodsForEmail,
     linkWithCredential,
-} from 'firebase/auth';
+} from '@firebase/auth';
 import { auth } from '../services/firebase';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, AlertTriangle } from 'lucide-react';

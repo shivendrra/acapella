@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { collection, query, getDocs, orderBy, limit } from 'firebase/firestore';
+import { collection, query, getDocs, orderBy, limit } from '@firebase/firestore';
 import { db } from '../services/firebase';
 import { Artist } from '../types';
 import PageLoader from '../components/common/PageLoader';

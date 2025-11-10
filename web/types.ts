@@ -1,5 +1,7 @@
-import { User as FirebaseUser } from 'firebase/auth';
-import { FieldValue, Timestamp } from 'firebase/firestore';
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { User as FirebaseUser } from '@firebase/auth';
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { FieldValue, Timestamp } from '@firebase/firestore';
 
 export enum Role {
   USER = 'user',
@@ -26,6 +28,8 @@ export interface UserProfile {
   };
   followersCount?: number;
   followingCount?: number;
+  favoriteSongIds?: string[];
+  favoriteAlbumIds?: string[];
 }
 
 export interface Song {
@@ -103,20 +107,20 @@ export interface Review {
 }
 
 export interface Like {
-  id: string;
-  userId: string;
-  entityId: string;
-  entityType: 'song' | 'album';
-  createdAt: FieldValue | Timestamp;
-  // Denormalized data
-  entityTitle?: string;
-  entityCoverArtUrl?: string;
+    id: string;
+    userId: string;
+    entityId: string;
+    entityType: 'song' | 'album';
+    createdAt: FieldValue | Timestamp;
+    // Denormalized data
+    entityTitle?: string;
+    entityCoverArtUrl?: string;
 }
 
 export interface Follow {
-  followerId: string;
-  followingId: string;
-  createdAt: FieldValue | Timestamp;
+    followerId: string;
+    followingId: string;
+    createdAt: FieldValue | Timestamp;
 }
 
 export interface Playlist {
@@ -129,7 +133,7 @@ export interface Playlist {
 }
 
 export interface AdminApplication {
-  id: string;
+  id:string;
   userId: string;
   userEmail: string;
   userName: string | null;

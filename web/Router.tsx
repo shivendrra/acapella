@@ -1,3 +1,4 @@
+
 import React, { lazy, Suspense } from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from './components/layout/Layout';
@@ -31,6 +32,8 @@ const UserRatingsPage = lazy(() => import('./pages/UserRatingsPage'));
 const UserReviewsPage = lazy(() => import('./pages/UserReviewsPage'));
 const ReviewPage = lazy(() => import('./pages/ReviewPage'));
 const UserActivityPage = lazy(() => import('./pages/UserActivityPage'));
+const ArtistSongsPage = lazy(() => import('./pages/ArtistSongsPage'));
+const ArtistAlbumsPage = lazy(() => import('./pages/ArtistAlbumsPage'));
 
 // Settings Sub-pages
 const ProfileSettings = lazy(() => import('./pages/settings/ProfileSettings'));
@@ -67,6 +70,8 @@ const AppRouter: React.FC = () => {
               <Route path="/song/:id" element={<SongPage />} />
               <Route path="/album/:id" element={<AlbumPage />} />
               <Route path="/artist/:id" element={<ArtistPage />} />
+              <Route path="/artist/:id/songs" element={<ArtistSongsPage />} />
+              <Route path="/artist/:id/albums" element={<ArtistAlbumsPage />} />
               <Route path="/search" element={<SearchPage />} />
               <Route path="/review/:id" element={<ReviewPage />} />
               
