@@ -36,7 +36,16 @@ const Header: React.FC = () => {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <NavLink to="/" className="text-2xl font-bold text-ac-primary dark:text-ac-secondary font-serif">
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="p-2 inline-flex items-center justify-center rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-ac-accent md:hidden"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <span className="sr-only">Open main menu</span>
+              <Menu className="block h-6 w-6" aria-hidden="true" />
+            </button>
+            <NavLink to="/" className="hidden md:block text-2xl font-bold text-ac-primary dark:text-ac-secondary font-serif">
               Acapella
             </NavLink>
           </div>
@@ -99,29 +108,27 @@ const Header: React.FC = () => {
                 Log In
               </NavLink>
             )}
-
-            <div className="flex items-center md:hidden">
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 inline-flex items-center justify-center rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-ac-accent"
-                aria-controls="mobile-menu"
-                aria-expanded="false"
-              >
-                <span className="sr-only">Open main menu</span>
-                {isMobileMenuOpen ? (
-                  <X className="block h-6 w-6" aria-hidden="true" />
-                ) : (
-                  <Menu className="block h-6 w-6" aria-hidden="true" />
-                )}
-              </button>
-            </div>
-
           </div>
         </div>
       </nav>
 
-      {isMobileMenuOpen && (
-        <div className="md:hidden" id="mobile-menu">
+      {/* Side Menu */}
+      <div
+        className={`fixed inset-y-0 left-0 z-50 w-full max-w-xs transform transition-transform duration-300 ease-in-out md:hidden ${
+          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+        role="dialog"
+        aria-modal="true"
+      >
+        <div className="h-full flex flex-col bg-ac-light dark:bg-ac-dark shadow-xl">
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+            <NavLink to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-ac-primary dark:text-ac-secondary font-serif">
+              Acapella
+            </NavLink>
+            <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 -mr-2 rounded-md">
+              <X className="h-6 w-6" />
+            </button>
+          </div>
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <NavLink to="/songs" onClick={() => setIsMobileMenuOpen(false)} className={({isActive}) => `${mobileNavLinkClass} ${isActive ? mobileNavLinkActiveClass : ''}`}>Songs</NavLink>
               <NavLink to="/albums" onClick={() => setIsMobileMenuOpen(false)} className={({isActive}) => `${mobileNavLinkClass} ${isActive ? mobileNavLinkActiveClass : ''}`}>Albums</NavLink>
@@ -129,6 +136,14 @@ const Header: React.FC = () => {
               <NavLink to="/curators" onClick={() => setIsMobileMenuOpen(false)} className={({isActive}) => `${mobileNavLinkClass} ${isActive ? mobileNavLinkActiveClass : ''}`}>Curators</NavLink>
           </div>
         </div>
+      </div>
+      
+      {/* Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/60 z-40 md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        ></div>
       )}
     </header>
   );

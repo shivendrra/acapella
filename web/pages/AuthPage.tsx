@@ -135,7 +135,7 @@ const AuthPage: React.FC = () => {
 
   if (view === 'initial') {
     return (
-      <div className="flex flex-col md:flex-row min-h-screen w-full">
+      <div className="flex flex-col md:flex-row min-h-screen w-full bg-[#2d0b4c]">
         <div className="w-full md:w-1/2 bg-[#2d0b4c] flex flex-grow items-center justify-center p-8">
             <Typewriter />
         </div>
@@ -143,14 +143,14 @@ const AuthPage: React.FC = () => {
             <div className="w-full max-w-sm mx-auto space-y-4">
                 <button
                     onClick={handleGoogleSignIn}
-                    className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-sm bg-white text-lg font-medium text-black hover:bg-gray-200 transition-colors"
+                    className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-sm bg-white text-lg font-medium text-gray-900 hover:bg-gray-200 transition-colors"
                 >
                     <GoogleIcon />
                     <span className="ml-3">Continue with Google</span>
                 </button>
                 <button
                     onClick={() => setView('signup')}
-                    className="w-full py-3 px-4 border border-transparent rounded-xl shadow-sm bg-gray-200 text-lg font-medium text-black hover:bg-gray-300 transition-colors"
+                    className="w-full py-3 px-4 border border-transparent rounded-xl shadow-sm bg-gray-800 text-lg font-medium text-white hover:bg-gray-700 transition-colors"
                 >
                     Sign up
                 </button>
