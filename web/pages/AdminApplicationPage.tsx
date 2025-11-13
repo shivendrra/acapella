@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { db } from '../services/firebase';
-import { collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore';
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { collection, addDoc, serverTimestamp, query, where, getDocs } from '@firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 const AdminApplicationPage: React.FC = () => {
@@ -10,6 +11,33 @@ const AdminApplicationPage: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'submitted' | 'error' | 'already_applied'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkExistingApplication = async () => {
+      if (!userProfile) return;
+      try {
+        // This query might fail for non-admins due to security rules, which is fine.
+        // We catch the error and allow the form to be displayed.
+        // If a user with permissions (e.g., an existing admin) visits, it prevents them from re-applying.
+        const q = query(
+            collection(db, "adminApplications"), 
+            where("userId", "==", userProfile.uid), 
+            where("status", "==", "pending")
+        );
+        const querySnapshot = await getDocs(q);
+        if (!querySnapshot.empty) {
+          setStatus('already_applied');
+        }
+      } catch (error) {
+        // This can fail due to security rules for non-admin users, which is expected.
+        // We'll log a warning and allow the form to be rendered.
+        console.warn("Could not check for existing admin application, likely due to permissions.", error);
+      }
+    };
+    checkExistingApplication();
+  }, [userProfile]);
+
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!userProfile || reason.trim().length < 50) {

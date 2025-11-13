@@ -1,6 +1,8 @@
 import React, { useState, useEffect, createContext } from 'react';
-import { onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
-import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { onAuthStateChanged, User as FirebaseUser } from '@firebase/auth';
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { doc, getDoc, setDoc, serverTimestamp } from '@firebase/firestore';
 import { auth, db } from '../services/firebase';
 import { AuthContextType, UserProfile, Role } from '../types';
 

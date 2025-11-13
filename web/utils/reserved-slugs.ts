@@ -25,4 +25,5 @@ export const RESERVED_SLUGS: Set<string> = new Set([
   'new',
   'popular',
   'trending',
+  'curator-program',
 ]);

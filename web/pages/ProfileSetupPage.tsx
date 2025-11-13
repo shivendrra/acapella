@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { db } from '../services/firebase';
-import { doc, updateDoc, collection, query, where, getDocs, limit } from 'firebase/firestore';
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { doc, updateDoc, collection, query, where, getDocs, limit } from '@firebase/firestore';
 import { RESERVED_SLUGS } from '../utils/reserved-slugs';
 
 // A simple debounce utility
@@ -141,7 +142,6 @@ const ProfileSetupPage: React.FC = () => {
                 autoComplete="name"
                 required
                 className="mt-1 appearance-none relative block w-full px-3 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white bg-white dark:bg-gray-800 rounded-md focus:outline-none focus:ring-ac-accent focus:border-ac-accent sm:text-sm"
-                placeholder="Stevie Nicks"
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
               />
@@ -149,19 +149,16 @@ const ProfileSetupPage: React.FC = () => {
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Username</label>
               <div className="mt-1 flex rounded-md shadow-sm">
-                <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm dark:bg-gray-900 dark:border-gray-600 dark:text-gray-400">
-                    acapella.app/
+                <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400">
+                  acapella.app/
                 </span>
-                <input
-                  id="username"
-                  name="username"
-                  type="text"
-                  autoComplete="username"
-                  required
-                  className="flex-1 min-w-0 block w-full px-3 py-3 rounded-none rounded-r-md sm:text-sm border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white bg-white dark:bg-gray-800 focus:outline-none focus:ring-ac-accent focus:border-ac-accent"
-                  placeholder="your_username"
+                <input 
+                  type="text" 
+                  id="username" 
                   value={username}
                   onChange={(e) => setUsername(e.target.value.toLowerCase().trim())}
+                  className="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md sm:text-sm border border-gray-300 bg-white dark:bg-gray-700 dark:border-gray-600 focus:outline-none focus:ring-ac-accent focus:border-ac-accent dark:text-white"
+                  required
                 />
               </div>
               {usernameStatus === 'checking' && <p className="mt-2 text-sm text-gray-500">Checking...</p>}
@@ -170,13 +167,13 @@ const ProfileSetupPage: React.FC = () => {
             </div>
           </div>
 
-          {error && <div className="text-sm text-ac-danger text-center p-3 bg-red-100 dark:bg-red-900/50 border border-red-200 dark:border-red-500/50 rounded-md">{error}</div>}
+          {error && <p className="text-sm text-ac-danger text-center">{error}</p>}
 
           <div>
             <button
               type="submit"
               disabled={loading || usernameStatus !== 'available'}
-              className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-ac-primary hover:bg-ac-primary/90 dark:bg-ac-secondary dark:hover:bg-ac-secondary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ac-accent disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed"
+              className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-ac-primary hover:bg-ac-primary/90 dark:bg-ac-secondary dark:hover:bg-ac-secondary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ac-accent disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
               {loading ? 'Saving...' : 'Complete Profile'}
             </button>

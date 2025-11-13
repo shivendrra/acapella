@@ -1,11 +1,16 @@
+
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
-import { doc, getDoc, collection, query, orderBy, getDocs, serverTimestamp, where, Timestamp, limit, setDoc, deleteDoc, updateDoc, increment, arrayUnion, arrayRemove, writeBatch } from 'firebase/firestore';
+// FIX: Changed firebase imports to use the '@firebase' scope.
+import { doc, getDoc, collection, query, orderBy, getDocs, serverTimestamp, where, Timestamp, limit, setDoc, deleteDoc, updateDoc, increment, arrayUnion, arrayRemove, writeBatch } from '@firebase/firestore';
 import { db } from '../services/firebase';
-import { Song, Artist, Review as ReviewType } from '../types';
+import { Song, Artist, Review as ReviewType, Like } from '../types';
 import { useAuth } from '../hooks/useAuth';
 import PageLoader from '../components/common/PageLoader';
 import { Star, Mic, Pen, Clock, Calendar, User, Send, Music, Heart } from 'lucide-react';
+import { formatDate } from '../utils/formatters';
+import UserBadges from '../components/common/UserBadges';
 
 const StarRatingDisplay: React.FC<{ rating: number; size?: number }> = ({ rating, size = 5 }) => (
   <div className="flex items-center">
@@ -35,6 +40,8 @@ const ReviewCard: React.FC<{ review: ReviewType; songId: string }> = ({ review, 
         setIsLikeLoading(true);
 
         const reviewRef = doc(db, 'songs', songId, 'reviews', review.id);
+        const likeDocRef = doc(db, 'likes', `${currentUser.uid}_${review.id}`);
+        const batch = writeBatch(db);
         const newIsLiked = !isLiked;
         
         // Optimistic update
@@ -42,17 +49,33 @@ const ReviewCard: React.FC<{ review: ReviewType; songId: string }> = ({ review, 
         setLikesCount(prev => newIsLiked ? prev + 1 : prev - 1);
 
         try {
+            // Update review doc's like array and count
+            batch.update(reviewRef, {
+                likes: newIsLiked ? arrayUnion(currentUser.uid) : arrayRemove(currentUser.uid),
+                likesCount: increment(newIsLiked ? 1 : -1),
+            });
+
+            // Create/delete a corresponding 'like' document for the activity feed
             if (newIsLiked) {
-                await updateDoc(reviewRef, {
-                    likes: arrayUnion(currentUser.uid),
-                    likesCount: increment(1),
-                });
+                const likeDoc: Like = {
+                    id: likeDocRef.id,
+                    userId: currentUser.uid,
+                    entityId: review.id,
+                    entityType: 'review',
+                    createdAt: serverTimestamp(),
+                    entityTitle: `Review for "${review.entityTitle}"`,
+                    entityCoverArtUrl: review.entityCoverArtUrl,
+                    reviewOnEntityType: review.entityType as 'song' | 'album',
+                    reviewOnEntityId: review.entityId,
+                    reviewOnEntityTitle: review.entityTitle,
+                };
+                batch.set(likeDocRef, likeDoc);
             } else {
-                await updateDoc(reviewRef, {
-                    likes: arrayRemove(currentUser.uid),
-                    likesCount: increment(-1),
-                });
+                batch.delete(likeDocRef);
             }
+            
+            await batch.commit();
+
         } catch (error) {
             console.error("Failed to like review:", error);
             // Revert optimistic update on error
@@ -74,11 +97,14 @@ const ReviewCard: React.FC<{ review: ReviewType; songId: string }> = ({ review, 
           <div className="flex-1">
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-semibold">{review.userDisplayName}</p>
+                <p className="font-semibold flex items-center">
+                    {review.userDisplayName}
+                    <UserBadges user={{ role: review.userRole, isCurator: review.userIsCurator }} />
+                </p>
                 <StarRatingDisplay rating={review.rating} size={4} />
               </div>
               <NavLink to={`/review/${review.id}`} className="text-xs text-gray-500 hover:underline">
-                {review.createdAt instanceof Timestamp ? review.createdAt.toDate().toLocaleDateString() : 'Just now'}
+                {review.createdAt instanceof Timestamp ? formatDate(review.createdAt) : 'Just now'}
               </NavLink>
             </div>
             {review.reviewText && <p className="mt-2 text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{review.reviewText}</p>}
@@ -135,6 +161,8 @@ const ReviewForm: React.FC<{ song: Song; onReviewSubmit: () => void }> = ({ song
           userId: currentUser.uid,
           userDisplayName: userProfile.displayName,
           userPhotoURL: userProfile.photoURL,
+          userRole: userProfile.role,
+          userIsCurator: !!userProfile.isCurator,
           rating,
           reviewText,
           createdAt: serverTimestamp(),
@@ -300,6 +328,7 @@ const SongPage = () => {
     try {
         if (newIsLiked) { // Like
             batch.set(likeDocRef, {
+                id: likeDocRef.id,
                 userId: currentUser.uid,
                 entityId: song.id,
                 entityType: 'song',
@@ -361,12 +390,12 @@ const SongPage = () => {
                 <div className="mt-2 text-xl text-gray-700 dark:text-gray-300">
                     by{' '}
                     {artists.map((artist, index) => (
-                        <React.Fragment key={artist.id}>
+                        <span key={artist.id}>
                             <NavLink to={`/artist/${artist.id}`} className="font-semibold hover:underline text-ac-secondary">
                                 {artist.name}
                             </NavLink>
                             {index < artists.length - 1 && ', '}
-                        </React.Fragment>
+                        </span>
                     ))}
                 </div>
               </div>
@@ -378,7 +407,7 @@ const SongPage = () => {
               </div>
             </div>
             <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-gray-500 dark:text-gray-400">
-                <div className="flex items-center"><Calendar className="mr-2 h-4 w-4" /><span className="hidden sm:inline mr-1">Released:</span> {new Date(song.releaseDate).toLocaleDateString()}</div>
+                <div className="flex items-center"><Calendar className="mr-2 h-4 w-4" /><span className="hidden sm:inline mr-1">Released:</span> {formatDate(song.releaseDate)}</div>
                 <div className="flex items-center"><Clock className="mr-2 h-4 w-4" /><span className="hidden sm:inline mr-1">Duration:</span> {formatDuration(song.duration)}</div>
                 <div className="flex items-center"><Music className="mr-2 h-4 w-4" /><span className="hidden sm:inline mr-1">Genre:</span> {song.genre}</div>
             </div>
@@ -405,7 +434,6 @@ const SongPage = () => {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-800 dark:text-gray-200">{role}</p>
-                    {/*// FIX: Ensure `names` is an array before calling `join`, as its type might be `unknown` from Firestore.*/}
                     <p className="text-gray-600 dark:text-gray-400">{Array.isArray(names) ? names.join(', ') : ''}</p>
                   </div>
                 </li>
