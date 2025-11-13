@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, NavLink, useNavigate } from 'react-router-dom';
-import { collectionGroup, query, where, getDocs, limit, doc, getDoc, updateDoc, deleteDoc, serverTimestamp, Timestamp, increment, arrayUnion, arrayRemove, collection, documentId, DocumentReference } from '@firebase/firestore';
+import { collectionGroup, query, where, getDocs, limit, doc, getDoc, updateDoc, deleteDoc, serverTimestamp, Timestamp, increment, arrayUnion, arrayRemove, collection, documentId, DocumentReference, writeBatch } from '@firebase/firestore';
 import { db } from '../services/firebase';
-import { Review, Song, Album, Artist, UserProfile } from '../types';
+import { Review, Song, Album, Artist, UserProfile, Like } from '../types';
 import { useAuth } from '../hooks/useAuth';
 import PageLoader from '../components/common/PageLoader';
 import { Star, Heart, Edit, Trash2, X } from 'lucide-react';
 import { formatDate } from '../utils/formatters';
+import UserBadges from '../components/common/UserBadges';
 
 type Entity = (Song | Album) & { artists: Artist[] };
 
@@ -20,34 +21,16 @@ const StarRatingDisplay: React.FC<{ rating: number; size?: number }> = ({ rating
     </div>
 );
 
-const LikerItem: React.FC<{ liker: UserProfile, review: Review }> = ({ liker, review }) => {
-    const [linkTarget, setLinkTarget] = useState(`/${liker.username}`);
-  
-    useEffect(() => {
-      const findLikerReview = async () => {
-        // Find if the liker also has a review for the same entity
-        const reviewsRef = collection(db, review.entityType === 'song' ? 'songs' : 'albums', review.entityId, 'reviews');
-        const q = query(reviewsRef, where('userId', '==', liker.uid), limit(1));
-        const querySnapshot = await getDocs(q);
-  
-        if (!querySnapshot.empty) {
-          setLinkTarget(`/review/${querySnapshot.docs[0].id}`);
-        }
-      };
-  
-      findLikerReview();
-    }, [liker.uid, liker.username, review.entityId, review.entityType]);
-  
-    return (
-      <NavLink to={linkTarget} title={liker.displayName || liker.username}>
+const LikerItem: React.FC<{ liker: UserProfile }> = ({ liker }) => (
+    <NavLink to={`/${liker.username}`} title={liker.displayName || liker.username}>
         <img
-          src={liker.photoURL || ''}
+          src={liker.photoURL || `https://ui-avatars.com/api/?name=${liker.displayName || liker.username}`}
           alt={liker.displayName || ''}
-          className="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-gray-800 hover:scale-110 transition-transform"
+          className="w-8 h-8 rounded-full object-cover border-2 border-white dark:border-gray-800 hover:scale-110 transition-transform"
         />
-      </NavLink>
-    );
-};
+    </NavLink>
+);
+
 
 const ReviewPage: React.FC = () => {
     const { id: reviewId } = useParams<{ id: string }>();
@@ -107,7 +90,7 @@ const ReviewPage: React.FC = () => {
 
             // 5. Fetch profiles of likers
             if (reviewData.likes && reviewData.likes.length > 0) {
-                const likerIds = reviewData.likes.slice(0, 30); // Limit to 30 for performance
+                const likerIds = reviewData.likes.slice(0, 10); // Limit to 10 for display performance
                 const likersQuery = query(collection(db, 'users'), where(documentId(), 'in', likerIds));
                 const likersSnap = await getDocs(likersQuery);
                 setLikers(likersSnap.docs.map(d => d.data() as UserProfile));
@@ -126,7 +109,7 @@ const ReviewPage: React.FC = () => {
     }, [fetchReviewData]);
 
     const handleLikeToggle = async () => {
-        if (!currentUser || !reviewRef) return;
+        if (!currentUser || !reviewRef || !review || !entity) return;
 
         const newIsLiked = !isLiked;
 
@@ -134,20 +117,48 @@ const ReviewPage: React.FC = () => {
         setIsLiked(newIsLiked);
         setLikesCount(prev => newIsLiked ? prev + 1 : prev - 1);
         if (newIsLiked) {
-            setLikers(prev => userProfile ? [userProfile, ...prev] : prev);
+            // Add self to likers list optimistically if profile exists
+            if (userProfile) setLikers(prev => [userProfile, ...prev.filter(l => l.uid !== userProfile.uid)]);
         } else {
             setLikers(prev => prev.filter(l => l.uid !== currentUser.uid));
         }
 
         try {
-            await updateDoc(reviewRef, {
+            const batch = writeBatch(db);
+            const likeDocRef = doc(db, 'likes', `${currentUser.uid}_${review.id}`);
+
+            // Update the review document's likes array and count
+            batch.update(reviewRef, {
                 likes: newIsLiked ? arrayUnion(currentUser.uid) : arrayRemove(currentUser.uid),
                 likesCount: increment(newIsLiked ? 1 : -1)
             });
+
+            // Create/delete the corresponding like document for activity feeds
+            if (newIsLiked) {
+                const likeDoc: Like = {
+                    id: likeDocRef.id,
+                    userId: currentUser.uid,
+                    entityId: review.id,
+                    entityType: 'review',
+                    createdAt: serverTimestamp(),
+                    entityTitle: `Review for "${entity.title}"`,
+                    entityCoverArtUrl: entity.coverArtUrl,
+                    reviewOnEntityType: review.entityType as 'song' | 'album',
+                    reviewOnEntityId: review.entityId,
+                    reviewOnEntityTitle: entity.title,
+                };
+                batch.set(likeDocRef, likeDoc);
+            } else {
+                batch.delete(likeDocRef);
+            }
+
+            await batch.commit();
+
         } catch (err) {
             console.error("Failed to update like:", err);
-            // Revert on error
-            fetchReviewData();
+            // Revert optimistic UI on error
+            fetchReviewData(); 
+            setError("Failed to update like. Please check your connection and try again.");
         }
     };
     
@@ -200,7 +211,7 @@ const ReviewPage: React.FC = () => {
                     <img src={reviewerProfile.photoURL || ''} alt={reviewerProfile.displayName || ''} className="w-12 h-12 rounded-full object-cover"/>
                    </NavLink>
                    <div>
-                       <p>Review by <NavLink to={`/${reviewerProfile.username}`} className="font-semibold hover:underline">{reviewerProfile.displayName}</NavLink></p>
+                       <p className="flex items-center">Review by <NavLink to={`/${reviewerProfile.username}`} className="font-semibold hover:underline ml-1 inline-flex items-center">{reviewerProfile.displayName}<UserBadges user={reviewerProfile} /></NavLink></p>
                        <div className="flex items-center space-x-2">
                            <StarRatingDisplay rating={review.rating} size={5} />
                            <span className="text-sm text-gray-500 pt-px">on {formatDate(review.createdAt)}</span>
@@ -243,8 +254,8 @@ const ReviewPage: React.FC = () => {
                    </div>
                    
                    {likers.length > 0 && (
-                       <div className="flex items-center -space-x-3">
-                           {likers.map(liker => <LikerItem key={liker.uid} liker={liker} review={review} />)}
+                       <div className="flex items-center -space-x-2">
+                           {likers.map(liker => <LikerItem key={liker.uid} liker={liker} />)}
                        </div>
                    )}
                </div>

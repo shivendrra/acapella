@@ -12,6 +12,7 @@ import { useAuth } from '../hooks/useAuth';
 import EditProfileModal from '../components/profile/EditProfileModal';
 import { UserCheck, UserPlus, X, Star, Heart, MessageSquare, AlertTriangle, Music, Activity } from 'lucide-react';
 import { formatDate } from '../utils/formatters';
+import UserBadges from '../components/common/UserBadges';
 
 // A union type for our unified activity/diary feed
 type ActivityLog = (Review & { _activityType: 'review' }) | (Like & { _activityType: 'like' }) | (Review & { _activityType: 'follow' });
@@ -124,7 +125,10 @@ const FollowListModal: React.FC<{
                             <NavLink to={`/${user.username}`} className="flex items-center space-x-3 group" onClick={onClose}>
                                 <img src={user.photoURL || ''} alt={user.displayName ?? ''} className="w-10 h-10 rounded-full object-cover"/>
                                 <div>
-                                    <p className="font-semibold group-hover:underline">{user.displayName}</p>
+                                    <p className="font-semibold group-hover:underline flex items-center">
+                                        {user.displayName}
+                                        <UserBadges user={user} />
+                                    </p>
                                     <p className="text-sm text-gray-500">@{user.username}</p>
                                 </div>
                             </NavLink>
@@ -510,11 +514,12 @@ const ProfilePage: React.FC = () => {
           className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-ac-secondary flex-shrink-0"
         />
         <div className="flex-grow flex flex-col items-center sm:items-start w-full">
-          <h1 className="text-4xl font-bold font-serif text-center sm:text-left">{profile.displayName || profile.username}</h1>
+          <h1 className="text-4xl font-bold font-serif text-center sm:text-left flex items-center justify-center sm:justify-start">
+            {profile.displayName || profile.username}
+            <UserBadges user={profile} />
+          </h1>
           <div className="flex flex-col items-center sm:flex-row sm:items-center gap-x-3 mt-1">
             <p className="text-lg text-gray-500 dark:text-gray-400">@{profile.username}</p>
-            {profile.role === Role.MASTER_ADMIN && (<span className="text-xs font-medium bg-ac-accent text-white px-2.5 py-1 rounded-full uppercase tracking-wider mt-1 sm:mt-0">Master Admin</span>)}
-            {profile.isCurator && (<span className="text-xs font-medium bg-yellow-500 text-white px-2.5 py-1 rounded-full uppercase tracking-wider mt-1 sm:mt-0">Curator</span>)}
           </div>
           <div className="flex items-center space-x-6 mt-3">
             <button 

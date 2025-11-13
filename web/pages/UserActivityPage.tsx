@@ -5,11 +5,17 @@ import { db } from '../services/firebase';
 import { UserProfile, Review, Like, Follow, Song, Album } from '../types';
 import PageLoader from '../components/common/PageLoader';
 import { useAuth } from '../hooks/useAuth';
+import UserBadges from '../components/common/UserBadges';
 
 type ActivityLog = (Review & { _activityType: 'review' }) | (Like & { _activityType: 'like' }) | (Review & { _activityType: 'follow' });
 
 const DiaryItem: React.FC<{ activity: ActivityLog; profile: UserProfile }> = ({ activity, profile }) => {
-    const userLink = <NavLink to={`/${profile.username}`} className="font-semibold hover:underline">{profile.displayName}</NavLink>;
+    const userLink = (
+        <NavLink to={`/${profile.username}`} className="font-semibold hover:underline inline-flex items-center">
+            {profile.displayName}
+            <UserBadges user={profile} />
+        </NavLink>
+    );
     const date = activity.createdAt instanceof Timestamp ? activity.createdAt.toDate().toLocaleDateString() : null;
 
     let actionText;
@@ -32,13 +38,24 @@ const DiaryItem: React.FC<{ activity: ActivityLog; profile: UserProfile }> = ({ 
         }
         case 'like': {
             const like = activity as Like;
-            entityLink = <NavLink to={`/${like.entityType}/${like.entityId}`} className="font-semibold hover:underline">{like.entityTitle}</NavLink>;
-            entityCover = (
-                <NavLink to={`/${like.entityType}/${like.entityId}`} className="flex-shrink-0">
-                    <img src={like.entityCoverArtUrl || ''} alt={like.entityTitle} className="w-10 h-10 rounded-md object-cover"/>
-                </NavLink>
-            );
-            actionText = <>liked {entityLink}</>;
+            if (like.entityType === 'review') {
+                entityLink = <NavLink to={`/review/${like.entityId}`} className="font-semibold hover:underline">a review</NavLink>;
+                const onEntityLink = <NavLink to={`/${like.reviewOnEntityType}/${like.reviewOnEntityId}`} className="font-semibold hover:underline">{like.reviewOnEntityTitle}</NavLink>;
+                actionText = <>liked {entityLink} for {onEntityLink}</>;
+                entityCover = (
+                     <NavLink to={`/review/${like.entityId}`} className="flex-shrink-0">
+                        <img src={like.entityCoverArtUrl || ''} alt={like.reviewOnEntityTitle} className="w-10 h-10 rounded-md object-cover"/>
+                    </NavLink>
+                );
+            } else { // Song or Album like
+                entityLink = <NavLink to={`/${like.entityType}/${like.entityId}`} className="font-semibold hover:underline">{like.entityTitle}</NavLink>;
+                actionText = <>liked {entityLink}</>;
+                entityCover = (
+                    <NavLink to={`/${like.entityType}/${like.entityId}`} className="flex-shrink-0">
+                        <img src={like.entityCoverArtUrl || ''} alt={like.entityTitle} className="w-10 h-10 rounded-md object-cover"/>
+                    </NavLink>
+                );
+            }
             reviewLink = <span className="text-xs text-gray-500">{date}</span>;
             break;
         }
@@ -120,7 +137,7 @@ const UserActivityPage: React.FC = () => {
         ]);
 
         const reviewActivities: ActivityLog[] = reviewsSnap.docs.map(doc => ({ ...(doc.data() as Review), _activityType: 'review' }));
-        const likeActivities: ActivityLog[] = likesSnap.docs.map(doc => ({ ...(doc.data() as Like), _activityType: 'like' }));
+        const likeActivities: ActivityLog[] = likesSnap.docs.map(doc => ({ id: doc.id, ...(doc.data() as Like), _activityType: 'like' }));
 
         const followingIds = followsSnap.docs.map(doc => doc.data().followingId);
         let followedUsers: Record<string, UserProfile> = {};

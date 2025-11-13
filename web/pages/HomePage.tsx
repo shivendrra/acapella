@@ -6,6 +6,7 @@ import { collection, query, where, getDocs, orderBy, limit, Timestamp, collectio
 import { UserProfile, Review, Album, Song, Artist } from '../types';
 import PageLoader from '../components/common/PageLoader';
 import { Music, Star, Users, ChevronLeft, ChevronRight, Headphones, MessageSquareText } from 'lucide-react';
+import UserBadges from '../components/common/UserBadges';
 
 // --- Reusable Components ---
 
@@ -171,7 +172,10 @@ const ActivityFeedItem: React.FC<{ activity: ActivityItem }> = ({ activity }) =>
             </NavLink>
             <div>
                 <p className="text-sm">
-                    <NavLink to={`/${activity.entityUsername}`} className="font-bold hover:underline">{activity.userDisplayName}</NavLink>
+                    <NavLink to={`/${activity.entityUsername}`} className="font-bold hover:underline inline-flex items-center">
+                        {activity.userDisplayName}
+                        <UserBadges user={{ role: activity.userRole, isCurator: activity.userIsCurator }} />
+                    </NavLink>
                     {' reviewed '} 
                     <NavLink to={`/${activity.entityType}/${activity.entityId}`} className="font-bold hover:underline">{activity.entityTitle}</NavLink>
                 </p>

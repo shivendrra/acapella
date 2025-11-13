@@ -5,11 +5,12 @@ import { useParams, NavLink } from 'react-router-dom';
 // FIX: Changed firebase imports to use the '@firebase' scope.
 import { doc, getDoc, collection, query, where, getDocs, orderBy, serverTimestamp, Timestamp, limit, setDoc, deleteDoc, updateDoc, arrayUnion, arrayRemove, increment, writeBatch } from '@firebase/firestore';
 import { db } from '../services/firebase';
-import { Album, Artist, Song, Review as ReviewType, Role } from '../types';
+import { Album, Artist, Song, Review as ReviewType, Role, Like } from '../types';
 import PageLoader from '../components/common/PageLoader';
 import { MoreHorizontal, Music, Star, Pen, Send, Heart } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { formatDate } from '../utils/formatters';
+import UserBadges from '../components/common/UserBadges';
 
 const formatDuration = (seconds: number): string => {
     const minutes = Math.floor(seconds / 60);
@@ -45,6 +46,8 @@ const ReviewCard: React.FC<{ review: ReviewType; albumId: string }> = ({ review,
         setIsLikeLoading(true);
 
         const reviewRef = doc(db, 'albums', albumId, 'reviews', review.id);
+        const likeDocRef = doc(db, 'likes', `${currentUser.uid}_${review.id}`);
+        const batch = writeBatch(db);
         const newIsLiked = !isLiked;
         
         // Optimistic update
@@ -52,17 +55,33 @@ const ReviewCard: React.FC<{ review: ReviewType; albumId: string }> = ({ review,
         setLikesCount(prev => newIsLiked ? prev + 1 : prev - 1);
 
         try {
+            // Update review doc's like array and count
+            batch.update(reviewRef, {
+                likes: newIsLiked ? arrayUnion(currentUser.uid) : arrayRemove(currentUser.uid),
+                likesCount: increment(newIsLiked ? 1 : -1),
+            });
+
+            // Create/delete a corresponding 'like' document for the activity feed
             if (newIsLiked) {
-                await updateDoc(reviewRef, {
-                    likes: arrayUnion(currentUser.uid),
-                    likesCount: increment(1),
-                });
+                const likeDoc: Like = {
+                    id: likeDocRef.id,
+                    userId: currentUser.uid,
+                    entityId: review.id,
+                    entityType: 'review',
+                    createdAt: serverTimestamp(),
+                    entityTitle: `Review for "${review.entityTitle}"`,
+                    entityCoverArtUrl: review.entityCoverArtUrl,
+                    reviewOnEntityType: review.entityType as 'song' | 'album',
+                    reviewOnEntityId: review.entityId,
+                    reviewOnEntityTitle: review.entityTitle,
+                };
+                batch.set(likeDocRef, likeDoc);
             } else {
-                await updateDoc(reviewRef, {
-                    likes: arrayRemove(currentUser.uid),
-                    likesCount: increment(-1),
-                });
+                batch.delete(likeDocRef);
             }
+
+            await batch.commit();
+
         } catch (error) {
             console.error("Failed to like review:", error);
             // Revert optimistic update on error
@@ -84,7 +103,10 @@ const ReviewCard: React.FC<{ review: ReviewType; albumId: string }> = ({ review,
                 <div className="flex-1">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="font-semibold">{review.userDisplayName}</p>
+                            <p className="font-semibold flex items-center">
+                                {review.userDisplayName}
+                                <UserBadges user={{ role: review.userRole, isCurator: review.userIsCurator }} />
+                            </p>
                             <StarRatingDisplay rating={review.rating} size={4} />
                         </div>
                         <NavLink to={`/review/${review.id}`} className="text-xs text-gray-500 hover:underline">
@@ -146,6 +168,8 @@ const AlbumReviewForm: React.FC<{ album: Album; onReviewSubmit: () => void }> = 
                 userId: currentUser.uid,
                 userDisplayName: userProfile.displayName,
                 userPhotoURL: userProfile.photoURL,
+                userRole: userProfile.role,
+                userIsCurator: !!userProfile.isCurator,
                 rating,
                 reviewText,
                 createdAt: serverTimestamp(),

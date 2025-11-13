@@ -5,6 +5,7 @@ import { db } from '../services/firebase';
 import { UserProfile, Artist, Album, Song } from '../types';
 import PageLoader from '../components/common/PageLoader';
 import { Search, X, History, Trash2, AlertTriangle } from 'lucide-react';
+import UserBadges from '../components/common/UserBadges';
 
 // Debounce utility
 const debounce = <F extends (...args: any[]) => any>(func: F, waitFor: number) => {
@@ -190,7 +191,10 @@ const SearchPage: React.FC = () => {
                             <NavLink to={`/${user.username}`} key={user.uid} className="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
                                 <img src={user.photoURL || `https://ui-avatars.com/api/?name=${user.displayName || user.username}`} alt={user.username} className="w-12 h-12 rounded-full object-cover" />
                                 <div>
-                                    <p className="font-semibold">{user.displayName}</p>
+                                    <p className="font-semibold flex items-center">
+                                        {user.displayName}
+                                        <UserBadges user={user} />
+                                    </p>
                                     <p className="text-sm text-gray-500">@{user.username}</p>
                                 </div>
                             </NavLink>

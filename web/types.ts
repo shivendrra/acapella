@@ -93,6 +93,8 @@ export interface Review {
   userId: string;
   userDisplayName: string;
   userPhotoURL: string | null;
+  userRole?: Role;
+  userIsCurator?: boolean;
   rating: number; // 1-5
   reviewText: string;
   createdAt: FieldValue | Timestamp;
@@ -110,11 +112,15 @@ export interface Like {
     id: string;
     userId: string;
     entityId: string;
-    entityType: 'song' | 'album';
+    entityType: 'song' | 'album' | 'review';
     createdAt: FieldValue | Timestamp;
     // Denormalized data
     entityTitle?: string;
     entityCoverArtUrl?: string;
+    // For review likes
+    reviewOnEntityType?: 'song' | 'album';
+    reviewOnEntityId?: string;
+    reviewOnEntityTitle?: string;
 }
 
 export interface Follow {

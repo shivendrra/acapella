@@ -5,11 +5,12 @@ import { useParams, NavLink } from 'react-router-dom';
 // FIX: Changed firebase imports to use the '@firebase' scope.
 import { doc, getDoc, collection, query, orderBy, getDocs, serverTimestamp, where, Timestamp, limit, setDoc, deleteDoc, updateDoc, increment, arrayUnion, arrayRemove, writeBatch } from '@firebase/firestore';
 import { db } from '../services/firebase';
-import { Song, Artist, Review as ReviewType } from '../types';
+import { Song, Artist, Review as ReviewType, Like } from '../types';
 import { useAuth } from '../hooks/useAuth';
 import PageLoader from '../components/common/PageLoader';
 import { Star, Mic, Pen, Clock, Calendar, User, Send, Music, Heart } from 'lucide-react';
 import { formatDate } from '../utils/formatters';
+import UserBadges from '../components/common/UserBadges';
 
 const StarRatingDisplay: React.FC<{ rating: number; size?: number }> = ({ rating, size = 5 }) => (
   <div className="flex items-center">
@@ -39,6 +40,8 @@ const ReviewCard: React.FC<{ review: ReviewType; songId: string }> = ({ review, 
         setIsLikeLoading(true);
 
         const reviewRef = doc(db, 'songs', songId, 'reviews', review.id);
+        const likeDocRef = doc(db, 'likes', `${currentUser.uid}_${review.id}`);
+        const batch = writeBatch(db);
         const newIsLiked = !isLiked;
         
         // Optimistic update
@@ -46,17 +49,33 @@ const ReviewCard: React.FC<{ review: ReviewType; songId: string }> = ({ review, 
         setLikesCount(prev => newIsLiked ? prev + 1 : prev - 1);
 
         try {
+            // Update review doc's like array and count
+            batch.update(reviewRef, {
+                likes: newIsLiked ? arrayUnion(currentUser.uid) : arrayRemove(currentUser.uid),
+                likesCount: increment(newIsLiked ? 1 : -1),
+            });
+
+            // Create/delete a corresponding 'like' document for the activity feed
             if (newIsLiked) {
-                await updateDoc(reviewRef, {
-                    likes: arrayUnion(currentUser.uid),
-                    likesCount: increment(1),
-                });
+                const likeDoc: Like = {
+                    id: likeDocRef.id,
+                    userId: currentUser.uid,
+                    entityId: review.id,
+                    entityType: 'review',
+                    createdAt: serverTimestamp(),
+                    entityTitle: `Review for "${review.entityTitle}"`,
+                    entityCoverArtUrl: review.entityCoverArtUrl,
+                    reviewOnEntityType: review.entityType as 'song' | 'album',
+                    reviewOnEntityId: review.entityId,
+                    reviewOnEntityTitle: review.entityTitle,
+                };
+                batch.set(likeDocRef, likeDoc);
             } else {
-                await updateDoc(reviewRef, {
-                    likes: arrayRemove(currentUser.uid),
-                    likesCount: increment(-1),
-                });
+                batch.delete(likeDocRef);
             }
+            
+            await batch.commit();
+
         } catch (error) {
             console.error("Failed to like review:", error);
             // Revert optimistic update on error
@@ -78,7 +97,10 @@ const ReviewCard: React.FC<{ review: ReviewType; songId: string }> = ({ review, 
           <div className="flex-1">
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-semibold">{review.userDisplayName}</p>
+                <p className="font-semibold flex items-center">
+                    {review.userDisplayName}
+                    <UserBadges user={{ role: review.userRole, isCurator: review.userIsCurator }} />
+                </p>
                 <StarRatingDisplay rating={review.rating} size={4} />
               </div>
               <NavLink to={`/review/${review.id}`} className="text-xs text-gray-500 hover:underline">
@@ -139,6 +161,8 @@ const ReviewForm: React.FC<{ song: Song; onReviewSubmit: () => void }> = ({ song
           userId: currentUser.uid,
           userDisplayName: userProfile.displayName,
           userPhotoURL: userProfile.photoURL,
+          userRole: userProfile.role,
+          userIsCurator: !!userProfile.isCurator,
           rating,
           reviewText,
           createdAt: serverTimestamp(),
