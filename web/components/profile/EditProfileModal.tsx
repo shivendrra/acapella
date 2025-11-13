@@ -158,6 +158,8 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({ userProfile, onClos
   const [displayName, setDisplayName] = useState(userProfile.displayName || '');
   const [bio, setBio] = useState(userProfile.bio || '');
   const [photoURL, setPhotoURL] = useState(userProfile.photoURL || '');
+  const [twitterUrl, setTwitterUrl] = useState(userProfile.socials?.twitter || '');
+  const [instagramUrl, setInstagramUrl] = useState(userProfile.socials?.instagram || '');
   const [favoriteSongIds, setFavoriteSongIds] = useState(userProfile.favoriteSongIds || []);
   const [favoriteAlbumIds, setFavoriteAlbumIds] = useState(userProfile.favoriteAlbumIds || []);
   const [loading, setLoading] = useState(false);
@@ -177,6 +179,10 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({ userProfile, onClos
         displayName: displayName.trim(),
         bio: bio.trim(),
         photoURL: photoURL.trim(),
+        socials: {
+          twitter: twitterUrl.trim(),
+          instagram: instagramUrl.trim(),
+        },
         favoriteSongIds,
         favoriteAlbumIds,
       };
@@ -254,6 +260,30 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({ userProfile, onClos
               ></textarea>
             </div>
             
+            <div>
+              <label htmlFor="twitterUrl" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Twitter URL</label>
+              <input 
+                type="url" 
+                id="twitterUrl" 
+                value={twitterUrl} 
+                onChange={(e) => setTwitterUrl(e.target.value)}
+                placeholder="https://x.com/username"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white dark:bg-gray-800 dark:border-gray-600 focus:ring-ac-accent focus:border-ac-accent sm:text-sm text-gray-900 dark:text-white" 
+              />
+            </div>
+
+            <div>
+              <label htmlFor="instagramUrl" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Instagram URL</label>
+              <input 
+                type="url" 
+                id="instagramUrl" 
+                value={instagramUrl} 
+                onChange={(e) => setInstagramUrl(e.target.value)}
+                placeholder="https://instagram.com/username"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white dark:bg-gray-800 dark:border-gray-600 focus:ring-ac-accent focus:border-ac-accent sm:text-sm text-gray-900 dark:text-white" 
+              />
+            </div>
+
             <FavoriteSelector
                 label="Favorite Songs"
                 collectionName="songs"

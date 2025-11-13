@@ -8,6 +8,8 @@ const ProfileSettings: React.FC = () => {
   const { userProfile, currentUser } = useAuth();
   const [displayName, setDisplayName] = useState('');
   const [bio, setBio] = useState('');
+  const [twitterUrl, setTwitterUrl] = useState('');
+  const [instagramUrl, setInstagramUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
@@ -15,6 +17,8 @@ const ProfileSettings: React.FC = () => {
     if (userProfile) {
       setDisplayName(userProfile.displayName || '');
       setBio(userProfile.bio || '');
+      setTwitterUrl(userProfile.socials?.twitter || '');
+      setInstagramUrl(userProfile.socials?.instagram || '');
     }
   }, [userProfile]);
   
@@ -25,8 +29,10 @@ const ProfileSettings: React.FC = () => {
     // Only update if there are changes
     const isDisplayNameChanged = displayName.trim() !== (userProfile.displayName || '');
     const isBioChanged = bio.trim() !== (userProfile.bio || '');
+    const isTwitterChanged = twitterUrl.trim() !== (userProfile.socials?.twitter || '');
+    const isInstagramChanged = instagramUrl.trim() !== (userProfile.socials?.instagram || '');
 
-    if (!isDisplayNameChanged && !isBioChanged) {
+    if (!isDisplayNameChanged && !isBioChanged && !isTwitterChanged && !isInstagramChanged) {
         return;
     }
 
@@ -38,6 +44,10 @@ const ProfileSettings: React.FC = () => {
         await updateDoc(userRef, {
             displayName: displayName.trim(),
             bio: bio.trim(),
+            socials: {
+                twitter: twitterUrl.trim(),
+                instagram: instagramUrl.trim(),
+            },
         });
         setSuccessMessage('Profile updated successfully!');
         setTimeout(() => setSuccessMessage(''), 3000);
@@ -74,6 +84,28 @@ const ProfileSettings: React.FC = () => {
             onChange={(e) => setBio(e.target.value)}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white dark:bg-gray-800 dark:border-gray-600 focus:outline-none focus:ring-ac-accent focus:border-ac-accent sm:text-sm"
           ></textarea>
+        </div>
+        <div>
+          <label htmlFor="twitterUrl" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Twitter Profile URL</label>
+          <input 
+            type="url" 
+            id="twitterUrl" 
+            value={twitterUrl}
+            onChange={(e) => setTwitterUrl(e.target.value)}
+            placeholder="https://x.com/username"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white dark:bg-gray-800 dark:border-gray-600 focus:outline-none focus:ring-ac-accent focus:border-ac-accent sm:text-sm"
+          />
+        </div>
+        <div>
+          <label htmlFor="instagramUrl" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Instagram Profile URL</label>
+          <input 
+            type="url" 
+            id="instagramUrl" 
+            value={instagramUrl}
+            onChange={(e) => setInstagramUrl(e.target.value)}
+            placeholder="https://instagram.com/username"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white dark:bg-gray-800 dark:border-gray-600 focus:outline-none focus:ring-ac-accent focus:border-ac-accent sm:text-sm"
+          />
         </div>
         <div className="flex items-center space-x-4">
             <button type="submit" disabled={loading} className="px-5 py-2 bg-ac-primary text-white rounded-md hover:bg-ac-primary/90 disabled:bg-gray-400">

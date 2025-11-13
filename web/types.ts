@@ -26,6 +26,10 @@ export interface UserProfile {
     appleMusic?: string;
     youtubeMusic?: string;
   };
+  socials?: {
+    twitter?: string;
+    instagram?: string;
+  };
   followersCount?: number;
   followingCount?: number;
   favoriteSongIds?: string[];
