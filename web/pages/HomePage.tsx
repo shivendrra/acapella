@@ -268,7 +268,7 @@ const AuthenticatedHomePage: React.FC = () => {
                     );
                     const reviewsSnap = await getDocs(reviewsQuery);
                     const feed = reviewsSnap.docs
-                        .map(doc => ({ ...(doc.data() as Review), _type: 'review' } as ActivityItem))
+                        .map(doc => ({ id: doc.id, ...(doc.data() as Review), _type: 'review' } as ActivityItem))
                         .filter(item => item.reviewText && item.reviewText.trim() !== ''); // Only show items with written reviews
                     setActivityFeed(feed);
                 }

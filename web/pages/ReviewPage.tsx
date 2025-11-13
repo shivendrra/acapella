@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, NavLink, useNavigate } from 'react-router-dom';
 import { collectionGroup, query, where, getDocs, limit, doc, getDoc, updateDoc, deleteDoc, serverTimestamp, Timestamp, increment, arrayUnion, arrayRemove, collection, documentId, DocumentReference } from '@firebase/firestore';
@@ -99,7 +101,7 @@ const ReviewPage: React.FC = () => {
             if (entityData.artistIds?.length > 0) {
                 const artistsQuery = query(collection(db, 'artists'), where(documentId(), 'in', entityData.artistIds));
                 const artistsSnap = await getDocs(artistsQuery);
-                artists = artistsSnap.docs.map(d => d.data() as Artist);
+                artists = artistsSnap.docs.map(d => ({ id: d.id, ...d.data() } as Artist));
             }
             setEntity({ ...entityData, artists });
 
@@ -180,12 +182,12 @@ const ReviewPage: React.FC = () => {
                     <p className="text-lg text-gray-600 dark:text-gray-400">
                         by{' '}
                         {entity.artists.map((artist, index) => (
-                            <React.Fragment key={artist.id}>
+                            <span key={artist.id}>
                                 <NavLink to={`/artist/${artist.id}`} className="font-semibold hover:underline text-ac-secondary">
                                     {artist.name}
                                 </NavLink>
                                 {index < entity.artists.length - 1 && ', '}
-                            </React.Fragment>
+                            </span>
                         ))}
                     </p>
                     <p className="text-sm text-gray-500 mt-1">{formatDate(entity.releaseDate)}</p>

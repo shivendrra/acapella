@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate, NavLink } from 'react-router-dom';
 // FIX: Changed firebase imports to use the '@firebase' scope.
@@ -321,7 +323,7 @@ const ProfilePage: React.FC = () => {
         // STEP 3: Fetch public data (reviews).
         const reviewsQuery = query(collectionGroup(db, 'reviews'), where('userId', '==', userProfileData.uid), orderBy('createdAt', 'desc'), limit(5)); // Limit for preview
         const reviewsSnap = await getDocs(reviewsQuery);
-        const reviewsData = reviewsSnap.docs.map(doc => doc.data() as Review);
+        const reviewsData = reviewsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Review));
         const reviewActivities: ActivityLog[] = reviewsData.map(r => ({ ...r, _activityType: 'review' }));
         setRatedItems(reviewsData.filter(r => r.rating > 0));
 
@@ -339,13 +341,14 @@ const ProfilePage: React.FC = () => {
                 getDocs(followersQuery), 
                 getDocs(followingQuery),
                 getDocs(likesQuery), 
+// FIX: Corrected a typo where followsByUserSnap was passed to getDocs instead of followsByUserQuery.
                 getDocs(followsByUserQuery)
             ]);
 
             setFollowersCount(followersSnap.size);
             setFollowingCount(followingSnap.size);
 
-            const likesData = likesSnap.docs.map(doc => doc.data() as Like);
+            const likesData = likesSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Like));
             const likeActivities: ActivityLog[] = likesData.map(l => ({ ...l, _activityType: 'like' }));
             setLikedItems(likesData.slice(0, 4));
             

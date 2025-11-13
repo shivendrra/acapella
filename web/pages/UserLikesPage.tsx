@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { collection, query, where, getDocs, limit, orderBy, startAfter } from '@firebase/firestore';
@@ -64,7 +66,7 @@ const UserLikesPage: React.FC = () => {
                 );
                 const likesSnap = await getDocs(likesQuery);
 
-                setLikes(likesSnap.docs.map(doc => doc.data() as Like));
+                setLikes(likesSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Like)));
                 setLastDoc(likesSnap.docs[likesSnap.docs.length - 1]);
                 setHasMore(likesSnap.docs.length === 20);
 
@@ -93,7 +95,7 @@ const UserLikesPage: React.FC = () => {
             );
             const likesSnap = await getDocs(likesQuery);
 
-            setLikes(prev => [...prev, ...likesSnap.docs.map(doc => doc.data() as Like)]);
+            setLikes(prev => [...prev, ...likesSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Like))]);
             setLastDoc(likesSnap.docs[likesSnap.docs.length - 1]);
             setHasMore(likesSnap.docs.length === 20);
         } catch (err) {

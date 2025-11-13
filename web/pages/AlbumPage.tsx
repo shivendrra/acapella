@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 // FIX: Changed firebase imports to use the '@firebase' scope.
@@ -374,12 +376,12 @@ const AlbumPage: React.FC = () => {
                             <div className="mt-2 text-xl text-gray-700 dark:text-gray-300">
                                 by{' '}
                                 {artists.map((artist, index) => (
-                                    <React.Fragment key={artist.id}>
+                                    <span key={artist.id}>
                                         <NavLink to={`/artist/${artist.id}`} className="font-semibold hover:underline text-ac-secondary">
                                             {artist.name}
                                         </NavLink>
                                         {index < artists.length - 1 && ', '}
-                                    </React.Fragment>
+                                    </span>
                                 ))}
                             </div>
                             <p className="mt-2 text-gray-500 dark:text-gray-400">
