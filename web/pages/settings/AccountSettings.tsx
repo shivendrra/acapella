@@ -20,6 +20,36 @@ const debounce = <F extends (...args: any[]) => any>(func: F, waitFor: number) =
     });
 };
 
+const DiscontinueCuratorModal: React.FC<{
+    isOpen: boolean;
+    onClose: () => void;
+    onConfirm: () => void;
+}> = ({ isOpen, onClose, onConfirm }) => {
+    if (!isOpen) return null;
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" onClick={onClose}>
+            <div className="bg-ac-light dark:bg-ac-dark rounded-lg shadow-2xl w-full max-w-md p-6" onClick={e => e.stopPropagation()}>
+                <div className="flex justify-between items-center">
+                    <h3 className="text-xl font-bold font-serif text-ac-danger">Discontinue Membership</h3>
+                    <button onClick={onClose}><X /></button>
+                </div>
+                <div className="mt-4 text-center">
+                    <p className="text-gray-600 dark:text-gray-400 mb-4">
+                        Are you sure you want to discontinue your Curator membership? You will lose your profile badge and other benefits at the end of your current billing cycle.
+                    </p>
+                </div>
+                <div className="mt-6 flex justify-end space-x-2">
+                    <button onClick={onClose} className="px-4 py-2 border rounded">Cancel</button>
+                    <button onClick={onConfirm} className="px-4 py-2 bg-ac-danger text-white rounded">
+                        Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+
 const DeleteAccountModal: React.FC<{
   isOpen: boolean;
   onClose: () => void;
@@ -74,6 +104,7 @@ const AccountSettings: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isDiscontinueModalOpen, setIsDiscontinueModalOpen] = useState(false);
   const [deleteError, setDeleteError] = useState('');
 
   useEffect(() => {
@@ -153,16 +184,17 @@ const AccountSettings: React.FC = () => {
     }
   };
   
-  const handleBecomeCurator = async () => {
-    if (!currentUser || userProfile?.isCurator) return;
+  const handleDiscontinueCurator = async () => {
+    if (!currentUser || !userProfile?.isCurator) return;
     setLoading(true);
     try {
         const userRef = doc(db, 'users', currentUser.uid);
-        await updateDoc(userRef, { isCurator: true });
-        setSuccessMessage('Congratulations! You are now a Curator. Refresh to see your badge!');
+        await updateDoc(userRef, { isCurator: false });
+        setSuccessMessage('Your Curator membership has been set to discontinue.');
+        setIsDiscontinueModalOpen(false);
         setTimeout(() => window.location.reload(), 2000);
     } catch (error) {
-        console.error("Error becoming curator:", error);
+        console.error("Error discontinuing curator membership:", error);
     } finally {
         setLoading(false);
     }
@@ -193,7 +225,6 @@ const AccountSettings: React.FC = () => {
 
   const isUsernameUnchanged = username === userProfile?.username;
   const canSubmit = isUsernameUnchanged || usernameStatus === 'available';
-  const showCuratorSection = userProfile?.role !== Role.MASTER_ADMIN && !userProfile?.isCurator;
 
   return (
     <>
@@ -233,18 +264,19 @@ const AccountSettings: React.FC = () => {
             <button type="submit" disabled={loading || !canSubmit} className="px-5 py-2 bg-ac-primary text-white rounded-md hover:bg-ac-primary/90 disabled:bg-gray-400 disabled:cursor-not-allowed">
               {loading ? 'Saving...' : 'Update Account'}
             </button>
-            {successMessage && <p className="text-sm text-green-600">{successMessage}</p>}
+            {successMessage && !userProfile?.isCurator && <p className="text-sm text-green-600">{successMessage}</p>}
         </div>
       </div>
     </form>
     
-    {showCuratorSection && (
+    {userProfile?.isCurator && (
         <div className="mt-12 p-6 border rounded-lg">
-             <h3 className="text-xl font-bold font-serif mb-2">Become a Curator</h3>
-             <p className="text-gray-600 dark:text-gray-400 mb-4">The Curator program is a special tier for users who wish to support the Acapella project. By upgrading, you'll receive a "Curator" badge on your profile as a thank you for helping us grow. This is a mock purchase for demonstration purposes.</p>
-             <button onClick={handleBecomeCurator} disabled={loading} className="px-5 py-2 bg-ac-secondary text-white rounded-md hover:bg-ac-secondary/90 disabled:bg-gray-400">
-                 {loading ? 'Processing...' : 'Upgrade to Curator'}
+             <h3 className="text-xl font-bold font-serif mb-2">Curator Status</h3>
+             <p className="text-gray-600 dark:text-gray-400 mb-4">Thank you for being a Curator! Your support helps keep Acapella running. If you need to, you can manage your subscription here.</p>
+             <button onClick={() => setIsDiscontinueModalOpen(true)} disabled={loading} className="px-5 py-2 bg-ac-danger text-white rounded-md hover:bg-ac-danger/90 disabled:bg-gray-400">
+                 {loading ? 'Processing...' : 'Discontinue Membership'}
             </button>
+             {successMessage && userProfile.isCurator && <p className="mt-4 text-sm text-green-600">{successMessage}</p>}
         </div>
     )}
 
@@ -258,6 +290,13 @@ const AccountSettings: React.FC = () => {
         </button>
         {deleteError && <p className="mt-4 text-sm text-ac-danger">{deleteError}</p>}
     </div>
+
+    <DiscontinueCuratorModal
+        isOpen={isDiscontinueModalOpen}
+        onClose={() => setIsDiscontinueModalOpen(false)}
+        onConfirm={handleDiscontinueCurator}
+    />
+
     <DeleteAccountModal 
         isOpen={isDeleteModalOpen}
         onClose={() => setIsDeleteModalOpen(false)}

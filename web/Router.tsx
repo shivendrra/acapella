@@ -34,6 +34,10 @@ const ReviewPage = lazy(() => import('./pages/ReviewPage'));
 const UserActivityPage = lazy(() => import('./pages/UserActivityPage'));
 const ArtistSongsPage = lazy(() => import('./pages/ArtistSongsPage'));
 const ArtistAlbumsPage = lazy(() => import('./pages/ArtistAlbumsPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const HelpPage = lazy(() => import('./pages/HelpPage'));
+const CuratorProgramPage = lazy(() => import('./pages/CuratorProgramPage'));
+
 
 // Settings Sub-pages
 const ProfileSettings = lazy(() => import('./pages/settings/ProfileSettings'));
@@ -74,6 +78,8 @@ const AppRouter: React.FC = () => {
               <Route path="/artist/:id/albums" element={<ArtistAlbumsPage />} />
               <Route path="/search" element={<SearchPage />} />
               <Route path="/review/:id" element={<ReviewPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/help" element={<HelpPage />} />
               
               {/* User Activity Pages */}
               <Route path="/:username/likes" element={<UserLikesPage />} />
@@ -85,6 +91,7 @@ const AppRouter: React.FC = () => {
               {/* Authenticated Routes */}
               <Route element={<ProtectedRoute />}>
                 <Route path="/apply-for-admin" element={<AdminApplicationPage />} />
+                <Route path="/curator-program" element={<CuratorProgramPage />} />
                 <Route path="/settings" element={<SettingsPage />}>
                   <Route index element={<Navigate to="profile" />} />
                   <Route path="profile" element={<ProfileSettings />} />

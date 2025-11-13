@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
@@ -5,7 +6,7 @@ import { useTheme } from '../../hooks/useTheme';
 import { auth } from '../../services/firebase';
 // FIX: Changed firebase imports to use the '@firebase' scope.
 import { signOut } from '@firebase/auth';
-import { Sun, Moon, LogOut, User, Settings, Shield, Edit, Search, Menu, X } from 'lucide-react';
+import { Sun, Moon, LogOut, User, Settings, Shield, Edit, Search, Menu, X, Info, HelpCircle, Sparkles } from 'lucide-react';
 import { Role } from '../../types';
 
 const Header: React.FC = () => {
@@ -73,7 +74,13 @@ const Header: React.FC = () => {
                   <div className="py-1">
                     <NavLink to={`/${userProfile.username}`} className="flex items-center w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"><User className="mr-3 h-4 w-4"/>Profile</NavLink>
                     <NavLink to="/settings" className="flex items-center w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"><Settings className="mr-3 h-4 w-4"/>Settings</NavLink>
+                    <NavLink to="/about" className="flex items-center w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"><Info className="mr-3 h-4 w-4"/>About</NavLink>
+                    <NavLink to="/help" className="flex items-center w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"><HelpCircle className="mr-3 h-4 w-4"/>Help</NavLink>
                     
+                    {!userProfile.isCurator && (
+                       <NavLink to="/curator-program" className="flex items-center w-full text-left px-4 py-2 text-sm text-yellow-600 dark:text-yellow-400 hover:bg-gray-100 dark:hover:bg-gray-700"><Sparkles className="mr-3 h-4 w-4"/>Become a Curator</NavLink>
+                    )}
+
                     {userProfile.role === Role.USER && (
                       <NavLink to="/apply-for-admin" className="flex items-center w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"><Edit className="mr-3 h-4 w-4"/>Apply for Admin</NavLink>
                     )}
