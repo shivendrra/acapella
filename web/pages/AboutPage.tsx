@@ -20,10 +20,10 @@ const AboutPage: React.FC = () => {
         />
         <h2 className="mt-6 text-3xl font-bold font-serif">Hi, I'm Shivendra!</h2>
         <p className="mt-4 text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-          I'm a passionate full-stack engineer and UI/UX designer who believes music is more than just background noise—it's a story, a memory, and a vital part of our lives. I built Acapella as a love letter to music and to the communities that form around it, inspired by platforms like Letterboxd and Goodreads.
+          I wanted an app like this so I created this!
         </p>
         <p className="mt-4 text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-          My goal was to create a beautiful, intuitive space where you can not only track your listening habits but also share your thoughts and discover new artists through the lens of a trusted community. This project is a blend of my love for clean design, robust technology, and, of course, music.
+          -from one music-lover to others.
         </p>
         <div className="mt-8 flex justify-center space-x-6">
           <a href="mailto:shivharsh44@gmail.com" className="text-gray-500 hover:text-ac-primary dark:hover:text-ac-secondary"><Mail size={28} /></a>
