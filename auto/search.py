@@ -1,4 +1,7 @@
-import os, time, json, requests
+import os, requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 GOOGLE_SEARCH_API = os.getenv("GOOGLE_SEARCH_API_KEY")
 GOOGLE_SEARCH_CX = os.getenv("GOOGLE_SEARCH_CX")
