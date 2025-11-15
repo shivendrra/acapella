@@ -18,13 +18,14 @@ def refine_query(artist_name):
     "site:music.apple.com",
     "site:youtube.com",
     "site:instagram.com",
-    "site:twitter.com"
+    "site:twitter.com",
+    "site:x.com"
   ]
   search_filter = " OR ".join(sites)
   query = f"{search_filter} '{artist_name}'"
   return query
 
-def google_search(entity_name, artist_name, entity_type):
+def google_search(artist_name):
   query = refine_query(artist_name)
   params = {
     'key': GOOGLE_SEARCH_API,
@@ -35,18 +36,18 @@ def google_search(entity_name, artist_name, entity_type):
   resp = requests.get('https://www.googleapis.com/customsearch/v1', params=params)
   resp.raise_for_status()
   items = resp.json().get('items', [])
-  links = {}
+
+  platform_links, social_links = {}, {}
   for item in items:
-    link = item.get('link')
-    if 'open.spotify.com' in link:
-      links.setdefault('spotify', link)
-    elif 'music.apple.com' in link:
-      links.setdefault('appleMusic', link)
-    elif 'music.youtube.com' in link:
-      links.setdefault('youtubeMusic', link)
-    if len(links) >= 3:
-      break
-  return links
+    link = item.get('link', '')
+
+    if 'open.spotify.com' in link: platform_links.setdefault('spotify', link)
+    elif 'music.apple.com' in link: platform_links.setdefault('appleMusic', link)
+    elif 'music.youtube.com' in link: platform_links.setdefault('youtubeMusic', link)
+    elif 'instagram.com' in link: social_links.setdefault('instagram', link)
+    elif 'twitter.com' in link or 'x.com' in link: social_links.setdefault('twitter', link)
+    if len(platform_links) >= 3 and len(social_links) >= 2: break
+  return platform_links, social_links
 
 def search_images(query, limit):
   params = {

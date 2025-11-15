@@ -8,7 +8,6 @@ class Artists:
   def __init__(self) -> None: pass
   def __call__(self) -> list: return queries
 
-
 art = Artists()
 data = art()[:100]
 

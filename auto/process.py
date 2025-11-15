@@ -1,6 +1,6 @@
 import requests, os, time, json
 from datetime import datetime, timezone
-from musicbrainz import fetch_artist_img, search_musicbrainz, lookup_musicbrainz, MUSICBRAINZ_BASE, AUDIODB_BASE
+from musicbrainz import fetch_artist_img, search_musicbrainz, lookup_musicbrainz, MUSICBRAINZ_BASE
 from search import google_search, search_images, get_best_image
 
 headers = {
@@ -21,10 +21,8 @@ def safe_request(url, max_retries=3, **kwargs):
         wait_time = 2 ** attempt
         print(f"  Retry {attempt + 1}/{max_retries} after {wait_time}s...")
         time.sleep(wait_time)
-      else:
-        raise e
-    except requests.exceptions.HTTPError as e:
-      raise e
+      else: raise e
+    except requests.exceptions.HTTPError as e: raise e
 
 def process_artist(artist_name: str):
   print(f"\n=== Processing Artist: {artist_name} ===")
@@ -68,6 +66,11 @@ def process_artist(artist_name: str):
     print("Searching for cover image fallback...")
     cover_fallback = get_best_image(f"{artist_name} banner")
     if cover_fallback: artist_obj['coverImageUrl'] = cover_fallback
+
+  print("Fetching artist platform and social links...")
+  platform_links, social_links = google_search(artist_obj['name'])
+  artist_obj['platformLinks'] = platform_links
+  artist_obj['socials'] = social_links
 
   release_groups = artist_data.get('release-groups', [])
   albums, all_tracks = [], []
@@ -136,28 +139,13 @@ def process_artist(artist_name: str):
             tracks.append(track_obj)
             all_tracks.append(track_obj)
         album_obj['tracklist'] = [t['id'] for t in tracks]
-      else:
-        album_obj['tracklist'] = []
+      else: album_obj['tracklist'] = []
 
-      album_obj['platformLinks'] = google_search(album_obj['title'], artist_obj['name'], 'album')
       albums.append(album_obj)
       print(f"  [{idx}/{len(release_groups)}] [OK] {album_title} ({len(album_obj['tracklist'])} tracks)")
     except Exception as e:
       print(f"  [{idx}/{len(release_groups)}] [ERROR] {album_title}: {str(e)[:80]}")
       continue
-
-  print("\nFetching artist platform links...")
-  artist_obj['platformLinks'] = google_search(artist_obj['name'], artist_obj['name'], 'artist')
-
-  if all_tracks:
-    print(f"\nProcessing platform links for {len(all_tracks)} tracks...")
-    for idx, tr in enumerate(all_tracks, 1):
-      try:
-        tr['platformLinks'] = google_search(tr['title'], artist_obj['name'], 'track')
-        if idx % 10 == 0 or idx == len(all_tracks):
-          print(f"  Progress: {idx}/{len(all_tracks)} tracks")
-      except Exception:
-        tr['platformLinks'] = {}
 
   dump = {'artist': artist_obj, 'albums': albums, 'tracks': all_tracks}
 
@@ -168,13 +156,14 @@ def process_artist(artist_name: str):
   safe_name = artist_obj['name'].replace(' ', '_') if artist_obj.get('name') else mbid
   fname = f"{safe_name}_{timestamp}.json"
   fpath = os.path.join(OUTPUT_DIR, fname)
-  
-  with open(fpath, 'w', encoding='utf-8') as f:
-    json.dump(dump, f, ensure_ascii=False, indent=2)
+
+  with open(fpath, 'w', encoding='utf-8') as f: json.dump(dump, f, ensure_ascii=False, indent=2)
 
   print(f"\n[OK] Successfully saved to: {fpath}")
   print(f"  - Artist: {artist_obj['name']}")
   print(f"  - Albums: {len(albums)}")
   print(f"  - Tracks: {len(all_tracks)}")
-  
+  print(f"  - Platform Links: {len(platform_links)}")
+  print(f"  - Social Links: {len(social_links)}")
+
   return dump
