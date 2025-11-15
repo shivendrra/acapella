@@ -1,0 +1,2377 @@
+{
+  "artist": {
+    "id": "b7d92248-97e3-4450-8057-6fe06738f735",
+    "name": "Shawn Mendes",
+    "name_lowercase": "shawn mendes",
+    "imageUrl": "https://r2.theaudiodb.com/images/media/artist/thumb/n80dko1685146674.jpg",
+    "coverImageUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+    "genres": [],
+    "bio": "",
+    "socials": {
+      "instagram": "https://www.instagram.com/shawnmendes/",
+      "twitter": "https://x.com/ShawnMendes"
+    },
+    "platformLinks": {
+      "spotify": "https://open.spotify.com/artist/7n2wHs1TKAczGzO7Dd2rGr"
+    }
+  },
+  "albums": [
+    {
+      "id": "d0efb4c9-0578-49e7-bb3f-c64f98871009",
+      "title": "Handwritten",
+      "title_lowercase": "handwritten",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2015-04-14",
+      "coverArtUrl": "https://ia600401.us.archive.org/31/items/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5-41256115662.jpg",
+      "tracklist": [
+        "63190a14-32b0-4424-a4a3-edf7e6f1dff8",
+        "8efe2cd3-2adc-4abf-b06c-536208ca71fa",
+        "0df52d3c-89bd-426d-9139-e5dbec873117",
+        "f7e0c164-b02e-4b00-a41d-0cd2e48b40d3",
+        "9650b85a-1824-4bbe-9c19-09ab868ad6df",
+        "d069b278-cca9-487b-87da-393d217bade2",
+        "14d27c5f-7fcd-437f-b68f-d8738b7f510e",
+        "7067c7f4-4c01-4232-a46a-d7a312e4cfe1",
+        "c7c836cb-9f45-4e32-b4af-be341dd51047",
+        "acf144b6-0ed5-4034-8c71-01068facd3ab",
+        "84ac165e-2ed3-425a-8eae-e27cd9015202",
+        "b087f8b1-55da-440c-b6a9-dfa85a7ce56c"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3d59017f-bb26-4095-8a78-c9d372cc64f4",
+      "title": "Illuminate",
+      "title_lowercase": "illuminate",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2016-09-23",
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "tracklist": [
+        "81874058-4b20-4b0f-a74b-7eefc6102904",
+        "5800b091-57cb-49b4-9d55-dd68cc9e9126",
+        "2445f788-914f-4893-9a6d-5de91d7db4f9",
+        "060134b9-d7aa-432f-9d0a-2e30eccc02de",
+        "ab30c417-94ce-45da-849e-64601454b529",
+        "eeb1a393-38a5-474f-a638-15fc131f35f1",
+        "98075c9b-8758-48e9-aa04-425a9a44a18d",
+        "846811e9-32d2-494b-97f9-5aa99a12e1db",
+        "58159329-6b14-48c1-a564-0d9938006c6a",
+        "f4b752c0-8c43-489c-8245-4db12c9eb084",
+        "68874918-94ed-4b1d-ac32-0c5eed6f6932",
+        "e15b3b30-aa2f-4856-9e95-638e3ff25128"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "41b9c230-aee1-4f02-a01c-a2abdf4d4f36",
+      "title": "Shawn Mendes",
+      "title_lowercase": "shawn mendes",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2018-05-25",
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "tracklist": [
+        "fb9c29d7-2bf0-4c96-a10d-5df601a77e60",
+        "99fb6961-eda9-4412-9fdd-719573be623f",
+        "cc340f53-182f-475d-b768-09a2b03d4f8c",
+        "2aeeb920-2e46-4b09-bfe9-ee1c56f0294d",
+        "c8a16393-d8cf-4ad1-94a1-e3d9d80fec89",
+        "718bf401-894e-4632-b232-db1c9979ba07",
+        "2ee37619-a388-440e-a83c-ca200462cfc2",
+        "248654d9-ddff-4a2a-965e-2f585fe6a155",
+        "d42a5284-6d31-48f8-91ee-72bfa613371d",
+        "1dcddf66-8eca-4161-9827-54d1e701d6ce",
+        "f80ae229-1b31-432a-bcec-aa810ef116dc",
+        "2c0a0a30-e749-4e78-b3c9-f1e9083d170f",
+        "77ee4772-5364-4cbf-ad40-05a9493f3536",
+        "529128c9-8543-413d-9e44-6603c355ea66"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "10cda8bd-0880-46c4-a696-df6d46f35227",
+      "title": "Wonder",
+      "title_lowercase": "wonder",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2020-12-04",
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124-41569248226.jpg",
+      "tracklist": [
+        "ec0f0f8d-1c65-4d7e-84f3-b7b5cfdc4ef7",
+        "ec354c65-e929-4d90-946c-0b615e2f5d10",
+        "12092e10-a8b9-4b2c-8772-91ea7f9de6d9",
+        "3f42c3ba-06e8-4e8a-bed1-fd5eb35d3fa1",
+        "6ac24282-af55-4d95-919f-8de19535f388",
+        "a4be3441-45b4-4226-aceb-7060adce1039",
+        "de730751-51ee-4fc5-b4d3-1432957cc988",
+        "1bc26e1f-6156-4b77-8c86-07f1fbfff621",
+        "693c3127-ba40-415c-9326-c450d3bdc844",
+        "41d99acf-4162-433d-b1e7-f18fa9e1b315",
+        "41878708-20d0-4786-a840-68447a13c81a",
+        "72a1eaac-1bbe-4833-b017-4dd4c6b2929f",
+        "bbde6d5d-79c1-45fd-b7b2-653e68b3f667",
+        "1aeacf56-8981-40a9-ae80-706cec96b8f3"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "dec742bc-3dd4-4a92-9ba6-88af77aee7b8",
+      "title": "Shawn",
+      "title_lowercase": "shawn",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2024-11-15",
+      "coverArtUrl": "https://ia800807.us.archive.org/27/items/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c-41255644356.jpg",
+      "tracklist": [
+        "0c83c0ae-0e50-49a9-a810-5a9db96e0d8b",
+        "e78d955b-8f67-4415-89c0-e05283d9863b",
+        "ebcc2d5e-3563-4a46-93e8-ada66bdc362b",
+        "bce10b15-95e4-43bc-a686-80dab1e51429",
+        "8b745d34-61f1-4dd5-88ad-2121f43e002c",
+        "1b3a124f-55bf-44d9-a29a-8b5473cfd467",
+        "2f5e7913-c330-40d0-8496-8ae26462ccd7",
+        "aadd1572-0a97-4973-96e1-2a3246b0bd3b",
+        "b9eeeecd-7626-4f3a-95b9-dacc3797752b",
+        "7ab1987f-fac6-4323-b11c-9b8882e49676",
+        "9776ceb9-b134-4a1f-b99a-42e5df54c6af",
+        "10b7af60-5748-4425-a24b-840ec0bc475b"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "451c151f-0c4d-42c5-bf88-da9c59770561",
+      "title": "Live at Madison Square Garden",
+      "title_lowercase": "live at madison square garden",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2016-12-23",
+      "coverArtUrl": "https://ia600106.us.archive.org/26/items/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e-40497523280.jpg",
+      "tracklist": [
+        "f410ac40-0571-4a6f-b7d0-1690ca2d6de3",
+        "bee79609-40be-4c52-8657-c4975e89810a",
+        "ccc344a6-3b10-4eb4-9140-fddefc4b9a92",
+        "c98f56d1-77ee-4ec9-97b6-5576a8f50bd2",
+        "0f5a6cbc-ac24-4b6a-8c12-907bf8f1b09a",
+        "31883d1b-fcb0-49ea-917c-ca50dc3162b3",
+        "f193121b-0335-4539-a994-ec214ae031ea",
+        "45305d9c-2817-402c-ac88-7c17d2771d6b",
+        "13e33064-c6d6-4682-8965-fa198915ebf3",
+        "3fe5fba9-8892-433a-9a13-df6b9c8ca29e",
+        "f7aca9bb-b831-4037-845e-8b0b006d40e0",
+        "9d671f5d-1dc8-406d-b303-67b58f2aeab9"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9f0fe7fd-cd56-413b-9d70-694ee0f681c1",
+      "title": "MTV Unplugged",
+      "title_lowercase": "mtv unplugged",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2017-11-03",
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "tracklist": [
+        "81a499c1-a5c2-440b-962a-4a138a993d50",
+        "b86d49cd-b7ee-4faa-8421-18a3d0471258",
+        "58d6a4b9-eaf9-4ff5-b34a-1256edd40ab0",
+        "9b670c13-eace-4cbc-934c-641d54adf329",
+        "47e6004c-cb2f-4db5-adaa-a422d2202e59",
+        "740f5d56-4aa5-422d-9663-e7a1b7cfea6f",
+        "70fcf618-e7e6-4d6a-8302-37cb26b8de48",
+        "95c13fff-83a7-47cf-95c2-ababfe2c92f7",
+        "acb8ce68-c76f-4d2d-aa3b-96733da164bf",
+        "9cb54844-bfc8-4c7f-a77d-0be8a34f56ed",
+        "062c13a8-d220-49eb-ba0e-0b41864eff59"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "cadfab52-3fbd-45df-9bce-69587df55bc5",
+      "title": "The Shawn Mendes EP",
+      "title_lowercase": "the shawn mendes ep",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2014-07-28",
+      "coverArtUrl": "https://ia600800.us.archive.org/31/items/mbid-c089a4bd-dfc4-4583-a381-2c4b4541808d/mbid-c089a4bd-dfc4-4583-a381-2c4b4541808d-10650592968.jpg",
+      "tracklist": [
+        "63190a14-32b0-4424-a4a3-edf7e6f1dff8",
+        "ba1cd8b6-f90f-45e0-9a23-3e5b07029855",
+        "5db93283-7990-4424-9539-a3a9fb990638",
+        "06c78b7c-04c9-401f-be8a-b5559ed51fb2"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "67c86075-c33e-47d7-a769-5922056d7ba0",
+      "title": "The Album (remixes)",
+      "title_lowercase": "the album (remixes)",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2018-12-21",
+      "coverArtUrl": "https://ia800302.us.archive.org/32/items/mbid-a6ad3fe9-e62d-4c1f-965e-80bbdf92a9af/mbid-a6ad3fe9-e62d-4c1f-965e-80bbdf92a9af-22079471416.jpg",
+      "tracklist": [
+        "d99c3dc1-7758-4528-9517-d88840ef3731",
+        "166cf4ab-40c0-4440-9705-120dd4a11c8c",
+        "20984ef6-af08-41c8-9741-e30c50928033"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "4dab1d22-ef38-4a8a-ba65-c15887641ef3",
+      "title": "Life of the Party",
+      "title_lowercase": "life of the party",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2014-06-27",
+      "coverArtUrl": "https://ia800608.us.archive.org/26/items/mbid-31762f07-1007-46eb-b09f-77e5503eaf7e/mbid-31762f07-1007-46eb-b09f-77e5503eaf7e-9661070717.jpg",
+      "tracklist": [
+        "63190a14-32b0-4424-a4a3-edf7e6f1dff8"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f07ac77a-3d7e-46c9-9252-0137764ee9a5",
+      "title": "Something Big",
+      "title_lowercase": "something big",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2014-11-07",
+      "coverArtUrl": "https://ia800807.us.archive.org/33/items/mbid-711f24f2-40e3-4371-8e86-dc1c5a0bf108/mbid-711f24f2-40e3-4371-8e86-dc1c5a0bf108-10650622911.jpg",
+      "tracklist": [
+        "d069b278-cca9-487b-87da-393d217bade2"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9062191f-a7ef-423a-b330-f510922f478e",
+      "title": "One of Those Nights",
+      "title_lowercase": "one of those nights",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2015-02-02",
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "tracklist": [
+        "5db93283-7990-4424-9539-a3a9fb990638"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "8bde088b-a19f-4ffe-8e8e-92f2a78bf655",
+      "title": "Show You",
+      "title_lowercase": "show you",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2015-02-02",
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-607acffe-aaf2-4cd4-bcaa-c6a60361fe4b/mbid-607acffe-aaf2-4cd4-bcaa-c6a60361fe4b-32539028424.jpg",
+      "tracklist": [
+        "ba1cd8b6-f90f-45e0-9a23-3e5b07029855"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "67e6a8a9-6f45-416c-9bd2-d381ba2d7c78",
+      "title": "Stitches",
+      "title_lowercase": "stitches",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2015-04-27",
+      "coverArtUrl": "https://dn721900.ca.archive.org/0/items/mbid-2dd35cca-5963-4095-b4c7-b909907e861a/mbid-2dd35cca-5963-4095-b4c7-b909907e861a-39552007409.jpg",
+      "tracklist": [
+        "8efe2cd3-2adc-4abf-b06c-536208ca71fa"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e4bc8637-a2bb-42f7-9ab7-58589cb483ba",
+      "title": "Never Be Alone",
+      "title_lowercase": "never be alone",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2015-04",
+      "coverArtUrl": "https://ia600203.us.archive.org/10/items/mbid-1fa53385-a652-4bd6-a4b6-2ba848467bb3/mbid-1fa53385-a652-4bd6-a4b6-2ba848467bb3-38354450756.jpg",
+      "tracklist": [
+        "95f6a37b-dce9-409e-a640-2eae47ddc924"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "67ddc495-4638-46ce-a374-acd6ce87ae37",
+      "title": "Believe",
+      "title_lowercase": "believe",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2015-06-26",
+      "coverArtUrl": "https://ia601809.us.archive.org/6/items/mbid-35be336e-7a0a-4110-be2a-9b6f58cf643a/mbid-35be336e-7a0a-4110-be2a-9b6f58cf643a-36513971941.jpg",
+      "tracklist": [
+        "f860b698-f165-4a62-8725-485254f63f8e"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "7c6dd1ea-0859-4ef0-813e-554eec766258",
+      "title": "I Know What You Did Last Summer",
+      "title_lowercase": "i know what you did last summer",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2015-11-18",
+      "coverArtUrl": "https://ia801201.us.archive.org/4/items/mbid-f0bc0650-b0a5-404f-89e2-a43b9adbb39c/mbid-f0bc0650-b0a5-404f-89e2-a43b9adbb39c-12033654571.jpg",
+      "tracklist": [
+        "b8d40bb6-1ccb-430d-aea2-1988b10183cc"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e8836fb6-04d0-44c9-82ab-8eaede8c3e0a",
+      "title": "Treat You Better",
+      "title_lowercase": "treat you better",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2016-06-03",
+      "coverArtUrl": "https://ia800300.us.archive.org/28/items/mbid-74aa5c9d-89f0-4d83-8b78-f00e39249252/mbid-74aa5c9d-89f0-4d83-8b78-f00e39249252-13824456877.jpg",
+      "tracklist": [
+        "2445f788-914f-4893-9a6d-5de91d7db4f9"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9ac56d30-32cf-429d-a3d1-3eac1805391a",
+      "title": "Mercy",
+      "title_lowercase": "mercy",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2016-08-19",
+      "coverArtUrl": "https://dn710303.ca.archive.org/0/items/mbid-12cdbc2f-1d67-491b-a772-7af0c7e3f6bf/mbid-12cdbc2f-1d67-491b-a772-7af0c7e3f6bf-39141269365.jpg",
+      "tracklist": [
+        "5800b091-57cb-49b4-9d55-dd68cc9e9126"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "50b5aa0e-a18a-4ef9-90d6-2c955cc1ecda",
+      "title": "There's Nothing Holdin' Me Back",
+      "title_lowercase": "there's nothing holdin' me back",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2017-04-19",
+      "coverArtUrl": "https://ia800407.us.archive.org/4/items/mbid-6c503816-2781-42f7-b316-391532b7f031/mbid-6c503816-2781-42f7-b316-391532b7f031-39141357886.jpg",
+      "tracklist": [
+        "d2555d82-571d-406c-8e96-21562753cebc"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "592e8bf2-ef8e-4d3a-abe3-07b1ec3b2645",
+      "title": "In My Blood",
+      "title_lowercase": "in my blood",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2018-03-22",
+      "coverArtUrl": "https://ia903408.us.archive.org/4/items/mbid-329c283c-d35d-476f-b6e4-959594d71b42/mbid-329c283c-d35d-476f-b6e4-959594d71b42-19420423981.jpg",
+      "tracklist": [
+        "fb9c29d7-2bf0-4c96-a10d-5df601a77e60"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ba6b7a0c-7b19-4479-adbc-4f71aece8b13",
+      "title": "Lost in Japan",
+      "title_lowercase": "lost in japan",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2018-03-23",
+      "coverArtUrl": "https://ia600105.us.archive.org/28/items/mbid-cd8af358-44ee-4d37-9a72-e50f128bc417/mbid-cd8af358-44ee-4d37-9a72-e50f128bc417-19454604112.jpg",
+      "tracklist": [
+        "cc340f53-182f-475d-b768-09a2b03d4f8c"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "5d288486-638a-482f-be62-11112d436d7e",
+      "title": "Youth",
+      "title_lowercase": "youth",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2018-05-03",
+      "coverArtUrl": "https://ia803106.us.archive.org/13/items/mbid-525ecdc2-ad19-4ef9-8e0f-62cb3efabbaf/mbid-525ecdc2-ad19-4ef9-8e0f-62cb3efabbaf-19852491309.jpg",
+      "tracklist": [
+        "f80ae229-1b31-432a-bcec-aa810ef116dc"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "72920e05-5b8c-4d92-b5fc-3b21dec84637",
+      "title": "Fallin’ All in You",
+      "title_lowercase": "fallin’ all in you",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2018-05-17",
+      "coverArtUrl": "https://ia800205.us.archive.org/4/items/mbid-2526fadf-0318-4c85-90bb-c9a12acea301/mbid-2526fadf-0318-4c85-90bb-c9a12acea301-38354502581.jpg",
+      "tracklist": [
+        "2f04dd11-cbd9-48f6-9d7b-2ad0f46805a7"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "43cb23c3-28a6-41cf-ac9b-a9b7f4f07e6e",
+      "title": "Where Were You In The Morning?",
+      "title_lowercase": "where were you in the morning?",
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "releaseDate": "2018-05-18",
+      "coverArtUrl": "https://ia600201.us.archive.org/15/items/mbid-9fcd804e-007b-4a23-a901-d99100ddd019/mbid-9fcd804e-007b-4a23-a901-d99100ddd019-38354654178.jpg",
+      "tracklist": [
+        "5959c5b6-49c0-409f-8332-9fc8a491f50a"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    }
+  ],
+  "tracks": [
+    {
+      "id": "63190a14-32b0-4424-a4a3-edf7e6f1dff8",
+      "title": "Life of the Party",
+      "title_lowercase": "life of the party",
+      "duration": 215,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "d0efb4c9-0578-49e7-bb3f-c64f98871009",
+      "releaseDate": "2015-04-14",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600401.us.archive.org/31/items/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5-41256115662.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "8efe2cd3-2adc-4abf-b06c-536208ca71fa",
+      "title": "Stitches",
+      "title_lowercase": "stitches",
+      "duration": 207,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "d0efb4c9-0578-49e7-bb3f-c64f98871009",
+      "releaseDate": "2015-04-14",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600401.us.archive.org/31/items/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5-41256115662.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "0df52d3c-89bd-426d-9139-e5dbec873117",
+      "title": "Never Be Alone",
+      "title_lowercase": "never be alone",
+      "duration": 216,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "d0efb4c9-0578-49e7-bb3f-c64f98871009",
+      "releaseDate": "2015-04-14",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600401.us.archive.org/31/items/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5-41256115662.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f7e0c164-b02e-4b00-a41d-0cd2e48b40d3",
+      "title": "Kid in Love",
+      "title_lowercase": "kid in love",
+      "duration": 226,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "d0efb4c9-0578-49e7-bb3f-c64f98871009",
+      "releaseDate": "2015-04-14",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600401.us.archive.org/31/items/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5-41256115662.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9650b85a-1824-4bbe-9c19-09ab868ad6df",
+      "title": "I Don’t Even Know Your Name",
+      "title_lowercase": "i don’t even know your name",
+      "duration": 180,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "d0efb4c9-0578-49e7-bb3f-c64f98871009",
+      "releaseDate": "2015-04-14",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600401.us.archive.org/31/items/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5-41256115662.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d069b278-cca9-487b-87da-393d217bade2",
+      "title": "Something Big",
+      "title_lowercase": "something big",
+      "duration": 161,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "d0efb4c9-0578-49e7-bb3f-c64f98871009",
+      "releaseDate": "2015-04-14",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600401.us.archive.org/31/items/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5-41256115662.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "14d27c5f-7fcd-437f-b68f-d8738b7f510e",
+      "title": "Strings",
+      "title_lowercase": "strings",
+      "duration": 191,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "d0efb4c9-0578-49e7-bb3f-c64f98871009",
+      "releaseDate": "2015-04-14",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600401.us.archive.org/31/items/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5-41256115662.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "7067c7f4-4c01-4232-a46a-d7a312e4cfe1",
+      "title": "Aftertaste",
+      "title_lowercase": "aftertaste",
+      "duration": 170,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "d0efb4c9-0578-49e7-bb3f-c64f98871009",
+      "releaseDate": "2015-04-14",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600401.us.archive.org/31/items/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5-41256115662.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c7c836cb-9f45-4e32-b4af-be341dd51047",
+      "title": "Air",
+      "title_lowercase": "air",
+      "duration": 194,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "d0efb4c9-0578-49e7-bb3f-c64f98871009",
+      "releaseDate": "2015-04-14",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600401.us.archive.org/31/items/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5-41256115662.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "acf144b6-0ed5-4034-8c71-01068facd3ab",
+      "title": "Crazy",
+      "title_lowercase": "crazy",
+      "duration": 192,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "d0efb4c9-0578-49e7-bb3f-c64f98871009",
+      "releaseDate": "2015-04-14",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600401.us.archive.org/31/items/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5-41256115662.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "84ac165e-2ed3-425a-8eae-e27cd9015202",
+      "title": "A Little Too Much",
+      "title_lowercase": "a little too much",
+      "duration": 187,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "d0efb4c9-0578-49e7-bb3f-c64f98871009",
+      "releaseDate": "2015-04-14",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600401.us.archive.org/31/items/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5-41256115662.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "b087f8b1-55da-440c-b6a9-dfa85a7ce56c",
+      "title": "This Is What It Takes",
+      "title_lowercase": "this is what it takes",
+      "duration": 230,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "d0efb4c9-0578-49e7-bb3f-c64f98871009",
+      "releaseDate": "2015-04-14",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600401.us.archive.org/31/items/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5/mbid-d2266b80-486c-431a-ba49-bb3af930a2a5-41256115662.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "81874058-4b20-4b0f-a74b-7eefc6102904",
+      "title": "Ruin",
+      "title_lowercase": "ruin",
+      "duration": 242,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "3d59017f-bb26-4095-8a78-c9d372cc64f4",
+      "releaseDate": "2016-09-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "5800b091-57cb-49b4-9d55-dd68cc9e9126",
+      "title": "Mercy",
+      "title_lowercase": "mercy",
+      "duration": 208,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "3d59017f-bb26-4095-8a78-c9d372cc64f4",
+      "releaseDate": "2016-09-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2445f788-914f-4893-9a6d-5de91d7db4f9",
+      "title": "Treat You Better",
+      "title_lowercase": "treat you better",
+      "duration": 187,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "3d59017f-bb26-4095-8a78-c9d372cc64f4",
+      "releaseDate": "2016-09-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "060134b9-d7aa-432f-9d0a-2e30eccc02de",
+      "title": "Three Empty Words",
+      "title_lowercase": "three empty words",
+      "duration": 199,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "3d59017f-bb26-4095-8a78-c9d372cc64f4",
+      "releaseDate": "2016-09-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ab30c417-94ce-45da-849e-64601454b529",
+      "title": "Don’t Be a Fool",
+      "title_lowercase": "don’t be a fool",
+      "duration": 215,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "3d59017f-bb26-4095-8a78-c9d372cc64f4",
+      "releaseDate": "2016-09-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "eeb1a393-38a5-474f-a638-15fc131f35f1",
+      "title": "Like This",
+      "title_lowercase": "like this",
+      "duration": 186,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "3d59017f-bb26-4095-8a78-c9d372cc64f4",
+      "releaseDate": "2016-09-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "98075c9b-8758-48e9-aa04-425a9a44a18d",
+      "title": "No Promises",
+      "title_lowercase": "no promises",
+      "duration": 166,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "3d59017f-bb26-4095-8a78-c9d372cc64f4",
+      "releaseDate": "2016-09-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "846811e9-32d2-494b-97f9-5aa99a12e1db",
+      "title": "Lights On",
+      "title_lowercase": "lights on",
+      "duration": 201,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "3d59017f-bb26-4095-8a78-c9d372cc64f4",
+      "releaseDate": "2016-09-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "58159329-6b14-48c1-a564-0d9938006c6a",
+      "title": "Honest",
+      "title_lowercase": "honest",
+      "duration": 199,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "3d59017f-bb26-4095-8a78-c9d372cc64f4",
+      "releaseDate": "2016-09-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f4b752c0-8c43-489c-8245-4db12c9eb084",
+      "title": "Patience",
+      "title_lowercase": "patience",
+      "duration": 175,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "3d59017f-bb26-4095-8a78-c9d372cc64f4",
+      "releaseDate": "2016-09-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "68874918-94ed-4b1d-ac32-0c5eed6f6932",
+      "title": "Bad Reputation",
+      "title_lowercase": "bad reputation",
+      "duration": 198,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "3d59017f-bb26-4095-8a78-c9d372cc64f4",
+      "releaseDate": "2016-09-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e15b3b30-aa2f-4856-9e95-638e3ff25128",
+      "title": "Understand",
+      "title_lowercase": "understand",
+      "duration": 301,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "3d59017f-bb26-4095-8a78-c9d372cc64f4",
+      "releaseDate": "2016-09-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "fb9c29d7-2bf0-4c96-a10d-5df601a77e60",
+      "title": "In My Blood",
+      "title_lowercase": "in my blood",
+      "duration": 211,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "41b9c230-aee1-4f02-a01c-a2abdf4d4f36",
+      "releaseDate": "2018-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "99fb6961-eda9-4412-9fdd-719573be623f",
+      "title": "Nervous",
+      "title_lowercase": "nervous",
+      "duration": 164,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "41b9c230-aee1-4f02-a01c-a2abdf4d4f36",
+      "releaseDate": "2018-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "cc340f53-182f-475d-b768-09a2b03d4f8c",
+      "title": "Lost in Japan",
+      "title_lowercase": "lost in japan",
+      "duration": 201,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "41b9c230-aee1-4f02-a01c-a2abdf4d4f36",
+      "releaseDate": "2018-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2aeeb920-2e46-4b09-bfe9-ee1c56f0294d",
+      "title": "Where Were You in the Morning?",
+      "title_lowercase": "where were you in the morning?",
+      "duration": 200,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "41b9c230-aee1-4f02-a01c-a2abdf4d4f36",
+      "releaseDate": "2018-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c8a16393-d8cf-4ad1-94a1-e3d9d80fec89",
+      "title": "Like to Be You",
+      "title_lowercase": "like to be you",
+      "duration": 159,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "41b9c230-aee1-4f02-a01c-a2abdf4d4f36",
+      "releaseDate": "2018-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "718bf401-894e-4632-b232-db1c9979ba07",
+      "title": "Fallin’ All in You",
+      "title_lowercase": "fallin’ all in you",
+      "duration": 235,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "41b9c230-aee1-4f02-a01c-a2abdf4d4f36",
+      "releaseDate": "2018-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2ee37619-a388-440e-a83c-ca200462cfc2",
+      "title": "Particular Taste",
+      "title_lowercase": "particular taste",
+      "duration": 175,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "41b9c230-aee1-4f02-a01c-a2abdf4d4f36",
+      "releaseDate": "2018-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "248654d9-ddff-4a2a-965e-2f585fe6a155",
+      "title": "Why",
+      "title_lowercase": "why",
+      "duration": 238,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "41b9c230-aee1-4f02-a01c-a2abdf4d4f36",
+      "releaseDate": "2018-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d42a5284-6d31-48f8-91ee-72bfa613371d",
+      "title": "Because I Had You",
+      "title_lowercase": "because i had you",
+      "duration": 142,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "41b9c230-aee1-4f02-a01c-a2abdf4d4f36",
+      "releaseDate": "2018-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "1dcddf66-8eca-4161-9827-54d1e701d6ce",
+      "title": "Queen",
+      "title_lowercase": "queen",
+      "duration": 204,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "41b9c230-aee1-4f02-a01c-a2abdf4d4f36",
+      "releaseDate": "2018-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f80ae229-1b31-432a-bcec-aa810ef116dc",
+      "title": "Youth",
+      "title_lowercase": "youth",
+      "duration": 190,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "41b9c230-aee1-4f02-a01c-a2abdf4d4f36",
+      "releaseDate": "2018-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2c0a0a30-e749-4e78-b3c9-f1e9083d170f",
+      "title": "Mutual",
+      "title_lowercase": "mutual",
+      "duration": 148,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "41b9c230-aee1-4f02-a01c-a2abdf4d4f36",
+      "releaseDate": "2018-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "77ee4772-5364-4cbf-ad40-05a9493f3536",
+      "title": "Perfectly Wrong",
+      "title_lowercase": "perfectly wrong",
+      "duration": 212,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "41b9c230-aee1-4f02-a01c-a2abdf4d4f36",
+      "releaseDate": "2018-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "529128c9-8543-413d-9e44-6603c355ea66",
+      "title": "When You’re Ready",
+      "title_lowercase": "when you’re ready",
+      "duration": 169,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "41b9c230-aee1-4f02-a01c-a2abdf4d4f36",
+      "releaseDate": "2018-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ec0f0f8d-1c65-4d7e-84f3-b7b5cfdc4ef7",
+      "title": "Intro",
+      "title_lowercase": "intro",
+      "duration": 62,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "10cda8bd-0880-46c4-a696-df6d46f35227",
+      "releaseDate": "2020-12-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124-41569248226.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ec354c65-e929-4d90-946c-0b615e2f5d10",
+      "title": "Wonder",
+      "title_lowercase": "wonder",
+      "duration": 172,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "10cda8bd-0880-46c4-a696-df6d46f35227",
+      "releaseDate": "2020-12-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124-41569248226.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "12092e10-a8b9-4b2c-8772-91ea7f9de6d9",
+      "title": "Higher",
+      "title_lowercase": "higher",
+      "duration": 160,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "10cda8bd-0880-46c4-a696-df6d46f35227",
+      "releaseDate": "2020-12-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124-41569248226.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3f42c3ba-06e8-4e8a-bed1-fd5eb35d3fa1",
+      "title": "24 Hours",
+      "title_lowercase": "24 hours",
+      "duration": 150,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "10cda8bd-0880-46c4-a696-df6d46f35227",
+      "releaseDate": "2020-12-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124-41569248226.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6ac24282-af55-4d95-919f-8de19535f388",
+      "title": "Teach Me How to Love",
+      "title_lowercase": "teach me how to love",
+      "duration": 202,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "10cda8bd-0880-46c4-a696-df6d46f35227",
+      "releaseDate": "2020-12-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124-41569248226.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a4be3441-45b4-4226-aceb-7060adce1039",
+      "title": "Call My Friends",
+      "title_lowercase": "call my friends",
+      "duration": 171,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "10cda8bd-0880-46c4-a696-df6d46f35227",
+      "releaseDate": "2020-12-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124-41569248226.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "de730751-51ee-4fc5-b4d3-1432957cc988",
+      "title": "Dream",
+      "title_lowercase": "dream",
+      "duration": 214,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "10cda8bd-0880-46c4-a696-df6d46f35227",
+      "releaseDate": "2020-12-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124-41569248226.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "1bc26e1f-6156-4b77-8c86-07f1fbfff621",
+      "title": "Song for No One",
+      "title_lowercase": "song for no one",
+      "duration": 191,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "10cda8bd-0880-46c4-a696-df6d46f35227",
+      "releaseDate": "2020-12-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124-41569248226.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "693c3127-ba40-415c-9326-c450d3bdc844",
+      "title": "Monster",
+      "title_lowercase": "monster",
+      "duration": 178,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "10cda8bd-0880-46c4-a696-df6d46f35227",
+      "releaseDate": "2020-12-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124-41569248226.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "41d99acf-4162-433d-b1e7-f18fa9e1b315",
+      "title": "305",
+      "title_lowercase": "305",
+      "duration": 189,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "10cda8bd-0880-46c4-a696-df6d46f35227",
+      "releaseDate": "2020-12-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124-41569248226.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "41878708-20d0-4786-a840-68447a13c81a",
+      "title": "Always Been You",
+      "title_lowercase": "always been you",
+      "duration": 167,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "10cda8bd-0880-46c4-a696-df6d46f35227",
+      "releaseDate": "2020-12-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124-41569248226.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "72a1eaac-1bbe-4833-b017-4dd4c6b2929f",
+      "title": "Piece of You",
+      "title_lowercase": "piece of you",
+      "duration": 175,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "10cda8bd-0880-46c4-a696-df6d46f35227",
+      "releaseDate": "2020-12-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124-41569248226.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "bbde6d5d-79c1-45fd-b7b2-653e68b3f667",
+      "title": "Look Up at the Stars",
+      "title_lowercase": "look up at the stars",
+      "duration": 211,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "10cda8bd-0880-46c4-a696-df6d46f35227",
+      "releaseDate": "2020-12-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124-41569248226.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "1aeacf56-8981-40a9-ae80-706cec96b8f3",
+      "title": "Can’t Imagine",
+      "title_lowercase": "can’t imagine",
+      "duration": 149,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "10cda8bd-0880-46c4-a696-df6d46f35227",
+      "releaseDate": "2020-12-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124/mbid-beee19c8-4f04-4433-bb8e-6aa0d6317124-41569248226.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "0c83c0ae-0e50-49a9-a810-5a9db96e0d8b",
+      "title": "Who I Am",
+      "title_lowercase": "who i am",
+      "duration": 100,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "dec742bc-3dd4-4a92-9ba6-88af77aee7b8",
+      "releaseDate": "2024-11-15",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800807.us.archive.org/27/items/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c-41255644356.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e78d955b-8f67-4415-89c0-e05283d9863b",
+      "title": "Why Why Why",
+      "title_lowercase": "why why why",
+      "duration": 169,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "dec742bc-3dd4-4a92-9ba6-88af77aee7b8",
+      "releaseDate": "2024-11-15",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800807.us.archive.org/27/items/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c-41255644356.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ebcc2d5e-3563-4a46-93e8-ada66bdc362b",
+      "title": "That’s the Dream",
+      "title_lowercase": "that’s the dream",
+      "duration": 134,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "dec742bc-3dd4-4a92-9ba6-88af77aee7b8",
+      "releaseDate": "2024-11-15",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800807.us.archive.org/27/items/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c-41255644356.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "bce10b15-95e4-43bc-a686-80dab1e51429",
+      "title": "Nobody Knows",
+      "title_lowercase": "nobody knows",
+      "duration": 152,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "dec742bc-3dd4-4a92-9ba6-88af77aee7b8",
+      "releaseDate": "2024-11-15",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800807.us.archive.org/27/items/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c-41255644356.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "8b745d34-61f1-4dd5-88ad-2121f43e002c",
+      "title": "Isn’t That Enough",
+      "title_lowercase": "isn’t that enough",
+      "duration": 164,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "dec742bc-3dd4-4a92-9ba6-88af77aee7b8",
+      "releaseDate": "2024-11-15",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800807.us.archive.org/27/items/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c-41255644356.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "1b3a124f-55bf-44d9-a29a-8b5473cfd467",
+      "title": "Heart of Gold",
+      "title_lowercase": "heart of gold",
+      "duration": 171,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "dec742bc-3dd4-4a92-9ba6-88af77aee7b8",
+      "releaseDate": "2024-11-15",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800807.us.archive.org/27/items/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c-41255644356.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2f5e7913-c330-40d0-8496-8ae26462ccd7",
+      "title": "Heavy",
+      "title_lowercase": "heavy",
+      "duration": 153,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "dec742bc-3dd4-4a92-9ba6-88af77aee7b8",
+      "releaseDate": "2024-11-15",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800807.us.archive.org/27/items/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c-41255644356.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "aadd1572-0a97-4973-96e1-2a3246b0bd3b",
+      "title": "That’ll Be the Day",
+      "title_lowercase": "that’ll be the day",
+      "duration": 112,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "dec742bc-3dd4-4a92-9ba6-88af77aee7b8",
+      "releaseDate": "2024-11-15",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800807.us.archive.org/27/items/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c-41255644356.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "b9eeeecd-7626-4f3a-95b9-dacc3797752b",
+      "title": "In Between",
+      "title_lowercase": "in between",
+      "duration": 117,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "dec742bc-3dd4-4a92-9ba6-88af77aee7b8",
+      "releaseDate": "2024-11-15",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800807.us.archive.org/27/items/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c-41255644356.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "7ab1987f-fac6-4323-b11c-9b8882e49676",
+      "title": "The Mountain",
+      "title_lowercase": "the mountain",
+      "duration": 175,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "dec742bc-3dd4-4a92-9ba6-88af77aee7b8",
+      "releaseDate": "2024-11-15",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800807.us.archive.org/27/items/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c-41255644356.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9776ceb9-b134-4a1f-b99a-42e5df54c6af",
+      "title": "Rollin’ Right Along",
+      "title_lowercase": "rollin’ right along",
+      "duration": 159,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "dec742bc-3dd4-4a92-9ba6-88af77aee7b8",
+      "releaseDate": "2024-11-15",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800807.us.archive.org/27/items/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c-41255644356.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "10b7af60-5748-4425-a24b-840ec0bc475b",
+      "title": "Hallelujah",
+      "title_lowercase": "hallelujah",
+      "duration": 225,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "dec742bc-3dd4-4a92-9ba6-88af77aee7b8",
+      "releaseDate": "2024-11-15",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800807.us.archive.org/27/items/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c/mbid-6db9f06a-cff4-49ff-9603-3334aea0bc9c-41255644356.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f410ac40-0571-4a6f-b7d0-1690ca2d6de3",
+      "title": "The Weight",
+      "title_lowercase": "the weight",
+      "duration": 236,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "451c151f-0c4d-42c5-bf88-da9c59770561",
+      "releaseDate": "2016-12-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600106.us.archive.org/26/items/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e-40497523280.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "bee79609-40be-4c52-8657-c4975e89810a",
+      "title": "Treat You Better",
+      "title_lowercase": "treat you better",
+      "duration": 256,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "451c151f-0c4d-42c5-bf88-da9c59770561",
+      "releaseDate": "2016-12-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600106.us.archive.org/26/items/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e-40497523280.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ccc344a6-3b10-4eb4-9140-fddefc4b9a92",
+      "title": "Lights On",
+      "title_lowercase": "lights on",
+      "duration": 272,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "451c151f-0c4d-42c5-bf88-da9c59770561",
+      "releaseDate": "2016-12-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600106.us.archive.org/26/items/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e-40497523280.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c98f56d1-77ee-4ec9-97b6-5576a8f50bd2",
+      "title": "I Don’t Even Know Your Name / Aftertaste / Kid in Love / I Want You Back",
+      "title_lowercase": "i don’t even know your name / aftertaste / kid in love / i want you back",
+      "duration": 436,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "451c151f-0c4d-42c5-bf88-da9c59770561",
+      "releaseDate": "2016-12-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600106.us.archive.org/26/items/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e-40497523280.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "0f5a6cbc-ac24-4b6a-8c12-907bf8f1b09a",
+      "title": "Bad Reputation",
+      "title_lowercase": "bad reputation",
+      "duration": 312,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "451c151f-0c4d-42c5-bf88-da9c59770561",
+      "releaseDate": "2016-12-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600106.us.archive.org/26/items/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e-40497523280.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "31883d1b-fcb0-49ea-917c-ca50dc3162b3",
+      "title": "Ruin",
+      "title_lowercase": "ruin",
+      "duration": 472,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "451c151f-0c4d-42c5-bf88-da9c59770561",
+      "releaseDate": "2016-12-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600106.us.archive.org/26/items/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e-40497523280.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f193121b-0335-4539-a994-ec214ae031ea",
+      "title": "Life of the Party",
+      "title_lowercase": "life of the party",
+      "duration": 198,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "451c151f-0c4d-42c5-bf88-da9c59770561",
+      "releaseDate": "2016-12-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600106.us.archive.org/26/items/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e-40497523280.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "45305d9c-2817-402c-ac88-7c17d2771d6b",
+      "title": "Three Empty Words",
+      "title_lowercase": "three empty words",
+      "duration": 245,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "451c151f-0c4d-42c5-bf88-da9c59770561",
+      "releaseDate": "2016-12-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600106.us.archive.org/26/items/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e-40497523280.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "13e33064-c6d6-4682-8965-fa198915ebf3",
+      "title": "Don’t Be a Fool",
+      "title_lowercase": "don’t be a fool",
+      "duration": 290,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "451c151f-0c4d-42c5-bf88-da9c59770561",
+      "releaseDate": "2016-12-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600106.us.archive.org/26/items/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e-40497523280.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3fe5fba9-8892-433a-9a13-df6b9c8ca29e",
+      "title": "Mercy",
+      "title_lowercase": "mercy",
+      "duration": 262,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "451c151f-0c4d-42c5-bf88-da9c59770561",
+      "releaseDate": "2016-12-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600106.us.archive.org/26/items/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e-40497523280.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f7aca9bb-b831-4037-845e-8b0b006d40e0",
+      "title": "Never Be Alone / Hey There Delilah",
+      "title_lowercase": "never be alone / hey there delilah",
+      "duration": 371,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "451c151f-0c4d-42c5-bf88-da9c59770561",
+      "releaseDate": "2016-12-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600106.us.archive.org/26/items/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e-40497523280.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9d671f5d-1dc8-406d-b303-67b58f2aeab9",
+      "title": "Stitches",
+      "title_lowercase": "stitches",
+      "duration": 396,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "451c151f-0c4d-42c5-bf88-da9c59770561",
+      "releaseDate": "2016-12-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600106.us.archive.org/26/items/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e/mbid-cca6af6c-5063-46fc-8a3d-956fcbd78b1e-40497523280.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "81a499c1-a5c2-440b-962a-4a138a993d50",
+      "title": "There's Nothing Holdin' Me Back",
+      "title_lowercase": "there's nothing holdin' me back",
+      "duration": 210,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "9f0fe7fd-cd56-413b-9d70-694ee0f681c1",
+      "releaseDate": "2017-11-03",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "b86d49cd-b7ee-4faa-8421-18a3d0471258",
+      "title": "Ruin",
+      "title_lowercase": "ruin",
+      "duration": 381,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "9f0fe7fd-cd56-413b-9d70-694ee0f681c1",
+      "releaseDate": "2017-11-03",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "58d6a4b9-eaf9-4ff5-b34a-1256edd40ab0",
+      "title": "Stitches",
+      "title_lowercase": "stitches",
+      "duration": 264,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "9f0fe7fd-cd56-413b-9d70-694ee0f681c1",
+      "releaseDate": "2017-11-03",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9b670c13-eace-4cbc-934c-641d54adf329",
+      "title": "Three Empty Words",
+      "title_lowercase": "three empty words",
+      "duration": 259,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "9f0fe7fd-cd56-413b-9d70-694ee0f681c1",
+      "releaseDate": "2017-11-03",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "47e6004c-cb2f-4db5-adaa-a422d2202e59",
+      "title": "Patience",
+      "title_lowercase": "patience",
+      "duration": 194,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "9f0fe7fd-cd56-413b-9d70-694ee0f681c1",
+      "releaseDate": "2017-11-03",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "740f5d56-4aa5-422d-9663-e7a1b7cfea6f",
+      "title": "Bad Reputation",
+      "title_lowercase": "bad reputation",
+      "duration": 311,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "9f0fe7fd-cd56-413b-9d70-694ee0f681c1",
+      "releaseDate": "2017-11-03",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "70fcf618-e7e6-4d6a-8302-37cb26b8de48",
+      "title": "Don't Be a Fool",
+      "title_lowercase": "don't be a fool",
+      "duration": 338,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "9f0fe7fd-cd56-413b-9d70-694ee0f681c1",
+      "releaseDate": "2017-11-03",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "95c13fff-83a7-47cf-95c2-ababfe2c92f7",
+      "title": "Roses",
+      "title_lowercase": "roses",
+      "duration": 254,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "9f0fe7fd-cd56-413b-9d70-694ee0f681c1",
+      "releaseDate": "2017-11-03",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "acb8ce68-c76f-4d2d-aa3b-96733da164bf",
+      "title": "Mercy",
+      "title_lowercase": "mercy",
+      "duration": 228,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "9f0fe7fd-cd56-413b-9d70-694ee0f681c1",
+      "releaseDate": "2017-11-03",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9cb54844-bfc8-4c7f-a77d-0be8a34f56ed",
+      "title": "Never Be Alone",
+      "title_lowercase": "never be alone",
+      "duration": 289,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "9f0fe7fd-cd56-413b-9d70-694ee0f681c1",
+      "releaseDate": "2017-11-03",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "062c13a8-d220-49eb-ba0e-0b41864eff59",
+      "title": "Use Somebody / Treat You Better",
+      "title_lowercase": "use somebody / treat you better",
+      "duration": 316,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "9f0fe7fd-cd56-413b-9d70-694ee0f681c1",
+      "releaseDate": "2017-11-03",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "63190a14-32b0-4424-a4a3-edf7e6f1dff8",
+      "title": "Life of the Party",
+      "title_lowercase": "life of the party",
+      "duration": 214,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "cadfab52-3fbd-45df-9bce-69587df55bc5",
+      "releaseDate": "2014-07-28",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600800.us.archive.org/31/items/mbid-c089a4bd-dfc4-4583-a381-2c4b4541808d/mbid-c089a4bd-dfc4-4583-a381-2c4b4541808d-10650592968.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ba1cd8b6-f90f-45e0-9a23-3e5b07029855",
+      "title": "Show You",
+      "title_lowercase": "show you",
+      "duration": 180,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "cadfab52-3fbd-45df-9bce-69587df55bc5",
+      "releaseDate": "2014-07-28",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600800.us.archive.org/31/items/mbid-c089a4bd-dfc4-4583-a381-2c4b4541808d/mbid-c089a4bd-dfc4-4583-a381-2c4b4541808d-10650592968.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "5db93283-7990-4424-9539-a3a9fb990638",
+      "title": "One of Those Nights",
+      "title_lowercase": "one of those nights",
+      "duration": 210,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "cadfab52-3fbd-45df-9bce-69587df55bc5",
+      "releaseDate": "2014-07-28",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600800.us.archive.org/31/items/mbid-c089a4bd-dfc4-4583-a381-2c4b4541808d/mbid-c089a4bd-dfc4-4583-a381-2c4b4541808d-10650592968.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "06c78b7c-04c9-401f-be8a-b5559ed51fb2",
+      "title": "The Weight",
+      "title_lowercase": "the weight",
+      "duration": 183,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "cadfab52-3fbd-45df-9bce-69587df55bc5",
+      "releaseDate": "2014-07-28",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600800.us.archive.org/31/items/mbid-c089a4bd-dfc4-4583-a381-2c4b4541808d/mbid-c089a4bd-dfc4-4583-a381-2c4b4541808d-10650592968.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d99c3dc1-7758-4528-9517-d88840ef3731",
+      "title": "Where Were You in the Morning? (remix)",
+      "title_lowercase": "where were you in the morning? (remix)",
+      "duration": 191,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "67c86075-c33e-47d7-a769-5922056d7ba0",
+      "releaseDate": "2018-12-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800302.us.archive.org/32/items/mbid-a6ad3fe9-e62d-4c1f-965e-80bbdf92a9af/mbid-a6ad3fe9-e62d-4c1f-965e-80bbdf92a9af-22079471416.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "166cf4ab-40c0-4440-9705-120dd4a11c8c",
+      "title": "Why (remix)",
+      "title_lowercase": "why (remix)",
+      "duration": 234,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "67c86075-c33e-47d7-a769-5922056d7ba0",
+      "releaseDate": "2018-12-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800302.us.archive.org/32/items/mbid-a6ad3fe9-e62d-4c1f-965e-80bbdf92a9af/mbid-a6ad3fe9-e62d-4c1f-965e-80bbdf92a9af-22079471416.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "20984ef6-af08-41c8-9741-e30c50928033",
+      "title": "Youth (remix)",
+      "title_lowercase": "youth (remix)",
+      "duration": 201,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "67c86075-c33e-47d7-a769-5922056d7ba0",
+      "releaseDate": "2018-12-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800302.us.archive.org/32/items/mbid-a6ad3fe9-e62d-4c1f-965e-80bbdf92a9af/mbid-a6ad3fe9-e62d-4c1f-965e-80bbdf92a9af-22079471416.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "63190a14-32b0-4424-a4a3-edf7e6f1dff8",
+      "title": "Life of the Party",
+      "title_lowercase": "life of the party",
+      "duration": 214,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "4dab1d22-ef38-4a8a-ba65-c15887641ef3",
+      "releaseDate": "2014-06-27",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800608.us.archive.org/26/items/mbid-31762f07-1007-46eb-b09f-77e5503eaf7e/mbid-31762f07-1007-46eb-b09f-77e5503eaf7e-9661070717.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d069b278-cca9-487b-87da-393d217bade2",
+      "title": "Something Big",
+      "title_lowercase": "something big",
+      "duration": 161,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "f07ac77a-3d7e-46c9-9252-0137764ee9a5",
+      "releaseDate": "2014-11-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800807.us.archive.org/33/items/mbid-711f24f2-40e3-4371-8e86-dc1c5a0bf108/mbid-711f24f2-40e3-4371-8e86-dc1c5a0bf108-10650622911.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "5db93283-7990-4424-9539-a3a9fb990638",
+      "title": "One of Those Nights",
+      "title_lowercase": "one of those nights",
+      "duration": 210,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "9062191f-a7ef-423a-b330-f510922f478e",
+      "releaseDate": "2015-02-02",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/srxswx1474733742.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ba1cd8b6-f90f-45e0-9a23-3e5b07029855",
+      "title": "Show You",
+      "title_lowercase": "show you",
+      "duration": 180,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "8bde088b-a19f-4ffe-8e8e-92f2a78bf655",
+      "releaseDate": "2015-02-02",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721608.ca.archive.org/0/items/mbid-607acffe-aaf2-4cd4-bcaa-c6a60361fe4b/mbid-607acffe-aaf2-4cd4-bcaa-c6a60361fe4b-32539028424.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "8efe2cd3-2adc-4abf-b06c-536208ca71fa",
+      "title": "Stitches",
+      "title_lowercase": "stitches",
+      "duration": 206,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "67e6a8a9-6f45-416c-9bd2-d381ba2d7c78",
+      "releaseDate": "2015-04-27",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721900.ca.archive.org/0/items/mbid-2dd35cca-5963-4095-b4c7-b909907e861a/mbid-2dd35cca-5963-4095-b4c7-b909907e861a-39552007409.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "95f6a37b-dce9-409e-a640-2eae47ddc924",
+      "title": "Never Be Alone",
+      "title_lowercase": "never be alone",
+      "duration": 217,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "e4bc8637-a2bb-42f7-9ab7-58589cb483ba",
+      "releaseDate": "2015-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600203.us.archive.org/10/items/mbid-1fa53385-a652-4bd6-a4b6-2ba848467bb3/mbid-1fa53385-a652-4bd6-a4b6-2ba848467bb3-38354450756.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f860b698-f165-4a62-8725-485254f63f8e",
+      "title": "Believe",
+      "title_lowercase": "believe",
+      "duration": 208,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "67ddc495-4638-46ce-a374-acd6ce87ae37",
+      "releaseDate": "2015-06-26",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601809.us.archive.org/6/items/mbid-35be336e-7a0a-4110-be2a-9b6f58cf643a/mbid-35be336e-7a0a-4110-be2a-9b6f58cf643a-36513971941.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "b8d40bb6-1ccb-430d-aea2-1988b10183cc",
+      "title": "I Know What You Did Last Summer",
+      "title_lowercase": "i know what you did last summer",
+      "duration": 223,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "7c6dd1ea-0859-4ef0-813e-554eec766258",
+      "releaseDate": "2015-11-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia801201.us.archive.org/4/items/mbid-f0bc0650-b0a5-404f-89e2-a43b9adbb39c/mbid-f0bc0650-b0a5-404f-89e2-a43b9adbb39c-12033654571.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2445f788-914f-4893-9a6d-5de91d7db4f9",
+      "title": "Treat You Better",
+      "title_lowercase": "treat you better",
+      "duration": 187,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "e8836fb6-04d0-44c9-82ab-8eaede8c3e0a",
+      "releaseDate": "2016-06-03",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800300.us.archive.org/28/items/mbid-74aa5c9d-89f0-4d83-8b78-f00e39249252/mbid-74aa5c9d-89f0-4d83-8b78-f00e39249252-13824456877.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "5800b091-57cb-49b4-9d55-dd68cc9e9126",
+      "title": "Mercy",
+      "title_lowercase": "mercy",
+      "duration": 208,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "9ac56d30-32cf-429d-a3d1-3eac1805391a",
+      "releaseDate": "2016-08-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710303.ca.archive.org/0/items/mbid-12cdbc2f-1d67-491b-a772-7af0c7e3f6bf/mbid-12cdbc2f-1d67-491b-a772-7af0c7e3f6bf-39141269365.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d2555d82-571d-406c-8e96-21562753cebc",
+      "title": "There's Nothing Holdin' Me Back",
+      "title_lowercase": "there's nothing holdin' me back",
+      "duration": 199,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "50b5aa0e-a18a-4ef9-90d6-2c955cc1ecda",
+      "releaseDate": "2017-04-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800407.us.archive.org/4/items/mbid-6c503816-2781-42f7-b316-391532b7f031/mbid-6c503816-2781-42f7-b316-391532b7f031-39141357886.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "fb9c29d7-2bf0-4c96-a10d-5df601a77e60",
+      "title": "In My Blood",
+      "title_lowercase": "in my blood",
+      "duration": 211,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "592e8bf2-ef8e-4d3a-abe3-07b1ec3b2645",
+      "releaseDate": "2018-03-22",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia903408.us.archive.org/4/items/mbid-329c283c-d35d-476f-b6e4-959594d71b42/mbid-329c283c-d35d-476f-b6e4-959594d71b42-19420423981.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "cc340f53-182f-475d-b768-09a2b03d4f8c",
+      "title": "Lost in Japan",
+      "title_lowercase": "lost in japan",
+      "duration": 200,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "ba6b7a0c-7b19-4479-adbc-4f71aece8b13",
+      "releaseDate": "2018-03-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600105.us.archive.org/28/items/mbid-cd8af358-44ee-4d37-9a72-e50f128bc417/mbid-cd8af358-44ee-4d37-9a72-e50f128bc417-19454604112.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f80ae229-1b31-432a-bcec-aa810ef116dc",
+      "title": "Youth",
+      "title_lowercase": "youth",
+      "duration": 189,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "5d288486-638a-482f-be62-11112d436d7e",
+      "releaseDate": "2018-05-03",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia803106.us.archive.org/13/items/mbid-525ecdc2-ad19-4ef9-8e0f-62cb3efabbaf/mbid-525ecdc2-ad19-4ef9-8e0f-62cb3efabbaf-19852491309.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2f04dd11-cbd9-48f6-9d7b-2ad0f46805a7",
+      "title": "Fallin' All In You",
+      "title_lowercase": "fallin' all in you",
+      "duration": 237,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "72920e05-5b8c-4d92-b5fc-3b21dec84637",
+      "releaseDate": "2018-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800205.us.archive.org/4/items/mbid-2526fadf-0318-4c85-90bb-c9a12acea301/mbid-2526fadf-0318-4c85-90bb-c9a12acea301-38354502581.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "5959c5b6-49c0-409f-8332-9fc8a491f50a",
+      "title": "Where Were You In The Morning?",
+      "title_lowercase": "where were you in the morning?",
+      "duration": 201,
+      "artistIds": [
+        "b7d92248-97e3-4450-8057-6fe06738f735"
+      ],
+      "albumId": "43cb23c3-28a6-41cf-ac9b-a9b7f4f07e6e",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600201.us.archive.org/15/items/mbid-9fcd804e-007b-4a23-a901-d99100ddd019/mbid-9fcd804e-007b-4a23-a901-d99100ddd019-38354654178.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    }
+  ]
+}

@@ -60,9 +60,12 @@ const ArtistAlbumsPage: React.FC = () => {
                 }
                 setArtist(artistSnap.data() as Artist);
 
-                const albumsQuery = query(collection(db, 'albums'), where('artistIds', 'array-contains', id), orderBy('releaseDate', 'desc'));
+                const albumsQuery = query(collection(db, 'albums'), where('artistIds', 'array-contains', id));
                 const albumsSnap = await getDocs(albumsQuery);
-                setAlbums(albumsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Album)));
+                const albumsData = albumsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Album));
+                // Sort client-side to avoid needing a composite index
+                albumsData.sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime());
+                setAlbums(albumsData);
 
             } catch (err) {
                 console.error("Error fetching artist data:", err);

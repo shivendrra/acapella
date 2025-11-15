@@ -1,0 +1,3511 @@
+{
+  "artist": {
+    "id": "e8979f75-9110-4df8-ac70-898898d080d1",
+    "name": "Maluma",
+    "name_lowercase": "maluma",
+    "imageUrl": "https://r2.theaudiodb.com/images/media/artist/thumb/8otgu91603712467.jpg",
+    "coverImageUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+    "genres": [],
+    "bio": "Juan Luis Londoño Arias, Colombian reggaeton/pop singer",
+    "socials": {
+      "instagram": "https://www.instagram.com/maluma/",
+      "twitter": "https://x.com/maluma/status/142664363759767553"
+    },
+    "platformLinks": {
+      "spotify": "https://open.spotify.com/artist/1r4hJ1h58CWwUQe3MxPuau"
+    }
+  },
+  "albums": [
+    {
+      "id": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "title": "Magia",
+      "title_lowercase": "magia",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2012-08-07",
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "tracklist": [
+        "c717cbd9-9cd3-4862-9a0a-d1f8e3c1cea9",
+        "ed4ceacd-314d-4757-bdef-b91ff939a358",
+        "32f024dc-9a70-4b34-bfbd-ef7c706b678f",
+        "58056255-53f8-490d-8744-fdbff7064513",
+        "4c22abe9-9251-4556-a690-7eb7708a5ac8",
+        "0b87aa11-144f-4a6c-8dab-df19bd910f67",
+        "a051088d-663c-4f8c-85de-ed70b87bc26f",
+        "96f277df-e02a-40c6-b61e-23794c9bedbb",
+        "37c17cc9-7fb3-4098-be4a-d3811e40810a",
+        "6525fe60-3d86-40c2-b380-d9da2bbcbe89",
+        "2a999d1a-337b-4386-bb3f-907eb89a9046",
+        "baa0abae-6c10-4fb5-8ec4-41d78a24665c",
+        "abe0af52-1348-4e51-b927-bcd0950d15e9",
+        "74306b80-a5b4-4b0e-a8e4-bacd9986ac61",
+        "84bdec32-eb1e-41d9-8bd3-8795de5c3184",
+        "77750c9c-c1da-4414-bc15-55ae12f4b847",
+        "e9dc1d2a-874f-47f4-9a30-eae5decf33cf",
+        "7b0378c1-d7f2-4929-a494-eb0808250fc4",
+        "e761cf81-c3fa-459f-9da7-4e04b6ccf34c"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "title": "Pretty Boy, Dirty Boy",
+      "title_lowercase": "pretty boy, dirty boy",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2015-10-30",
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "tracklist": [
+        "a9afa741-310d-4db8-aeab-f4dfddb83f4f",
+        "88425eca-5b8e-4d4c-96ed-3c0993b2257e",
+        "6b038b8c-08e2-4843-87cd-1de989a3212c",
+        "c2d2a5c8-dd7a-4767-b76b-70d2d71640f8",
+        "1c47d71a-2903-4db8-af78-54240bbbd882",
+        "d8c3914c-9037-4014-926e-6b8432acb833",
+        "404028b4-a4a9-45dc-b9f2-6a3320ec5198",
+        "e99df282-df81-4704-a9f1-4cc0830f31ea",
+        "4edf27ce-1db8-4a41-96f4-144cb910008f",
+        "76c6df44-bdab-48fd-9ae3-ba5a9111f8a5",
+        "d2b68a05-ad01-4f73-91e1-d354765097a3",
+        "75599e45-b9af-496a-a5b5-87162d420af3",
+        "88fddb2e-4b6e-4d1c-9aa9-20d51cda306b",
+        "80b4762e-6226-41d3-90d1-da37227a6033",
+        "697cc983-14b4-4df6-b49f-02073571df83",
+        "3bd4df3b-5de8-4664-aefe-e95c5df59de3"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "title": "F.A.M.E.",
+      "title_lowercase": "f.a.m.e.",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2018-05-18",
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "tracklist": [
+        "9c95c858-1098-41c7-b034-2ca9e6f762ec",
+        "9f8735d5-05c9-48ef-9a75-7700b2d26424",
+        "9b26d2a5-1bd1-49ab-b8f4-1a53a678db30",
+        "a2327635-d970-4471-b07a-68346f196f06",
+        "d2d06491-b465-4cac-a850-467716bf83df",
+        "7a8561bb-1314-40ba-9955-372017e22166",
+        "2b9becd9-93dd-4bd5-a9b5-0f5569cbc295",
+        "040a3009-bed3-4b53-ac96-afedf190cd02",
+        "35639ad6-393c-4387-9525-644e31ac4d37",
+        "c73d595f-c042-4020-866f-e4511d2dcf2c",
+        "e4eab5fa-9580-4a5a-92a7-483dd2d8aa13",
+        "a059479d-bd17-454f-90ea-3cf5ab76ae78",
+        "d405ef18-1ac1-4887-b703-db42968ff348",
+        "a920b6c5-0213-48e2-a474-391ee287bc1f",
+        "74243f57-d22a-4ae0-8da1-185f5ed4eed6"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "title": "11:11",
+      "title_lowercase": "11:11",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2019-05-17",
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "tracklist": [
+        "b73c1748-ae5d-4f30-8b11-a302cb443b9c",
+        "687aa2b9-9ba3-4660-8551-564e870bbaa1",
+        "e58f7565-3dc6-41b4-b9bd-d425f8cfa19b",
+        "85f69ba7-0415-4509-a12f-f5fe95d4d627",
+        "e2c7e064-cf36-46c9-8831-08f4c9442883",
+        "fc6e880c-6af5-4e18-a499-1a8e784a81f8",
+        "e9ab8fe4-c00c-43bd-8eac-78080b4f16ee",
+        "bca60b0c-8e56-452f-b768-9382f7d28497",
+        "0adecdcd-f665-41a5-b236-1dbe5e0cf870",
+        "7f6f9acd-f610-436f-a776-034b103e6073",
+        "88a49baa-4392-4466-a61f-92891733dfc4",
+        "c1d1c5f9-6b75-4d5e-a76d-5ad49513e437",
+        "a581daf7-7624-4aad-900d-c2387dad2908",
+        "caa2add5-37ae-42f4-8fb0-5aa0d4ef132f",
+        "8c9c2c94-2c2f-48d6-9aad-77316875c832",
+        "0dbcb6a3-fd0d-4704-bde8-32e80b292513"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "title": "PAPI JUANCHO",
+      "title_lowercase": "papi juancho",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2020-08-21",
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "tracklist": [
+        "5aa4953b-bb58-4700-b842-48d033d31e19",
+        "0a3792e2-eadb-4377-916b-c54841be0928",
+        "8b4f7e85-af3d-402b-aa7b-eb1f5460bab6",
+        "4d192e9a-3115-48d6-ab0c-36dfcefb393b",
+        "fca63486-fa47-4c1a-b3ff-9a9f37d84ec7",
+        "31d3b70f-83f3-465b-ad05-498d56c51791",
+        "b8bb2730-5e82-44fd-b9f0-c8b7db19b266",
+        "19ec5e9b-e414-4bed-a105-cbc0e0756b08",
+        "9c09c58b-79b8-4009-88f5-6edad0e3f1f0",
+        "37759baf-1fe0-436a-b68e-0bc33216bc85",
+        "f2dace63-43cb-4f89-88ae-d38e304266d9",
+        "7a046647-cf1e-4dd0-ab32-cebfc11b1acf",
+        "6b18a56b-7f29-4b8f-a947-685e93fa15a1",
+        "6e0e7293-102b-446f-a9f5-dde1f858e0ab",
+        "f936f6ca-5c65-4453-8e1c-e8c0ef8b2911",
+        "441f612d-893d-4f25-bf8c-2efb161dd508",
+        "03eeed49-2349-4bfe-89f7-718eac8de4a8",
+        "63fe017e-1bef-498e-8565-3ee3ede57e9c",
+        "3602ec27-c321-47fc-8e37-3c5459149a8b",
+        "8438d1b3-bffe-457a-9c9f-9ad34aabc646",
+        "6549afa0-a1bc-4413-acbf-3a0c0dc8249f",
+        "70afef48-0bf5-436a-accd-c13a2ca75ce4"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "cb6b1b5b-466c-4801-9a5a-defce77e04a9",
+      "title": "#7DJ (7 días en Jamaica)",
+      "title_lowercase": "#7dj (7 días en jamaica)",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2021-01-28",
+      "coverArtUrl": "https://dn721602.ca.archive.org/0/items/mbid-6ff7c71f-a755-4422-bf53-602b94d66804/mbid-6ff7c71f-a755-4422-bf53-602b94d66804-28442469491.jpg",
+      "tracklist": [
+        "fb908796-5074-43cf-9828-8054effafe91",
+        "a55782ef-77fe-401a-951b-8be372e729e3",
+        "154b4b9e-0483-4a2f-8616-4ee7812d43a5",
+        "bc4cbf5b-e7fe-4d43-bcb8-f8d1d62aec1c",
+        "b4fe90e9-475c-49b4-b1cc-57fe3a9a34c4",
+        "dbb6cc45-4ba4-49db-b922-dbeaf588a5c8",
+        "62cfc937-f3cf-42a3-ab94-3365aed97bef"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "b185d81b-2897-4f80-9c8d-7ff7251f1842",
+      "title": "The Love & Sex Tape",
+      "title_lowercase": "the love & sex tape",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2022-06-10",
+      "coverArtUrl": "https://dn710006.ca.archive.org/0/items/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5-32744124243.jpg",
+      "tracklist": [
+        "49a2206d-d5ea-4759-ba52-f4b97a841e9e",
+        "279431aa-7fd4-4a14-8968-25e7609f12c2",
+        "53378fe8-0615-4dbe-b8d4-a0264a027bb7",
+        "9993a040-8e2c-4ed9-846d-d17228c2f60b",
+        "58d9f99d-6046-4841-b7b0-826eb851922f",
+        "d8d60d9a-a3a4-4719-a055-9fb7e2f6562d",
+        "88767e0d-e426-4a04-ae91-7a3f8b595e66",
+        "90f0707f-820c-4978-9e68-65b3ff8c9c8b"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "title": "Don Juan",
+      "title_lowercase": "don juan",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2023-08-25",
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "tracklist": [
+        "58ad3292-2537-4d24-a3ae-b3521732afee",
+        "66252005-a0b3-4044-9537-264d41214d59",
+        "6047b715-198e-4ccf-9a62-fc5f2cb9f928",
+        "bbc1f7ae-8445-44b5-99d1-be744fb447fc",
+        "0872a9e8-b20c-4c0d-b40b-26ec606fa4f3",
+        "543e6bc0-0afa-4eb3-9179-3d073538f061",
+        "1d84a676-056e-4298-a42e-ad6f6de5864d",
+        "0ad68e08-1ea8-43f5-97d2-9fac125f176f",
+        "785deb29-2998-4f52-853e-ae93e69226f1",
+        "994ab66e-9730-419d-b31a-e8ba9cfdd8e9",
+        "28b0b9a4-810b-46ea-b8b6-138d2caf075a",
+        "2f1700a5-ef2e-4d64-9d01-7083b059a7bf",
+        "aa8bf52d-b292-495e-90e8-2f66cbb258e1",
+        "0362780c-e8c1-4255-a47b-2c6d996bbd50",
+        "a93b5abf-296f-499c-804a-acd926463c20",
+        "54fe5a30-0e55-4e77-9996-3704ab270762",
+        "3b3e243e-9ef2-4150-804c-13aadf5bf444",
+        "e592b25a-76d8-4beb-9044-8defdaedbeee",
+        "ff1387ed-653d-49b3-9ea3-1a76eb419f7c",
+        "e3bb4633-451a-4370-bd70-fcfee3a812a0",
+        "e07fdadb-bede-442a-b3c0-7cef5c5910d7",
+        "1576a2f6-896c-4484-bb4e-cd0c1a47afd2",
+        "9faa8220-630e-4962-8650-ec18667829aa",
+        "9bbcd01b-edf4-4893-a987-b1a8fedff010"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "84f24241-e858-411f-85d0-f47bc1390d54",
+      "title": "Marry Me: Original Motion Picture Soundtrack",
+      "title_lowercase": "marry me: original motion picture soundtrack",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2022-02-04",
+      "coverArtUrl": "https://ia800409.us.archive.org/23/items/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc-32401427135.jpg",
+      "tracklist": [
+        "1ece670f-d23a-45c7-b13f-4ccb188771f3",
+        "f994dd49-2adb-4545-b24d-be4fb7051194",
+        "68994d25-ef80-490d-9905-6d3cb6adf305",
+        "1b469e49-5d2f-4b74-8c28-2d45608ff52e",
+        "af534491-b4e5-4deb-a693-092a8769d8de",
+        "7d63af73-6de0-4c6d-916b-7472b72bda4a",
+        "41840a0b-6a56-4cef-a860-733ec723f51f",
+        "5d07f918-edd1-4f9b-a542-b29b3a676ab7",
+        "5cf92427-99a5-49c5-867e-a41c6409cbb2",
+        "a3eb0370-b383-443e-b3a9-ff990859b7fb",
+        "1c2123c6-fb09-4e2a-a856-6c0f90d0c276",
+        "3da9a46f-c768-4300-8962-a84f1eb63790"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ceb37da0-f665-42c3-9dbf-650f7ea8a480",
+      "title": "PB.DB The Mixtape",
+      "title_lowercase": "pb.db the mixtape",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2014",
+      "coverArtUrl": "https://ia802307.us.archive.org/6/items/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea-37548544252.png",
+      "tracklist": [
+        "a830465a-af0c-44fc-80d1-1157628f27ed",
+        "172bbb27-daf8-4ea4-bd43-121cc2a92778",
+        "a1c017ac-963e-4ddc-ae4b-4d495e72b4c2",
+        "3bd4df3b-5de8-4664-aefe-e95c5df59de3",
+        "d10f4a2d-80c8-4d4a-86ea-7c41b698fc5c",
+        "81f1680d-fd67-4e37-b543-f44cb1ffdd77",
+        "97b1a490-869c-4f8c-b6f6-0cdb9e0a757d",
+        "ad12802d-6d11-4297-8946-ff39d8044551",
+        "d8c3df8f-6031-4d5e-9f80-5d516d6d67e7",
+        "f4df9b1e-086a-4b76-8a1f-d27986db42b9"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "da95a73c-f2e9-4da9-8021-ab4143e43e66",
+      "title": "1 OF 1",
+      "title_lowercase": "1 of 1",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2024-06-06",
+      "coverArtUrl": "https://ia803202.us.archive.org/3/items/mbid-9eedb723-8582-4369-bf63-350df4f4e07a/mbid-9eedb723-8582-4369-bf63-350df4f4e07a-39122034539.jpg",
+      "tracklist": [
+        "81d9afec-77b9-4120-82c7-6534231a85ad",
+        "255bd64d-b15e-45ba-b15f-3b13be1d0131",
+        "67f6cb35-6c75-4e6d-bd55-eee14ec93f86",
+        "2fe1f8cd-5402-46aa-bae7-1fa440cccbfb",
+        "b9884630-bd9c-4843-b45e-7da525712e99",
+        "a2eb07b5-365b-4e9a-9eb6-efce3e7ad19d"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9c0f890b-af03-436c-99a1-911474820552",
+      "title": "Medallo en el mapa",
+      "title_lowercase": "medallo en el mapa",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2022-05-25",
+      "coverArtUrl": "https://dn710206.ca.archive.org/0/items/mbid-5c33c746-9ecf-4546-802e-756776a79829/mbid-5c33c746-9ecf-4546-802e-756776a79829-33702193969.jpg",
+      "tracklist": [
+        "0a2d946e-d01d-4798-adc9-4b30cbf73faa",
+        "c73b9903-10ce-48a7-82ba-7e12544863ec",
+        "41e115e1-9b60-453c-9106-ee8d10e6a92d",
+        "96f4e84a-93ff-482d-8c16-d351ec7d604f",
+        "a922b432-7d12-4ce5-bbf7-d7b16d1f6606"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "63318648-fc5d-4e09-99e2-dc04af36574e",
+      "title": "Loco",
+      "title_lowercase": "loco",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2011-08-19",
+      "coverArtUrl": "https://ia600405.us.archive.org/31/items/mbid-4b0c608c-0752-4160-82f5-5ba5ab69a8dc/mbid-4b0c608c-0752-4160-82f5-5ba5ab69a8dc-18256425720.jpg",
+      "tracklist": [
+        "96f277df-e02a-40c6-b61e-23794c9bedbb"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f21995bf-f47e-46b2-b450-c290989ca6c3",
+      "title": "Obsesión",
+      "title_lowercase": "obsesión",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2011-12-09",
+      "coverArtUrl": "https://ia601602.us.archive.org/21/items/mbid-3c46a55e-e5a4-43e4-ae2d-cd073af03d67/mbid-3c46a55e-e5a4-43e4-ae2d-cd073af03d67-18256353534.jpg",
+      "tracklist": [
+        "32f024dc-9a70-4b34-bfbd-ef7c706b678f"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c294a47b-135b-498b-aaae-f3cabc1e82e9",
+      "title": "Con flow mátalo",
+      "title_lowercase": "con flow mátalo",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2012-06-02",
+      "coverArtUrl": "https://ia601600.us.archive.org/18/items/mbid-4fbf1e81-feb0-4dc6-8883-385229b76ec0/mbid-4fbf1e81-feb0-4dc6-8883-385229b76ec0-18187432245.jpg",
+      "tracklist": [
+        "86a77e5a-82a7-4daf-b74a-7d45d818dfc4"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "92aefae4-03cc-4ee9-afc4-1e9261857c4f",
+      "title": "Pasarla bien",
+      "title_lowercase": "pasarla bien",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2012-06-25",
+      "coverArtUrl": "https://ia600408.us.archive.org/9/items/mbid-ffb166fa-0e14-4e14-81c0-c37520200985/mbid-ffb166fa-0e14-4e14-81c0-c37520200985-18256343187.jpg",
+      "tracklist": [
+        "ed4ceacd-314d-4757-bdef-b91ff939a358"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c90eb452-c651-48f5-9eb2-52a2e28991f1",
+      "title": "La temperatura",
+      "title_lowercase": "la temperatura",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2013-06-10",
+      "coverArtUrl": "https://ia800204.us.archive.org/0/items/mbid-c3e2304f-373c-447e-9049-7e2a4ad1e3b5/mbid-c3e2304f-373c-447e-9049-7e2a4ad1e3b5-10340192784.jpg",
+      "tracklist": [
+        "a830465a-af0c-44fc-80d1-1157628f27ed"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "15176eef-0b51-4806-ba56-7bd9f62e28d0",
+      "title": "La curiosidad",
+      "title_lowercase": "la curiosidad",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2014-04-08",
+      "coverArtUrl": "https://ia801305.us.archive.org/28/items/mbid-1a9c3390-83e7-4a33-b32d-43b7ebe35988/mbid-1a9c3390-83e7-4a33-b32d-43b7ebe35988-12636228187.jpg",
+      "tracklist": [
+        "172bbb27-daf8-4ea4-bd43-121cc2a92778"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a05653cf-fc9a-4f71-b7d3-611b96ba442f",
+      "title": "Te viví",
+      "title_lowercase": "te viví",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2014-04-15",
+      "coverArtUrl": "https://ia803404.us.archive.org/15/items/mbid-485cf893-bf7d-48f8-b112-a9818409392d/mbid-485cf893-bf7d-48f8-b112-a9818409392d-17873640676.jpg",
+      "tracklist": [
+        "ec7cdbd7-baa9-4337-969d-f348eea9d4f6"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "90a28c76-e4d8-48ea-b30f-b00d6d32b6e0",
+      "title": "Olé Brazil",
+      "title_lowercase": "olé brazil",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2014-05-06",
+      "coverArtUrl": "https://ia801509.us.archive.org/28/items/mbid-6d1ecd30-b33e-4ec9-a01d-daf6e3ba171f/mbid-6d1ecd30-b33e-4ec9-a01d-daf6e3ba171f-17942864630.jpg",
+      "tracklist": [
+        "27ec8424-c8b8-48c2-be03-6b675f4f1cf3"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "67828c45-5953-498f-95bb-cc54e5a63c19",
+      "title": "Duele tanto",
+      "title_lowercase": "duele tanto",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2014-05-26",
+      "coverArtUrl": "https://ia800801.us.archive.org/22/items/mbid-729f0c89-c7c1-4a49-bb1f-29855cb65ce8/mbid-729f0c89-c7c1-4a49-bb1f-29855cb65ce8-17349289238.jpg",
+      "tracklist": [
+        "d8c3df8f-6031-4d5e-9f80-5d516d6d67e7"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6eedcf8e-e9ba-4f7c-8f24-85032d712615",
+      "title": "Carnaval",
+      "title_lowercase": "carnaval",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2014-06-25",
+      "coverArtUrl": "https://dn710702.ca.archive.org/0/items/mbid-acef73db-2901-4ee6-a839-8f5197ecaba8/mbid-acef73db-2901-4ee6-a839-8f5197ecaba8-18256306550.jpg",
+      "tracklist": [
+        "3bd4df3b-5de8-4664-aefe-e95c5df59de3"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "eb34b503-c9de-4688-af5d-814df282357c",
+      "title": "Inténtalo",
+      "title_lowercase": "inténtalo",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2014-06-26",
+      "coverArtUrl": "https://ia600702.us.archive.org/8/items/mbid-3e3bddeb-e829-49a1-891d-236fa5257fb2/mbid-3e3bddeb-e829-49a1-891d-236fa5257fb2-17350116826.jpg",
+      "tracklist": [
+        "d441a552-5718-49ab-be93-4d90bf233c8a"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "99932072-4a79-450b-b570-f77ab042dffc",
+      "title": "Addicted",
+      "title_lowercase": "addicted",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2014-07-02",
+      "coverArtUrl": "https://ia800406.us.archive.org/9/items/mbid-53c48d6e-fe3f-4c3a-b75f-68cd2725bb57/mbid-53c48d6e-fe3f-4c3a-b75f-68cd2725bb57-18006207756.jpg",
+      "tracklist": [
+        "a1c017ac-963e-4ddc-ae4b-4d495e72b4c2"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "92d398c4-c54f-48f9-802b-822fafc82338",
+      "title": "La invitación",
+      "title_lowercase": "la invitación",
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "releaseDate": "2014-10-31",
+      "coverArtUrl": "https://ia600409.us.archive.org/5/items/mbid-c96c9816-262c-4b49-a832-9a3f21b89671/mbid-c96c9816-262c-4b49-a832-9a3f21b89671-18256331231.jpg",
+      "tracklist": [
+        "97b1a490-869c-4f8c-b6f6-0cdb9e0a757d"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    }
+  ],
+  "tracks": [
+    {
+      "id": "c717cbd9-9cd3-4862-9a0a-d1f8e3c1cea9",
+      "title": "Intro, magia",
+      "title_lowercase": "intro, magia",
+      "duration": 132,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ed4ceacd-314d-4757-bdef-b91ff939a358",
+      "title": "Pasarla bien",
+      "title_lowercase": "pasarla bien",
+      "duration": 214,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "32f024dc-9a70-4b34-bfbd-ef7c706b678f",
+      "title": "Obsesión",
+      "title_lowercase": "obsesión",
+      "duration": 180,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "58056255-53f8-490d-8744-fdbff7064513",
+      "title": "Primer amor",
+      "title_lowercase": "primer amor",
+      "duration": 201,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "4c22abe9-9251-4556-a690-7eb7708a5ac8",
+      "title": "Vámonos de fuga",
+      "title_lowercase": "vámonos de fuga",
+      "duration": 180,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "0b87aa11-144f-4a6c-8dab-df19bd910f67",
+      "title": "Mala",
+      "title_lowercase": "mala",
+      "duration": 171,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a051088d-663c-4f8c-85de-ed70b87bc26f",
+      "title": "Presiento",
+      "title_lowercase": "presiento",
+      "duration": 177,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "96f277df-e02a-40c6-b61e-23794c9bedbb",
+      "title": "Loco",
+      "title_lowercase": "loco",
+      "duration": 190,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "37c17cc9-7fb3-4098-be4a-d3811e40810a",
+      "title": "Miss Independent",
+      "title_lowercase": "miss independent",
+      "duration": 174,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6525fe60-3d86-40c2-b380-d9da2bbcbe89",
+      "title": "La intención",
+      "title_lowercase": "la intención",
+      "duration": 172,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2a999d1a-337b-4386-bb3f-907eb89a9046",
+      "title": "Correr el riesgo",
+      "title_lowercase": "correr el riesgo",
+      "duration": 161,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "baa0abae-6c10-4fb5-8ec4-41d78a24665c",
+      "title": "Malo",
+      "title_lowercase": "malo",
+      "duration": 205,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "abe0af52-1348-4e51-b927-bcd0950d15e9",
+      "title": "Dos amores",
+      "title_lowercase": "dos amores",
+      "duration": 175,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "74306b80-a5b4-4b0e-a8e4-bacd9986ac61",
+      "title": "Farandulera",
+      "title_lowercase": "farandulera",
+      "duration": 167,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "84bdec32-eb1e-41d9-8bd3-8795de5c3184",
+      "title": "Hoy",
+      "title_lowercase": "hoy",
+      "duration": 153,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "77750c9c-c1da-4414-bc15-55ae12f4b847",
+      "title": "Me gusta todo de ti",
+      "title_lowercase": "me gusta todo de ti",
+      "duration": 149,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e9dc1d2a-874f-47f4-9a30-eae5decf33cf",
+      "title": "Obsesión (versión remix)",
+      "title_lowercase": "obsesión (versión remix)",
+      "duration": 196,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "7b0378c1-d7f2-4929-a494-eb0808250fc4",
+      "title": "Te quiero cerquita",
+      "title_lowercase": "te quiero cerquita",
+      "duration": 183,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e761cf81-c3fa-459f-9da7-4e04b6ccf34c",
+      "title": "Tu mirada",
+      "title_lowercase": "tu mirada",
+      "duration": 197,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "3e4f1b0a-7487-424f-9e4f-39e04ecd57ab",
+      "releaseDate": "2012-08-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600504.us.archive.org/12/items/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4/mbid-21aa14e8-5bed-4374-8fdc-a7c1a5f138f4-14990790858.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a9afa741-310d-4db8-aeab-f4dfddb83f4f",
+      "title": "Borró cassette",
+      "title_lowercase": "borró cassette",
+      "duration": 207,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "88425eca-5b8e-4d4c-96ed-3c0993b2257e",
+      "title": "¿Dónde estás?",
+      "title_lowercase": "¿dónde estás?",
+      "duration": 197,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6b038b8c-08e2-4843-87cd-1de989a3212c",
+      "title": "El perdedor",
+      "title_lowercase": "el perdedor",
+      "duration": 207,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c2d2a5c8-dd7a-4767-b76b-70d2d71640f8",
+      "title": "Me gustas",
+      "title_lowercase": "me gustas",
+      "duration": 217,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "1c47d71a-2903-4db8-af78-54240bbbd882",
+      "title": "Sin contrato",
+      "title_lowercase": "sin contrato",
+      "duration": 221,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d8c3914c-9037-4014-926e-6b8432acb833",
+      "title": "Una aventura",
+      "title_lowercase": "una aventura",
+      "duration": 230,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "404028b4-a4a9-45dc-b9f2-6a3320ec5198",
+      "title": "Tengo un amor",
+      "title_lowercase": "tengo un amor",
+      "duration": 227,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e99df282-df81-4704-a9f1-4cc0830f31ea",
+      "title": "Pretextos",
+      "title_lowercase": "pretextos",
+      "duration": 228,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "4edf27ce-1db8-4a41-96f4-144cb910008f",
+      "title": "Ya no es niña",
+      "title_lowercase": "ya no es niña",
+      "duration": 215,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "76c6df44-bdab-48fd-9ae3-ba5a9111f8a5",
+      "title": "Solos",
+      "title_lowercase": "solos",
+      "duration": 207,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d2b68a05-ad01-4f73-91e1-d354765097a3",
+      "title": "Tu cariño",
+      "title_lowercase": "tu cariño",
+      "duration": 187,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "75599e45-b9af-496a-a5b5-87162d420af3",
+      "title": "Recuérdame",
+      "title_lowercase": "recuérdame",
+      "duration": 190,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "88fddb2e-4b6e-4d1c-9aa9-20d51cda306b",
+      "title": "La misma moneda",
+      "title_lowercase": "la misma moneda",
+      "duration": 221,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "80b4762e-6226-41d3-90d1-da37227a6033",
+      "title": "Vuelo hacia el olvido",
+      "title_lowercase": "vuelo hacia el olvido",
+      "duration": 213,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "697cc983-14b4-4df6-b49f-02073571df83",
+      "title": "El Tiki",
+      "title_lowercase": "el tiki",
+      "duration": 181,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3bd4df3b-5de8-4664-aefe-e95c5df59de3",
+      "title": "Carnaval",
+      "title_lowercase": "carnaval",
+      "duration": 214,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "30f05897-7c3d-457d-bb1f-dbfe6ce3c28c",
+      "releaseDate": "2015-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601206.us.archive.org/10/items/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7/mbid-6a5ada29-0615-4cc6-a7a9-a65da1e27ce7-37586272161.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9c95c858-1098-41c7-b034-2ca9e6f762ec",
+      "title": "Intro - F.A.M.E.",
+      "title_lowercase": "intro - f.a.m.e.",
+      "duration": 99,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9f8735d5-05c9-48ef-9a75-7700b2d26424",
+      "title": "Corazón",
+      "title_lowercase": "corazón",
+      "duration": 184,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9b26d2a5-1bd1-49ab-b8f4-1a53a678db30",
+      "title": "El préstamo",
+      "title_lowercase": "el préstamo",
+      "duration": 219,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a2327635-d970-4471-b07a-68346f196f06",
+      "title": "Cuenta a saldo",
+      "title_lowercase": "cuenta a saldo",
+      "duration": 197,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d2d06491-b465-4cac-a850-467716bf83df",
+      "title": "Hangover",
+      "title_lowercase": "hangover",
+      "duration": 241,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "7a8561bb-1314-40ba-9955-372017e22166",
+      "title": "Mi declaración",
+      "title_lowercase": "mi declaración",
+      "duration": 225,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2b9becd9-93dd-4bd5-a9b5-0f5569cbc295",
+      "title": "How I Like It",
+      "title_lowercase": "how i like it",
+      "duration": 171,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "040a3009-bed3-4b53-ac96-afedf190cd02",
+      "title": "Marinero",
+      "title_lowercase": "marinero",
+      "duration": 189,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "35639ad6-393c-4387-9525-644e31ac4d37",
+      "title": "Delincuente",
+      "title_lowercase": "delincuente",
+      "duration": 206,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c73d595f-c042-4020-866f-e4511d2dcf2c",
+      "title": "Condena",
+      "title_lowercase": "condena",
+      "duration": 209,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e4eab5fa-9580-4a5a-92a7-483dd2d8aa13",
+      "title": "Ojos que no ven",
+      "title_lowercase": "ojos que no ven",
+      "duration": 220,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a059479d-bd17-454f-90ea-3cf5ab76ae78",
+      "title": "La ex",
+      "title_lowercase": "la ex",
+      "duration": 191,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d405ef18-1ac1-4887-b703-db42968ff348",
+      "title": "Unfollow",
+      "title_lowercase": "unfollow",
+      "duration": 201,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a920b6c5-0213-48e2-a474-391ee287bc1f",
+      "title": "Felices los 4",
+      "title_lowercase": "felices los 4",
+      "duration": 229,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "74243f57-d22a-4ae0-8da1-185f5ed4eed6",
+      "title": "Felices los 4 (salsa version)",
+      "title_lowercase": "felices los 4 (salsa version)",
+      "duration": 242,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "bacd344a-44e6-4b0f-8545-57d633e48e0a",
+      "releaseDate": "2018-05-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-643ccb54-fe94-4d4c-9472-b545305b495c/mbid-643ccb54-fe94-4d4c-9472-b545305b495c-20831805765.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "b73c1748-ae5d-4f30-8b11-a302cb443b9c",
+      "title": "11 PM",
+      "title_lowercase": "11 pm",
+      "duration": 176,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "687aa2b9-9ba3-4660-8551-564e870bbaa1",
+      "title": "HP",
+      "title_lowercase": "hp",
+      "duration": 184,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e58f7565-3dc6-41b4-b9bd-d425f8cfa19b",
+      "title": "No se me quita",
+      "title_lowercase": "no se me quita",
+      "duration": 220,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "85f69ba7-0415-4509-a12f-f5fe95d4d627",
+      "title": "Dispuesto",
+      "title_lowercase": "dispuesto",
+      "duration": 162,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e2c7e064-cf36-46c9-8831-08f4c9442883",
+      "title": "No puedo olvidarte",
+      "title_lowercase": "no puedo olvidarte",
+      "duration": 191,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "fc6e880c-6af5-4e18-a499-1a8e784a81f8",
+      "title": "Me enamoré de ti",
+      "title_lowercase": "me enamoré de ti",
+      "duration": 199,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e9ab8fe4-c00c-43bd-8eac-78080b4f16ee",
+      "title": "Extrañándote",
+      "title_lowercase": "extrañándote",
+      "duration": 225,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "bca60b0c-8e56-452f-b768-9382f7d28497",
+      "title": "Shhh (Calla')",
+      "title_lowercase": "shhh (calla')",
+      "duration": 178,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "0adecdcd-f665-41a5-b236-1dbe5e0cf870",
+      "title": "Dinero tiene cualquiera",
+      "title_lowercase": "dinero tiene cualquiera",
+      "duration": 206,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "7f6f9acd-f610-436f-a776-034b103e6073",
+      "title": "Soltera",
+      "title_lowercase": "soltera",
+      "duration": 188,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "88a49baa-4392-4466-a61f-92891733dfc4",
+      "title": "Te quiero",
+      "title_lowercase": "te quiero",
+      "duration": 229,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c1d1c5f9-6b75-4d5e-a76d-5ad49513e437",
+      "title": "Instinto natural",
+      "title_lowercase": "instinto natural",
+      "duration": 194,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a581daf7-7624-4aad-900d-c2387dad2908",
+      "title": "Tu vecina",
+      "title_lowercase": "tu vecina",
+      "duration": 199,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "caa2add5-37ae-42f4-8fb0-5aa0d4ef132f",
+      "title": "La flaca",
+      "title_lowercase": "la flaca",
+      "duration": 160,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "8c9c2c94-2c2f-48d6-9aad-77316875c832",
+      "title": "Puesto pa' ti",
+      "title_lowercase": "puesto pa' ti",
+      "duration": 204,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "0dbcb6a3-fd0d-4704-bde8-32e80b292513",
+      "title": "Déjale saber",
+      "title_lowercase": "déjale saber",
+      "duration": 197,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ffdb6ffe-5aa7-4fa9-a2c8-edcff9e11716",
+      "releaseDate": "2019-05-17",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "5aa4953b-bb58-4700-b842-48d033d31e19",
+      "title": "Medallo City",
+      "title_lowercase": "medallo city",
+      "duration": 233,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "0a3792e2-eadb-4377-916b-c54841be0928",
+      "title": "Bella-K",
+      "title_lowercase": "bella-k",
+      "duration": 223,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "8b4f7e85-af3d-402b-aa7b-eb1f5460bab6",
+      "title": "Hawái",
+      "title_lowercase": "hawái",
+      "duration": 199,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "4d192e9a-3115-48d6-ab0c-36dfcefb393b",
+      "title": "Cielo a un diablo",
+      "title_lowercase": "cielo a un diablo",
+      "duration": 205,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "fca63486-fa47-4c1a-b3ff-9a9f37d84ec7",
+      "title": "Perdón",
+      "title_lowercase": "perdón",
+      "duration": 180,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "31d3b70f-83f3-465b-ad05-498d56c51791",
+      "title": "La cura",
+      "title_lowercase": "la cura",
+      "duration": 176,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "b8bb2730-5e82-44fd-b9f0-c8b7db19b266",
+      "title": "Luz verde",
+      "title_lowercase": "luz verde",
+      "duration": 183,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "19ec5e9b-e414-4bed-a105-cbc0e0756b08",
+      "title": "Cuidau",
+      "title_lowercase": "cuidau",
+      "duration": 213,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9c09c58b-79b8-4009-88f5-6edad0e3f1f0",
+      "title": "Parce",
+      "title_lowercase": "parce",
+      "duration": 248,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "37759baf-1fe0-436a-b68e-0bc33216bc85",
+      "title": "Viento (Interlude)",
+      "title_lowercase": "viento (interlude)",
+      "duration": 162,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f2dace63-43cb-4f89-88ae-d38e304266d9",
+      "title": "Madrid",
+      "title_lowercase": "madrid",
+      "duration": 198,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "7a046647-cf1e-4dd0-ab32-cebfc11b1acf",
+      "title": "Salida de escape",
+      "title_lowercase": "salida de escape",
+      "duration": 184,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6b18a56b-7f29-4b8f-a947-685e93fa15a1",
+      "title": "Ansiedad",
+      "title_lowercase": "ansiedad",
+      "duration": 220,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6e0e7293-102b-446f-a9f5-dde1f858e0ab",
+      "title": "Mai mai",
+      "title_lowercase": "mai mai",
+      "duration": 237,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f936f6ca-5c65-4453-8e1c-e8c0ef8b2911",
+      "title": "Vete vete",
+      "title_lowercase": "vete vete",
+      "duration": 243,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "441f612d-893d-4f25-bf8c-2efb161dd508",
+      "title": "Me acuerdo de ti",
+      "title_lowercase": "me acuerdo de ti",
+      "duration": 223,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "03eeed49-2349-4bfe-89f7-718eac8de4a8",
+      "title": "Boy Toy",
+      "title_lowercase": "boy toy",
+      "duration": 195,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "63fe017e-1bef-498e-8565-3ee3ede57e9c",
+      "title": "Booty",
+      "title_lowercase": "booty",
+      "duration": 157,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3602ec27-c321-47fc-8e37-3c5459149a8b",
+      "title": "Quality",
+      "title_lowercase": "quality",
+      "duration": 161,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "8438d1b3-bffe-457a-9c9f-9ad34aabc646",
+      "title": "Copas de vino",
+      "title_lowercase": "copas de vino",
+      "duration": 192,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6549afa0-a1bc-4413-acbf-3a0c0dc8249f",
+      "title": "ADMV",
+      "title_lowercase": "admv",
+      "duration": 193,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "70afef48-0bf5-436a-accd-c13a2ca75ce4",
+      "title": "ADMV (versión urbana)",
+      "title_lowercase": "admv (versión urbana)",
+      "duration": 185,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "e80f4868-8c4f-4518-955e-15d1a62ced43",
+      "releaseDate": "2020-08-21",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721802.ca.archive.org/0/items/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f/mbid-6299b085-0bbd-42ed-9cd8-c401bda3310f-27050978592.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "fb908796-5074-43cf-9828-8054effafe91",
+      "title": "Tónika",
+      "title_lowercase": "tónika",
+      "duration": 230,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "cb6b1b5b-466c-4801-9a5a-defce77e04a9",
+      "releaseDate": "2021-01-28",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721602.ca.archive.org/0/items/mbid-6ff7c71f-a755-4422-bf53-602b94d66804/mbid-6ff7c71f-a755-4422-bf53-602b94d66804-28442469491.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a55782ef-77fe-401a-951b-8be372e729e3",
+      "title": "Love",
+      "title_lowercase": "love",
+      "duration": 188,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "cb6b1b5b-466c-4801-9a5a-defce77e04a9",
+      "releaseDate": "2021-01-28",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721602.ca.archive.org/0/items/mbid-6ff7c71f-a755-4422-bf53-602b94d66804/mbid-6ff7c71f-a755-4422-bf53-602b94d66804-28442469491.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "154b4b9e-0483-4a2f-8616-4ee7812d43a5",
+      "title": "Chocolate",
+      "title_lowercase": "chocolate",
+      "duration": 214,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "cb6b1b5b-466c-4801-9a5a-defce77e04a9",
+      "releaseDate": "2021-01-28",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721602.ca.archive.org/0/items/mbid-6ff7c71f-a755-4422-bf53-602b94d66804/mbid-6ff7c71f-a755-4422-bf53-602b94d66804-28442469491.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "bc4cbf5b-e7fe-4d43-bcb8-f8d1d62aec1c",
+      "title": "Agua de Jamaica",
+      "title_lowercase": "agua de jamaica",
+      "duration": 176,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "cb6b1b5b-466c-4801-9a5a-defce77e04a9",
+      "releaseDate": "2021-01-28",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721602.ca.archive.org/0/items/mbid-6ff7c71f-a755-4422-bf53-602b94d66804/mbid-6ff7c71f-a755-4422-bf53-602b94d66804-28442469491.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "b4fe90e9-475c-49b4-b1cc-57fe3a9a34c4",
+      "title": "Desayun‐arte",
+      "title_lowercase": "desayun‐arte",
+      "duration": 159,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "cb6b1b5b-466c-4801-9a5a-defce77e04a9",
+      "releaseDate": "2021-01-28",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721602.ca.archive.org/0/items/mbid-6ff7c71f-a755-4422-bf53-602b94d66804/mbid-6ff7c71f-a755-4422-bf53-602b94d66804-28442469491.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "dbb6cc45-4ba4-49db-b922-dbeaf588a5c8",
+      "title": "La burbuja",
+      "title_lowercase": "la burbuja",
+      "duration": 228,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "cb6b1b5b-466c-4801-9a5a-defce77e04a9",
+      "releaseDate": "2021-01-28",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721602.ca.archive.org/0/items/mbid-6ff7c71f-a755-4422-bf53-602b94d66804/mbid-6ff7c71f-a755-4422-bf53-602b94d66804-28442469491.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "62cfc937-f3cf-42a3-ab94-3365aed97bef",
+      "title": "Peligrosa",
+      "title_lowercase": "peligrosa",
+      "duration": 225,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "cb6b1b5b-466c-4801-9a5a-defce77e04a9",
+      "releaseDate": "2021-01-28",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721602.ca.archive.org/0/items/mbid-6ff7c71f-a755-4422-bf53-602b94d66804/mbid-6ff7c71f-a755-4422-bf53-602b94d66804-28442469491.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "49a2206d-d5ea-4759-ba52-f4b97a841e9e",
+      "title": "Cositas de la USA",
+      "title_lowercase": "cositas de la usa",
+      "duration": 189,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "b185d81b-2897-4f80-9c8d-7ff7251f1842",
+      "releaseDate": "2022-06-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710006.ca.archive.org/0/items/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5-32744124243.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "279431aa-7fd4-4a14-8968-25e7609f12c2",
+      "title": "Sexo sin título",
+      "title_lowercase": "sexo sin título",
+      "duration": 188,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "b185d81b-2897-4f80-9c8d-7ff7251f1842",
+      "releaseDate": "2022-06-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710006.ca.archive.org/0/items/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5-32744124243.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "53378fe8-0615-4dbe-b8d4-a0264a027bb7",
+      "title": "Nos comemos vivos",
+      "title_lowercase": "nos comemos vivos",
+      "duration": 225,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "b185d81b-2897-4f80-9c8d-7ff7251f1842",
+      "releaseDate": "2022-06-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710006.ca.archive.org/0/items/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5-32744124243.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9993a040-8e2c-4ed9-846d-d17228c2f60b",
+      "title": "Tsunami",
+      "title_lowercase": "tsunami",
+      "duration": 243,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "b185d81b-2897-4f80-9c8d-7ff7251f1842",
+      "releaseDate": "2022-06-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710006.ca.archive.org/0/items/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5-32744124243.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "58d9f99d-6046-4841-b7b0-826eb851922f",
+      "title": "Mojando asientos",
+      "title_lowercase": "mojando asientos",
+      "duration": 252,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "b185d81b-2897-4f80-9c8d-7ff7251f1842",
+      "releaseDate": "2022-06-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710006.ca.archive.org/0/items/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5-32744124243.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d8d60d9a-a3a4-4719-a055-9fb7e2f6562d",
+      "title": "La vida es bella",
+      "title_lowercase": "la vida es bella",
+      "duration": 160,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "b185d81b-2897-4f80-9c8d-7ff7251f1842",
+      "releaseDate": "2022-06-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710006.ca.archive.org/0/items/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5-32744124243.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "88767e0d-e426-4a04-ae91-7a3f8b595e66",
+      "title": "Mal de amores",
+      "title_lowercase": "mal de amores",
+      "duration": 227,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "b185d81b-2897-4f80-9c8d-7ff7251f1842",
+      "releaseDate": "2022-06-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710006.ca.archive.org/0/items/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5-32744124243.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "90f0707f-820c-4978-9e68-65b3ff8c9c8b",
+      "title": "Happy Birthday",
+      "title_lowercase": "happy birthday",
+      "duration": 199,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "b185d81b-2897-4f80-9c8d-7ff7251f1842",
+      "releaseDate": "2022-06-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710006.ca.archive.org/0/items/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5/mbid-1dc6101f-ae34-44ed-a2aa-98757626a2c5-32744124243.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "58ad3292-2537-4d24-a3ae-b3521732afee",
+      "title": "Don Juan",
+      "title_lowercase": "don juan",
+      "duration": 185,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "66252005-a0b3-4044-9537-264d41214d59",
+      "title": "COCO LOCO",
+      "title_lowercase": "coco loco",
+      "duration": 166,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6047b715-198e-4ccf-9a62-fc5f2cb9f928",
+      "title": "Ave María",
+      "title_lowercase": "ave maría",
+      "duration": 197,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "bbc1f7ae-8445-44b5-99d1-be744fb447fc",
+      "title": "Los polvos",
+      "title_lowercase": "los polvos",
+      "duration": 176,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "0872a9e8-b20c-4c0d-b40b-26ec606fa4f3",
+      "title": "Nómina",
+      "title_lowercase": "nómina",
+      "duration": 140,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "543e6bc0-0afa-4eb3-9179-3d073538f061",
+      "title": "Balance",
+      "title_lowercase": "balance",
+      "duration": 180,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "1d84a676-056e-4298-a42e-ad6f6de5864d",
+      "title": "Según quién",
+      "title_lowercase": "según quién",
+      "duration": 142,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "0ad68e08-1ea8-43f5-97d2-9fac125f176f",
+      "title": "Procura",
+      "title_lowercase": "procura",
+      "duration": 185,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "785deb29-2998-4f52-853e-ae93e69226f1",
+      "title": "Luna llena",
+      "title_lowercase": "luna llena",
+      "duration": 181,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "994ab66e-9730-419d-b31a-e8ba9cfdd8e9",
+      "title": "Trofeo",
+      "title_lowercase": "trofeo",
+      "duration": 222,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "28b0b9a4-810b-46ea-b8b6-138d2caf075a",
+      "title": "Parcera",
+      "title_lowercase": "parcera",
+      "duration": 152,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2f1700a5-ef2e-4d64-9d01-7083b059a7bf",
+      "title": "Ojitos chiquiticos",
+      "title_lowercase": "ojitos chiquiticos",
+      "duration": 191,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "aa8bf52d-b292-495e-90e8-2f66cbb258e1",
+      "title": "La piloto",
+      "title_lowercase": "la piloto",
+      "duration": 191,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "0362780c-e8c1-4255-a47b-2c6d996bbd50",
+      "title": "Porsche",
+      "title_lowercase": "porsche",
+      "duration": 145,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a93b5abf-296f-499c-804a-acd926463c20",
+      "title": "Hace un mes",
+      "title_lowercase": "hace un mes",
+      "duration": 173,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "54fe5a30-0e55-4e77-9996-3704ab270762",
+      "title": "Aparentemente",
+      "title_lowercase": "aparentemente",
+      "duration": 144,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3b3e243e-9ef2-4150-804c-13aadf5bf444",
+      "title": "Humedad",
+      "title_lowercase": "humedad",
+      "duration": 155,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e592b25a-76d8-4beb-9044-8defdaedbeee",
+      "title": "Bikini",
+      "title_lowercase": "bikini",
+      "duration": 164,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ff1387ed-653d-49b3-9ea3-1a76eb419f7c",
+      "title": "Sobrio",
+      "title_lowercase": "sobrio",
+      "duration": 201,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e3bb4633-451a-4370-bd70-fcfee3a812a0",
+      "title": "Mama tetema",
+      "title_lowercase": "mama tetema",
+      "duration": 188,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e07fdadb-bede-442a-b3c0-7cef5c5910d7",
+      "title": "Junio",
+      "title_lowercase": "junio",
+      "duration": 168,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "1576a2f6-896c-4484-bb4e-cd0c1a47afd2",
+      "title": "La fórmula",
+      "title_lowercase": "la fórmula",
+      "duration": 267,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9faa8220-630e-4962-8650-ec18667829aa",
+      "title": "La reina",
+      "title_lowercase": "la reina",
+      "duration": 141,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9bbcd01b-edf4-4893-a987-b1a8fedff010",
+      "title": "Diablo, qué chimba",
+      "title_lowercase": "diablo, qué chimba",
+      "duration": 231,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "8d1bb6b2-6dca-4d30-8c67-738aec581be3",
+      "releaseDate": "2023-08-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/usxqpw1490532801.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "1ece670f-d23a-45c7-b13f-4ccb188771f3",
+      "title": "Here Comes the Bride",
+      "title_lowercase": "here comes the bride",
+      "duration": 45,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "84f24241-e858-411f-85d0-f47bc1390d54",
+      "releaseDate": "2022-02-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/23/items/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc-32401427135.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f994dd49-2adb-4545-b24d-be4fb7051194",
+      "title": "Marry Me (Kat & Bastian duet)",
+      "title_lowercase": "marry me (kat & bastian duet)",
+      "duration": 157,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "84f24241-e858-411f-85d0-f47bc1390d54",
+      "releaseDate": "2022-02-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/23/items/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc-32401427135.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "68994d25-ef80-490d-9905-6d3cb6adf305",
+      "title": "Pa ti (For You)",
+      "title_lowercase": "pa ti (for you)",
+      "duration": 230,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "84f24241-e858-411f-85d0-f47bc1390d54",
+      "releaseDate": "2022-02-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/23/items/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc-32401427135.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "1b469e49-5d2f-4b74-8c28-2d45608ff52e",
+      "title": "Church",
+      "title_lowercase": "church",
+      "duration": 170,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "84f24241-e858-411f-85d0-f47bc1390d54",
+      "releaseDate": "2022-02-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/23/items/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc-32401427135.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "af534491-b4e5-4deb-a693-092a8769d8de",
+      "title": "1 en 1 millon",
+      "title_lowercase": "1 en 1 millon",
+      "duration": 160,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "84f24241-e858-411f-85d0-f47bc1390d54",
+      "releaseDate": "2022-02-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/23/items/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc-32401427135.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "7d63af73-6de0-4c6d-916b-7472b72bda4a",
+      "title": "Love of My Life",
+      "title_lowercase": "love of my life",
+      "duration": 192,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "84f24241-e858-411f-85d0-f47bc1390d54",
+      "releaseDate": "2022-02-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/23/items/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc-32401427135.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "41840a0b-6a56-4cef-a860-733ec723f51f",
+      "title": "After Love (Part 1)",
+      "title_lowercase": "after love (part 1)",
+      "duration": 165,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "84f24241-e858-411f-85d0-f47bc1390d54",
+      "releaseDate": "2022-02-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/23/items/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc-32401427135.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "5d07f918-edd1-4f9b-a542-b29b3a676ab7",
+      "title": "Marry Me (ballad)",
+      "title_lowercase": "marry me (ballad)",
+      "duration": 213,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "84f24241-e858-411f-85d0-f47bc1390d54",
+      "releaseDate": "2022-02-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/23/items/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc-32401427135.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "5cf92427-99a5-49c5-867e-a41c6409cbb2",
+      "title": "Segundo",
+      "title_lowercase": "segundo",
+      "duration": 148,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "84f24241-e858-411f-85d0-f47bc1390d54",
+      "releaseDate": "2022-02-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/23/items/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc-32401427135.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a3eb0370-b383-443e-b3a9-ff990859b7fb",
+      "title": "On My Way (Marry Me)",
+      "title_lowercase": "on my way (marry me)",
+      "duration": 192,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "84f24241-e858-411f-85d0-f47bc1390d54",
+      "releaseDate": "2022-02-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/23/items/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc-32401427135.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "1c2123c6-fb09-4e2a-a856-6c0f90d0c276",
+      "title": "Nobody’s Watching (Marry Me)",
+      "title_lowercase": "nobody’s watching (marry me)",
+      "duration": 176,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "84f24241-e858-411f-85d0-f47bc1390d54",
+      "releaseDate": "2022-02-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/23/items/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc-32401427135.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3da9a46f-c768-4300-8962-a84f1eb63790",
+      "title": "Love of My Life (Arkadi remix)",
+      "title_lowercase": "love of my life (arkadi remix)",
+      "duration": 197,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "84f24241-e858-411f-85d0-f47bc1390d54",
+      "releaseDate": "2022-02-04",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/23/items/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc/mbid-857d6f0e-9910-4e66-8e57-2d50abc792bc-32401427135.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a830465a-af0c-44fc-80d1-1157628f27ed",
+      "title": "La temperatura",
+      "title_lowercase": "la temperatura",
+      "duration": 224,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ceb37da0-f665-42c3-9dbf-650f7ea8a480",
+      "releaseDate": "2014",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia802307.us.archive.org/6/items/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea-37548544252.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "172bbb27-daf8-4ea4-bd43-121cc2a92778",
+      "title": "La curiosidad",
+      "title_lowercase": "la curiosidad",
+      "duration": 219,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ceb37da0-f665-42c3-9dbf-650f7ea8a480",
+      "releaseDate": "2014",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia802307.us.archive.org/6/items/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea-37548544252.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a1c017ac-963e-4ddc-ae4b-4d495e72b4c2",
+      "title": "Addicted",
+      "title_lowercase": "addicted",
+      "duration": 214,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ceb37da0-f665-42c3-9dbf-650f7ea8a480",
+      "releaseDate": "2014",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia802307.us.archive.org/6/items/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea-37548544252.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3bd4df3b-5de8-4664-aefe-e95c5df59de3",
+      "title": "Carnaval",
+      "title_lowercase": "carnaval",
+      "duration": 212,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ceb37da0-f665-42c3-9dbf-650f7ea8a480",
+      "releaseDate": "2014",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia802307.us.archive.org/6/items/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea-37548544252.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d10f4a2d-80c8-4d4a-86ea-7c41b698fc5c",
+      "title": "Me gustas tanto",
+      "title_lowercase": "me gustas tanto",
+      "duration": 229,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ceb37da0-f665-42c3-9dbf-650f7ea8a480",
+      "releaseDate": "2014",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia802307.us.archive.org/6/items/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea-37548544252.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "81f1680d-fd67-4e37-b543-f44cb1ffdd77",
+      "title": "Climax",
+      "title_lowercase": "climax",
+      "duration": 212,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ceb37da0-f665-42c3-9dbf-650f7ea8a480",
+      "releaseDate": "2014",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia802307.us.archive.org/6/items/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea-37548544252.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "97b1a490-869c-4f8c-b6f6-0cdb9e0a757d",
+      "title": "La invitación",
+      "title_lowercase": "la invitación",
+      "duration": 219,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ceb37da0-f665-42c3-9dbf-650f7ea8a480",
+      "releaseDate": "2014",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia802307.us.archive.org/6/items/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea-37548544252.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ad12802d-6d11-4297-8946-ff39d8044551",
+      "title": "El punto",
+      "title_lowercase": "el punto",
+      "duration": 217,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ceb37da0-f665-42c3-9dbf-650f7ea8a480",
+      "releaseDate": "2014",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia802307.us.archive.org/6/items/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea-37548544252.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d8c3df8f-6031-4d5e-9f80-5d516d6d67e7",
+      "title": "Duele tanto",
+      "title_lowercase": "duele tanto",
+      "duration": 224,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ceb37da0-f665-42c3-9dbf-650f7ea8a480",
+      "releaseDate": "2014",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia802307.us.archive.org/6/items/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea-37548544252.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f4df9b1e-086a-4b76-8a1f-d27986db42b9",
+      "title": "Tus besos",
+      "title_lowercase": "tus besos",
+      "duration": 219,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "ceb37da0-f665-42c3-9dbf-650f7ea8a480",
+      "releaseDate": "2014",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia802307.us.archive.org/6/items/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea/mbid-7f01190e-bc3e-4057-abea-f8cc93ef53ea-37548544252.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "81d9afec-77b9-4120-82c7-6534231a85ad",
+      "title": "1 of 1",
+      "title_lowercase": "1 of 1",
+      "duration": 221,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "da95a73c-f2e9-4da9-8021-ab4143e43e66",
+      "releaseDate": "2024-06-06",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia803202.us.archive.org/3/items/mbid-9eedb723-8582-4369-bf63-350df4f4e07a/mbid-9eedb723-8582-4369-bf63-350df4f4e07a-39122034539.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "255bd64d-b15e-45ba-b15f-3b13be1d0131",
+      "title": "Call Me",
+      "title_lowercase": "call me",
+      "duration": 170,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "da95a73c-f2e9-4da9-8021-ab4143e43e66",
+      "releaseDate": "2024-06-06",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia803202.us.archive.org/3/items/mbid-9eedb723-8582-4369-bf63-350df4f4e07a/mbid-9eedb723-8582-4369-bf63-350df4f4e07a-39122034539.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "67f6cb35-6c75-4e6d-bd55-eee14ec93f86",
+      "title": "Oe bebé",
+      "title_lowercase": "oe bebé",
+      "duration": 186,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "da95a73c-f2e9-4da9-8021-ab4143e43e66",
+      "releaseDate": "2024-06-06",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia803202.us.archive.org/3/items/mbid-9eedb723-8582-4369-bf63-350df4f4e07a/mbid-9eedb723-8582-4369-bf63-350df4f4e07a-39122034539.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2fe1f8cd-5402-46aa-bae7-1fa440cccbfb",
+      "title": "Manrique",
+      "title_lowercase": "manrique",
+      "duration": 176,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "da95a73c-f2e9-4da9-8021-ab4143e43e66",
+      "releaseDate": "2024-06-06",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia803202.us.archive.org/3/items/mbid-9eedb723-8582-4369-bf63-350df4f4e07a/mbid-9eedb723-8582-4369-bf63-350df4f4e07a-39122034539.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "b9884630-bd9c-4843-b45e-7da525712e99",
+      "title": "Sisas nada",
+      "title_lowercase": "sisas nada",
+      "duration": 200,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "da95a73c-f2e9-4da9-8021-ab4143e43e66",
+      "releaseDate": "2024-06-06",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia803202.us.archive.org/3/items/mbid-9eedb723-8582-4369-bf63-350df4f4e07a/mbid-9eedb723-8582-4369-bf63-350df4f4e07a-39122034539.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a2eb07b5-365b-4e9a-9eb6-efce3e7ad19d",
+      "title": "Goyard/GTA",
+      "title_lowercase": "goyard/gta",
+      "duration": 244,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "da95a73c-f2e9-4da9-8021-ab4143e43e66",
+      "releaseDate": "2024-06-06",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia803202.us.archive.org/3/items/mbid-9eedb723-8582-4369-bf63-350df4f4e07a/mbid-9eedb723-8582-4369-bf63-350df4f4e07a-39122034539.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "0a2d946e-d01d-4798-adc9-4b30cbf73faa",
+      "title": "11 PM",
+      "title_lowercase": "11 pm",
+      "duration": 252,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "9c0f890b-af03-436c-99a1-911474820552",
+      "releaseDate": "2022-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710206.ca.archive.org/0/items/mbid-5c33c746-9ecf-4546-802e-756776a79829/mbid-5c33c746-9ecf-4546-802e-756776a79829-33702193969.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c73b9903-10ce-48a7-82ba-7e12544863ec",
+      "title": "ADMV",
+      "title_lowercase": "admv",
+      "duration": 359,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "9c0f890b-af03-436c-99a1-911474820552",
+      "releaseDate": "2022-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710206.ca.archive.org/0/items/mbid-5c33c746-9ecf-4546-802e-756776a79829/mbid-5c33c746-9ecf-4546-802e-756776a79829-33702193969.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "41e115e1-9b60-453c-9106-ee8d10e6a92d",
+      "title": "Acá entre nos",
+      "title_lowercase": "acá entre nos",
+      "duration": 214,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "9c0f890b-af03-436c-99a1-911474820552",
+      "releaseDate": "2022-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710206.ca.archive.org/0/items/mbid-5c33c746-9ecf-4546-802e-756776a79829/mbid-5c33c746-9ecf-4546-802e-756776a79829-33702193969.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "96f4e84a-93ff-482d-8c16-d351ec7d604f",
+      "title": "Felices los 4",
+      "title_lowercase": "felices los 4",
+      "duration": 308,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "9c0f890b-af03-436c-99a1-911474820552",
+      "releaseDate": "2022-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710206.ca.archive.org/0/items/mbid-5c33c746-9ecf-4546-802e-756776a79829/mbid-5c33c746-9ecf-4546-802e-756776a79829-33702193969.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a922b432-7d12-4ce5-bbf7-d7b16d1f6606",
+      "title": "Sobrio",
+      "title_lowercase": "sobrio",
+      "duration": 299,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "9c0f890b-af03-436c-99a1-911474820552",
+      "releaseDate": "2022-05-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710206.ca.archive.org/0/items/mbid-5c33c746-9ecf-4546-802e-756776a79829/mbid-5c33c746-9ecf-4546-802e-756776a79829-33702193969.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "96f277df-e02a-40c6-b61e-23794c9bedbb",
+      "title": "Loco",
+      "title_lowercase": "loco",
+      "duration": 192,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "63318648-fc5d-4e09-99e2-dc04af36574e",
+      "releaseDate": "2011-08-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600405.us.archive.org/31/items/mbid-4b0c608c-0752-4160-82f5-5ba5ab69a8dc/mbid-4b0c608c-0752-4160-82f5-5ba5ab69a8dc-18256425720.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "32f024dc-9a70-4b34-bfbd-ef7c706b678f",
+      "title": "Obsesión",
+      "title_lowercase": "obsesión",
+      "duration": 178,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "f21995bf-f47e-46b2-b450-c290989ca6c3",
+      "releaseDate": "2011-12-09",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601602.us.archive.org/21/items/mbid-3c46a55e-e5a4-43e4-ae2d-cd073af03d67/mbid-3c46a55e-e5a4-43e4-ae2d-cd073af03d67-18256353534.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "86a77e5a-82a7-4daf-b74a-7d45d818dfc4",
+      "title": "Con flow mátalo",
+      "title_lowercase": "con flow mátalo",
+      "duration": 365,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "c294a47b-135b-498b-aaae-f3cabc1e82e9",
+      "releaseDate": "2012-06-02",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601600.us.archive.org/18/items/mbid-4fbf1e81-feb0-4dc6-8883-385229b76ec0/mbid-4fbf1e81-feb0-4dc6-8883-385229b76ec0-18187432245.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ed4ceacd-314d-4757-bdef-b91ff939a358",
+      "title": "Pasarla bien",
+      "title_lowercase": "pasarla bien",
+      "duration": 216,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "92aefae4-03cc-4ee9-afc4-1e9261857c4f",
+      "releaseDate": "2012-06-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600408.us.archive.org/9/items/mbid-ffb166fa-0e14-4e14-81c0-c37520200985/mbid-ffb166fa-0e14-4e14-81c0-c37520200985-18256343187.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a830465a-af0c-44fc-80d1-1157628f27ed",
+      "title": "La temperatura",
+      "title_lowercase": "la temperatura",
+      "duration": 225,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "c90eb452-c651-48f5-9eb2-52a2e28991f1",
+      "releaseDate": "2013-06-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800204.us.archive.org/0/items/mbid-c3e2304f-373c-447e-9049-7e2a4ad1e3b5/mbid-c3e2304f-373c-447e-9049-7e2a4ad1e3b5-10340192784.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "172bbb27-daf8-4ea4-bd43-121cc2a92778",
+      "title": "La curiosidad",
+      "title_lowercase": "la curiosidad",
+      "duration": 219,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "15176eef-0b51-4806-ba56-7bd9f62e28d0",
+      "releaseDate": "2014-04-08",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia801305.us.archive.org/28/items/mbid-1a9c3390-83e7-4a33-b32d-43b7ebe35988/mbid-1a9c3390-83e7-4a33-b32d-43b7ebe35988-12636228187.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ec7cdbd7-baa9-4337-969d-f348eea9d4f6",
+      "title": "Te viví",
+      "title_lowercase": "te viví",
+      "duration": 206,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "a05653cf-fc9a-4f71-b7d3-611b96ba442f",
+      "releaseDate": "2014-04-15",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia803404.us.archive.org/15/items/mbid-485cf893-bf7d-48f8-b112-a9818409392d/mbid-485cf893-bf7d-48f8-b112-a9818409392d-17873640676.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "27ec8424-c8b8-48c2-be03-6b675f4f1cf3",
+      "title": "Olé Brazil",
+      "title_lowercase": "olé brazil",
+      "duration": 210,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "90a28c76-e4d8-48ea-b30f-b00d6d32b6e0",
+      "releaseDate": "2014-05-06",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia801509.us.archive.org/28/items/mbid-6d1ecd30-b33e-4ec9-a01d-daf6e3ba171f/mbid-6d1ecd30-b33e-4ec9-a01d-daf6e3ba171f-17942864630.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d8c3df8f-6031-4d5e-9f80-5d516d6d67e7",
+      "title": "Duele tanto",
+      "title_lowercase": "duele tanto",
+      "duration": 224,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "67828c45-5953-498f-95bb-cc54e5a63c19",
+      "releaseDate": "2014-05-26",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800801.us.archive.org/22/items/mbid-729f0c89-c7c1-4a49-bb1f-29855cb65ce8/mbid-729f0c89-c7c1-4a49-bb1f-29855cb65ce8-17349289238.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3bd4df3b-5de8-4664-aefe-e95c5df59de3",
+      "title": "Carnaval",
+      "title_lowercase": "carnaval",
+      "duration": 212,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "6eedcf8e-e9ba-4f7c-8f24-85032d712615",
+      "releaseDate": "2014-06-25",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710702.ca.archive.org/0/items/mbid-acef73db-2901-4ee6-a839-8f5197ecaba8/mbid-acef73db-2901-4ee6-a839-8f5197ecaba8-18256306550.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d441a552-5718-49ab-be93-4d90bf233c8a",
+      "title": "Inténtalo",
+      "title_lowercase": "inténtalo",
+      "duration": 187,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "eb34b503-c9de-4688-af5d-814df282357c",
+      "releaseDate": "2014-06-26",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600702.us.archive.org/8/items/mbid-3e3bddeb-e829-49a1-891d-236fa5257fb2/mbid-3e3bddeb-e829-49a1-891d-236fa5257fb2-17350116826.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a1c017ac-963e-4ddc-ae4b-4d495e72b4c2",
+      "title": "Addicted",
+      "title_lowercase": "addicted",
+      "duration": 214,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "99932072-4a79-450b-b570-f77ab042dffc",
+      "releaseDate": "2014-07-02",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800406.us.archive.org/9/items/mbid-53c48d6e-fe3f-4c3a-b75f-68cd2725bb57/mbid-53c48d6e-fe3f-4c3a-b75f-68cd2725bb57-18006207756.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "97b1a490-869c-4f8c-b6f6-0cdb9e0a757d",
+      "title": "La invitación",
+      "title_lowercase": "la invitación",
+      "duration": 219,
+      "artistIds": [
+        "e8979f75-9110-4df8-ac70-898898d080d1"
+      ],
+      "albumId": "92d398c4-c54f-48f9-802b-822fafc82338",
+      "releaseDate": "2014-10-31",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600409.us.archive.org/5/items/mbid-c96c9816-262c-4b49-a832-9a3f21b89671/mbid-c96c9816-262c-4b49-a832-9a3f21b89671-18256331231.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    }
+  ]
+}

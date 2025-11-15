@@ -68,9 +68,12 @@ const ArtistSongsPage: React.FC = () => {
                 }
                 setArtist(artistSnap.data() as Artist);
 
-                const songsQuery = query(collection(db, 'songs'), where('artistIds', 'array-contains', id), orderBy('releaseDate', 'desc'));
+                const songsQuery = query(collection(db, 'songs'), where('artistIds', 'array-contains', id));
                 const songsSnap = await getDocs(songsQuery);
-                setSongs(songsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Song)));
+                const songsData = songsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Song));
+                // Sort client-side to avoid needing a composite index
+                songsData.sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime());
+                setSongs(songsData);
 
             } catch (err) {
                 console.error("Error fetching artist data:", err);

@@ -1,0 +1,2735 @@
+{
+  "artist": {
+    "id": "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3",
+    "name": "Selena Gomez",
+    "name_lowercase": "selena gomez",
+    "imageUrl": "https://r2.theaudiodb.com/images/media/artist/thumb/l2mrm11715251130.jpg",
+    "coverImageUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+    "genres": [],
+    "bio": "",
+    "socials": {
+      "instagram": "https://www.instagram.com/selenagomez/",
+      "twitter": "https://x.com/selenagomez"
+    },
+    "platformLinks": {}
+  },
+  "albums": [
+    {
+      "id": "3309f7fa-61af-439d-a30c-910163ba1ea8",
+      "title": "Stars Dance",
+      "title_lowercase": "stars dance",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2013-07-19",
+      "coverArtUrl": "https://ia601407.us.archive.org/6/items/mbid-dddbefc8-533e-4846-805e-d6d7561848c3/mbid-dddbefc8-533e-4846-805e-d6d7561848c3-6624650844.jpg",
+      "tracklist": [
+        "06624e65-e25c-48a9-aa11-171aa28b14aa",
+        "717d61b9-17da-4df5-8593-58b089eecba4",
+        "aac7ad57-6a0a-4eb8-881c-e987003bc050",
+        "afbededf-eed9-4c54-b9a9-4ac76d622999",
+        "31990f0e-a62b-4577-ae31-21af514a5da0",
+        "3e9543ec-743d-4569-9b42-ac2f3988ee0a",
+        "62068c6a-2054-4995-813c-1016e7c8f947",
+        "2753f656-7d64-4aa4-bf1c-662fc05947fe",
+        "ef36e250-70bb-4692-bf92-5c3a7afdf882",
+        "55bb86c9-e192-43d8-a50d-da201b10c96e",
+        "3f74b4f0-657a-4c2d-a113-b442adf13d1b"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3afd46b3-90bd-402c-af55-8f893f373807",
+      "title": "Revival",
+      "title_lowercase": "revival",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2015-10-09",
+      "coverArtUrl": "https://ia902808.us.archive.org/9/items/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76-25088101417.jpg",
+      "tracklist": [
+        "85352f1d-09be-43ec-828d-1da6158a09e8",
+        "2931d66d-e1a7-49d7-b654-2258e46635df",
+        "7e396dcc-855f-49a1-a6a2-1f6740add5a7",
+        "c4416548-9651-46e8-87fb-c1ea2f25dc74",
+        "a8ba70d1-8250-43c2-9d0e-e32ea77f791f",
+        "2dd146c9-85f7-48ec-9973-af1f7c6534ad",
+        "dd1c84b7-e334-412d-afb7-59d4412455a6",
+        "caef6a9e-20d3-43cb-8d93-cc53bfaefb7f",
+        "86bccad8-1c93-405b-9888-1fb8b78e1532",
+        "fcc8e620-3a9b-4567-b8a6-2a33be15626a",
+        "8a71dbc8-5ff0-44fe-a81f-aa34cb720a2e"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "title": "Rare",
+      "title_lowercase": "rare",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2020-01-10",
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "tracklist": [
+        "6bc7bd37-9209-41f4-b2ef-5da0b0df2f01",
+        "dfda99c1-b04d-4b70-b660-47ab773ae6d5",
+        "a2228cb2-85a6-4bb1-b908-3c6a64f936a5",
+        "87370e5e-be85-4708-94dd-389a2b471ada",
+        "4ebed4b0-aea4-4ca9-828d-092cb9dd795f",
+        "9ef74ff5-731f-4640-a72b-e638ff50c169",
+        "c4372071-43de-4ce6-bba1-c8e1b085695a",
+        "51456337-f93a-405a-a95e-9120b29bb795",
+        "7ef886ad-38ac-4fc8-afee-a55d78f73529",
+        "4dfc5877-67b8-4e64-bab8-0d6435b0d0ae",
+        "a2ba399b-2335-4534-8fa1-7895566ae43b",
+        "1e585b29-d941-4ed9-b9ca-ddaab95da795",
+        "d882e4ca-ceef-42b4-8b2d-0abe91219d14",
+        "7ef86173-771f-481a-a8f4-de1d39bc1419",
+        "55903ac5-73df-4c4e-870a-c2b160c9b102",
+        "65771c02-9096-46ee-a105-277853520279",
+        "5025c41d-7cda-4277-b758-aad8e12eb177",
+        "ff67fcb7-365a-4164-87e9-ef7768767528"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "bc7d07f1-5b7a-4597-b2c6-85660a0676cb",
+      "title": "I Said I Love You First",
+      "title_lowercase": "i said i love you first",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2025-03-19",
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "tracklist": [
+        "6bfd711c-8c6b-4e74-8527-6301e43dd926",
+        "11371d35-f6b0-41ed-8f4b-64d8f729f3da",
+        "7548c65a-e411-45b6-98c9-0a1640a41587",
+        "4e82f6d8-9bd7-4e4d-a084-973260a74739",
+        "fc14ebba-a819-44df-a337-41c1302311b6",
+        "5aebaf0d-1f1b-40db-96c6-8a307d061a1f",
+        "c71f53ba-36e9-4aa0-83c9-9aaf695843b7",
+        "6ac4c114-37cc-49c6-8996-afb1b6e5ed58",
+        "d1af736a-6e4f-4237-a060-19e3d9af55eb",
+        "6f3daa96-a1ac-423f-a908-6e703a3395d0",
+        "1c857f6a-f6de-4b28-9d98-d662d6ef7bfb",
+        "a0e211b3-0a99-4194-94ef-dcafd1d8f368",
+        "69ce9f6f-7d51-4278-96ce-0f2d50e7530d",
+        "11dd3698-2ec2-4e54-90bf-bb9cfec5c421"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "794ce738-1562-4dc8-be73-7923a8961618",
+      "title": "For You",
+      "title_lowercase": "for you",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2014-11-24",
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "tracklist": [
+        "e03514a9-2481-4daa-9ec2-0f859fb9e1e0",
+        "31990f0e-a62b-4577-ae31-21af514a5da0",
+        "1a22c8ba-3f56-44a5-90fb-8eb150811b8f",
+        "bff0fd17-d0f7-449f-9313-f99bd5379f83",
+        "39f38b5e-45d6-410c-b3f2-324667ab09f1",
+        "bcc4ed9f-5a05-49e9-b592-26273ccf1d76",
+        "818ebb2d-189d-4250-b5ff-4553234794eb",
+        "6a31623f-988d-42dc-b283-ca3a50dbd8bc",
+        "717d61b9-17da-4df5-8593-58b089eecba4",
+        "918a6125-cea0-4765-ba18-43fca4dccd34",
+        "f03c677e-c8ef-444a-bef8-f889f9b9fee7",
+        "dce85d3d-16a3-4918-8c6c-80655aec3f0e",
+        "2f30f4ae-f0d4-4031-a497-30d13494c124",
+        "9ef625c4-7169-41a7-9329-3d86e60b2d5e",
+        "3aff81ac-15b1-474d-bf44-8c65806abe35"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f7f3a820-8445-4506-b58b-8e784db6561d",
+      "title": "Love You Like a Love Song and More",
+      "title_lowercase": "love you like a love song and more",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2021-08-18",
+      "coverArtUrl": "https://ia904504.us.archive.org/28/items/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf-30196432508.jpg",
+      "tracklist": [
+        "1a22c8ba-3f56-44a5-90fb-8eb150811b8f",
+        "31990f0e-a62b-4577-ae31-21af514a5da0",
+        "e03514a9-2481-4daa-9ec2-0f859fb9e1e0",
+        "39f38b5e-45d6-410c-b3f2-324667ab09f1",
+        "a341ed36-2df1-46dc-b353-9c887db5c24f",
+        "cdfbd865-7b98-4dc8-ad3d-99c4ca6739a7",
+        "717d61b9-17da-4df5-8593-58b089eecba4",
+        "337a071b-3030-4048-b648-6b1f492e042a",
+        "25772e07-7606-4722-a4d5-dbb866e65811",
+        "69ef4608-c9ba-43d1-8201-74590b14b945",
+        "dce85d3d-16a3-4918-8c6c-80655aec3f0e"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "bb34208f-dff4-43af-aab8-99c8de394a45",
+      "title": "Revelación",
+      "title_lowercase": "revelación",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2021-03-12",
+      "coverArtUrl": "https://ia800409.us.archive.org/7/items/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7-32027211854.png",
+      "tracklist": [
+        "24d31e33-c3b1-45f2-9173-a5f4668351ac",
+        "6226eff9-6a2d-4ce6-be4c-89594390ed52",
+        "f90720d0-3c4e-42a9-94f1-df26dd4ad472",
+        "c56e4264-f633-425c-98fc-d1807facdc19",
+        "0a9df8d6-ed2d-481e-ac3f-3ee4e198fc5d",
+        "9bc55fe5-5c22-46b5-9cf8-61b8c8c298a6",
+        "2d06b2f3-6722-4bd7-8f72-87f74c84449a"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a0f6ebc4-c7cd-45f4-bf59-4bc95434fff0",
+      "title": "For You EP",
+      "title_lowercase": "for you ep",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2015",
+      "coverArtUrl": "https://dn710703.ca.archive.org/0/items/mbid-e0fccfe2-0ffd-4e04-b3db-7ee9d1d8fcee/mbid-e0fccfe2-0ffd-4e04-b3db-7ee9d1d8fcee-16459004168.jpg",
+      "tracklist": [
+        "e03514a9-2481-4daa-9ec2-0f859fb9e1e0",
+        "6a31623f-988d-42dc-b283-ca3a50dbd8bc",
+        "3aff81ac-15b1-474d-bf44-8c65806abe35",
+        "dce85d3d-16a3-4918-8c6c-80655aec3f0e"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9aa4d6d0-0d1b-434e-9b7c-ddc3d8695924",
+      "title": "Selena x Votes",
+      "title_lowercase": "selena x votes",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2020-10-30",
+      "coverArtUrl": "https://ia902801.us.archive.org/26/items/mbid-872f222d-73be-4448-b416-1c13b987c1d2/mbid-872f222d-73be-4448-b416-1c13b987c1d2-27663294625.jpg",
+      "tracklist": [
+        "c4416548-9651-46e8-87fb-c1ea2f25dc74",
+        "7ef86173-771f-481a-a8f4-de1d39bc1419",
+        "86bccad8-1c93-405b-9888-1fb8b78e1532",
+        "f7b0fbf9-3aa2-499f-b2a5-598cd5593249",
+        "87370e5e-be85-4708-94dd-389a2b471ada",
+        "2931d66d-e1a7-49d7-b654-2258e46635df"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "4a8c507f-ed99-43c4-87cd-b4b643748328",
+      "title": "Another Cinderella Story",
+      "title_lowercase": "another cinderella story",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2009-06-16",
+      "coverArtUrl": "https://ia801408.us.archive.org/0/items/mbid-b20e375d-0996-45c0-8dce-c691aa37aa91/mbid-b20e375d-0996-45c0-8dce-c691aa37aa91-28072201876.jpg",
+      "tracklist": [
+        "acf2daff-7524-4f9c-8da1-e4d7a205f09c",
+        "05702394-9dfb-4642-9dee-e2dd459f9829",
+        "d23fd18a-f2b6-4004-913b-f3d9baa36d5c",
+        "d68c3e7c-2fc1-4971-b7e6-29e74e6425ca",
+        "ba528fdb-05dd-49a6-81e1-724d47b0096d"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "20ba35e5-fa58-497f-bcd8-6b3a3e206ab1",
+      "title": "Slow Down (remixes)",
+      "title_lowercase": "slow down (remixes)",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2013-08-20",
+      "coverArtUrl": "https://ia600507.us.archive.org/32/items/mbid-5653cd98-6683-4285-8b7c-0ed0a95bb5de/mbid-5653cd98-6683-4285-8b7c-0ed0a95bb5de-6524497597.jpg",
+      "tracklist": [
+        "6c59c139-03a4-4c98-9302-f56eac87a6e7",
+        "7a8e15b1-75ea-4bc2-bfc6-3cdb281cb9a4",
+        "47127201-57b0-4b08-b10d-17ac98086d4d",
+        "21100427-d18e-45d1-8cc9-e4abc12567eb",
+        "45dcce39-660f-424c-b5a2-6db64c6ca609"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ff9eae98-0118-4975-8816-87f10abc685e",
+      "title": "Same Old Love (remixes)",
+      "title_lowercase": "same old love (remixes)",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2015-11-20",
+      "coverArtUrl": "https://ia600700.us.archive.org/14/items/mbid-18f9c59a-018e-4461-8926-e8b3ebec138c/mbid-18f9c59a-018e-4461-8926-e8b3ebec138c-16458902693.jpg",
+      "tracklist": [
+        "47f5d732-92be-45f7-bd80-7e4134f1e0ae",
+        "14822bca-9038-4cc5-9be0-d0f8352fd3dd",
+        "5af208a1-f934-4cd5-bd17-9d225fefd0a8",
+        "ff46eb8d-f88a-4a8e-b09e-515820621aa9"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "46d3feb8-7c6f-4f12-a545-3d07ccb6b71e",
+      "title": "Selfish Love EP",
+      "title_lowercase": "selfish love ep",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2021-05-07",
+      "coverArtUrl": "https://dn721909.ca.archive.org/0/items/mbid-6a4b6aa8-a53e-464b-a1be-0771388965b3/mbid-6a4b6aa8-a53e-464b-a1be-0771388965b3-29289434442.jpg",
+      "tracklist": [
+        "3c254e2f-b90f-4332-ae4c-9e3a07f48543",
+        "240e2512-6959-4bed-a6a6-a96d6afb4e9b",
+        "832ca38f-674e-4350-a301-4de60330a6d1",
+        "2d06b2f3-6722-4bd7-8f72-87f74c84449a"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d4aae7f3-1917-4859-b4b8-1c55d5b018fe",
+      "title": "Come & Get It",
+      "title_lowercase": "come & get it",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2013-04-09",
+      "coverArtUrl": "https://ia801902.us.archive.org/19/items/mbid-550d238a-ec87-4a38-a3ec-994aa1bbc9d9/mbid-550d238a-ec87-4a38-a3ec-994aa1bbc9d9-32027819607.jpg",
+      "tracklist": [
+        "31990f0e-a62b-4577-ae31-21af514a5da0"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "16aea2d3-b1d0-4e38-9701-42de6a0ccd6f",
+      "title": "Slow Down",
+      "title_lowercase": "slow down",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2013-09-06",
+      "coverArtUrl": "https://ia601602.us.archive.org/33/items/mbid-7b551899-da65-48fd-98d9-77d1e7cd19be/mbid-7b551899-da65-48fd-98d9-77d1e7cd19be-16458471655.jpg",
+      "tracklist": [
+        "717d61b9-17da-4df5-8593-58b089eecba4",
+        "83983239-1da3-4ff5-a848-05e2aec2254e",
+        "cec7e66e-8dd5-43b0-a001-88eb185bf703",
+        "3a2f4c45-ff09-4cdd-a361-d1b1e7e915be"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "32a7eba7-f017-4735-9de8-683cbf1b8b3a",
+      "title": "The Heart Wants What It Wants",
+      "title_lowercase": "the heart wants what it wants",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2014-11-06",
+      "coverArtUrl": "https://ia801508.us.archive.org/28/items/mbid-347d9365-927d-4404-a0d7-65e4916e464e/mbid-347d9365-927d-4404-a0d7-65e4916e464e-11438983255.jpg",
+      "tracklist": [
+        "e03514a9-2481-4daa-9ec2-0f859fb9e1e0"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "cb710780-2152-4ae1-bff0-84a19d886684",
+      "title": "I Want You to Know",
+      "title_lowercase": "i want you to know",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2015-02-23",
+      "coverArtUrl": "https://ia600508.us.archive.org/34/items/mbid-9bb0bc15-5ac6-4308-84c4-b8442695e358/mbid-9bb0bc15-5ac6-4308-84c4-b8442695e358-9918320310.jpg",
+      "tracklist": [
+        "571dc3b1-bffc-4647-a13b-8a710d4662ed"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "35bd81a7-3398-44a3-860e-2502483c46f4",
+      "title": "Good for You",
+      "title_lowercase": "good for you",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2015-06-22",
+      "coverArtUrl": "https://ia903403.us.archive.org/31/items/mbid-007dcab5-7c56-4e8e-b333-2d1082b3626d/mbid-007dcab5-7c56-4e8e-b333-2d1082b3626d-32027972720.jpg",
+      "tracklist": [
+        "f6908093-ff6c-458c-949d-99987cd1263b"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "791d66a5-f583-4957-b265-5bce2ecceaec",
+      "title": "Same Old Love",
+      "title_lowercase": "same old love",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2015-09-10",
+      "coverArtUrl": "https://ia601303.us.archive.org/18/items/mbid-cdcb3221-242f-4a4f-babb-d587a82d73e7/mbid-cdcb3221-242f-4a4f-babb-d587a82d73e7-11443330671.jpg",
+      "tracklist": [
+        "c4416548-9651-46e8-87fb-c1ea2f25dc74"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "526d094e-ecda-4ec6-a030-a45475e43d9f",
+      "title": "Me & the Rhythm",
+      "title_lowercase": "me & the rhythm",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2015-10-02",
+      "coverArtUrl": "https://ia801402.us.archive.org/18/items/mbid-3675fcfc-239b-4358-b249-5f09d5a3e93c/mbid-3675fcfc-239b-4358-b249-5f09d5a3e93c-16459135244.jpg",
+      "tracklist": [
+        "caef6a9e-20d3-43cb-8d93-cc53bfaefb7f"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "b13615c6-2fb2-4da6-90a9-3e2713bfd205",
+      "title": "Hands to Myself",
+      "title_lowercase": "hands to myself",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2016-01-19",
+      "coverArtUrl": "https://ia800301.us.archive.org/29/items/mbid-fe9fa232-d607-4421-b0c1-624b13fea828/mbid-fe9fa232-d607-4421-b0c1-624b13fea828-39336332593.jpg",
+      "tracklist": [
+        "7e396dcc-855f-49a1-a6a2-1f6740add5a7"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6dca25bc-a290-480a-ac5f-0d4398b612ce",
+      "title": "We Don't Talk Anymore",
+      "title_lowercase": "we don't talk anymore",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2016-04-13",
+      "coverArtUrl": "https://ia800700.us.archive.org/21/items/mbid-04fa1f93-bed5-46bc-bbc4-7d018f9a9640/mbid-04fa1f93-bed5-46bc-bbc4-7d018f9a9640-38964481572.jpg",
+      "tracklist": [
+        "a16e6dab-38d7-4ec6-b751-c1ebb5e62c22"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e7d0193c-3d81-499b-8f40-0b42e327f17e",
+      "title": "Kill Em With Kindness",
+      "title_lowercase": "kill em with kindness",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2016-04-28",
+      "coverArtUrl": "https://ia803208.us.archive.org/27/items/mbid-e08dd73f-9513-4cdf-9a7c-1df42e99b60f/mbid-e08dd73f-9513-4cdf-9a7c-1df42e99b60f-41452747831.jpg",
+      "tracklist": [
+        "2931d66d-e1a7-49d7-b654-2258e46635df"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "05159891-0522-4e08-bcf4-8a29929a478a",
+      "title": "Trust Nobody",
+      "title_lowercase": "trust nobody",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2016-09-30",
+      "coverArtUrl": "https://ia903205.us.archive.org/2/items/mbid-2cc525eb-e634-4634-9edc-1bb639942253/mbid-2cc525eb-e634-4634-9edc-1bb639942253-14763887214.jpg",
+      "tracklist": [
+        "402f5eeb-ad21-4748-91f1-6303e5675b64"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "587bc138-923c-4d46-9784-dbfb05f5f3a6",
+      "title": "It Ain’t Me",
+      "title_lowercase": "it ain’t me",
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "releaseDate": "2017-02-16",
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "tracklist": [
+        "65771c02-9096-46ee-a105-277853520279"
+      ],
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    }
+  ],
+  "tracks": [
+    {
+      "id": "06624e65-e25c-48a9-aa11-171aa28b14aa",
+      "title": "Birthday",
+      "title_lowercase": "birthday",
+      "duration": 201,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3309f7fa-61af-439d-a30c-910163ba1ea8",
+      "releaseDate": "2013-07-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601407.us.archive.org/6/items/mbid-dddbefc8-533e-4846-805e-d6d7561848c3/mbid-dddbefc8-533e-4846-805e-d6d7561848c3-6624650844.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "717d61b9-17da-4df5-8593-58b089eecba4",
+      "title": "Slow Down",
+      "title_lowercase": "slow down",
+      "duration": 210,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3309f7fa-61af-439d-a30c-910163ba1ea8",
+      "releaseDate": "2013-07-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601407.us.archive.org/6/items/mbid-dddbefc8-533e-4846-805e-d6d7561848c3/mbid-dddbefc8-533e-4846-805e-d6d7561848c3-6624650844.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "aac7ad57-6a0a-4eb8-881c-e987003bc050",
+      "title": "Stars Dance",
+      "title_lowercase": "stars dance",
+      "duration": 217,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3309f7fa-61af-439d-a30c-910163ba1ea8",
+      "releaseDate": "2013-07-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601407.us.archive.org/6/items/mbid-dddbefc8-533e-4846-805e-d6d7561848c3/mbid-dddbefc8-533e-4846-805e-d6d7561848c3-6624650844.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "afbededf-eed9-4c54-b9a9-4ac76d622999",
+      "title": "Like a Champion",
+      "title_lowercase": "like a champion",
+      "duration": 176,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3309f7fa-61af-439d-a30c-910163ba1ea8",
+      "releaseDate": "2013-07-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601407.us.archive.org/6/items/mbid-dddbefc8-533e-4846-805e-d6d7561848c3/mbid-dddbefc8-533e-4846-805e-d6d7561848c3-6624650844.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "31990f0e-a62b-4577-ae31-21af514a5da0",
+      "title": "Come & Get It",
+      "title_lowercase": "come & get it",
+      "duration": 232,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3309f7fa-61af-439d-a30c-910163ba1ea8",
+      "releaseDate": "2013-07-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601407.us.archive.org/6/items/mbid-dddbefc8-533e-4846-805e-d6d7561848c3/mbid-dddbefc8-533e-4846-805e-d6d7561848c3-6624650844.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3e9543ec-743d-4569-9b42-ac2f3988ee0a",
+      "title": "Forget Forever",
+      "title_lowercase": "forget forever",
+      "duration": 251,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3309f7fa-61af-439d-a30c-910163ba1ea8",
+      "releaseDate": "2013-07-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601407.us.archive.org/6/items/mbid-dddbefc8-533e-4846-805e-d6d7561848c3/mbid-dddbefc8-533e-4846-805e-d6d7561848c3-6624650844.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "62068c6a-2054-4995-813c-1016e7c8f947",
+      "title": "Save the Day",
+      "title_lowercase": "save the day",
+      "duration": 233,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3309f7fa-61af-439d-a30c-910163ba1ea8",
+      "releaseDate": "2013-07-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601407.us.archive.org/6/items/mbid-dddbefc8-533e-4846-805e-d6d7561848c3/mbid-dddbefc8-533e-4846-805e-d6d7561848c3-6624650844.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2753f656-7d64-4aa4-bf1c-662fc05947fe",
+      "title": "B.E.A.T.",
+      "title_lowercase": "b.e.a.t.",
+      "duration": 186,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3309f7fa-61af-439d-a30c-910163ba1ea8",
+      "releaseDate": "2013-07-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601407.us.archive.org/6/items/mbid-dddbefc8-533e-4846-805e-d6d7561848c3/mbid-dddbefc8-533e-4846-805e-d6d7561848c3-6624650844.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ef36e250-70bb-4692-bf92-5c3a7afdf882",
+      "title": "Write Your Name",
+      "title_lowercase": "write your name",
+      "duration": 197,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3309f7fa-61af-439d-a30c-910163ba1ea8",
+      "releaseDate": "2013-07-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601407.us.archive.org/6/items/mbid-dddbefc8-533e-4846-805e-d6d7561848c3/mbid-dddbefc8-533e-4846-805e-d6d7561848c3-6624650844.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "55bb86c9-e192-43d8-a50d-da201b10c96e",
+      "title": "Undercover",
+      "title_lowercase": "undercover",
+      "duration": 233,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3309f7fa-61af-439d-a30c-910163ba1ea8",
+      "releaseDate": "2013-07-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601407.us.archive.org/6/items/mbid-dddbefc8-533e-4846-805e-d6d7561848c3/mbid-dddbefc8-533e-4846-805e-d6d7561848c3-6624650844.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3f74b4f0-657a-4c2d-a113-b442adf13d1b",
+      "title": "Love Will Remember",
+      "title_lowercase": "love will remember",
+      "duration": 211,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3309f7fa-61af-439d-a30c-910163ba1ea8",
+      "releaseDate": "2013-07-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601407.us.archive.org/6/items/mbid-dddbefc8-533e-4846-805e-d6d7561848c3/mbid-dddbefc8-533e-4846-805e-d6d7561848c3-6624650844.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "85352f1d-09be-43ec-828d-1da6158a09e8",
+      "title": "Revival",
+      "title_lowercase": "revival",
+      "duration": 246,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3afd46b3-90bd-402c-af55-8f893f373807",
+      "releaseDate": "2015-10-09",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902808.us.archive.org/9/items/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76-25088101417.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2931d66d-e1a7-49d7-b654-2258e46635df",
+      "title": "Kill Em With Kindness",
+      "title_lowercase": "kill em with kindness",
+      "duration": 217,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3afd46b3-90bd-402c-af55-8f893f373807",
+      "releaseDate": "2015-10-09",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902808.us.archive.org/9/items/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76-25088101417.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "7e396dcc-855f-49a1-a6a2-1f6740add5a7",
+      "title": "Hands to Myself",
+      "title_lowercase": "hands to myself",
+      "duration": 200,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3afd46b3-90bd-402c-af55-8f893f373807",
+      "releaseDate": "2015-10-09",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902808.us.archive.org/9/items/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76-25088101417.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c4416548-9651-46e8-87fb-c1ea2f25dc74",
+      "title": "Same Old Love",
+      "title_lowercase": "same old love",
+      "duration": 229,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3afd46b3-90bd-402c-af55-8f893f373807",
+      "releaseDate": "2015-10-09",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902808.us.archive.org/9/items/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76-25088101417.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a8ba70d1-8250-43c2-9d0e-e32ea77f791f",
+      "title": "Sober",
+      "title_lowercase": "sober",
+      "duration": 194,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3afd46b3-90bd-402c-af55-8f893f373807",
+      "releaseDate": "2015-10-09",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902808.us.archive.org/9/items/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76-25088101417.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2dd146c9-85f7-48ec-9973-af1f7c6534ad",
+      "title": "Good for You",
+      "title_lowercase": "good for you",
+      "duration": 221,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3afd46b3-90bd-402c-af55-8f893f373807",
+      "releaseDate": "2015-10-09",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902808.us.archive.org/9/items/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76-25088101417.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "dd1c84b7-e334-412d-afb7-59d4412455a6",
+      "title": "Camouflage",
+      "title_lowercase": "camouflage",
+      "duration": 249,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3afd46b3-90bd-402c-af55-8f893f373807",
+      "releaseDate": "2015-10-09",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902808.us.archive.org/9/items/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76-25088101417.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "caef6a9e-20d3-43cb-8d93-cc53bfaefb7f",
+      "title": "Me & the Rhythm",
+      "title_lowercase": "me & the rhythm",
+      "duration": 213,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3afd46b3-90bd-402c-af55-8f893f373807",
+      "releaseDate": "2015-10-09",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902808.us.archive.org/9/items/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76-25088101417.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "86bccad8-1c93-405b-9888-1fb8b78e1532",
+      "title": "Survivors",
+      "title_lowercase": "survivors",
+      "duration": 221,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3afd46b3-90bd-402c-af55-8f893f373807",
+      "releaseDate": "2015-10-09",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902808.us.archive.org/9/items/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76-25088101417.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "fcc8e620-3a9b-4567-b8a6-2a33be15626a",
+      "title": "Body Heat",
+      "title_lowercase": "body heat",
+      "duration": 207,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3afd46b3-90bd-402c-af55-8f893f373807",
+      "releaseDate": "2015-10-09",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902808.us.archive.org/9/items/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76-25088101417.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "8a71dbc8-5ff0-44fe-a81f-aa34cb720a2e",
+      "title": "Rise",
+      "title_lowercase": "rise",
+      "duration": 167,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "3afd46b3-90bd-402c-af55-8f893f373807",
+      "releaseDate": "2015-10-09",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902808.us.archive.org/9/items/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76/mbid-9970de5f-8c03-4523-a1a9-28f36907bc76-25088101417.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6bc7bd37-9209-41f4-b2ef-5da0b0df2f01",
+      "title": "Rare",
+      "title_lowercase": "rare",
+      "duration": 221,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "dfda99c1-b04d-4b70-b660-47ab773ae6d5",
+      "title": "Dance Again",
+      "title_lowercase": "dance again",
+      "duration": 170,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a2228cb2-85a6-4bb1-b908-3c6a64f936a5",
+      "title": "Look at Her Now",
+      "title_lowercase": "look at her now",
+      "duration": 163,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "87370e5e-be85-4708-94dd-389a2b471ada",
+      "title": "Lose You to Love Me",
+      "title_lowercase": "lose you to love me",
+      "duration": 206,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "4ebed4b0-aea4-4ca9-828d-092cb9dd795f",
+      "title": "Ring",
+      "title_lowercase": "ring",
+      "duration": 149,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9ef74ff5-731f-4640-a72b-e638ff50c169",
+      "title": "Vulnerable",
+      "title_lowercase": "vulnerable",
+      "duration": 192,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c4372071-43de-4ce6-bba1-c8e1b085695a",
+      "title": "People You Know",
+      "title_lowercase": "people you know",
+      "duration": 195,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "51456337-f93a-405a-a95e-9120b29bb795",
+      "title": "Let Me Get Me",
+      "title_lowercase": "let me get me",
+      "duration": 189,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "7ef886ad-38ac-4fc8-afee-a55d78f73529",
+      "title": "Crowded Room",
+      "title_lowercase": "crowded room",
+      "duration": 186,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "4dfc5877-67b8-4e64-bab8-0d6435b0d0ae",
+      "title": "Kinda Crazy",
+      "title_lowercase": "kinda crazy",
+      "duration": 212,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a2ba399b-2335-4534-8fa1-7895566ae43b",
+      "title": "Fun",
+      "title_lowercase": "fun",
+      "duration": 190,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "1e585b29-d941-4ed9-b9ca-ddaab95da795",
+      "title": "Cut You Off",
+      "title_lowercase": "cut you off",
+      "duration": 182,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d882e4ca-ceef-42b4-8b2d-0abe91219d14",
+      "title": "A Sweeter Place",
+      "title_lowercase": "a sweeter place",
+      "duration": 263,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "7ef86173-771f-481a-a8f4-de1d39bc1419",
+      "title": "Bad Liar",
+      "title_lowercase": "bad liar",
+      "duration": 215,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "55903ac5-73df-4c4e-870a-c2b160c9b102",
+      "title": "Fetish",
+      "title_lowercase": "fetish",
+      "duration": 186,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "65771c02-9096-46ee-a105-277853520279",
+      "title": "It Ain’t Me",
+      "title_lowercase": "it ain’t me",
+      "duration": 221,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "5025c41d-7cda-4277-b758-aad8e12eb177",
+      "title": "Back to You",
+      "title_lowercase": "back to you",
+      "duration": 210,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ff67fcb7-365a-4164-87e9-ef7768767528",
+      "title": "Wolves",
+      "title_lowercase": "wolves",
+      "duration": 198,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "c4bb9940-e53e-4d5c-a19c-dab81e0f9687",
+      "releaseDate": "2020-01-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710604.ca.archive.org/0/items/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b/mbid-fc76e070-a438-454b-9f16-6d8bc21af03b-25114064736.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6bfd711c-8c6b-4e74-8527-6301e43dd926",
+      "title": "I Said I Love You First",
+      "title_lowercase": "i said i love you first",
+      "duration": 44,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bc7d07f1-5b7a-4597-b2c6-85660a0676cb",
+      "releaseDate": "2025-03-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "11371d35-f6b0-41ed-8f4b-64d8f729f3da",
+      "title": "Younger And Hotter Than Me",
+      "title_lowercase": "younger and hotter than me",
+      "duration": 189,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bc7d07f1-5b7a-4597-b2c6-85660a0676cb",
+      "releaseDate": "2025-03-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "7548c65a-e411-45b6-98c9-0a1640a41587",
+      "title": "Call Me When You Break Up",
+      "title_lowercase": "call me when you break up",
+      "duration": 126,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bc7d07f1-5b7a-4597-b2c6-85660a0676cb",
+      "releaseDate": "2025-03-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "4e82f6d8-9bd7-4e4d-a084-973260a74739",
+      "title": "Ojos Tristes",
+      "title_lowercase": "ojos tristes",
+      "duration": 201,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bc7d07f1-5b7a-4597-b2c6-85660a0676cb",
+      "releaseDate": "2025-03-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "fc14ebba-a819-44df-a337-41c1302311b6",
+      "title": "Don’t Wanna Cry",
+      "title_lowercase": "don’t wanna cry",
+      "duration": 207,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bc7d07f1-5b7a-4597-b2c6-85660a0676cb",
+      "releaseDate": "2025-03-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "5aebaf0d-1f1b-40db-96c6-8a307d061a1f",
+      "title": "Sunset Blvd",
+      "title_lowercase": "sunset blvd",
+      "duration": 167,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bc7d07f1-5b7a-4597-b2c6-85660a0676cb",
+      "releaseDate": "2025-03-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c71f53ba-36e9-4aa0-83c9-9aaf695843b7",
+      "title": "Cowboy",
+      "title_lowercase": "cowboy",
+      "duration": 184,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bc7d07f1-5b7a-4597-b2c6-85660a0676cb",
+      "releaseDate": "2025-03-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6ac4c114-37cc-49c6-8996-afb1b6e5ed58",
+      "title": "Bluest Flame",
+      "title_lowercase": "bluest flame",
+      "duration": 162,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bc7d07f1-5b7a-4597-b2c6-85660a0676cb",
+      "releaseDate": "2025-03-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d1af736a-6e4f-4237-a060-19e3d9af55eb",
+      "title": "How Does It Feel To Be Forgotten",
+      "title_lowercase": "how does it feel to be forgotten",
+      "duration": 161,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bc7d07f1-5b7a-4597-b2c6-85660a0676cb",
+      "releaseDate": "2025-03-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6f3daa96-a1ac-423f-a908-6e703a3395d0",
+      "title": "Do You Wanna Be Perfect",
+      "title_lowercase": "do you wanna be perfect",
+      "duration": 37,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bc7d07f1-5b7a-4597-b2c6-85660a0676cb",
+      "releaseDate": "2025-03-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "1c857f6a-f6de-4b28-9d98-d662d6ef7bfb",
+      "title": "You Said You Were Sorry",
+      "title_lowercase": "you said you were sorry",
+      "duration": 179,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bc7d07f1-5b7a-4597-b2c6-85660a0676cb",
+      "releaseDate": "2025-03-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a0e211b3-0a99-4194-94ef-dcafd1d8f368",
+      "title": "I Can’t Get Enough",
+      "title_lowercase": "i can’t get enough",
+      "duration": 157,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bc7d07f1-5b7a-4597-b2c6-85660a0676cb",
+      "releaseDate": "2025-03-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "69ce9f6f-7d51-4278-96ce-0f2d50e7530d",
+      "title": "Don’t Take It Personally",
+      "title_lowercase": "don’t take it personally",
+      "duration": 154,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bc7d07f1-5b7a-4597-b2c6-85660a0676cb",
+      "releaseDate": "2025-03-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "11dd3698-2ec2-4e54-90bf-bb9cfec5c421",
+      "title": "Scared Of Loving You",
+      "title_lowercase": "scared of loving you",
+      "duration": 110,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bc7d07f1-5b7a-4597-b2c6-85660a0676cb",
+      "releaseDate": "2025-03-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e03514a9-2481-4daa-9ec2-0f859fb9e1e0",
+      "title": "The Heart Wants What It Wants",
+      "title_lowercase": "the heart wants what it wants",
+      "duration": 227,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "794ce738-1562-4dc8-be73-7923a8961618",
+      "releaseDate": "2014-11-24",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "31990f0e-a62b-4577-ae31-21af514a5da0",
+      "title": "Come & Get It",
+      "title_lowercase": "come & get it",
+      "duration": 231,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "794ce738-1562-4dc8-be73-7923a8961618",
+      "releaseDate": "2014-11-24",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "1a22c8ba-3f56-44a5-90fb-8eb150811b8f",
+      "title": "Love You Like a Love Song",
+      "title_lowercase": "love you like a love song",
+      "duration": 188,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "794ce738-1562-4dc8-be73-7923a8961618",
+      "releaseDate": "2014-11-24",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "bff0fd17-d0f7-449f-9313-f99bd5379f83",
+      "title": "Tell Me Something I Don’t Know",
+      "title_lowercase": "tell me something i don’t know",
+      "duration": 175,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "794ce738-1562-4dc8-be73-7923a8961618",
+      "releaseDate": "2014-11-24",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "39f38b5e-45d6-410c-b3f2-324667ab09f1",
+      "title": "Who Says",
+      "title_lowercase": "who says",
+      "duration": 195,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "794ce738-1562-4dc8-be73-7923a8961618",
+      "releaseDate": "2014-11-24",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "bcc4ed9f-5a05-49e9-b592-26273ccf1d76",
+      "title": "My Dilemma 2.0",
+      "title_lowercase": "my dilemma 2.0",
+      "duration": 189,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "794ce738-1562-4dc8-be73-7923a8961618",
+      "releaseDate": "2014-11-24",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "818ebb2d-189d-4250-b5ff-4553234794eb",
+      "title": "Round & Round",
+      "title_lowercase": "round & round",
+      "duration": 185,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "794ce738-1562-4dc8-be73-7923a8961618",
+      "releaseDate": "2014-11-24",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6a31623f-988d-42dc-b283-ca3a50dbd8bc",
+      "title": "Forget Forever (ST£FAN remix)",
+      "title_lowercase": "forget forever (st£fan remix)",
+      "duration": 226,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "794ce738-1562-4dc8-be73-7923a8961618",
+      "releaseDate": "2014-11-24",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "717d61b9-17da-4df5-8593-58b089eecba4",
+      "title": "Slow Down",
+      "title_lowercase": "slow down",
+      "duration": 210,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "794ce738-1562-4dc8-be73-7923a8961618",
+      "releaseDate": "2014-11-24",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "918a6125-cea0-4765-ba18-43fca4dccd34",
+      "title": "A Year Without Rain (Dave Audé radio remix)",
+      "title_lowercase": "a year without rain (dave audé radio remix)",
+      "duration": 239,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "794ce738-1562-4dc8-be73-7923a8961618",
+      "releaseDate": "2014-11-24",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f03c677e-c8ef-444a-bef8-f889f9b9fee7",
+      "title": "Naturally (Dave Audé radio remix)",
+      "title_lowercase": "naturally (dave audé radio remix)",
+      "duration": 241,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "794ce738-1562-4dc8-be73-7923a8961618",
+      "releaseDate": "2014-11-24",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "dce85d3d-16a3-4918-8c6c-80655aec3f0e",
+      "title": "Más",
+      "title_lowercase": "más",
+      "duration": 210,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "794ce738-1562-4dc8-be73-7923a8961618",
+      "releaseDate": "2014-11-24",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2f30f4ae-f0d4-4031-a497-30d13494c124",
+      "title": "Bidi Bidi Bom Bom",
+      "title_lowercase": "bidi bidi bom bom",
+      "duration": 253,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "794ce738-1562-4dc8-be73-7923a8961618",
+      "releaseDate": "2014-11-24",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9ef625c4-7169-41a7-9329-3d86e60b2d5e",
+      "title": "Falling Down",
+      "title_lowercase": "falling down",
+      "duration": 183,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "794ce738-1562-4dc8-be73-7923a8961618",
+      "releaseDate": "2014-11-24",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3aff81ac-15b1-474d-bf44-8c65806abe35",
+      "title": "Do It",
+      "title_lowercase": "do it",
+      "duration": 160,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "794ce738-1562-4dc8-be73-7923a8961618",
+      "releaseDate": "2014-11-24",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "1a22c8ba-3f56-44a5-90fb-8eb150811b8f",
+      "title": "Love You Like a Love Song",
+      "title_lowercase": "love you like a love song",
+      "duration": 188,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "f7f3a820-8445-4506-b58b-8e784db6561d",
+      "releaseDate": "2021-08-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia904504.us.archive.org/28/items/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf-30196432508.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "31990f0e-a62b-4577-ae31-21af514a5da0",
+      "title": "Come & Get It",
+      "title_lowercase": "come & get it",
+      "duration": 231,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "f7f3a820-8445-4506-b58b-8e784db6561d",
+      "releaseDate": "2021-08-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia904504.us.archive.org/28/items/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf-30196432508.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e03514a9-2481-4daa-9ec2-0f859fb9e1e0",
+      "title": "The Heart Wants What It Wants",
+      "title_lowercase": "the heart wants what it wants",
+      "duration": 227,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "f7f3a820-8445-4506-b58b-8e784db6561d",
+      "releaseDate": "2021-08-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia904504.us.archive.org/28/items/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf-30196432508.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "39f38b5e-45d6-410c-b3f2-324667ab09f1",
+      "title": "Who Says",
+      "title_lowercase": "who says",
+      "duration": 195,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "f7f3a820-8445-4506-b58b-8e784db6561d",
+      "releaseDate": "2021-08-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia904504.us.archive.org/28/items/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf-30196432508.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a341ed36-2df1-46dc-b353-9c887db5c24f",
+      "title": "A Year Without Rain",
+      "title_lowercase": "a year without rain",
+      "duration": 235,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "f7f3a820-8445-4506-b58b-8e784db6561d",
+      "releaseDate": "2021-08-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia904504.us.archive.org/28/items/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf-30196432508.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "cdfbd865-7b98-4dc8-ad3d-99c4ca6739a7",
+      "title": "More",
+      "title_lowercase": "more",
+      "duration": 210,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "f7f3a820-8445-4506-b58b-8e784db6561d",
+      "releaseDate": "2021-08-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia904504.us.archive.org/28/items/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf-30196432508.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "717d61b9-17da-4df5-8593-58b089eecba4",
+      "title": "Slow Down",
+      "title_lowercase": "slow down",
+      "duration": 210,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "f7f3a820-8445-4506-b58b-8e784db6561d",
+      "releaseDate": "2021-08-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia904504.us.archive.org/28/items/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf-30196432508.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "337a071b-3030-4048-b648-6b1f492e042a",
+      "title": "Naturally",
+      "title_lowercase": "naturally",
+      "duration": 202,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "f7f3a820-8445-4506-b58b-8e784db6561d",
+      "releaseDate": "2021-08-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia904504.us.archive.org/28/items/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf-30196432508.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "25772e07-7606-4722-a4d5-dbb866e65811",
+      "title": "Dices (Who Says - Spanish version)",
+      "title_lowercase": "dices (who says - spanish version)",
+      "duration": 195,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "f7f3a820-8445-4506-b58b-8e784db6561d",
+      "releaseDate": "2021-08-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia904504.us.archive.org/28/items/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf-30196432508.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "69ef4608-c9ba-43d1-8201-74590b14b945",
+      "title": "A Year Without Rain (Spanish‐language version)",
+      "title_lowercase": "a year without rain (spanish‐language version)",
+      "duration": 210,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "f7f3a820-8445-4506-b58b-8e784db6561d",
+      "releaseDate": "2021-08-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia904504.us.archive.org/28/items/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf-30196432508.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "dce85d3d-16a3-4918-8c6c-80655aec3f0e",
+      "title": "Más (More/Spanish version)",
+      "title_lowercase": "más (more/spanish version)",
+      "duration": 210,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "f7f3a820-8445-4506-b58b-8e784db6561d",
+      "releaseDate": "2021-08-18",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia904504.us.archive.org/28/items/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf/mbid-404c8f26-6a15-45c9-8f78-f2e182bcc9bf-30196432508.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "24d31e33-c3b1-45f2-9173-a5f4668351ac",
+      "title": "De una vez",
+      "title_lowercase": "de una vez",
+      "duration": 155,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bb34208f-dff4-43af-aab8-99c8de394a45",
+      "releaseDate": "2021-03-12",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/7/items/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7-32027211854.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6226eff9-6a2d-4ce6-be4c-89594390ed52",
+      "title": "Buscando amor",
+      "title_lowercase": "buscando amor",
+      "duration": 188,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bb34208f-dff4-43af-aab8-99c8de394a45",
+      "releaseDate": "2021-03-12",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/7/items/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7-32027211854.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f90720d0-3c4e-42a9-94f1-df26dd4ad472",
+      "title": "Baila conmigo",
+      "title_lowercase": "baila conmigo",
+      "duration": 186,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bb34208f-dff4-43af-aab8-99c8de394a45",
+      "releaseDate": "2021-03-12",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/7/items/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7-32027211854.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c56e4264-f633-425c-98fc-d1807facdc19",
+      "title": "Dámelo to’",
+      "title_lowercase": "dámelo to’",
+      "duration": 184,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bb34208f-dff4-43af-aab8-99c8de394a45",
+      "releaseDate": "2021-03-12",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/7/items/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7-32027211854.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "0a9df8d6-ed2d-481e-ac3f-3ee4e198fc5d",
+      "title": "Vicio",
+      "title_lowercase": "vicio",
+      "duration": 160,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bb34208f-dff4-43af-aab8-99c8de394a45",
+      "releaseDate": "2021-03-12",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/7/items/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7-32027211854.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "9bc55fe5-5c22-46b5-9cf8-61b8c8c298a6",
+      "title": "Adiós",
+      "title_lowercase": "adiós",
+      "duration": 130,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bb34208f-dff4-43af-aab8-99c8de394a45",
+      "releaseDate": "2021-03-12",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/7/items/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7-32027211854.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2d06b2f3-6722-4bd7-8f72-87f74c84449a",
+      "title": "Selfish Love",
+      "title_lowercase": "selfish love",
+      "duration": 168,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "bb34208f-dff4-43af-aab8-99c8de394a45",
+      "releaseDate": "2021-03-12",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800409.us.archive.org/7/items/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7/mbid-e5eb5e0f-b8a1-4aa9-a2d1-9e7dc96584d7-32027211854.png",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e03514a9-2481-4daa-9ec2-0f859fb9e1e0",
+      "title": "The Heart Wants What It Wants",
+      "title_lowercase": "the heart wants what it wants",
+      "duration": 227,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "a0f6ebc4-c7cd-45f4-bf59-4bc95434fff0",
+      "releaseDate": "2015",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710703.ca.archive.org/0/items/mbid-e0fccfe2-0ffd-4e04-b3db-7ee9d1d8fcee/mbid-e0fccfe2-0ffd-4e04-b3db-7ee9d1d8fcee-16459004168.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6a31623f-988d-42dc-b283-ca3a50dbd8bc",
+      "title": "Forget Forever (ST£FAN remix)",
+      "title_lowercase": "forget forever (st£fan remix)",
+      "duration": 226,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "a0f6ebc4-c7cd-45f4-bf59-4bc95434fff0",
+      "releaseDate": "2015",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710703.ca.archive.org/0/items/mbid-e0fccfe2-0ffd-4e04-b3db-7ee9d1d8fcee/mbid-e0fccfe2-0ffd-4e04-b3db-7ee9d1d8fcee-16459004168.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3aff81ac-15b1-474d-bf44-8c65806abe35",
+      "title": "Do It",
+      "title_lowercase": "do it",
+      "duration": 160,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "a0f6ebc4-c7cd-45f4-bf59-4bc95434fff0",
+      "releaseDate": "2015",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710703.ca.archive.org/0/items/mbid-e0fccfe2-0ffd-4e04-b3db-7ee9d1d8fcee/mbid-e0fccfe2-0ffd-4e04-b3db-7ee9d1d8fcee-16459004168.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "dce85d3d-16a3-4918-8c6c-80655aec3f0e",
+      "title": "Más",
+      "title_lowercase": "más",
+      "duration": 210,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "a0f6ebc4-c7cd-45f4-bf59-4bc95434fff0",
+      "releaseDate": "2015",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn710703.ca.archive.org/0/items/mbid-e0fccfe2-0ffd-4e04-b3db-7ee9d1d8fcee/mbid-e0fccfe2-0ffd-4e04-b3db-7ee9d1d8fcee-16459004168.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c4416548-9651-46e8-87fb-c1ea2f25dc74",
+      "title": "Same Old Love",
+      "title_lowercase": "same old love",
+      "duration": 229,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "9aa4d6d0-0d1b-434e-9b7c-ddc3d8695924",
+      "releaseDate": "2020-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902801.us.archive.org/26/items/mbid-872f222d-73be-4448-b416-1c13b987c1d2/mbid-872f222d-73be-4448-b416-1c13b987c1d2-27663294625.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "7ef86173-771f-481a-a8f4-de1d39bc1419",
+      "title": "Bad Liar",
+      "title_lowercase": "bad liar",
+      "duration": 214,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "9aa4d6d0-0d1b-434e-9b7c-ddc3d8695924",
+      "releaseDate": "2020-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902801.us.archive.org/26/items/mbid-872f222d-73be-4448-b416-1c13b987c1d2/mbid-872f222d-73be-4448-b416-1c13b987c1d2-27663294625.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "86bccad8-1c93-405b-9888-1fb8b78e1532",
+      "title": "Survivors",
+      "title_lowercase": "survivors",
+      "duration": 221,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "9aa4d6d0-0d1b-434e-9b7c-ddc3d8695924",
+      "releaseDate": "2020-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902801.us.archive.org/26/items/mbid-872f222d-73be-4448-b416-1c13b987c1d2/mbid-872f222d-73be-4448-b416-1c13b987c1d2-27663294625.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f7b0fbf9-3aa2-499f-b2a5-598cd5593249",
+      "title": "Cut You Off",
+      "title_lowercase": "cut you off",
+      "duration": 182,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "9aa4d6d0-0d1b-434e-9b7c-ddc3d8695924",
+      "releaseDate": "2020-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902801.us.archive.org/26/items/mbid-872f222d-73be-4448-b416-1c13b987c1d2/mbid-872f222d-73be-4448-b416-1c13b987c1d2-27663294625.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "87370e5e-be85-4708-94dd-389a2b471ada",
+      "title": "Lose You to Love Me",
+      "title_lowercase": "lose you to love me",
+      "duration": 206,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "9aa4d6d0-0d1b-434e-9b7c-ddc3d8695924",
+      "releaseDate": "2020-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902801.us.archive.org/26/items/mbid-872f222d-73be-4448-b416-1c13b987c1d2/mbid-872f222d-73be-4448-b416-1c13b987c1d2-27663294625.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2931d66d-e1a7-49d7-b654-2258e46635df",
+      "title": "Kill Em With Kindness",
+      "title_lowercase": "kill em with kindness",
+      "duration": 217,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "9aa4d6d0-0d1b-434e-9b7c-ddc3d8695924",
+      "releaseDate": "2020-10-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia902801.us.archive.org/26/items/mbid-872f222d-73be-4448-b416-1c13b987c1d2/mbid-872f222d-73be-4448-b416-1c13b987c1d2-27663294625.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "acf2daff-7524-4f9c-8da1-e4d7a205f09c",
+      "title": "Tell Me Something I Don't Know",
+      "title_lowercase": "tell me something i don't know",
+      "duration": 201,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "4a8c507f-ed99-43c4-87cd-b4b643748328",
+      "releaseDate": "2009-06-16",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia801408.us.archive.org/0/items/mbid-b20e375d-0996-45c0-8dce-c691aa37aa91/mbid-b20e375d-0996-45c0-8dce-c691aa37aa91-28072201876.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "05702394-9dfb-4642-9dee-e2dd459f9829",
+      "title": "Bang a Drum",
+      "title_lowercase": "bang a drum",
+      "duration": 192,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "4a8c507f-ed99-43c4-87cd-b4b643748328",
+      "releaseDate": "2009-06-16",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia801408.us.archive.org/0/items/mbid-b20e375d-0996-45c0-8dce-c691aa37aa91/mbid-b20e375d-0996-45c0-8dce-c691aa37aa91-28072201876.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d23fd18a-f2b6-4004-913b-f3d9baa36d5c",
+      "title": "New Classic (single version)",
+      "title_lowercase": "new classic (single version)",
+      "duration": 189,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "4a8c507f-ed99-43c4-87cd-b4b643748328",
+      "releaseDate": "2009-06-16",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia801408.us.archive.org/0/items/mbid-b20e375d-0996-45c0-8dce-c691aa37aa91/mbid-b20e375d-0996-45c0-8dce-c691aa37aa91-28072201876.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "d68c3e7c-2fc1-4971-b7e6-29e74e6425ca",
+      "title": "Tell Me Something I Don't Know (music video)",
+      "title_lowercase": "tell me something i don't know (music video)",
+      "duration": 199,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "4a8c507f-ed99-43c4-87cd-b4b643748328",
+      "releaseDate": "2009-06-16",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia801408.us.archive.org/0/items/mbid-b20e375d-0996-45c0-8dce-c691aa37aa91/mbid-b20e375d-0996-45c0-8dce-c691aa37aa91-28072201876.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ba528fdb-05dd-49a6-81e1-724d47b0096d",
+      "title": "New Classic (music video)",
+      "title_lowercase": "new classic (music video)",
+      "duration": 210,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "4a8c507f-ed99-43c4-87cd-b4b643748328",
+      "releaseDate": "2009-06-16",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia801408.us.archive.org/0/items/mbid-b20e375d-0996-45c0-8dce-c691aa37aa91/mbid-b20e375d-0996-45c0-8dce-c691aa37aa91-28072201876.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "6c59c139-03a4-4c98-9302-f56eac87a6e7",
+      "title": "Slow Down (Chew Fu refix)",
+      "title_lowercase": "slow down (chew fu refix)",
+      "duration": 348,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "20ba35e5-fa58-497f-bcd8-6b3a3e206ab1",
+      "releaseDate": "2013-08-20",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600507.us.archive.org/32/items/mbid-5653cd98-6683-4285-8b7c-0ed0a95bb5de/mbid-5653cd98-6683-4285-8b7c-0ed0a95bb5de-6524497597.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "7a8e15b1-75ea-4bc2-bfc6-3cdb281cb9a4",
+      "title": "Slow Down (Danny Verde remix)",
+      "title_lowercase": "slow down (danny verde remix)",
+      "duration": 409,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "20ba35e5-fa58-497f-bcd8-6b3a3e206ab1",
+      "releaseDate": "2013-08-20",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600507.us.archive.org/32/items/mbid-5653cd98-6683-4285-8b7c-0ed0a95bb5de/mbid-5653cd98-6683-4285-8b7c-0ed0a95bb5de-6524497597.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "47127201-57b0-4b08-b10d-17ac98086d4d",
+      "title": "Slow Down (DJLW remix)",
+      "title_lowercase": "slow down (djlw remix)",
+      "duration": 416,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "20ba35e5-fa58-497f-bcd8-6b3a3e206ab1",
+      "releaseDate": "2013-08-20",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600507.us.archive.org/32/items/mbid-5653cd98-6683-4285-8b7c-0ed0a95bb5de/mbid-5653cd98-6683-4285-8b7c-0ed0a95bb5de-6524497597.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "21100427-d18e-45d1-8cc9-e4abc12567eb",
+      "title": "Slow Down (Jason Nevins remix)",
+      "title_lowercase": "slow down (jason nevins remix)",
+      "duration": 354,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "20ba35e5-fa58-497f-bcd8-6b3a3e206ab1",
+      "releaseDate": "2013-08-20",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600507.us.archive.org/32/items/mbid-5653cd98-6683-4285-8b7c-0ed0a95bb5de/mbid-5653cd98-6683-4285-8b7c-0ed0a95bb5de-6524497597.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "45dcce39-660f-424c-b5a2-6db64c6ca609",
+      "title": "Slow Down (Smash Mode remix)",
+      "title_lowercase": "slow down (smash mode remix)",
+      "duration": 321,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "20ba35e5-fa58-497f-bcd8-6b3a3e206ab1",
+      "releaseDate": "2013-08-20",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600507.us.archive.org/32/items/mbid-5653cd98-6683-4285-8b7c-0ed0a95bb5de/mbid-5653cd98-6683-4285-8b7c-0ed0a95bb5de-6524497597.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "47f5d732-92be-45f7-bd80-7e4134f1e0ae",
+      "title": "Same Old Love (Borgore remix)",
+      "title_lowercase": "same old love (borgore remix)",
+      "duration": 256,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "ff9eae98-0118-4975-8816-87f10abc685e",
+      "releaseDate": "2015-11-20",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600700.us.archive.org/14/items/mbid-18f9c59a-018e-4461-8926-e8b3ebec138c/mbid-18f9c59a-018e-4461-8926-e8b3ebec138c-16458902693.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "14822bca-9038-4cc5-9be0-d0f8352fd3dd",
+      "title": "Same Old Love (Filous remix)",
+      "title_lowercase": "same old love (filous remix)",
+      "duration": 256,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "ff9eae98-0118-4975-8816-87f10abc685e",
+      "releaseDate": "2015-11-20",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600700.us.archive.org/14/items/mbid-18f9c59a-018e-4461-8926-e8b3ebec138c/mbid-18f9c59a-018e-4461-8926-e8b3ebec138c-16458902693.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "5af208a1-f934-4cd5-bd17-9d225fefd0a8",
+      "title": "Same Old Love (Wuki remix)",
+      "title_lowercase": "same old love (wuki remix)",
+      "duration": 279,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "ff9eae98-0118-4975-8816-87f10abc685e",
+      "releaseDate": "2015-11-20",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600700.us.archive.org/14/items/mbid-18f9c59a-018e-4461-8926-e8b3ebec138c/mbid-18f9c59a-018e-4461-8926-e8b3ebec138c-16458902693.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "ff46eb8d-f88a-4a8e-b09e-515820621aa9",
+      "title": "Same Old Love (Romos remix)",
+      "title_lowercase": "same old love (romos remix)",
+      "duration": 299,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "ff9eae98-0118-4975-8816-87f10abc685e",
+      "releaseDate": "2015-11-20",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600700.us.archive.org/14/items/mbid-18f9c59a-018e-4461-8926-e8b3ebec138c/mbid-18f9c59a-018e-4461-8926-e8b3ebec138c-16458902693.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3c254e2f-b90f-4332-ae4c-9e3a07f48543",
+      "title": "Selfish Love (acoustic mix)",
+      "title_lowercase": "selfish love (acoustic mix)",
+      "duration": 169,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "46d3feb8-7c6f-4f12-a545-3d07ccb6b71e",
+      "releaseDate": "2021-05-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721909.ca.archive.org/0/items/mbid-6a4b6aa8-a53e-464b-a1be-0771388965b3/mbid-6a4b6aa8-a53e-464b-a1be-0771388965b3-29289434442.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "240e2512-6959-4bed-a6a6-a96d6afb4e9b",
+      "title": "Selfish Love (Jack Chirak remix)",
+      "title_lowercase": "selfish love (jack chirak remix)",
+      "duration": 162,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "46d3feb8-7c6f-4f12-a545-3d07ccb6b71e",
+      "releaseDate": "2021-05-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721909.ca.archive.org/0/items/mbid-6a4b6aa8-a53e-464b-a1be-0771388965b3/mbid-6a4b6aa8-a53e-464b-a1be-0771388965b3-29289434442.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "832ca38f-674e-4350-a301-4de60330a6d1",
+      "title": "Selfish Love (Tiësto remix)",
+      "title_lowercase": "selfish love (tiësto remix)",
+      "duration": 153,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "46d3feb8-7c6f-4f12-a545-3d07ccb6b71e",
+      "releaseDate": "2021-05-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721909.ca.archive.org/0/items/mbid-6a4b6aa8-a53e-464b-a1be-0771388965b3/mbid-6a4b6aa8-a53e-464b-a1be-0771388965b3-29289434442.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2d06b2f3-6722-4bd7-8f72-87f74c84449a",
+      "title": "Selfish Love",
+      "title_lowercase": "selfish love",
+      "duration": 168,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "46d3feb8-7c6f-4f12-a545-3d07ccb6b71e",
+      "releaseDate": "2021-05-07",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://dn721909.ca.archive.org/0/items/mbid-6a4b6aa8-a53e-464b-a1be-0771388965b3/mbid-6a4b6aa8-a53e-464b-a1be-0771388965b3-29289434442.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "31990f0e-a62b-4577-ae31-21af514a5da0",
+      "title": "Come & Get It",
+      "title_lowercase": "come & get it",
+      "duration": 231,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "d4aae7f3-1917-4859-b4b8-1c55d5b018fe",
+      "releaseDate": "2013-04-09",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia801902.us.archive.org/19/items/mbid-550d238a-ec87-4a38-a3ec-994aa1bbc9d9/mbid-550d238a-ec87-4a38-a3ec-994aa1bbc9d9-32027819607.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "717d61b9-17da-4df5-8593-58b089eecba4",
+      "title": "Slow Down",
+      "title_lowercase": "slow down",
+      "duration": 210,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "16aea2d3-b1d0-4e38-9701-42de6a0ccd6f",
+      "releaseDate": "2013-09-06",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601602.us.archive.org/33/items/mbid-7b551899-da65-48fd-98d9-77d1e7cd19be/mbid-7b551899-da65-48fd-98d9-77d1e7cd19be-16458471655.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "83983239-1da3-4ff5-a848-05e2aec2254e",
+      "title": "Lover in Me",
+      "title_lowercase": "lover in me",
+      "duration": 208,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "16aea2d3-b1d0-4e38-9701-42de6a0ccd6f",
+      "releaseDate": "2013-09-06",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601602.us.archive.org/33/items/mbid-7b551899-da65-48fd-98d9-77d1e7cd19be/mbid-7b551899-da65-48fd-98d9-77d1e7cd19be-16458471655.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "cec7e66e-8dd5-43b0-a001-88eb185bf703",
+      "title": "I Like It That Way",
+      "title_lowercase": "i like it that way",
+      "duration": 251,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "16aea2d3-b1d0-4e38-9701-42de6a0ccd6f",
+      "releaseDate": "2013-09-06",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601602.us.archive.org/33/items/mbid-7b551899-da65-48fd-98d9-77d1e7cd19be/mbid-7b551899-da65-48fd-98d9-77d1e7cd19be-16458471655.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "3a2f4c45-ff09-4cdd-a361-d1b1e7e915be",
+      "title": "Come & Get It (Cosmic Dawn Club remix)",
+      "title_lowercase": "come & get it (cosmic dawn club remix)",
+      "duration": 388,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "16aea2d3-b1d0-4e38-9701-42de6a0ccd6f",
+      "releaseDate": "2013-09-06",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601602.us.archive.org/33/items/mbid-7b551899-da65-48fd-98d9-77d1e7cd19be/mbid-7b551899-da65-48fd-98d9-77d1e7cd19be-16458471655.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "e03514a9-2481-4daa-9ec2-0f859fb9e1e0",
+      "title": "The Heart Wants What It Wants",
+      "title_lowercase": "the heart wants what it wants",
+      "duration": 227,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "32a7eba7-f017-4735-9de8-683cbf1b8b3a",
+      "releaseDate": "2014-11-06",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia801508.us.archive.org/28/items/mbid-347d9365-927d-4404-a0d7-65e4916e464e/mbid-347d9365-927d-4404-a0d7-65e4916e464e-11438983255.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "571dc3b1-bffc-4647-a13b-8a710d4662ed",
+      "title": "I Want You To Know",
+      "title_lowercase": "i want you to know",
+      "duration": 238,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "cb710780-2152-4ae1-bff0-84a19d886684",
+      "releaseDate": "2015-02-23",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia600508.us.archive.org/34/items/mbid-9bb0bc15-5ac6-4308-84c4-b8442695e358/mbid-9bb0bc15-5ac6-4308-84c4-b8442695e358-9918320310.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "f6908093-ff6c-458c-949d-99987cd1263b",
+      "title": "Good for You",
+      "title_lowercase": "good for you",
+      "duration": 221,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "35bd81a7-3398-44a3-860e-2502483c46f4",
+      "releaseDate": "2015-06-22",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia903403.us.archive.org/31/items/mbid-007dcab5-7c56-4e8e-b333-2d1082b3626d/mbid-007dcab5-7c56-4e8e-b333-2d1082b3626d-32027972720.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "c4416548-9651-46e8-87fb-c1ea2f25dc74",
+      "title": "Same Old Love",
+      "title_lowercase": "same old love",
+      "duration": 229,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "791d66a5-f583-4957-b265-5bce2ecceaec",
+      "releaseDate": "2015-09-10",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia601303.us.archive.org/18/items/mbid-cdcb3221-242f-4a4f-babb-d587a82d73e7/mbid-cdcb3221-242f-4a4f-babb-d587a82d73e7-11443330671.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "caef6a9e-20d3-43cb-8d93-cc53bfaefb7f",
+      "title": "Me & the Rhythm",
+      "title_lowercase": "me & the rhythm",
+      "duration": 212,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "526d094e-ecda-4ec6-a030-a45475e43d9f",
+      "releaseDate": "2015-10-02",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia801402.us.archive.org/18/items/mbid-3675fcfc-239b-4358-b249-5f09d5a3e93c/mbid-3675fcfc-239b-4358-b249-5f09d5a3e93c-16459135244.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "7e396dcc-855f-49a1-a6a2-1f6740add5a7",
+      "title": "Hands to Myself",
+      "title_lowercase": "hands to myself",
+      "duration": 200,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "b13615c6-2fb2-4da6-90a9-3e2713bfd205",
+      "releaseDate": "2016-01-19",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800301.us.archive.org/29/items/mbid-fe9fa232-d607-4421-b0c1-624b13fea828/mbid-fe9fa232-d607-4421-b0c1-624b13fea828-39336332593.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "a16e6dab-38d7-4ec6-b751-c1ebb5e62c22",
+      "title": "We Don't Talk Anymore (feat. Selena Gomez)",
+      "title_lowercase": "we don't talk anymore (feat. selena gomez)",
+      "duration": 217,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "6dca25bc-a290-480a-ac5f-0d4398b612ce",
+      "releaseDate": "2016-04-13",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia800700.us.archive.org/21/items/mbid-04fa1f93-bed5-46bc-bbc4-7d018f9a9640/mbid-04fa1f93-bed5-46bc-bbc4-7d018f9a9640-38964481572.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "2931d66d-e1a7-49d7-b654-2258e46635df",
+      "title": "Kill Em With Kindness",
+      "title_lowercase": "kill em with kindness",
+      "duration": 217,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "e7d0193c-3d81-499b-8f40-0b42e327f17e",
+      "releaseDate": "2016-04-28",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia803208.us.archive.org/27/items/mbid-e08dd73f-9513-4cdf-9a7c-1df42e99b60f/mbid-e08dd73f-9513-4cdf-9a7c-1df42e99b60f-41452747831.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "402f5eeb-ad21-4748-91f1-6303e5675b64",
+      "title": "Trust Nobody",
+      "title_lowercase": "trust nobody",
+      "duration": 218,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "05159891-0522-4e08-bcf4-8a29929a478a",
+      "releaseDate": "2016-09-30",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://ia903205.us.archive.org/2/items/mbid-2cc525eb-e634-4634-9edc-1bb639942253/mbid-2cc525eb-e634-4634-9edc-1bb639942253-14763887214.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    },
+    {
+      "id": "65771c02-9096-46ee-a105-277853520279",
+      "title": "It Ain't Me",
+      "title_lowercase": "it ain't me",
+      "duration": 220,
+      "artistIds": [
+        "e4bc69e2-a064-4f93-ada1-f7f209cc1cc3"
+      ],
+      "albumId": "587bc138-923c-4d46-9784-dbfb05f5f3a6",
+      "releaseDate": "2017-02-16",
+      "genre": null,
+      "credits": {},
+      "coverArtUrl": "https://r2.theaudiodb.com/images/media/artist/banner/vvqyup1376581011.jpg",
+      "platformLinks": {},
+      "reviewCount": 0,
+      "likesCount": 0
+    }
+  ]
+}
