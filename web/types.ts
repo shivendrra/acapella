@@ -133,15 +133,6 @@ export interface Follow {
     createdAt: FieldValue | Timestamp;
 }
 
-export interface Playlist {
-  id: string;
-  userId: string;
-  name: string;
-  description: string;
-  songIds: string[];
-  isPublic: boolean;
-}
-
 export interface AdminApplication {
   id:string;
   userId: string;

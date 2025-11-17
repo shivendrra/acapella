@@ -265,8 +265,17 @@ const DiaryItem: React.FC<{ activity: ActivityLog, profile: UserProfile }> = ({ 
 const ProfilePreviewSection: React.FC<{ title: string; items: (Song | Album | Review | Like)[]; link: string }> = ({ title, items, link }) => {
     if (items.length === 0) return null;
 
-    const getCoverUrl = (item: any): string | null => item.coverArtUrl || item.entityCoverArtUrl || null;
-    const getLink = (item: any) => `/${item.entityType || (item.tracklist ? 'album' : 'song')}/${item.entityId || item.id}`;
+    const getCoverUrl = (item: any): string | null => {
+        if (item.coverArtUrl) return item.coverArtUrl;
+        if (item.entityCoverArtUrl) return item.entityCoverArtUrl;
+        return null;
+    };
+    
+    const getLink = (item: any) => {
+        if (item.entityType) return `/${item.entityType}/${item.entityId}`;
+        if ('tracklist' in item) return `/album/${item.id}`;
+        return `/song/${item.id}`;
+    };
 
     return (
         <section>

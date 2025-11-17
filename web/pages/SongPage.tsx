@@ -374,6 +374,7 @@ const SongPage = () => {
 
 
   return (
+    <>
     <div className="space-y-12">
       <section className="flex flex-col md:flex-row gap-8 md:gap-12">
         <div className="md:w-1/3 flex-shrink-0">
@@ -465,6 +466,7 @@ const SongPage = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 
