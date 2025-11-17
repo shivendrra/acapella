@@ -9,7 +9,7 @@ class Artists:
   def __call__(self) -> list: return queries
 
 art = Artists()
-data = art()[:100]
+data = art()[39:100]
 
 for artist in data:
   print("\nfetching details for: ", artist)
