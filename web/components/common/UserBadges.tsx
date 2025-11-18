@@ -3,45 +3,35 @@ import { UserProfile, Role } from '../../types';
 
 interface UserBadgesProps {
   user: Partial<UserProfile>;
+  noMargin?: boolean;
 }
 
-const UserBadges: React.FC<UserBadgesProps> = ({ user }) => {
-  if (!user || (!user.isCurator && !user.role)) return null;
+const Badge: React.FC<{ text: string; className: string }> = ({ text, className }) => (
+  <span
+    className={`px-2 py-0.5 text-xs font-semibold font-sans uppercase rounded-full tracking-wider ${className}`}
+  >
+    {text}
+  </span>
+);
+
+
+const UserBadges: React.FC<UserBadgesProps> = ({ user, noMargin }) => {
+  if (!user || (!user.isCurator && user.role !== Role.ADMIN && user.role !== Role.MASTER_ADMIN)) {
+    return null;
+  }
 
   return (
-    <span className="inline-flex items-center gap-1.5 ml-2">
-  {user.isCurator && (
-    <span
-      title="Curator"
-      className="material-symbols-outlined"
-      style={{ color: '#FF6C0C', fontSize: '24px' }}
-      aria-label="Curator Badge"
-    >
-      star_shine
+    <span className={`inline-flex items-center gap-1.5 ${noMargin ? '' : 'ml-2'}`}>
+      {user.isCurator && (
+        <Badge text="Curator" className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300" />
+      )}
+      {user.role === Role.ADMIN && (
+        <Badge text="Admin" className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300" />
+      )}
+      {user.role === Role.MASTER_ADMIN && (
+        <Badge text="Master Admin" className="bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300" />
+      )}
     </span>
-  )}
-  {user.role === Role.ADMIN && (
-    <span
-      title="Admin"
-      className="material-symbols-outlined"
-      style={{ color: '#0046FF', fontSize: '24px' }}
-      aria-label="Admin Badge"
-    >
-      workspace_premium
-    </span>
-  )}
-  {user.role === Role.MASTER_ADMIN && (
-    <span
-      title="Master Admin"
-      className="material-symbols-outlined"
-      style={{ color: '#A72703', fontSize: '24px' }}
-      aria-label="Master Admin Badge"
-    >
-      crown
-    </span>
-  )}
-</span>
-
   );
 };
 

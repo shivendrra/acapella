@@ -434,6 +434,7 @@ const ProfilePage: React.FC = () => {
         allActivities.sort((a, b) => {
             const timeA = (a.createdAt as Timestamp)?.toMillis() || 0;
             const timeB = (b.createdAt as Timestamp)?.toMillis() || 0;
+            // FIX: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
             return timeB - timeA;
         });
         setActivities(allActivities.slice(0, 10)); // Further limit combined activities for preview
@@ -495,6 +496,7 @@ const ProfilePage: React.FC = () => {
             setActivities(prev => [newFollowActivity, ...prev].sort((a, b) => {
                 const timeA = (a.createdAt as Timestamp)?.toMillis() || 0;
                 const timeB = (b.createdAt as Timestamp)?.toMillis() || 0;
+                // FIX: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
                 return timeB - timeA;
             }));
         }
@@ -549,15 +551,22 @@ const ProfilePage: React.FC = () => {
   return (
     <div>
       <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
-        <img 
-          src={profile.photoURL || `https://ui-avatars.com/api/?name=${profile.displayName || profile.email}&background=random&size=128`} 
-          alt={`${profile.displayName}'s avatar`}
-          className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-ac-secondary flex-shrink-0"
-        />
+        <div className="flex-shrink-0 flex flex-col items-center">
+            <img 
+              src={profile.photoURL || `https://ui-avatars.com/api/?name=${profile.displayName || profile.email}&background=random&size=128`} 
+              alt={`${profile.displayName}'s avatar`}
+              className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-ac-secondary"
+            />
+            <div className="sm:hidden mt-2">
+                <UserBadges user={profile} noMargin />
+            </div>
+        </div>
         <div className="flex-grow flex flex-col items-center sm:items-start w-full">
           <h1 className="text-4xl font-bold font-serif text-center sm:text-left flex items-center justify-center sm:justify-start">
             {profile.displayName || profile.username}
-            <UserBadges user={profile} />
+            <div className="hidden sm:inline-flex">
+                <UserBadges user={profile} />
+            </div>
           </h1>
           <div className="flex flex-col items-center sm:flex-row sm:items-center gap-x-3 mt-1">
             <p className="text-lg text-gray-500 dark:text-gray-400">@{profile.username}</p>

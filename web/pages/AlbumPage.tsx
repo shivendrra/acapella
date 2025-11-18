@@ -419,6 +419,17 @@ const AlbumPage: React.FC = () => {
                             <span className="font-semibold text-lg">{likesCount}</span>
                         </div>
                     </div>
+
+                    {album.platformLinks && (album.platformLinks.spotify || album.platformLinks.appleMusic || album.platformLinks.youtubeMusic) && (
+                        <div className="mt-8">
+                            <h2 className="text-2xl font-bold font-serif mb-4">Listen On</h2>
+                            <div className="flex space-x-4">
+                                {album.platformLinks.spotify && <a href={album.platformLinks.spotify} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-[#1DB954] text-white rounded-md font-semibold">Spotify</a>}
+                                {album.platformLinks.appleMusic && <a href={album.platformLinks.appleMusic} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-black text-white rounded-md font-semibold">Apple Music</a>}
+                                {album.platformLinks.youtubeMusic && <a href={album.platformLinks.youtubeMusic} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-[#FF0000] text-white rounded-md font-semibold">YouTube Music</a>}
+                            </div>
+                        </div>
+                    )}
                     
                     <div className="mt-8">
                         <h2 className="text-2xl font-bold font-serif mb-4">Tracklist</h2>
