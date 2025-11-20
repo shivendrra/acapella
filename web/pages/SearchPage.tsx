@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSearchParams, NavLink } from 'react-router-dom';
 import { collection, query, where, getDocs, limit, orderBy } from '@firebase/firestore';
@@ -5,7 +6,6 @@ import { db } from '../services/firebase';
 import { UserProfile, Artist, Album, Song } from '../types';
 import PageLoader from '../components/common/PageLoader';
 import { Search, X, History, Trash2, AlertTriangle } from 'lucide-react';
-import UserBadges from '../components/common/UserBadges';
 
 // Debounce utility
 const debounce = <F extends (...args: any[]) => any>(func: F, waitFor: number) => {
@@ -193,7 +193,6 @@ const SearchPage: React.FC = () => {
                                 <div>
                                     <p className="font-semibold flex items-center">
                                         {user.displayName}
-                                        <UserBadges user={user} />
                                     </p>
                                     <p className="text-sm text-gray-500">@{user.username}</p>
                                 </div>

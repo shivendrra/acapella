@@ -5,12 +5,13 @@ import { useParams, useNavigate, NavLink } from 'react-router-dom';
 // FIX: Changed firebase imports to use the '@firebase' scope.
 import { collection, query, where, getDocs, limit, doc, getDoc, runTransaction, serverTimestamp, orderBy, Timestamp, documentId, collectionGroup, writeBatch, deleteDoc, setDoc } from '@firebase/firestore';
 import { db } from '../services/firebase';
-import { UserProfile, Role, Review, Like, Song, Album, Follow } from '../types';
+import { UserProfile, Role, Review, Like, Song, Album, Follow, Playlist } from '../types';
 import { RESERVED_SLUGS } from '../utils/reserved-slugs';
 import PageLoader from '../components/common/PageLoader';
 import { useAuth } from '../hooks/useAuth';
 import EditProfileModal from '../components/profile/EditProfileModal';
-import { UserCheck, UserPlus, X, Star, Heart, MessageSquare, AlertTriangle, Music, Activity } from 'lucide-react';
+import PlaylistFormModal from '../components/playlist/PlaylistFormModal';
+import { UserCheck, UserPlus, X, Star, Heart, MessageSquare, AlertTriangle, Music, Activity, Plus } from 'lucide-react';
 import { formatDate } from '../utils/formatters';
 import UserBadges from '../components/common/UserBadges';
 
@@ -159,7 +160,6 @@ const FollowListModal: React.FC<{
                                 <div>
                                     <p className="font-semibold group-hover:underline flex items-center">
                                         {user.displayName}
-                                        <UserBadges user={user} />
                                     </p>
                                     <p className="text-sm text-gray-500">@{user.username}</p>
                                 </div>
@@ -262,35 +262,56 @@ const DiaryItem: React.FC<{ activity: ActivityLog, profile: UserProfile }> = ({ 
     );
 };
 
-const ProfilePreviewSection: React.FC<{ title: string; items: (Song | Album | Review | Like)[]; link: string }> = ({ title, items, link }) => {
-    if (items.length === 0) return null;
-
-    const getCoverUrl = (item: any): string | null => item.coverArtUrl || item.entityCoverArtUrl || null;
-    const getLink = (item: any) => `/${item.entityType || (item.tracklist ? 'album' : 'song')}/${item.entityId || item.id}`;
+const ProfilePreviewSection: React.FC<{ title: string; items: (Song | Album | Review | Like | Playlist)[]; link: string; onAdd?: () => void }> = ({ title, items, link, onAdd }) => {
+    const getCoverUrl = (item: any): string | null => {
+        if (item.coverArtUrl) return item.coverArtUrl;
+        if (item.entityCoverArtUrl) return item.entityCoverArtUrl;
+        return null;
+    };
+    
+    const getLink = (item: any) => {
+        if (item.entityType) return `/${item.entityType}/${item.entityId}`;
+        if ('tracklist' in item) return `/album/${item.id}`;
+        if ('songIds' in item) return `/playlist/${item.id}`;
+        return `/song/${item.id}`;
+    };
 
     return (
         <section>
-            <div className="flex justify-between items-baseline mb-4">
-                <h2 className="text-2xl font-bold font-serif">{title}</h2>
-                <NavLink to={link} className="text-sm font-semibold text-ac-secondary hover:underline">View all</NavLink>
+            <div className="flex justify-between items-center mb-4">
+                <div className="flex items-center gap-3">
+                    <h2 className="text-2xl font-bold font-serif">{title}</h2>
+                    {onAdd && (
+                        <button onClick={onAdd} className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800" title="Create Playlist">
+                            <Plus size={20} className="text-ac-secondary"/>
+                        </button>
+                    )}
+                </div>
+                {items.length > 0 && <NavLink to={link} className="text-sm font-semibold text-ac-secondary hover:underline">View all</NavLink>}
             </div>
-            <div className="grid grid-cols-4 gap-4">
-                {items.slice(0, 4).map((item, index) => {
-                    const coverUrl = getCoverUrl(item);
-                    const linkUrl = getLink(item);
-                    return (
-                        <NavLink to={linkUrl} key={index} className="aspect-square block">
-                            {coverUrl ? (
-                                <img src={coverUrl} alt="cover" className="w-full h-full object-cover rounded-lg shadow-md hover:scale-105 transition-transform bg-gray-200 dark:bg-gray-800"/>
-                            ) : (
-                                <div className="w-full h-full bg-gray-200 dark:bg-gray-800 rounded-lg shadow-md flex items-center justify-center">
-                                    <Music className="w-8 h-8 text-gray-400 dark:text-gray-500" />
-                                </div>
-                            )}
-                        </NavLink>
-                    );
-                })}
-            </div>
+            {items.length > 0 ? (
+                <div className="grid grid-cols-4 gap-4">
+                    {items.slice(0, 4).map((item, index) => {
+                        const coverUrl = getCoverUrl(item);
+                        const linkUrl = getLink(item);
+                        return (
+                            <NavLink to={linkUrl} key={index} className="aspect-square block">
+                                {coverUrl ? (
+                                    <img src={coverUrl} alt="cover" className="w-full h-full object-cover rounded-lg shadow-md hover:scale-105 transition-transform bg-gray-200 dark:bg-gray-800"/>
+                                ) : (
+                                    <div className="w-full h-full bg-gray-200 dark:bg-gray-800 rounded-lg shadow-md flex items-center justify-center">
+                                        <Music className="w-8 h-8 text-gray-400 dark:text-gray-500" />
+                                    </div>
+                                )}
+                            </NavLink>
+                        );
+                    })}
+                </div>
+            ) : (
+                <div className="p-6 border-2 border-dashed rounded-lg text-center text-gray-400">
+                    No items yet.
+                </div>
+            )}
         </section>
     );
 };
@@ -310,6 +331,7 @@ const ProfilePage: React.FC = () => {
   const [followingCount, setFollowingCount] = useState(0);
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isCreatePlaylistOpen, setIsCreatePlaylistOpen] = useState(false);
   const [modalContent, setModalContent] = useState<'followers' | 'following' | null>(null);
 
   const [activities, setActivities] = useState<ActivityLog[]>([]);
@@ -317,6 +339,7 @@ const ProfilePage: React.FC = () => {
   const [ratedItems, setRatedItems] = useState<Review[]>([]);
   const [favoriteSongs, setFavoriteSongs] = useState<Song[]>([]);
   const [favoriteAlbums, setFavoriteAlbums] = useState<Album[]>([]);
+  const [playlists, setPlaylists] = useState<Playlist[]>([]);
 
 
   useEffect(() => {
@@ -356,28 +379,52 @@ const ProfilePage: React.FC = () => {
             setFavoriteAlbums(orderedAlbums);
         }
         
-        // STEP 3: Fetch public data (reviews).
-        const reviewsQuery = query(collectionGroup(db, 'reviews'), where('userId', '==', userProfileData.uid), orderBy('createdAt', 'desc'), limit(5)); // Limit for preview
-        const reviewsSnap = await getDocs(reviewsQuery);
-        const reviewsData = reviewsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Review));
-        const reviewActivities: ActivityLog[] = reviewsData.map(r => ({ ...r, _activityType: 'review' }));
-        setRatedItems(reviewsData.filter(r => r.rating > 0));
+        // STEP 3: Fetch public data (reviews, playlists).
+        // Safe fetch for reviews
+        let reviewsData: Review[] = [];
+        try {
+             const reviewsQuery = query(collectionGroup(db, 'reviews'), where('userId', '==', userProfileData.uid), orderBy('createdAt', 'desc'), limit(5));
+             const reviewsSnap = await getDocs(reviewsQuery);
+             reviewsData = reviewsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Review));
+             setRatedItems(reviewsData.filter(r => r.rating > 0));
+        } catch (e) {
+            console.warn("Failed to fetch reviews:", e);
+        }
 
-        let allActivities: ActivityLog[] = [...reviewActivities];
+        // Safe fetch for Playlists
+        // Removed privacy filtering: All playlists are public for now.
+        try {
+            const playlistsRef = collection(db, 'playlists');
+            const playlistsQuery = query(playlistsRef, where('userId', '==', userProfileData.uid));
+            const playlistsSnap = await getDocs(playlistsQuery);
+            let allPlaylists = playlistsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Playlist));
+            
+            // Client-side sort: updatedAt desc, fallback to createdAt
+            allPlaylists.sort((a, b) => {
+                const timeA = a.updatedAt instanceof Timestamp ? a.updatedAt.toMillis() : (a.createdAt instanceof Timestamp ? a.createdAt.toMillis() : 0);
+                const timeB = b.updatedAt instanceof Timestamp ? b.updatedAt.toMillis() : (b.createdAt instanceof Timestamp ? b.createdAt.toMillis() : 0);
+                return timeB - timeA;
+            });
+
+            setPlaylists(allPlaylists.slice(0, 4));
+        } catch (e) {
+            console.warn("Failed to fetch playlists:", e);
+        }
+
+        let allActivities: ActivityLog[] = reviewsData.map(r => ({ ...r, _activityType: 'review' }));
         
         // STEP 4: Conditionally fetch protected data if a user is logged in.
         if (currentUserProfile) {
             const followsRef = collection(db, 'follows');
             const followersQuery = query(followsRef, where('followingId', '==', userProfileData.uid));
             const followingQuery = query(followsRef, where('followerId', '==', userProfileData.uid));
-            const likesQuery = query(collection(db, 'likes'), where('userId', '==', userProfileData.uid), orderBy('createdAt', 'desc'), limit(5)); // Limit for preview
-            const followsByUserQuery = query(collection(db, 'follows'), where('followerId', '==', userProfileData.uid), orderBy('createdAt', 'desc'), limit(5)); // Limit for preview
+            const likesQuery = query(collection(db, 'likes'), where('userId', '==', userProfileData.uid), orderBy('createdAt', 'desc'), limit(5));
+            const followsByUserQuery = query(collection(db, 'follows'), where('followerId', '==', userProfileData.uid), orderBy('createdAt', 'desc'), limit(5));
 
             const [followersSnap, followingSnap, likesSnap, followsByUserSnap] = await Promise.all([
                 getDocs(followersQuery), 
                 getDocs(followingQuery),
                 getDocs(likesQuery), 
-// FIX: Corrected a typo where followsByUserSnap was passed to getDocs instead of followsByUserQuery.
                 getDocs(followsByUserQuery)
             ]);
 
@@ -399,7 +446,6 @@ const ProfilePage: React.FC = () => {
                     usersSnap.docs.forEach(doc => { followedUsers[doc.id] = doc.data() as UserProfile; });
                 }
             }
-// FIX: Explicitly type the return value of the map callback to prevent incorrect type inference that invalidates the type guard in `.filter`.
             const followActivities: ActivityLog[] = followsByUserSnap.docs.map((doc): ActivityLog | null => {
                 const follow = doc.data() as Follow;
                 const followedUser = followedUsers[follow.followingId];
@@ -540,15 +586,22 @@ const ProfilePage: React.FC = () => {
   return (
     <div>
       <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
-        <img 
-          src={profile.photoURL || `https://ui-avatars.com/api/?name=${profile.displayName || profile.email}&background=random&size=128`} 
-          alt={`${profile.displayName}'s avatar`}
-          className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-ac-secondary flex-shrink-0"
-        />
+        <div className="flex-shrink-0 flex flex-col items-center">
+            <img 
+              src={profile.photoURL || `https://ui-avatars.com/api/?name=${profile.displayName || profile.email}&background=random&size=128`} 
+              alt={`${profile.displayName}'s avatar`}
+              className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-ac-secondary"
+            />
+            <div className="sm:hidden mt-2">
+                <UserBadges user={profile} noMargin />
+            </div>
+        </div>
         <div className="flex-grow flex flex-col items-center sm:items-start w-full">
           <h1 className="text-4xl font-bold font-serif text-center sm:text-left flex items-center justify-center sm:justify-start">
             {profile.displayName || profile.username}
-            <UserBadges user={profile} />
+            <div className="hidden sm:inline-flex">
+                <UserBadges user={profile} />
+            </div>
           </h1>
           <div className="flex flex-col items-center sm:flex-row sm:items-center gap-x-3 mt-1">
             <p className="text-lg text-gray-500 dark:text-gray-400">@{profile.username}</p>
@@ -626,6 +679,15 @@ const ProfilePage: React.FC = () => {
                 </div>
             </section>
         )}
+        
+        {/* Playlists Section */}
+        <ProfilePreviewSection 
+            title="Playlists" 
+            items={playlists} 
+            link={`/${username}/playlists`} 
+            onAdd={isOwnProfile ? () => setIsCreatePlaylistOpen(true) : undefined}
+        />
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <ProfilePreviewSection title="Liked Items" items={likedItems} link={`/${username}/likes`} />
             <ProfilePreviewSection title="Reviews" items={ratedItems} link={`/${username}/ratings`} />
@@ -655,6 +717,7 @@ const ProfilePage: React.FC = () => {
         </div>
       </div>
       {isOwnProfile && isEditModalOpen && <EditProfileModal userProfile={profile} onClose={() => setIsEditModalOpen(false)} onSave={handleProfileUpdate} />}
+      {isOwnProfile && isCreatePlaylistOpen && <PlaylistFormModal onClose={() => setIsCreatePlaylistOpen(false)} onSuccess={() => window.location.reload()} />} 
       {modalContent && <FollowListModal title={modalContent.charAt(0).toUpperCase() + modalContent.slice(1)} onClose={() => setModalContent(null)} targetUserId={profile.uid} fetchType={modalContent} />}
     </div>
   );

@@ -1,10 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import { collection, query, where, getDocs } from '@firebase/firestore';
 import { db } from '../services/firebase';
 import { UserProfile } from '../types';
 import PageLoader from '../components/common/PageLoader';
 import { NavLink } from 'react-router-dom';
-import UserBadges from '../components/common/UserBadges';
 
 const CuratorCard: React.FC<{ user: UserProfile }> = ({ user }) => (
     <NavLink 
@@ -18,7 +18,6 @@ const CuratorCard: React.FC<{ user: UserProfile }> = ({ user }) => (
         />
         <h3 className="font-bold text-lg flex items-center justify-center">
             {user.displayName}
-            <UserBadges user={user} />
         </h3>
         <p className="text-sm text-gray-500 dark:text-gray-400">@{user.username}</p>
     </NavLink>

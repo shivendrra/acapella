@@ -1,16 +1,14 @@
 
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
-// FIX: Changed firebase imports to use the '@firebase' scope.
 import { doc, getDoc, collection, query, orderBy, getDocs, serverTimestamp, where, Timestamp, limit, setDoc, deleteDoc, updateDoc, increment, arrayUnion, arrayRemove, writeBatch } from '@firebase/firestore';
 import { db } from '../services/firebase';
 import { Song, Artist, Review as ReviewType, Like } from '../types';
 import { useAuth } from '../hooks/useAuth';
 import PageLoader from '../components/common/PageLoader';
-import { Star, Mic, Pen, Clock, Calendar, User, Send, Music, Heart } from 'lucide-react';
+import { Star, Mic, Pen, Clock, Calendar, User, Send, Music, Heart, ListPlus, Disc } from 'lucide-react';
 import { formatDate } from '../utils/formatters';
-import UserBadges from '../components/common/UserBadges';
+import AddToPlaylistModal from '../components/playlist/AddToPlaylistModal';
 
 const StarRatingDisplay: React.FC<{ rating: number; size?: number }> = ({ rating, size = 5 }) => (
   <div className="flex items-center">
@@ -99,7 +97,6 @@ const ReviewCard: React.FC<{ review: ReviewType; songId: string }> = ({ review, 
               <div>
                 <p className="font-semibold flex items-center">
                     {review.userDisplayName}
-                    <UserBadges user={{ role: review.userRole, isCurator: review.userIsCurator }} />
                 </p>
                 <StarRatingDisplay rating={review.rating} size={4} />
               </div>
@@ -248,6 +245,7 @@ const SongPage = () => {
   const [reviews, setReviews] = useState<ReviewType[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isPlaylistModalOpen, setIsPlaylistModalOpen] = useState(false);
 
   const [isLiked, setIsLiked] = useState(false);
   const [isLikeLoading, setIsLikeLoading] = useState(true);
@@ -364,16 +362,17 @@ const SongPage = () => {
   const getCreditIcon = (role: string) => {
     const lowerRole = role.toLowerCase();
     if (lowerRole.includes('write') || lowerRole.includes('compose') || lowerRole.includes('lyric')) {
-        return <Pen className="h-5 w-5 text-ac-primary dark:text-ac-secondary" />;
+        return <Pen size={20} />;
     }
     if (lowerRole.includes('produce')) {
-        return <Mic className="h-5 w-5 text-ac-primary dark:text-ac-secondary" />;
+        return <Mic size={20} />;
     }
-    return <User className="h-5 w-5 text-ac-primary dark:text-ac-secondary" />;
+    return <User size={20} />;
   };
 
 
   return (
+    <>
     <div className="space-y-12">
       <section className="flex flex-col md:flex-row gap-8 md:gap-12">
         <div className="md:w-1/3 flex-shrink-0">
@@ -399,7 +398,16 @@ const SongPage = () => {
                     ))}
                 </div>
               </div>
-              <div className="flex items-center space-x-2 flex-shrink-0 ml-4">
+              <div className="flex items-center gap-2 flex-shrink-0 ml-4">
+                  {currentUser && (
+                    <button 
+                        onClick={() => setIsPlaylistModalOpen(true)} 
+                        className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-gray-500 hover:text-ac-primary"
+                        title="Add to Playlist"
+                    >
+                        <ListPlus size={24} />
+                    </button>
+                  )}
                   <button onClick={handleLikeToggle} disabled={!currentUser || isLikeLoading} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
                       <Heart size={24} className={`transition-all ${isLiked ? 'text-red-500 fill-current' : 'text-gray-500'}`} />
                   </button>
@@ -415,30 +423,33 @@ const SongPage = () => {
             <div className="mt-8">
                 <h2 className="text-2xl font-bold font-serif mb-4">Listen On</h2>
                 <div className="flex space-x-4">
-                    {song.platformLinks?.spotify && <a href={song.platformLinks.spotify} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-[#1DB954] text-white rounded-md font-semibold">Spotify</a>}
-                    {song.platformLinks?.appleMusic && <a href={song.platformLinks.appleMusic} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-black text-white rounded-md font-semibold">Apple Music</a>}
-                    {song.platformLinks?.youtubeMusic && <a href={song.platformLinks.youtubeMusic} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-[#FF0000] text-white rounded-md font-semibold">YouTube Music</a>}
+                    {song.platformLinks?.spotify && <a href={song.platformLinks.spotify} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-[#1DB954] text-white rounded-md font-semibold hover:opacity-90 transition-opacity">Spotify</a>}
+                    {song.platformLinks?.appleMusic && <a href={song.platformLinks.appleMusic} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-black text-white rounded-md font-semibold hover:opacity-90 transition-opacity">Apple Music</a>}
+                    {song.platformLinks?.youtubeMusic && <a href={song.platformLinks.youtubeMusic} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-[#FF0000] text-white rounded-md font-semibold hover:opacity-90 transition-opacity">YouTube Music</a>}
                 </div>
             </div>
         </div>
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold font-serif mb-4">Credits</h2>
-        <div className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-            <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-              {Object.entries(song.credits).map(([role, names]) => (
-                <li key={role} className="px-4 py-3 flex items-center space-x-4 transition-colors odd:bg-transparent even:bg-black/[.03] dark:even:bg-white/[.03] hover:bg-black/[.05] dark:hover:bg-white/[.05]">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-ac-primary/10 dark:bg-ac-secondary/20 flex items-center justify-center">
-                    {getCreditIcon(role)}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800 dark:text-gray-200">{role}</p>
-                    <p className="text-gray-600 dark:text-gray-400">{Array.isArray(names) ? names.join(', ') : ''}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+        <h2 className="text-2xl font-bold font-serif mb-6 flex items-center gap-2">
+            <Disc size={24} className="text-ac-secondary" />
+            Credits
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {Object.entries(song.credits).map(([role, names]) => (
+                <div key={role} className="group bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 p-4 rounded-xl hover:shadow-md transition-shadow flex items-start gap-4">
+                    <div className="p-3 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 group-hover:bg-ac-primary/10 group-hover:text-ac-primary dark:group-hover:bg-ac-secondary/10 dark:group-hover:text-ac-secondary transition-colors flex-shrink-0">
+                        {getCreditIcon(role)}
+                    </div>
+                    <div className="min-w-0">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">{role}</h4>
+                        <p className="font-medium text-gray-900 dark:text-gray-100 leading-tight break-words">
+                            {Array.isArray(names) ? names.join(', ') : ''}
+                        </p>
+                    </div>
+                </div>
+            ))}
         </div>
       </section>
 
@@ -464,7 +475,12 @@ const SongPage = () => {
             )}
         </div>
       </section>
+      
+      {isPlaylistModalOpen && song && (
+        <AddToPlaylistModal song={song} onClose={() => setIsPlaylistModalOpen(false)} />
+      )}
     </div>
+    </>
   );
 };
 

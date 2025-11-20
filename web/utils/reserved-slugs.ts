@@ -13,7 +13,6 @@ export const RESERVED_SLUGS: Set<string> = new Set([
   'apply-for-admin',
   'profile',
   'search',
-  'playlist',
   'library',
   'api',
   'legal',

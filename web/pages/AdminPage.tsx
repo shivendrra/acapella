@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
@@ -6,7 +7,6 @@ import { collection, query, where, getDocs, doc, updateDoc, writeBatch, Timestam
 import { Role, AdminApplication, Artist, Album, Song, UserProfile } from '../types';
 import { X, Plus, Edit, Trash2, Link as LinkIcon, Search, UserX, UserPlus, Users, FileText, Disc, Music, Shield, ClipboardList } from 'lucide-react';
 import { formatDate } from '../utils/formatters';
-import UserBadges from '../components/common/UserBadges';
 
 const debounce = <F extends (...args: any[]) => any>(func: F, waitFor: number) => {
   let timeout: number;
@@ -204,7 +204,6 @@ const AdminList: React.FC = () => {
                                 <div>
                                     <p className="font-semibold flex items-center">
                                         {user.displayName}
-                                        <UserBadges user={user} />
                                     </p>
                                     <p className="text-sm text-gray-500">@{user.username}</p>
                                 </div>
@@ -229,7 +228,6 @@ const AdminList: React.FC = () => {
                                     <div>
                                         <p className="font-semibold flex items-center">
                                             {admin.displayName}
-                                            <UserBadges user={admin} />
                                         </p>
                                         <p className="text-sm text-gray-500">@{admin.username}</p>
                                     </div>

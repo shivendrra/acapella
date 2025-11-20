@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { collection, query, where, getDocs, limit, orderBy, Timestamp, documentId, collectionGroup, startAfter, getDoc } from '@firebase/firestore';
@@ -5,7 +6,6 @@ import { db } from '../services/firebase';
 import { UserProfile, Review, Like, Follow, Song, Album } from '../types';
 import PageLoader from '../components/common/PageLoader';
 import { useAuth } from '../hooks/useAuth';
-import UserBadges from '../components/common/UserBadges';
 
 type ActivityLog = (Review & { _activityType: 'review' }) | (Like & { _activityType: 'like' }) | (Review & { _activityType: 'follow' });
 
@@ -13,7 +13,6 @@ const DiaryItem: React.FC<{ activity: ActivityLog; profile: UserProfile }> = ({ 
     const userLink = (
         <NavLink to={`/${profile.username}`} className="font-semibold hover:underline inline-flex items-center">
             {profile.displayName}
-            <UserBadges user={profile} />
         </NavLink>
     );
     const date = activity.createdAt instanceof Timestamp ? activity.createdAt.toDate().toLocaleDateString() : null;
