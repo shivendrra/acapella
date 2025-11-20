@@ -1,3 +1,4 @@
+
 // FIX: Changed firebase imports to use the '@firebase' scope.
 import { User as FirebaseUser } from '@firebase/auth';
 // FIX: Changed firebase imports to use the '@firebase' scope.
@@ -69,7 +70,6 @@ export interface Album {
   platformLinks?: {
     spotify?: string;
     appleMusic?: string;
-
     youtubeMusic?: string;
   };
   reviewCount?: number;
@@ -85,6 +85,24 @@ export interface Artist {
   genres: string[];
   bio?: string;
   socials?: Record<string, string>; // e.g., { "twitter": "url", "instagram": "url" }
+  platformLinks?: {
+    spotify?: string;
+    appleMusic?: string;
+    youtubeMusic?: string;
+  };
+}
+
+export interface Playlist {
+  id: string;
+  userId: string;
+  userDisplayName: string;
+  title: string;
+  description?: string;
+  coverArtUrl?: string;
+  songIds: string[];
+  createdAt: FieldValue | Timestamp;
+  updatedAt?: FieldValue | Timestamp;
+  isPublic?: boolean;
   platformLinks?: {
     spotify?: string;
     appleMusic?: string;

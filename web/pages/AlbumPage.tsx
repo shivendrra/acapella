@@ -10,7 +10,6 @@ import PageLoader from '../components/common/PageLoader';
 import { MoreHorizontal, Music, Star, Pen, Send, Heart } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { formatDate } from '../utils/formatters';
-import UserBadges from '../components/common/UserBadges';
 
 const formatDuration = (seconds: number): string => {
     const minutes = Math.floor(seconds / 60);
@@ -105,7 +104,6 @@ const ReviewCard: React.FC<{ review: ReviewType; albumId: string }> = ({ review,
                         <div>
                             <p className="font-semibold flex items-center">
                                 {review.userDisplayName}
-                                <UserBadges user={{ role: review.userRole, isCurator: review.userIsCurator }} />
                             </p>
                             <StarRatingDisplay rating={review.rating} size={4} />
                         </div>

@@ -21,6 +21,8 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const AlbumPage = lazy(() => import('./pages/AlbumPage'));
 const ArtistPage = lazy(() => import('./pages/ArtistPage'));
 const SongPage = lazy(() => import('./pages/SongPage'));
+const PlaylistPage = lazy(() => import('./pages/PlaylistPage'));
+const UserPlaylistsPage = lazy(() => import('./pages/UserPlaylistsPage'));
 const ProfileSetupPage = lazy(() => import('./pages/ProfileSetupPage'));
 const SearchPage = lazy(() => import('./pages/SearchPage'));
 const CuratorsPage = lazy(() => import('./pages/CuratorsPage'));
@@ -76,16 +78,18 @@ const AppRouter: React.FC = () => {
               <Route path="/artist/:id" element={<ArtistPage />} />
               <Route path="/artist/:id/songs" element={<ArtistSongsPage />} />
               <Route path="/artist/:id/albums" element={<ArtistAlbumsPage />} />
+              <Route path="/playlist/:id" element={<PlaylistPage />} />
               <Route path="/search" element={<SearchPage />} />
               <Route path="/review/:id" element={<ReviewPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/help" element={<HelpPage />} />
               
-              {/* User Activity Pages */}
+              {/* User Activity & Playlist Pages */}
               <Route path="/:username/likes" element={<UserLikesPage />} />
               <Route path="/:username/ratings" element={<UserRatingsPage />} />
               <Route path="/:username/reviews" element={<UserReviewsPage />} />
               <Route path="/:username/activity" element={<UserActivityPage />} />
+              <Route path="/:username/playlists" element={<UserPlaylistsPage />} />
 
 
               {/* Authenticated Routes */}
