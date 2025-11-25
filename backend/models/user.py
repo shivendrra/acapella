@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, Integer, Boolean, DateTime, ForeignKey, Table, Text
 from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import JSONB, ARRAY
-from datetime import datetime
+from datetime import datetime, timezone
 from ..database import Base
 
 class User(Base):
@@ -10,7 +10,7 @@ class User(Base):
   id = Column(String, primary_key=True)
   email = Column(String)
   role = Column(String, nullable=False)
-  created_at = Column(DateTime, default=datetime.utcnow)
+  created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
 
   profile = relationship("UserProfile", back_populates="user", uselist=False)
   playlists = relationship("Playlist", back_populates="user")
@@ -46,7 +46,7 @@ class Follow(Base):
 
   follower_id = Column(String, ForeignKey("users.id"), primary_key=True)
   following_id = Column(String, ForeignKey("users.id"), primary_key=True)
-  created_at = Column(DateTime, default=datetime.utcnow)
+  created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
 class AdminApplication(Base):
   __tablename__ = "admin_applications"
@@ -57,4 +57,4 @@ class AdminApplication(Base):
   user_name = Column(String)
   reason = Column(Text)
   status = Column(String)
-  submitted_at = Column(DateTime, default=datetime.utcnow)
+  submitted_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))

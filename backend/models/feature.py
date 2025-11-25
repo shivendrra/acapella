@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, Integer, Boolean, DateTime, ForeignKey, Table, Text
 from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import JSONB, ARRAY
-from datetime import datetime
+from datetime import datetime, timezone
 from ..database import Base
 
 playlist_songs = Table(
@@ -88,7 +88,7 @@ class Playlist(Base):
   title = Column(String, nullable=False)
   description = Column(Text)
   cover_art_url = Column(String)
-  created_at = Column(DateTime, default=datetime.utcnow)
+  created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
   updated_at = Column(DateTime)
   is_public = Column(Boolean)
   platform_links = Column(JSONB)
@@ -103,7 +103,7 @@ class Review(Base):
   user_id = Column(String, ForeignKey("users.id"))
   rating = Column(Integer, nullable=False)
   review_text = Column(Text)
-  created_at = Column(DateTime, default=datetime.utcnow)
+  created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
   likes_count = Column(Integer, default=0)
 
   entity_id = Column(String)
@@ -123,7 +123,7 @@ class Like(Base):
   user_id = Column(String, ForeignKey("users.id"))
   entity_id = Column(String)
   entity_type = Column(String)
-  created_at = Column(DateTime, default=datetime.utcnow)
+  created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
   entity_title = Column(String)
   entity_cover_art_url = Column(String)
   review_on_entity_type = Column(String)
