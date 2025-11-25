@@ -1,5 +1,6 @@
 import os, requests
 from dotenv import load_dotenv
+from urllib.parse import urlparse
 
 load_dotenv()
 
@@ -10,6 +11,18 @@ WIKIMEDIA_API = "https://commons.wikimedia.org/w/api.php"
 headers = {
   'User-Agent': 'Acapella/1.0 (shivharsh44@gmail.com)',
   'Accept': 'application/json'
+}
+
+allowed_platform_hosts = {
+  'open.spotify.com': 'spotify',
+  'music.apple.com': 'appleMusic',
+    'music.youtube.com': 'youtubeMusic',
+}
+
+allowed_social_hosts = {
+  'instagram.com': 'instagram',
+  'twitter.com': 'twitter',
+  'x.com': 'twitter',
 }
 
 def refine_query(artist_name):
@@ -40,12 +53,11 @@ def google_search(artist_name):
   platform_links, social_links = {}, {}
   for item in items:
     link = item.get('link', '')
+    parsed = urlparse(link)
+    host = parsed.hostname or ""
 
-    if 'open.spotify.com' in link: platform_links.setdefault('spotify', link)
-    elif 'music.apple.com' in link: platform_links.setdefault('appleMusic', link)
-    elif 'music.youtube.com' in link: platform_links.setdefault('youtubeMusic', link)
-    elif 'instagram.com' in link: social_links.setdefault('instagram', link)
-    elif 'twitter.com' in link or 'x.com' in link: social_links.setdefault('twitter', link)
+    if host in allowed_platform_hosts: platform_links.setdefault(allowed_platform_hosts[host], link)
+    elif host in allowed_social_hosts: social_links.setdefault(allowed_social_hosts[host], link)
     if len(platform_links) >= 3 and len(social_links) >= 2: break
   return platform_links, social_links
 
