@@ -19,6 +19,8 @@ export interface UserProfile {
   photoURL: string | null;
   role: Role;
   isCurator?: boolean;
+  curatorPlan?: 'monthly' | 'yearly';
+  curatorExpiresAt?: FieldValue | Timestamp;
   bio?: string;
   createdAt?: FieldValue | Timestamp;
   profileComplete?: boolean;
@@ -102,7 +104,7 @@ export interface Playlist {
   songIds: string[];
   createdAt: FieldValue | Timestamp;
   updatedAt?: FieldValue | Timestamp;
-  isPublic?: boolean;
+  // Removed isPublic to make all playlists public by default
   platformLinks?: {
     spotify?: string;
     appleMusic?: string;

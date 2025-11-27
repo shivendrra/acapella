@@ -84,7 +84,7 @@ const HelpPage: React.FC = () => {
           If you can't find the answer you're looking for, feel free to reach out to our support team.
         </p>
         <a 
-            href="mailto:support@acapella.app"
+            href="mailto:freakingaura@gmail.com"
             className="mt-6 inline-flex items-center px-6 py-3 bg-ac-primary text-white font-semibold rounded-lg hover:bg-ac-primary/90 transition-colors"
         >
             <Mail className="mr-2 h-5 w-5" />

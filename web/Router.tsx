@@ -40,6 +40,13 @@ const AboutPage = lazy(() => import('./pages/AboutPage'));
 const HelpPage = lazy(() => import('./pages/HelpPage'));
 const CuratorProgramPage = lazy(() => import('./pages/CuratorProgramPage'));
 
+// Legal Pages
+const TermsPage = lazy(() => import('./pages/legal/TermsPage'));
+const PrivacyPage = lazy(() => import('./pages/legal/PrivacyPage'));
+const RefundsPage = lazy(() => import('./pages/legal/RefundsPage'));
+const ShippingPage = lazy(() => import('./pages/legal/ShippingPage'));
+const ContactPage = lazy(() => import('./pages/legal/ContactPage'));
+
 
 // Settings Sub-pages
 const ProfileSettings = lazy(() => import('./pages/settings/ProfileSettings'));
@@ -83,6 +90,13 @@ const AppRouter: React.FC = () => {
               <Route path="/review/:id" element={<ReviewPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/help" element={<HelpPage />} />
+              
+              {/* Legal Routes */}
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/refunds" element={<RefundsPage />} />
+              <Route path="/shipping" element={<ShippingPage />} />
+              <Route path="/contact" element={<ContactPage />} />
               
               {/* User Activity & Playlist Pages */}
               <Route path="/:username/likes" element={<UserLikesPage />} />

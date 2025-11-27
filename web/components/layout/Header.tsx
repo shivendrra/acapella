@@ -6,7 +6,7 @@ import { useTheme } from '../../hooks/useTheme';
 import { auth } from '../../services/firebase';
 // FIX: Changed firebase imports to use the '@firebase' scope.
 import { signOut } from '@firebase/auth';
-import { Sun, Moon, LogOut, User, Settings, Shield, Edit, Search, Menu, X, Info, HelpCircle, Sparkles } from 'lucide-react';
+import { Sun, Moon, LogOut, User, Settings, Shield, Edit, Search, Menu, X, Sparkles } from 'lucide-react';
 import { Role } from '../../types';
 
 const Header: React.FC = () => {
@@ -29,6 +29,7 @@ const Header: React.FC = () => {
 
   const mobileNavLinkClass = "text-gray-700 dark:text-gray-300 hover:text-ac-accent dark:hover:text-ac-accent block px-3 py-2 rounded-md text-base font-medium";
   const mobileNavLinkActiveClass = "text-ac-accent font-semibold bg-gray-100 dark:bg-gray-800";
+  const mobileFooterLinkClass = "text-sm text-gray-500 hover:text-ac-primary dark:text-gray-400 dark:hover:text-ac-secondary block py-1";
 
 
   return (
@@ -83,8 +84,6 @@ const Header: React.FC = () => {
                   <div className="py-1">
                     <NavLink to={`/${userProfile.username}`} className="flex items-center w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"><User className="mr-3 h-4 w-4"/>Profile</NavLink>
                     <NavLink to="/settings" className="flex items-center w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"><Settings className="mr-3 h-4 w-4"/>Settings</NavLink>
-                    <NavLink to="/about" className="flex items-center w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"><Info className="mr-3 h-4 w-4"/>About</NavLink>
-                    <NavLink to="/help" className="flex items-center w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"><HelpCircle className="mr-3 h-4 w-4"/>Help</NavLink>
                     
                     {!userProfile.isCurator && (
                        <NavLink to="/curator-program" className="flex items-center w-full text-left px-4 py-2 text-sm text-yellow-600 dark:text-yellow-400 hover:bg-gray-100 dark:hover:bg-gray-700"><Sparkles className="mr-3 h-4 w-4"/>Become a Curator</NavLink>
@@ -120,8 +119,8 @@ const Header: React.FC = () => {
         role="dialog"
         aria-modal="true"
       >
-        <div className="h-full flex flex-col bg-ac-light dark:bg-ac-dark shadow-xl">
-          <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="h-full flex flex-col bg-ac-light dark:bg-ac-dark shadow-xl overflow-y-auto">
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 shrink-0">
             <NavLink to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-ac-primary dark:text-ac-secondary font-serif">
               Acapella
             </NavLink>
@@ -129,11 +128,33 @@ const Header: React.FC = () => {
               <X className="h-6 w-6" />
             </button>
           </div>
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          
+          <div className="px-2 pt-4 pb-3 space-y-1 sm:px-3 flex-grow">
               <NavLink to="/songs" onClick={() => setIsMobileMenuOpen(false)} className={({isActive}) => `${mobileNavLinkClass} ${isActive ? mobileNavLinkActiveClass : ''}`}>Songs</NavLink>
               <NavLink to="/albums" onClick={() => setIsMobileMenuOpen(false)} className={({isActive}) => `${mobileNavLinkClass} ${isActive ? mobileNavLinkActiveClass : ''}`}>Albums</NavLink>
               <NavLink to="/artists" onClick={() => setIsMobileMenuOpen(false)} className={({isActive}) => `${mobileNavLinkClass} ${isActive ? mobileNavLinkActiveClass : ''}`}>Artists</NavLink>
               <NavLink to="/curators" onClick={() => setIsMobileMenuOpen(false)} className={({isActive}) => `${mobileNavLinkClass} ${isActive ? mobileNavLinkActiveClass : ''}`}>Curators</NavLink>
+          </div>
+
+          {/* Mobile Footer Section */}
+          <div className="p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-black/20">
+              <h4 className="font-serif font-bold text-ac-primary dark:text-ac-secondary mb-3">Explore & Support</h4>
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div>
+                      <NavLink to="/about" onClick={() => setIsMobileMenuOpen(false)} className={mobileFooterLinkClass}>About</NavLink>
+                      <NavLink to="/help" onClick={() => setIsMobileMenuOpen(false)} className={mobileFooterLinkClass}>Help</NavLink>
+                      <NavLink to="/contact" onClick={() => setIsMobileMenuOpen(false)} className={mobileFooterLinkClass}>Contact Us</NavLink>
+                  </div>
+                  <div>
+                      <NavLink to="/terms" onClick={() => setIsMobileMenuOpen(false)} className={mobileFooterLinkClass}>Terms</NavLink>
+                      <NavLink to="/privacy" onClick={() => setIsMobileMenuOpen(false)} className={mobileFooterLinkClass}>Privacy</NavLink>
+                      <NavLink to="/refunds" onClick={() => setIsMobileMenuOpen(false)} className={mobileFooterLinkClass}>Refunds</NavLink>
+                      <NavLink to="/shipping" onClick={() => setIsMobileMenuOpen(false)} className={mobileFooterLinkClass}>Shipping</NavLink>
+                  </div>
+              </div>
+              <div className="text-center text-xs text-gray-400">
+                  <p>&copy; {new Date().getFullYear()} Acapella.</p>
+              </div>
           </div>
         </div>
       </div>
