@@ -1,14 +1,16 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { db, auth } from '../../services/firebase';
 // FIX: Changed firebase imports to use the '@firebase' scope.
-import { doc, updateDoc, collection, query, where, getDocs, limit, deleteDoc } from '@firebase/firestore';
+import { doc, updateDoc, collection, query, where, getDocs, limit, deleteDoc, Timestamp } from '@firebase/firestore';
 // FIX: Changed firebase imports to use the '@firebase' scope.
 import { deleteUser } from '@firebase/auth';
 import { RESERVED_SLUGS } from '../../utils/reserved-slugs';
 import { Role } from '../../types';
 import { useNavigate } from 'react-router-dom';
-import { X, AlertTriangle } from 'lucide-react';
+import { X, AlertTriangle, Calendar } from 'lucide-react';
+import { formatDate } from '../../utils/formatters';
 
 // A simple debounce utility
 const debounce = <F extends (...args: any[]) => any>(func: F, waitFor: number) => {
@@ -30,18 +32,21 @@ const DiscontinueCuratorModal: React.FC<{
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" onClick={onClose}>
             <div className="bg-ac-light dark:bg-ac-dark rounded-lg shadow-2xl w-full max-w-md p-6" onClick={e => e.stopPropagation()}>
                 <div className="flex justify-between items-center">
-                    <h3 className="text-xl font-bold font-serif text-ac-danger">Discontinue Membership</h3>
+                    <h3 className="text-xl font-bold font-serif text-ac-danger">Cancel Membership</h3>
                     <button onClick={onClose}><X /></button>
                 </div>
                 <div className="mt-4 text-center">
                     <p className="text-gray-600 dark:text-gray-400 mb-4">
-                        Are you sure you want to discontinue your Curator membership? You will lose your profile badge and other benefits at the end of your current billing cycle.
+                        Are you sure you want to cancel your Curator badge?
+                    </p>
+                    <p className="text-sm text-gray-500 mb-4">
+                        Since this is a one-time payment membership, canceling will immediately remove your badge. You will not be refunded for the remaining time.
                     </p>
                 </div>
                 <div className="mt-6 flex justify-end space-x-2">
-                    <button onClick={onClose} className="px-4 py-2 border rounded">Cancel</button>
-                    <button onClick={onConfirm} className="px-4 py-2 bg-ac-danger text-white rounded">
-                        Confirm
+                    <button onClick={onClose} className="px-4 py-2 border rounded hover:bg-gray-100 dark:hover:bg-gray-800">Keep It</button>
+                    <button onClick={onConfirm} className="px-4 py-2 bg-ac-danger text-white rounded hover:bg-ac-danger/90">
+                        Confirm Cancel
                     </button>
                 </div>
             </div>
@@ -189,8 +194,13 @@ const AccountSettings: React.FC = () => {
     setLoading(true);
     try {
         const userRef = doc(db, 'users', currentUser.uid);
-        await updateDoc(userRef, { isCurator: false });
-        setSuccessMessage('Your Curator membership has been set to discontinue.');
+        // Remove curator status and plan details
+        await updateDoc(userRef, { 
+            isCurator: false,
+            curatorPlan: null,
+            curatorExpiresAt: null
+        });
+        setSuccessMessage('Your Curator membership has been cancelled.');
         setIsDiscontinueModalOpen(false);
         setTimeout(() => window.location.reload(), 2000);
     } catch (error) {
@@ -204,14 +214,8 @@ const AccountSettings: React.FC = () => {
     if (!currentUser) return;
     setDeleteError('');
     try {
-        // A real-world app would force re-authentication here for security.
-        // e.g., reauthenticateWithCredential(currentUser, credential);
-        // This is a critical security step before deleting user data.
-        
         await deleteDoc(doc(db, 'users', currentUser.uid));
         await deleteUser(currentUser);
-        
-        // This will trigger the AuthProvider to clear state and redirect.
     } catch (error: any) {
         console.error("Error deleting account:", error);
         if (error.code === 'auth/requires-recent-login') {
@@ -270,13 +274,33 @@ const AccountSettings: React.FC = () => {
     </form>
     
     {userProfile?.isCurator && (
-        <div className="mt-12 p-6 border rounded-lg">
-             <h3 className="text-xl font-bold font-serif mb-2">Curator Status</h3>
-             <p className="text-gray-600 dark:text-gray-400 mb-4">Thank you for being a Curator! Your support helps keep Acapella running. If you need to, you can manage your subscription here.</p>
-             <button onClick={() => setIsDiscontinueModalOpen(true)} disabled={loading} className="px-5 py-2 bg-ac-danger text-white rounded-md hover:bg-ac-danger/90 disabled:bg-gray-400">
-                 {loading ? 'Processing...' : 'Discontinue Membership'}
+        <div className="mt-12 p-6 border rounded-lg bg-yellow-50 dark:bg-yellow-900/10 border-yellow-200 dark:border-yellow-700">
+             <div className="flex justify-between items-start mb-4">
+                 <div>
+                    <h3 className="text-xl font-bold font-serif mb-1">Curator Membership</h3>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">Thank you for supporting Acapella!</p>
+                 </div>
+                 <span className="bg-ac-secondary text-white text-xs px-2 py-1 rounded uppercase font-bold tracking-wide">Active</span>
+             </div>
+             
+             <div className="bg-white dark:bg-black/20 rounded p-4 mb-4 grid grid-cols-2 gap-4">
+                 <div>
+                     <p className="text-xs text-gray-500 uppercase font-semibold">Plan</p>
+                     <p className="font-medium capitalize">{userProfile.curatorPlan || 'Standard'} Plan</p>
+                 </div>
+                 <div>
+                     <p className="text-xs text-gray-500 uppercase font-semibold">Expires On</p>
+                     <p className="font-medium flex items-center">
+                         <Calendar size={14} className="mr-1.5 opacity-70"/>
+                         {userProfile.curatorExpiresAt ? formatDate(userProfile.curatorExpiresAt) : 'Lifetime'}
+                     </p>
+                 </div>
+             </div>
+
+             <button onClick={() => setIsDiscontinueModalOpen(true)} disabled={loading} className="text-ac-danger hover:underline text-sm font-medium">
+                 Cancel Membership
             </button>
-             {successMessage && userProfile.isCurator && <p className="mt-4 text-sm text-green-600">{successMessage}</p>}
+             {successMessage && userProfile.isCurator && <p className="mt-2 text-sm text-green-600">{successMessage}</p>}
         </div>
     )}
 

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
@@ -167,7 +168,7 @@ const ActivityFeedItem: React.FC<{ activity: ActivityItem }> = ({ activity }) =>
     <div className="p-4 border rounded-lg flex flex-col h-full bg-white dark:bg-gray-800/50 shadow-sm">
         <div className="flex items-start space-x-3 mb-3">
             <NavLink to={`/${activity.entityUsername}`}>
-                 <img src={activity.userPhotoURL || ''} alt={activity.userDisplayName} className="w-10 h-10 rounded-full object-cover" />
+                 <img src={activity.userPhotoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(activity.userDisplayName)}&background=random`} alt={activity.userDisplayName} className="w-10 h-10 rounded-full object-cover" />
             </NavLink>
             <div>
                 <p className="text-sm">
@@ -204,7 +205,7 @@ const AlbumCard: React.FC<{ album: Album; artist?: Artist }> = ({ album, artist 
 const SongCard: React.FC<{ song: Song; artist?: Artist }> = ({ song, artist }) => (
      <NavLink to={`/song/${song.id}`} className="group block">
         <div className="aspect-square w-full overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-800">
-            <img src={song.coverArtUrl} alt={song.title} className="h-full w-full object-cover object-center group-hover:opacity-75 transition-opacity" />
+            <img src={song.coverArtUrl || `https://placehold.co/100x100/131010/FAF8F1?text=${encodeURIComponent(song.title.charAt(0)) || '🎵'}`} alt={song.title} className="h-full w-full object-cover object-center group-hover:opacity-75 transition-opacity" />
         </div>
         <h3 className="mt-2 font-semibold text-gray-900 dark:text-white truncate">{song.title}</h3>
         {artist && <p className="text-sm text-gray-500 dark:text-gray-400 truncate">{artist.name}</p>}
