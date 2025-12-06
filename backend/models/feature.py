@@ -4,25 +4,19 @@ from sqlalchemy.dialects.postgresql import JSONB, ARRAY
 from datetime import datetime, timezone
 from ..database import Base
 
-playlist_songs = Table(
-  "playlist_songs",
-  Base.metadata,
-  Column("playlist_id", String, ForeignKey("playlists.id"), primary_key=True),
-  Column("song_id", String, ForeignKey("songs.id"), primary_key=True)
+playlist_songs = Table("playlist_songs", Base.metadata,
+  Column("playlist_id", String, ForeignKey("playlists.id", ondelete="CASCADE"), primary_key=True),
+  Column("song_id", String, ForeignKey("songs.id", ondelete="CASCADE"), primary_key=True)
 )
 
-song_artists = Table(
-  "song_artists",
-  Base.metadata,
-  Column("song_id", String, ForeignKey("songs.id"), primary_key=True),
-  Column("artist_id", String, ForeignKey("artists.id"), primary_key=True)
+song_artists = Table("song_artists", Base.metadata,
+  Column("song_id", String, ForeignKey("songs.id", ondelete="CASCADE"), primary_key=True),
+  Column("artist_id", String, ForeignKey("artists.id", ondelete="CASCADE"), primary_key=True)
 )
 
-album_artists = Table(
-  "album_artists",
-  Base.metadata,
-  Column("album_id", String, ForeignKey("albums.id"), primary_key=True),
-  Column("artist_id", String, ForeignKey("artists.id"), primary_key=True)
+album_artists = Table("album_artists", Base.metadata,
+  Column("album_id", String, ForeignKey("albums.id", ondelete="CASCADE"), primary_key=True),
+  Column("artist_id", String, ForeignKey("artists.id", ondelete="CASCADE"), primary_key=True)
 )
 
 class Artist(Base):
@@ -54,7 +48,6 @@ class Album(Base):
   platform_links = Column(JSONB)
   review_count = Column(Integer, default=0)
   likes_count = Column(Integer, default=0)
-
   tracklist = Column(ARRAY(String))
 
   artists = relationship("Artist", secondary=album_artists, back_populates="albums")
@@ -66,7 +59,7 @@ class Song(Base):
   id = Column(String, primary_key=True)
   title = Column(String, nullable=False)
   title_lowercase = Column(String)
-  album_id = Column(String, ForeignKey("albums.id"))
+  album_id = Column(String, ForeignKey("albums.id", ondelete="SET NULL"))
   duration = Column(Integer, nullable=False)
   release_date = Column(String)
   genre = Column(String)
@@ -78,19 +71,19 @@ class Song(Base):
 
   album = relationship("Album", back_populates="songs")
   artists = relationship("Artist", secondary=song_artists, back_populates="songs")
-  reviews = relationship("Review", back_populates="song")
+  reviews = relationship("Review", back_populates="song", cascade="all, delete-orphan")
 
 class Playlist(Base):
   __tablename__ = "playlists"
 
   id = Column(String, primary_key=True)
-  user_id = Column(String, ForeignKey("users.id"))
+  user_id = Column(String, ForeignKey("users.id", ondelete="CASCADE"))
   title = Column(String, nullable=False)
   description = Column(Text)
   cover_art_url = Column(String)
   created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
   updated_at = Column(DateTime)
-  is_public = Column(Boolean)
+  is_public = Column(Boolean, default=True)
   platform_links = Column(JSONB)
 
   user = relationship("User", back_populates="playlists")
@@ -100,29 +93,28 @@ class Review(Base):
   __tablename__ = "reviews"
 
   id = Column(String, primary_key=True)
-  user_id = Column(String, ForeignKey("users.id"))
+  user_id = Column(String, ForeignKey("users.id", ondelete="CASCADE"))
   rating = Column(Integer, nullable=False)
   review_text = Column(Text)
   created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
   likes_count = Column(Integer, default=0)
-
-  entity_id = Column(String)
-  entity_type = Column(String)
+  entity_id = Column(String, nullable=False)
+  entity_type = Column(String, nullable=False)
   entity_title = Column(String)
   entity_cover_art_url = Column(String)
   entity_username = Column(String)
+  song_id = Column(String, ForeignKey("songs.id", ondelete="CASCADE"))
 
   user = relationship("User", back_populates="reviews")
-  song_id = Column(String, ForeignKey("songs.id"))
   song = relationship("Song", back_populates="reviews")
 
 class Like(Base):
   __tablename__ = "likes"
 
   id = Column(String, primary_key=True)
-  user_id = Column(String, ForeignKey("users.id"))
-  entity_id = Column(String)
-  entity_type = Column(String)
+  user_id = Column(String, ForeignKey("users.id", ondelete="CASCADE"))
+  entity_id = Column(String, nullable=False)
+  entity_type = Column(String, nullable=False)
   created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
   entity_title = Column(String)
   entity_cover_art_url = Column(String)
