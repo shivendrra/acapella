@@ -23,7 +23,7 @@ class TokenOut(BaseModel):
   refresh_token: str
   token_type: str = "bearer"
 
-@router.post("/register", response_model=TokenOut)
+@router.post("/local/register", response_model=TokenOut)
 def register(payload: RegisterIn, db: Session = Depends(get_db)):
   existing = get_user_by_email(db, payload.email)
   if existing:
@@ -33,7 +33,7 @@ def register(payload: RegisterIn, db: Session = Depends(get_db)):
   refresh = create_refresh_token(subject=user.id)
   return {"access_token": access, "refresh_token": refresh}
 
-@router.post("/login", response_model=TokenOut)
+@router.post("/local/login", response_model=TokenOut)
 def login(payload: LoginIn, db: Session = Depends(get_db)):
   user = get_user_by_email(db, payload.email)
   if not user or not verify_password(payload.password, user.password_hash):
