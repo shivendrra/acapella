@@ -1,6 +1,6 @@
 import firebase_admin
 from firebase_admin import credentials
-from core.config import settings
+from .core.config import settings
 import os
 
 def init_firebase():
