@@ -3,9 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from .database import engine, Base
 from .firebase import init_firebase
-from .routes import auth_firebase, auth_local, auth_refresh, users
-# from .routes import artists, albums, songs, playlists, reviews, likes, users, follows
-from .routes import review, playlist, follow, likes, users
+from .routes import auth_firebase, auth_local, auth_refresh
+from .routes import review, playlist, follow, likes, users, albums, songs, artists
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -26,9 +25,9 @@ app.add_middleware(
 app.include_router(auth_firebase.router, tags=["Auth"])
 app.include_router(auth_local.router, tags=["Auth"])
 app.include_router(auth_refresh.router, tags=["Auth"])
-# app.include_router(artists.router, tags=["Artists"])
-# app.include_router(albums.router, tags=["Albums"])
-# app.include_router(songs.router, tags=["Songs"])
+app.include_router(artists.router, tags=["Artists"])
+app.include_router(albums.router, tags=["Albums"])
+app.include_router(songs.router, tags=["Songs"])
 app.include_router(playlist.router, tags=["Playlists"])
 app.include_router(review.router, tags=["Reviews"])
 app.include_router(likes.router, tags=["Likes"])
