@@ -1,8 +1,6 @@
 from fastapi import APIRouter, HTTPException, status
 from pydantic import BaseModel
 from ..core.jwt import verify_token, create_access_token
-from ..database import get_db
-from ..repo.user_repo import get_user_by_id
 
 router = APIRouter(prefix="/auth")
 

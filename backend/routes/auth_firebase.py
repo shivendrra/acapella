@@ -22,13 +22,10 @@ def auth_via_firebase(payload: FirebaseTokenIn, db: Session = Depends(get_db)):
     decoded = firebase_auth.verify_id_token(payload.id_token)
   except Exception:
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid Firebase token")
-  uid = decoded.get("uid")
-  email = decoded.get("email")
-  name = decoded.get("name")
-  picture = decoded.get("picture")
+  uid, email, name, picture = decoded.get("uid"), decoded.get("email"), decoded.get("name"), decoded.get("picture")
   user = get_user_by_id(db, uid)
   if not user:
-    user = create_user(db, id=uid, email=email, display_name=name, photo_url=picture)
-  access = create_access_token(subject=uid)
-  refresh = create_refresh_token(subject=uid)
+    username = email.split("@")[0] if email else uid
+    user = create_user(db, id=uid, email=email, display_name=name, photo_url=picture, username=username)
+  access, refresh = create_access_token(subject=uid), create_refresh_token(subject=uid)
   return {"access_token": access, "refresh_token": refresh}

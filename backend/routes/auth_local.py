@@ -29,8 +29,7 @@ def register(payload: RegisterIn, db: Session = Depends(get_db)):
   if existing:
     raise HTTPException(status_code=400, detail="Email already registered")
   user = create_user_with_password(db, id=payload.id, email=payload.email, password=payload.password, username=payload.username)
-  access = create_access_token(subject=user.id)
-  refresh = create_refresh_token(subject=user.id)
+  access, refresh = create_access_token(subject=user.id), create_refresh_token(subject=user.id)
   return {"access_token": access, "refresh_token": refresh}
 
 @router.post("/local/login", response_model=TokenOut)
@@ -38,6 +37,5 @@ def login(payload: LoginIn, db: Session = Depends(get_db)):
   user = get_user_by_email(db, payload.email)
   if not user or not verify_password(payload.password, user.password_hash):
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
-  access = create_access_token(subject=user.id)
-  refresh = create_refresh_token(subject=user.id)
+  access, refresh = create_access_token(subject=user.id), create_refresh_token(subject=user.id)
   return {"access_token": access, "refresh_token": refresh}
