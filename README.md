@@ -31,6 +31,9 @@
   - [**Firebase**](https://firebase.google.com/)
     - **Firestore:** NoSQL database for all application data.
     - **Firebase Authentication:** Manages user accounts and authentication.
+  - [**FastAPI**](https://fastapi.tiangolo.com/) *"still work in progress"*
+    - **Render:** PostgreSQL database hosted (free-tier for testing only)
+    - **Local & Firebase AUTH:** Both could be used by the user for authentication.
 
 - **Styling:**
   - [**Tailwind CSS**](https://tailwindcss.com/) for utility-first styling.
