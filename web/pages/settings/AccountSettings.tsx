@@ -2,9 +2,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { db, auth } from '../../services/firebase';
-// FIX: Changed firebase imports to use the '@firebase' scope.
+
 import { doc, updateDoc, collection, query, where, getDocs, limit, deleteDoc, Timestamp } from '@firebase/firestore';
-// FIX: Changed firebase imports to use the '@firebase' scope.
+
 import { deleteUser } from '@firebase/auth';
 import { RESERVED_SLUGS } from '../../utils/reserved-slugs';
 import { Role } from '../../types';
@@ -12,7 +12,6 @@ import { useNavigate } from 'react-router-dom';
 import { X, AlertTriangle, Calendar } from 'lucide-react';
 import { formatDate } from '../../utils/formatters';
 
-// A simple debounce utility
 const debounce = <F extends (...args: any[]) => any>(func: F, waitFor: number) => {
   let timeout: number;
   return (...args: Parameters<F>): Promise<ReturnType<F>> =>
