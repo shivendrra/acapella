@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { useTheme } from '../../hooks/useTheme';
 import { auth } from '../../services/firebase';
-
+// FIX: Changed firebase imports to use the '@firebase' scope.
 import { signOut } from '@firebase/auth';
 import { Sun, Moon, LogOut, User, Settings, Shield, Edit, Search, Menu, X, Sparkles } from 'lucide-react';
 import { Role } from '../../types';
