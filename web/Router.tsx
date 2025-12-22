@@ -1,6 +1,6 @@
 
 import React, { lazy, Suspense } from 'react';
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from './components/layout/Layout';
 import PageLoader from './components/common/PageLoader';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -64,7 +64,7 @@ const AppRouter: React.FC = () => {
   }
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Layout>
         <Suspense fallback={<PageLoader />}>
           <Routes>
@@ -136,7 +136,7 @@ const AppRouter: React.FC = () => {
           </Routes>
         </Suspense>
       </Layout>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 

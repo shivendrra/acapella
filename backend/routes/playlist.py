@@ -1,6 +1,7 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from typing import List
+from datetime import datetime, timezone
 from ..database import get_db
 from ..schema.feature import PlaylistCreate, PlaylistUpdate, Playlist
 from ..repo.feature_repo import get_playlist, get_playlists_by_user, create_playlist, update_playlist, delete_playlist
@@ -9,7 +10,8 @@ from ..core.dependency import get_current_user
 router = APIRouter(prefix="/playlists")
 
 @router.get("/user/{user_id}", response_model=List[Playlist])
-def list_user_playlists(user_id: str, skip: int = 0, limit: int = 50, db: Session = Depends(get_db)):
+def list_user_playlists(user_id: str, skip: int = 0, limit: int = Query(50, le=100), db: Session = Depends(get_db)):
+  """Get all playlists for a specific user"""
   playlists = get_playlists_by_user(db, user_id, skip, limit)
   for pl in playlists:
     pl.song_ids = [s.id for s in pl.songs]
@@ -17,6 +19,7 @@ def list_user_playlists(user_id: str, skip: int = 0, limit: int = 50, db: Sessio
 
 @router.get("/{playlist_id}", response_model=Playlist)
 def read_playlist(playlist_id: str, db: Session = Depends(get_db)):
+  """Get specific playlist by ID"""
   playlist = get_playlist(db, playlist_id)
   if not playlist:
     raise HTTPException(status_code=404, detail="Playlist not found")
@@ -25,6 +28,9 @@ def read_playlist(playlist_id: str, db: Session = Depends(get_db)):
 
 @router.post("/", response_model=Playlist)
 def add_playlist(playlist: PlaylistCreate, db: Session = Depends(get_db), user = Depends(get_current_user)):
+  """Create new playlist"""
+  if playlist.user_id != user.id:
+    raise HTTPException(status_code=403, detail="Cannot create playlist for another user")
   data = playlist.dict()
   song_ids = data.pop("song_ids", [])
   created = create_playlist(db, song_ids=song_ids, **data)
@@ -33,10 +39,14 @@ def add_playlist(playlist: PlaylistCreate, db: Session = Depends(get_db), user =
 
 @router.put("/{playlist_id}", response_model=Playlist)
 def modify_playlist(playlist_id: str, playlist: PlaylistUpdate, db: Session = Depends(get_db), user = Depends(get_current_user)):
+  """Update playlist (owner only)"""
   existing = get_playlist(db, playlist_id)
-  if not existing or existing.user_id != user.id:
-    raise HTTPException(status_code=403, detail="Not authorized")
+  if not existing:
+    raise HTTPException(status_code=404, detail="Playlist not found")
+  if existing.user_id != user.id:
+    raise HTTPException(status_code=403, detail="Not authorized to edit this playlist")
   data = playlist.dict(exclude_unset=True)
+  data["updated_at"] = datetime.now(timezone.utc)
   song_ids = data.pop("song_ids", None)
   updated = update_playlist(db, playlist_id, song_ids=song_ids, **data)
   updated.song_ids = [s.id for s in updated.songs]
@@ -44,8 +54,11 @@ def modify_playlist(playlist_id: str, playlist: PlaylistUpdate, db: Session = De
 
 @router.delete("/{playlist_id}")
 def remove_playlist(playlist_id: str, db: Session = Depends(get_db), user = Depends(get_current_user)):
+  """Delete playlist (owner only)"""
   existing = get_playlist(db, playlist_id)
-  if not existing or existing.user_id != user.id:
-    raise HTTPException(status_code=403, detail="Not authorized")
+  if not existing:
+    raise HTTPException(status_code=404, detail="Playlist not found")
+  if existing.user_id != user.id:
+    raise HTTPException(status_code=403, detail="Not authorized to delete this playlist")
   delete_playlist(db, playlist_id)
-  return {"message": "Playlist deleted"}
+  return {"message": "Playlist deleted successfully"}

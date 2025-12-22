@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { UserProfile, Song, Album } from '../../types';
 import { useAuth } from '../../hooks/useAuth';
@@ -165,6 +166,13 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({ userProfile, onClos
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+        document.body.style.overflow = 'unset';
+    };
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!currentUser) {
@@ -202,7 +210,7 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({ userProfile, onClos
 
   return (
     <div 
-      className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" 
+      className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[100] p-4" 
       onClick={onClose}
     >
       <div 

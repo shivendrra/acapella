@@ -1,5 +1,4 @@
 
-
 import React, { useState, useEffect } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { collection, query, where, getDocs, limit, orderBy, startAfter } from '@firebase/firestore';
@@ -57,10 +56,11 @@ const UserLikesPage: React.FC = () => {
                 const userData = userSnap.docs[0].data() as UserProfile;
                 setUser(userData);
 
-                // Fetch first page of likes
+                // Fetch first page of likes (Songs & Albums only)
                 const likesQuery = query(
                     collection(db, 'likes'),
                     where('userId', '==', userData.uid),
+                    where('entityType', 'in', ['song', 'album']),
                     orderBy('createdAt', 'desc'),
                     limit(20)
                 );
@@ -89,6 +89,7 @@ const UserLikesPage: React.FC = () => {
             const likesQuery = query(
                 collection(db, 'likes'),
                 where('userId', '==', user.uid),
+                where('entityType', 'in', ['song', 'album']),
                 orderBy('createdAt', 'desc'),
                 startAfter(lastDoc),
                 limit(20)
@@ -121,7 +122,7 @@ const UserLikesPage: React.FC = () => {
                 </div>
             ) : (
                  <div className="text-center py-20 border-2 border-dashed rounded-lg text-gray-500">
-                    <p>{user?.displayName || username} hasn't liked anything yet.</p>
+                    <p>{user?.displayName || username} hasn't liked any songs or albums yet.</p>
                 </div>
             )}
             

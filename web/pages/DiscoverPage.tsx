@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, useRef } from 'react';
 import { collection, query, orderBy, limit, getDocs, where } from '@firebase/firestore';
 import { db } from '../services/firebase';
 import { Album, Song } from '../types';
@@ -15,7 +16,7 @@ const SectionTitle: React.FC<{ title: string; subtitle: string }> = ({ title, su
 
 // FIX: Update Carousel component to pass index to renderItem prop to allow for ranked lists.
 const Carousel: React.FC<{ items: (Album | Song)[]; renderItem: (item: any, index: number) => React.ReactNode }> = ({ items, renderItem }) => {
-    const scrollRef = React.useRef<HTMLDivElement>(null);
+    const scrollRef = useRef<HTMLDivElement>(null);
 
     const scroll = (direction: 'left' | 'right') => {
         if (scrollRef.current) {

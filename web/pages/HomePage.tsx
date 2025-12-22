@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { db } from '../services/firebase';
@@ -18,7 +18,7 @@ const SectionTitle: React.FC<{ title: string; subtitle?: string }> = ({ title, s
 );
 
 const Carousel: React.FC<{ items: any[]; renderItem: (item: any) => React.ReactNode }> = ({ items, renderItem }) => {
-    const scrollRef = React.useRef<HTMLDivElement>(null);
+    const scrollRef = useRef<HTMLDivElement>(null);
     if (!items || items.length === 0) return null;
 
     const scroll = (direction: 'left' | 'right') => {

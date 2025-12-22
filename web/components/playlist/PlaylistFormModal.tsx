@@ -42,6 +42,13 @@ const PlaylistFormModal: React.FC<PlaylistFormModalProps> = ({ onClose, existing
     const [saving, setSaving] = useState(false);
     const [error, setError] = useState('');
 
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, []);
+
     // Fetch existing songs if editing
     useEffect(() => {
         const fetchExistingSongs = async () => {
@@ -179,7 +186,7 @@ const PlaylistFormModal: React.FC<PlaylistFormModalProps> = ({ onClose, existing
     };
 
     return (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4" onClick={onClose}>
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[100] p-4" onClick={onClose}>
             <div className="bg-ac-light dark:bg-ac-dark rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col h-full md:h-auto" onClick={e => e.stopPropagation()}>
                 
                 {/* Header */}
