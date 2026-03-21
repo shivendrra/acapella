@@ -1,3 +1,5 @@
+import 'react-native-get-random-values';
+
 import { initializeApp } from 'firebase/app';
 import { initializeAuth } from 'firebase/auth';
 import { getReactNativePersistence } from 'firebase/auth/react-native';
@@ -6,7 +8,7 @@ import { getStorage } from 'firebase/storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCareo74cQexHW7_c_eCvYYXyV8F1J8BH4",
+  apiKey: "AIzaSyCareo...",
   authDomain: "allepacaeht.firebaseapp.com",
   projectId: "allepacaeht",
   storageBucket: "allepacaeht.appspot.com",
