@@ -7,7 +7,6 @@ const dark  = { bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', sub: '#d1d5db'
 const H = ({ t, c }: { t: string; c: any }) => <Text style={[s.h, { color: c.text }]}>{t}</Text>;
 const P = ({ t, c }: { t: string; c: any }) => <Text style={[s.p, { color: c.sub }]}>{t}</Text>;
 
-
 const LegalPage: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => {
   const { theme } = useTheme();
   const c = theme === 'dark' ? dark : light;

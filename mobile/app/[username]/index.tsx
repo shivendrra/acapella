@@ -15,14 +15,11 @@ import { db } from '../../services/firebase';
 import { useAuth } from '../../hooks/useAuth';
 import { useTheme } from '../../hooks/useTheme';
 import { UserProfile, Review, Like, Song, Album, Follow, Playlist } from '../../types';
+import { RESERVED_SLUGS } from '../../utils/reserved-slugs';
 import { formatDate } from '../../utils/formatters';
 import UserBadges from '../../components/common/UserBadges';
 import EditProfileModal from '../../components/profile/EditProfileModal';
 import PlaylistFormModal from '../../components/playlist/PlaylistFormModal';
-
-const RESERVED = new Set(['login', 'logout', 'signup', 'admin', 'settings', 'search', 'discover',
-  'curators', 'about', 'help', 'contact', 'terms', 'privacy', 'refunds', 'shipping',
-  'songs', 'albums', 'artists', 'playlist', 'review', 'legal', 'api']);
 
 type ActivityLog =
   | (Review & { _activityType: 'review' })
@@ -229,7 +226,7 @@ const ProfilePage: React.FC = () => {
   const [followModal, setFollowModal] = useState<'followers' | 'following' | null>(null);
 
   useEffect(() => {
-    if (!username || RESERVED.has(username.toLowerCase())) { setError('User not found.'); setLoading(false); return; }
+    if (!username || RESERVED_SLUGS.has(username.toLowerCase())) { setError('User not found.'); setLoading(false); return; }
     const run = async () => {
       setLoading(true); setError(null); setProfile(null);
       try {

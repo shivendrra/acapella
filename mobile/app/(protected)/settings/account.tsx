@@ -11,10 +11,7 @@ import { useAuth } from '../../../hooks/useAuth';
 import { useTheme } from '../../../hooks/useTheme';
 import { db } from '../../../services/firebase';
 import { formatDate } from '../../../utils/formatters';
-
-const RESERVED = new Set(['login', 'logout', 'signup', 'admin', 'settings', 'search', 'discover',
-  'curators', 'about', 'help', 'contact', 'terms', 'privacy', 'refunds', 'shipping',
-  'songs', 'albums', 'artists', 'playlist', 'review', 'legal', 'api']);
+import { RESERVED_SLUGS } from '../../../utils/reserved-slugs';
 
 const DiscontinueModal: React.FC<{ visible: boolean; onClose: () => void; onConfirm: () => void; c: any }> = ({ visible, onClose, onConfirm, c }) => (
   <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
@@ -106,7 +103,7 @@ const AccountSettings: React.FC = () => {
     if (username === userProfile?.username) { setUsernameStatus('idle'); setUsernameError(null); return; }
     if (username.length < 3) { setUsernameStatus('invalid'); setUsernameError('Must be at least 3 characters.'); return; }
     if (!/^[a-z0-9_.]+$/.test(username)) { setUsernameStatus('invalid'); setUsernameError('Only lowercase letters, numbers, _ and . allowed.'); return; }
-    if (RESERVED.has(username)) { setUsernameStatus('invalid'); setUsernameError('This username is reserved.'); return; }
+    if (RESERVED_SLUGS.has(username)) { setUsernameStatus('invalid'); setUsernameError('This username is RESERVED_SLUGS.'); return; }
     setUsernameStatus('checking'); setUsernameError(null);
     timer.current = setTimeout(async () => {
       const snap = await getDocs(query(collection(db, 'users'), where('username', '==', username), limit(1)));
