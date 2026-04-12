@@ -5,9 +5,9 @@ import {
 } from 'react-native';
 import { collection, query, orderBy, limit, getDocs, where } from '@firebase/firestore';
 import { useRouter } from 'expo-router';
-import { db } from '../services/firebase';
-import { useTheme } from '../hooks/useTheme';
-import { Album, Song } from '../types';
+import { db } from '../../services/firebase';
+import { useTheme } from '../../hooks/useTheme';
+import { Album, Song } from '../../types';
 
 const SectionTitle: React.FC<{ title: string; subtitle: string; c: any }> = ({ title, subtitle, c }) => (
   <View style={{ marginBottom: 16 }}>

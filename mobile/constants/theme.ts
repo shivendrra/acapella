@@ -1,0 +1,39 @@
+export const C = {
+  primary: '#254D70',
+  secondary: '#6A9C89',
+  accent: '#FFA725',
+  danger: '#8E1616',
+  light: '#FAF8F1',
+  dark: '#131010',
+  gray: '#6b7280',
+  border: 'rgba(37,77,112,0.15)',
+};
+
+export const colors = {
+  light: {
+    bg: C.light,
+    card: '#ffffff',
+    text: C.dark,
+    muted: '#6b7280',
+    accent: C.primary,
+    accentAlt: C.secondary,
+    border: C.border,
+    inputBg: '#ffffff',
+    tabBar: C.light,
+    tabActive: C.primary,
+    tabInactive: '#9ca3af',
+  },
+  dark: {
+    bg: C.dark,
+    card: '#1c1919',
+    text: C.light,
+    muted: '#9ca3af',
+    accent: C.secondary,
+    accentAlt: C.secondary,
+    border: 'rgba(250,248,241,0.1)',
+    inputBg: '#1c1919',
+    tabBar: '#1c1919',
+    tabActive: C.secondary,
+    tabInactive: '#6b7280',
+  },
+};

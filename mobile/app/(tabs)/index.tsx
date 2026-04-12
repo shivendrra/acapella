@@ -9,10 +9,10 @@ import {
 } from '@firebase/firestore';
 import { useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useAuth } from '../hooks/useAuth';
-import { useTheme } from '../hooks/useTheme';
-import { db } from '../services/firebase';
-import { Review, Album, Song, Artist } from '../types';
+import { useAuth } from '../../hooks/useAuth';
+import { useTheme } from '../../hooks/useTheme';
+import { db } from '../../services/firebase';
+import { Review, Album, Song, Artist } from '../../types';
 
 type ActivityItem = Review & { _type: 'review' };
 type ArtistsMap = Record<string, Artist>;

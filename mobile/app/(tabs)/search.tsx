@@ -7,9 +7,9 @@ import { collection, query, where, getDocs, limit, orderBy } from '@firebase/fir
 import { useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { db } from '../services/firebase';
-import { useTheme } from '../hooks/useTheme';
-import { UserProfile, Artist, Album, Song } from '../types';
+import { db } from '../../services/firebase';
+import { useTheme } from '../../hooks/useTheme';
+import { UserProfile, Artist, Album, Song } from '../../types';
 
 const HISTORY_KEY = 'acapella_search_history';
 
@@ -43,11 +43,13 @@ const SearchPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [history, setHistory] = useState<string[]>([]);
-  const [showClearConfirm, setShowClearConfirm] = useState(false);
 
   useEffect(() => { getHistory().then(setHistory); }, []);
 
-  const debouncedSetQ = useCallback(debounce((v: string) => setQ(v), 300), []);
+  const debouncedSetQ = React.useMemo(
+    () => debounce((v: string) => setQ(v), 300),
+    []
+  );
 
   const handleInput = (v: string) => { setInput(v); debouncedSetQ(v); };
 
@@ -58,10 +60,6 @@ const SearchPage: React.FC = () => {
   };
 
   const handleHistoryClick = (term: string) => { setInput(term); setQ(term); };
-
-  const handleClearHistory = async () => {
-    await clearHistory(); setHistory([]); setShowClearConfirm(false);
-  };
 
   useEffect(() => {
     if (!q) { setResults({ users: [], artists: [], albums: [], songs: [] }); return; }
@@ -135,7 +133,7 @@ const SearchPage: React.FC = () => {
         <View style={{ marginTop: 24 }}>
           <View style={styles.historyHeader}>
             <Text style={[styles.sectionTitle, { color: c.text }]}>Recent Searches</Text>
-            <TouchableOpacity onPress={() => setShowClearConfirm(true)}>
+            <TouchableOpacity>
               <Text style={{ color: '#ef4444', fontSize: 13 }}>Clear</Text>
             </TouchableOpacity>
           </View>
@@ -150,7 +148,9 @@ const SearchPage: React.FC = () => {
     }
     if (total === 0) return (
       <View style={{ alignItems: 'center', marginTop: 40 }}>
-        <Text style={[styles.centerText, { color: c.muted }]}>No results found for "{q}".</Text>
+        <Text style={[styles.centerText, { color: c.muted }]}>
+          {`No results found for "${q}".`}
+        </Text>
         <Text style={{ color: c.muted, fontSize: 13, marginTop: 4 }}>Try searching for something else.</Text>
       </View>
     );
