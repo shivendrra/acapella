@@ -12,19 +12,19 @@ export default function ProtectedLayout() {
     if (loading) return;
 
     if (!currentUser) {
-      router.replace('/login');
+      router.replace('/(auth)/login');
       return;
     }
 
     if (userProfile && !userProfile.profileComplete && pathname !== '/profile-setup') {
-      router.replace('/(protected)/profile-setup');
+      router.replace('/profile-setup');
       return;
     }
 
     if (userProfile && userProfile.profileComplete && pathname === '/profile-setup') {
       router.replace('/');
     }
-  }, [currentUser, userProfile, loading, pathname]);
+  }, [currentUser, userProfile, loading, pathname, router]);
 
   if (loading) return <PageLoader />;
   if (!currentUser) return null;
