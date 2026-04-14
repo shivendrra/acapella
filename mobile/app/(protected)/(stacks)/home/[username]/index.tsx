@@ -4,6 +4,7 @@ import {
   StyleSheet, ActivityIndicator, Modal, Pressable,
   FlatList, Linking,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   collection, query, where, getDocs, limit, doc, getDoc,
   serverTimestamp, orderBy, Timestamp, documentId,
@@ -347,116 +348,117 @@ const ProfilePage: React.FC = () => {
   const isOwn = me?.uid === profile.uid;
 
   return (
-    <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48 }}>
-      {/* Header */}
-      <View style={styles.profileHeader}>
-        <Image source={{ uri: profile.photoURL || `https://ui-avatars.com/api/?name=${profile.displayName || profile.email}&background=random&size=128` }} style={styles.profileAvatar} />
-        <View style={{ flex: 1 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
-            <Text style={[styles.profileName, { color: c.text }]}>{profile.displayName || profile.username}</Text>
-            <UserBadges user={profile} />
-          </View>
-          <Text style={{ color: c.muted, fontSize: 14, marginTop: 2 }}>@{profile.username}</Text>
-          <View style={styles.statsRow}>
-            <TouchableOpacity onPress={() => me && setFollowModal('followers')}>
-              <Text style={{ color: c.text }}><Text style={{ fontWeight: '700' }}>{followersCount}</Text> <Text style={{ color: c.muted }}>Followers</Text></Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => me && setFollowModal('following')}>
-              <Text style={{ color: c.text }}><Text style={{ fontWeight: '700' }}>{followingCount}</Text> <Text style={{ color: c.muted }}>Following</Text></Text>
-            </TouchableOpacity>
-          </View>
-          <SocialLinks socials={profile.socials} />
-        </View>
-        <View>
-          {isOwn
-            ? <TouchableOpacity style={[styles.editBtn, { borderColor: c.border }]} onPress={() => setEditOpen(true)}>
-              <Text style={[{ fontSize: 13, fontWeight: '500' }, { color: c.text }]}>Edit Profile</Text>
-            </TouchableOpacity>
-            : me && (
-              <TouchableOpacity
-                style={[styles.followBtnLarge, isFollowing ? { borderWidth: 1, borderColor: '#ef4444' } : { backgroundColor: c.accent }]}
-                onPress={toggleFollow} disabled={followLoading}
-              >
-                {followLoading
-                  ? <ActivityIndicator size="small" color={isFollowing ? '#ef4444' : '#fff'} />
-                  : <>
-                    <MaterialIcons name={isFollowing ? 'how-to-reg' : 'person-add'} size={14} color={isFollowing ? '#ef4444' : '#fff'} />
-                    <Text style={{ color: isFollowing ? '#ef4444' : '#fff', fontSize: 13, fontWeight: '600', marginLeft: 4 }}>{isFollowing ? 'Following' : 'Follow'}</Text>
-                  </>
-                }
+    <SafeAreaView style={{ flex: 1 }}>
+
+      <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48 }}>
+        {/* Header */}
+        <View style={styles.profileHeader}>
+          <Image source={{ uri: profile.photoURL || `https://ui-avatars.com/api/?name=${profile.displayName || profile.email}&background=random&size=128` }} style={styles.profileAvatar} />
+          <View style={{ flex: 1 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
+              <Text style={[styles.profileName, { color: c.text }]}>{profile.displayName || profile.username}</Text>
+              <UserBadges user={profile} />
+            </View>
+            <Text style={{ color: c.muted, fontSize: 14, marginTop: 2 }}>@{profile.username}</Text>
+            <View style={styles.statsRow}>
+              <TouchableOpacity onPress={() => me && setFollowModal('followers')}>
+                <Text style={{ color: c.text }}><Text style={{ fontWeight: '700' }}>{followersCount}</Text> <Text style={{ color: c.muted }}>Followers</Text></Text>
               </TouchableOpacity>
-            )
-          }
-        </View>
-      </View>
-
-      {profile.bio ? <Text style={[styles.bio, { color: c.bodyText }]}>{profile.bio}</Text> : null}
-
-      {/* Favorites */}
-      {(favSongs.length > 0 || favAlbums.length > 0) && (
-        <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: c.text }]}>Favorites</Text>
-          {favSongs.length > 0 && (
-            <CoverGrid items={favSongs} getUrl={s => s.coverArtUrl} getPath={s => `/song/${s.id}`} c={c} />
-          )}
-          {favAlbums.length > 0 && (
-            <CoverGrid items={favAlbums} getUrl={a => a.coverArtUrl} getPath={a => `/album/${a.id}`} c={c} />
-          )}
-        </View>
-      )}
-
-      {/* Playlists */}
-      <View style={styles.section}>
-        <View style={styles.sectionHeader}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-            <Text style={[styles.sectionTitle, { color: c.text }]}>Playlists</Text>
-            {isOwn && (
-              <TouchableOpacity onPress={() => setCreatePlaylistOpen(true)}>
-                <MaterialIcons name="add-circle-outline" size={20} color={c.accent} />
+              <TouchableOpacity onPress={() => me && setFollowModal('following')}>
+                <Text style={{ color: c.text }}><Text style={{ fontWeight: '700' }}>{followingCount}</Text> <Text style={{ color: c.muted }}>Following</Text></Text>
               </TouchableOpacity>
+            </View>
+            <SocialLinks socials={profile.socials} />
+          </View>
+          <View>
+            {isOwn
+              ? <TouchableOpacity style={[styles.editBtn, { borderColor: c.border }]} onPress={() => setEditOpen(true)}>
+                <Text style={[{ fontSize: 13, fontWeight: '500' }, { color: c.text }]}>Edit Profile</Text>
+              </TouchableOpacity>
+              : me && (
+                <TouchableOpacity
+                  style={[styles.followBtnLarge, isFollowing ? { borderWidth: 1, borderColor: '#ef4444' } : { backgroundColor: c.accent }]}
+                  onPress={toggleFollow} disabled={followLoading}
+                >
+                  {followLoading
+                    ? <ActivityIndicator size="small" color={isFollowing ? '#ef4444' : '#fff'} />
+                    : <>
+                      <MaterialIcons name={isFollowing ? 'how-to-reg' : 'person-add'} size={14} color={isFollowing ? '#ef4444' : '#fff'} />
+                      <Text style={{ color: isFollowing ? '#ef4444' : '#fff', fontSize: 13, fontWeight: '600', marginLeft: 4 }}>{isFollowing ? 'Following' : 'Follow'}</Text>
+                    </>
+                  }
+                </TouchableOpacity>
+              )
+            }
+          </View>
+        </View>
+
+        {profile.bio ? <Text style={[styles.bio, { color: c.bodyText }]}>{profile.bio}</Text> : null}
+
+        {/* Favorites */}
+        {(favSongs.length > 0 || favAlbums.length > 0) && (
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: c.text }]}>Favorites</Text>
+            {favSongs.length > 0 && (
+              <CoverGrid items={favSongs} getUrl={s => s.coverArtUrl} getPath={s => `/song/${s.id}`} c={c} />
+            )}
+            {favAlbums.length > 0 && (
+              <CoverGrid items={favAlbums} getUrl={a => a.coverArtUrl} getPath={a => `/album/${a.id}`} c={c} />
             )}
           </View>
-          {playlists.length > 0 && (
-            <TouchableOpacity onPress={() => router.push(`/${username}/playlists` as any)}>
-              <Text style={[styles.viewAll, { color: c.accent }]}>View all</Text>
-            </TouchableOpacity>
-          )}
-        </View>
-        {playlists.length > 0
-          ? <CoverGrid items={playlists} getUrl={p => p.coverArtUrl || null} getPath={p => `/playlist/${p.id}`} c={c} />
-          : <View style={[styles.emptyBox, { borderColor: c.border }]}><Text style={{ color: c.muted, fontSize: 13 }}>No items yet.</Text></View>
-        }
-      </View>
+        )}
 
-      {/* Liked / Reviews 2-col */}
-      <View style={styles.twoCol}>
-        {[
-          { title: 'Liked Items', items: likedItems, link: `/${username}/likes`, getUrl: (i: any) => i.entityCoverArtUrl, getPath: (i: any) => `/${i.entityType}/${i.entityId}` },
-          { title: 'Reviews', items: ratedItems, link: `/${username}/ratings`, getUrl: (i: any) => i.entityCoverArtUrl, getPath: (i: any) => `/review/${i.id}` },
-        ].map(sec => (
-          <View key={sec.title} style={{ flex: 1 }}>
-            <View style={styles.sectionHeader}>
-              <Text style={[styles.sectionTitle, { color: c.text, fontSize: 18 }]}>{sec.title}</Text>
-              {sec.items.length > 0 && (
-                <TouchableOpacity onPress={() => router.push(sec.link as any)}>
-                  <Text style={[styles.viewAll, { color: c.accent }]}>View all</Text>
+        {/* Playlists */}
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <Text style={[styles.sectionTitle, { color: c.text }]}>Playlists</Text>
+              {isOwn && (
+                <TouchableOpacity onPress={() => setCreatePlaylistOpen(true)}>
+                  <MaterialIcons name="add-circle-outline" size={20} color={c.accent} />
                 </TouchableOpacity>
               )}
             </View>
-            {sec.items.length > 0
-              ? <CoverGrid items={sec.items} getUrl={sec.getUrl} getPath={sec.getPath} c={c} />
-              : <View style={[styles.emptyBox, { borderColor: c.border }]}><Text style={{ color: c.muted, fontSize: 12 }}>No items yet.</Text></View>
-            }
+            {playlists.length > 0 && (
+              <TouchableOpacity onPress={() => router.push(`/${username}/playlists` as any)}>
+                <Text style={[styles.viewAll, { color: c.accent }]}>View all</Text>
+              </TouchableOpacity>
+            )}
           </View>
-        ))}
-      </View>
+          {playlists.length > 0
+            ? <CoverGrid items={playlists} getUrl={p => p.coverArtUrl || null} getPath={p => `/playlist/${p.id}`} c={c} />
+            : <View style={[styles.emptyBox, { borderColor: c.border }]}><Text style={{ color: c.muted, fontSize: 13 }}>No items yet.</Text></View>
+          }
+        </View>
 
+        {/* Liked / Reviews 2-col */}
+        <View style={styles.twoCol}>
+          {[
+            { title: 'Liked Items', items: likedItems, link: `/${username}/likes`, getUrl: (i: any) => i.entityCoverArtUrl, getPath: (i: any) => `/${i.entityType}/${i.entityId}` },
+            { title: 'Reviews', items: ratedItems, link: `/${username}/ratings`, getUrl: (i: any) => i.entityCoverArtUrl, getPath: (i: any) => `/review/${i.id}` },
+          ].map(sec => (
+            <View key={sec.title} style={{ flex: 1 }}>
+              <View style={styles.sectionHeader}>
+                <Text style={[styles.sectionTitle, { color: c.text, fontSize: 18 }]}>{sec.title}</Text>
+                {sec.items.length > 0 && (
+                  <TouchableOpacity onPress={() => router.push(sec.link as any)}>
+                    <Text style={[styles.viewAll, { color: c.accent }]}>View all</Text>
+                  </TouchableOpacity>
+                )}
+              </View>
+              {sec.items.length > 0
+                ? <CoverGrid items={sec.items} getUrl={sec.getUrl} getPath={sec.getPath} c={c} />
+                : <View style={[styles.emptyBox, { borderColor: c.border }]}><Text style={{ color: c.muted, fontSize: 12 }}>No items yet.</Text></View>
+              }
+            </View>
+          ))}
+        </View>
 
-
-      {isOwn && editOpen && <EditProfileModal userProfile={profile} onClose={() => setEditOpen(false)} onSave={handleProfileUpdate} />}
-      {isOwn && createPlaylistOpen && <PlaylistFormModal onClose={() => setCreatePlaylistOpen(false)} onSuccess={() => setCreatePlaylistOpen(false)} />}
-      {followModal && <FollowListModal title={followModal.charAt(0).toUpperCase() + followModal.slice(1)} onClose={() => setFollowModal(null)} targetUserId={profile.uid} fetchType={followModal} />}
-    </ScrollView>
+        {isOwn && editOpen && <EditProfileModal userProfile={profile} onClose={() => setEditOpen(false)} onSave={handleProfileUpdate} />}
+        {isOwn && createPlaylistOpen && <PlaylistFormModal onClose={() => setCreatePlaylistOpen(false)} onSuccess={() => setCreatePlaylistOpen(false)} />}
+        {followModal && <FollowListModal title={followModal.charAt(0).toUpperCase() + followModal.slice(1)} onClose={() => setFollowModal(null)} targetUserId={profile.uid} fetchType={followModal} />}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

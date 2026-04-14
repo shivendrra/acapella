@@ -3,6 +3,7 @@ import {
   View, Text, FlatList, TouchableOpacity, Image,
   StyleSheet, ActivityIndicator,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { collection, query, where, getDocs, Timestamp } from '@firebase/firestore';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useTheme } from '../../../../../hooks/useTheme';
@@ -49,38 +50,41 @@ const UserPlaylistsPage: React.FC = () => {
   if (error) return <Text style={[styles.center, { color: '#ef4444' }]}>{error}</Text>;
 
   return (
-    <FlatList
-      data={playlists}
-      keyExtractor={p => p.id}
-      numColumns={2}
-      contentContainerStyle={{ padding: 12, gap: 12 }}
-      columnWrapperStyle={{ gap: 12 }}
-      ListHeaderComponent={
-        <View style={{ marginBottom: 12 }}>
-          <Text style={[styles.heading, { color: c.text }]}>Playlists by {user?.displayName}</Text>
-          <Text style={[styles.sub, { color: c.muted }]}>Curated collections and mixes.</Text>
-        </View>
-      }
-      ListEmptyComponent={
-        <View style={[styles.emptyBox, { borderColor: c.border }]}>
-          <Text style={{ color: c.muted }}>No playlists found.</Text>
-        </View>
-      }
-      renderItem={({ item: pl }) => (
-        <TouchableOpacity style={styles.card} onPress={() => router.push(`/playlist/${pl.id}` as any)}>
-          <View style={styles.cardImgWrapper}>
-            <Image
-              source={{ uri: pl.coverArtUrl || 'https://placehold.co/400x400?text=Playlist' }}
-              style={styles.cardImg}
-              resizeMode="cover"
-            />
-            <View style={styles.cardImgOverlay} />
+    <SafeAreaView style={{ flex: 1 }}>
+
+      <FlatList
+        data={playlists}
+        keyExtractor={p => p.id}
+        numColumns={2}
+        contentContainerStyle={{ padding: 12, gap: 12 }}
+        columnWrapperStyle={{ gap: 12 }}
+        ListHeaderComponent={
+          <View style={{ marginBottom: 12 }}>
+            <Text style={[styles.heading, { color: c.text }]}>Playlists by {user?.displayName}</Text>
+            <Text style={[styles.sub, { color: c.muted }]}>Curated collections and mixes.</Text>
           </View>
-          <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={1}>{pl.title}</Text>
-          <Text style={[styles.cardCount, { color: c.muted }]}>{pl.songIds.length} songs</Text>
-        </TouchableOpacity>
-      )}
-    />
+        }
+        ListEmptyComponent={
+          <View style={[styles.emptyBox, { borderColor: c.border }]}>
+            <Text style={{ color: c.muted }}>No playlists found.</Text>
+          </View>
+        }
+        renderItem={({ item: pl }) => (
+          <TouchableOpacity style={styles.card} onPress={() => router.push(`/playlist/${pl.id}` as any)}>
+            <View style={styles.cardImgWrapper}>
+              <Image
+                source={{ uri: pl.coverArtUrl || 'https://placehold.co/400x400?text=Playlist' }}
+                style={styles.cardImg}
+                resizeMode="cover"
+              />
+              <View style={styles.cardImgOverlay} />
+            </View>
+            <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={1}>{pl.title}</Text>
+            <Text style={[styles.cardCount, { color: c.muted }]}>{pl.songIds.length} songs</Text>
+          </TouchableOpacity>
+        )}
+      />
+    </SafeAreaView>
   );
 };
 

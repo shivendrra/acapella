@@ -3,6 +3,7 @@ import {
   View, Text, FlatList, TouchableOpacity, Image,
   StyleSheet, ActivityIndicator,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { collection, query, where, getDocs, limit, orderBy, startAfter } from '@firebase/firestore';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useAuth } from '../../../../../hooks/useAuth';
@@ -75,45 +76,48 @@ const UserLikesPage: React.FC = () => {
   if (error) return <Text style={[styles.center, { color: '#ef4444' }]}>{error}</Text>;
 
   return (
-    <FlatList
-      data={likes}
-      keyExtractor={i => i.id}
-      numColumns={3}
-      contentContainerStyle={{ padding: 12, gap: 8 }}
-      columnWrapperStyle={{ gap: 8 }}
-      ListHeaderComponent={
-        <View style={{ marginBottom: 12 }}>
-          <Text style={[styles.heading, { color: c.text }]}>Liked by {user?.displayName || username}</Text>
-          <Text style={[styles.sub, { color: c.muted }]}>All songs and albums this user has liked.</Text>
-        </View>
-      }
-      ListEmptyComponent={
-        <View style={[styles.emptyBox, { borderColor: c.border }]}>
-          <Text style={{ color: c.muted }}>{user?.displayName || username} {"hasn't liked any songs or albums yet."}</Text>
-        </View>
-      }
-      renderItem={({ item }) => (
-        <TouchableOpacity style={styles.card} onPress={() => router.push(`/${item.entityType}/${item.entityId}` as any)}>
-          <Image source={{ uri: item.entityCoverArtUrl }} style={styles.cardImg} resizeMode="cover" />
-          <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={1}>{item.entityTitle}</Text>
-        </TouchableOpacity>
-      )}
-      ListFooterComponent={
-        hasMore ? (
-          <View style={{ alignItems: 'center', marginTop: 20, marginBottom: 32 }}>
-            <TouchableOpacity
-              style={[styles.loadMoreBtn, { backgroundColor: c.accent }, loadingMore && { opacity: 0.6 }]}
-              onPress={fetchMore} disabled={loadingMore}
-            >
-              {loadingMore
-                ? <ActivityIndicator size="small" color="#fff" />
-                : <Text style={styles.loadMoreText}>Load More</Text>
-              }
-            </TouchableOpacity>
+    <SafeAreaView style={{ flex: 1 }}>
+
+      <FlatList
+        data={likes}
+        keyExtractor={i => i.id}
+        numColumns={3}
+        contentContainerStyle={{ padding: 12, gap: 8 }}
+        columnWrapperStyle={{ gap: 8 }}
+        ListHeaderComponent={
+          <View style={{ marginBottom: 12 }}>
+            <Text style={[styles.heading, { color: c.text }]}>Liked by {user?.displayName || username}</Text>
+            <Text style={[styles.sub, { color: c.muted }]}>All songs and albums this user has liked.</Text>
           </View>
-        ) : null
-      }
-    />
+        }
+        ListEmptyComponent={
+          <View style={[styles.emptyBox, { borderColor: c.border }]}>
+            <Text style={{ color: c.muted }}>{user?.displayName || username} {"hasn't liked any songs or albums yet."}</Text>
+          </View>
+        }
+        renderItem={({ item }) => (
+          <TouchableOpacity style={styles.card} onPress={() => router.push(`/${item.entityType}/${item.entityId}` as any)}>
+            <Image source={{ uri: item.entityCoverArtUrl }} style={styles.cardImg} resizeMode="cover" />
+            <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={1}>{item.entityTitle}</Text>
+          </TouchableOpacity>
+        )}
+        ListFooterComponent={
+          hasMore ? (
+            <View style={{ alignItems: 'center', marginTop: 20, marginBottom: 32 }}>
+              <TouchableOpacity
+                style={[styles.loadMoreBtn, { backgroundColor: c.accent }, loadingMore && { opacity: 0.6 }]}
+                onPress={fetchMore} disabled={loadingMore}
+              >
+                {loadingMore
+                  ? <ActivityIndicator size="small" color="#fff" />
+                  : <Text style={styles.loadMoreText}>Load More</Text>
+                }
+              </TouchableOpacity>
+            </View>
+          ) : null
+        }
+      />
+    </SafeAreaView>
   );
 };
 

@@ -3,6 +3,7 @@ import {
   View, Text, TextInput, TouchableOpacity, FlatList,
   StyleSheet, Modal, Pressable, Image, ActivityIndicator,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { collection, query, where, getDocs, limit, orderBy } from '@firebase/firestore';
 import { useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -90,7 +91,7 @@ const SearchPage: React.FC = () => {
   const sections = [
     {
       title: 'Users', data: results.users, key: 'users', render: (u: UserProfile) => (
-        <TouchableOpacity key={u.uid} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/${u.username}` as any)}>
+        <TouchableOpacity key={u.uid} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/home/${u.username}` as any)}>
           <Image source={{ uri: u.photoURL || `https://ui-avatars.com/api/?name=${u.displayName || u.username}` }} style={styles.avatar} />
           <View>
             <Text style={[styles.rowTitle, { color: c.text }]}>{u.displayName}</Text>
@@ -101,7 +102,7 @@ const SearchPage: React.FC = () => {
     },
     {
       title: 'Artists', data: results.artists, key: 'artists', render: (a: Artist) => (
-        <TouchableOpacity key={a.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/artist/${a.id}` as any)}>
+        <TouchableOpacity key={a.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/home/artists/${a.id}` as any)}>
           <Image source={{ uri: a.imageUrl || `https://ui-avatars.com/api/?name=${a.name}&background=random` }} style={[styles.avatar, { borderRadius: 8 }]} />
           <Text style={[styles.rowTitle, { color: c.text }]}>{a.name}</Text>
         </TouchableOpacity>
@@ -109,7 +110,7 @@ const SearchPage: React.FC = () => {
     },
     {
       title: 'Albums', data: results.albums, key: 'albums', render: (a: Album) => (
-        <TouchableOpacity key={a.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/album/${a.id}` as any)}>
+        <TouchableOpacity key={a.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/home/albums/${a.id}` as any)}>
           <Image source={{ uri: a.coverArtUrl || `https://picsum.photos/seed/${a.id}/100/100` }} style={[styles.avatar, { borderRadius: 8 }]} />
           <Text style={[styles.rowTitle, { color: c.text }]}>{a.title}</Text>
         </TouchableOpacity>
@@ -117,7 +118,7 @@ const SearchPage: React.FC = () => {
     },
     {
       title: 'Songs', data: results.songs, key: 'songs', render: (s: Song) => (
-        <TouchableOpacity key={s.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/song/${s.id}` as any)}>
+        <TouchableOpacity key={s.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/home/songs/${s.id}` as any)}>
           <Text style={[styles.rowTitle, { color: c.text }]}>{s.title}</Text>
         </TouchableOpacity>
       )
@@ -206,23 +207,25 @@ const SearchPageWrapper: React.FC = () => {
 
   return (
     <>
-      <SearchPage />
-      <Modal visible={showClear} transparent animationType="fade" onRequestClose={() => setShowClear(false)}>
-        <Pressable style={styles.overlay} onPress={() => setShowClear(false)} />
-        <View style={[styles.confirmBox, { backgroundColor: c.bg }]}>
-          <MaterialIcons name="warning" size={48} color="#ef4444" style={{ alignSelf: 'center', marginBottom: 12 }} />
-          <Text style={[styles.confirmTitle, { color: c.text }]}>Clear Search History?</Text>
-          <Text style={[styles.confirmSub, { color: c.muted }]}>This will permanently remove your recent searches.</Text>
-          <View style={styles.confirmBtns}>
-            <TouchableOpacity style={[styles.confirmBtn, { borderColor: c.border, borderWidth: 1 }]} onPress={() => setShowClear(false)}>
-              <Text style={{ color: c.text }}>Cancel</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.confirmBtn, { backgroundColor: '#ef4444' }]} onPress={async () => { await clearHistory(); setShowClear(false); }}>
-              <Text style={{ color: '#fff' }}>Clear</Text>
-            </TouchableOpacity>
+      <SafeAreaView style={{ flex: 1 }}>
+        <SearchPage />
+        <Modal visible={showClear} transparent animationType="fade" onRequestClose={() => setShowClear(false)}>
+          <Pressable style={styles.overlay} onPress={() => setShowClear(false)} />
+          <View style={[styles.confirmBox, { backgroundColor: c.bg }]}>
+            <MaterialIcons name="warning" size={48} color="#ef4444" style={{ alignSelf: 'center', marginBottom: 12 }} />
+            <Text style={[styles.confirmTitle, { color: c.text }]}>Clear Search History?</Text>
+            <Text style={[styles.confirmSub, { color: c.muted }]}>This will permanently remove your recent searches.</Text>
+            <View style={styles.confirmBtns}>
+              <TouchableOpacity style={[styles.confirmBtn, { borderColor: c.border, borderWidth: 1 }]} onPress={() => setShowClear(false)}>
+                <Text style={{ color: c.text }}>Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.confirmBtn, { backgroundColor: '#ef4444' }]} onPress={async () => { await clearHistory(); setShowClear(false); }}>
+                <Text style={{ color: '#fff' }}>Clear</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-      </Modal>
+        </Modal>
+      </SafeAreaView>
     </>
   );
 };

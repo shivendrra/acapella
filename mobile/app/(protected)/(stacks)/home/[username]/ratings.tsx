@@ -3,6 +3,8 @@ import {
   View, Text, FlatList, TouchableOpacity, Image,
   StyleSheet, ActivityIndicator,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 import { collection, query, where, getDocs, limit, orderBy, startAfter, collectionGroup } from '@firebase/firestore';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -20,31 +22,34 @@ const RatedItemCard: React.FC<{ item: Review; c: any }> = ({ item, c }) => {
     || `https://placehold.co/128x128/131010/FAF8F1?text=${encodeURIComponent(item.entityTitle?.charAt(0) || '?')}`;
 
   return (
-    <View style={[styles.card, { borderBottomColor: c.border }]}>
-      <TouchableOpacity onPress={() => router.push(`/${item.entityType}/${item.entityId}` as any)}>
-        <Image source={{ uri: coverArt }} style={styles.cardImg} resizeMode="cover" />
-      </TouchableOpacity>
-      <View style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
+
+      <View style={[styles.card, { borderBottomColor: c.border }]}>
         <TouchableOpacity onPress={() => router.push(`/${item.entityType}/${item.entityId}` as any)}>
-          <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={2}>{item.entityTitle}</Text>
+          <Image source={{ uri: coverArt }} style={styles.cardImg} resizeMode="cover" />
         </TouchableOpacity>
-        <View style={styles.starsRow}>
-          {[...Array(5)].map((_, i) => (
-            <MaterialIcons key={i} name="star" size={15} color={i < item.rating ? '#facc15' : c.starEmpty} />
-          ))}
+        <View style={{ flex: 1 }}>
+          <TouchableOpacity onPress={() => router.push(`/${item.entityType}/${item.entityId}` as any)}>
+            <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={2}>{item.entityTitle}</Text>
+          </TouchableOpacity>
+          <View style={styles.starsRow}>
+            {[...Array(5)].map((_, i) => (
+              <MaterialIcons key={i} name="star" size={15} color={i < item.rating ? '#facc15' : c.starEmpty} />
+            ))}
+          </View>
+          <TouchableOpacity onPress={() => router.push(`/review/${item.id}` as any)}>
+            <Text style={[styles.dateText, { color: c.muted }]}>
+              {'Rated on '}{formatDate(item.createdAt) || 'a while ago'}
+            </Text>
+          </TouchableOpacity>
+          {item.reviewText?.trim() ? (
+            <Text style={[styles.reviewSnippet, { color: c.bodyText }]} numberOfLines={3}>
+              {item.reviewText}
+            </Text>
+          ) : null}
         </View>
-        <TouchableOpacity onPress={() => router.push(`/review/${item.id}` as any)}>
-          <Text style={[styles.dateText, { color: c.muted }]}>
-            {'Rated on '}{formatDate(item.createdAt) || 'a while ago'}
-          </Text>
-        </TouchableOpacity>
-        {item.reviewText?.trim() ? (
-          <Text style={[styles.reviewSnippet, { color: c.bodyText }]} numberOfLines={3}>
-            {item.reviewText}
-          </Text>
-        ) : null}
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -108,39 +113,42 @@ const UserRatingsPage: React.FC = () => {
   if (error) return <Text style={[styles.center, { color: '#ef4444' }]}>{error}</Text>;
 
   return (
-    <FlatList
-      data={ratings}
-      keyExtractor={i => i.id}
-      contentContainerStyle={{ padding: 16, paddingBottom: 48 }}
-      ListHeaderComponent={
-        <View style={{ marginBottom: 16 }}>
-          <Text style={[styles.heading, { color: c.text }]}>Ratings by {user?.displayName || username}</Text>
-          <Text style={[styles.sub, { color: c.muted }]}>All songs and albums this user has rated.</Text>
-        </View>
-      }
-      ListEmptyComponent={
-        <View style={[styles.emptyBox, { borderColor: c.border }]}>
-          <Text style={{ color: c.muted }}>{user?.displayName || username} {"hasn't rated anything yet."}</Text>
-        </View>
-      }
-      ItemSeparatorComponent={() => <View style={{ height: 1, backgroundColor: c.border }} />}
-      renderItem={({ item }) => <RatedItemCard item={item} c={c} />}
-      ListFooterComponent={
-        hasMore ? (
-          <View style={{ alignItems: 'center', marginTop: 20 }}>
-            <TouchableOpacity
-              style={[styles.loadMoreBtn, { backgroundColor: c.accent }, loadingMore && { opacity: 0.6 }]}
-              onPress={fetchMore} disabled={loadingMore}
-            >
-              {loadingMore
-                ? <ActivityIndicator size="small" color="#fff" />
-                : <Text style={styles.loadMoreText}>Load More</Text>
-              }
-            </TouchableOpacity>
+    <SafeAreaView style={{ flex: 1 }}>
+
+      <FlatList
+        data={ratings}
+        keyExtractor={i => i.id}
+        contentContainerStyle={{ padding: 16, paddingBottom: 48 }}
+        ListHeaderComponent={
+          <View style={{ marginBottom: 16 }}>
+            <Text style={[styles.heading, { color: c.text }]}>Ratings by {user?.displayName || username}</Text>
+            <Text style={[styles.sub, { color: c.muted }]}>All songs and albums this user has rated.</Text>
           </View>
-        ) : null
-      }
-    />
+        }
+        ListEmptyComponent={
+          <View style={[styles.emptyBox, { borderColor: c.border }]}>
+            <Text style={{ color: c.muted }}>{user?.displayName || username} {"hasn't rated anything yet."}</Text>
+          </View>
+        }
+        ItemSeparatorComponent={() => <View style={{ height: 1, backgroundColor: c.border }} />}
+        renderItem={({ item }) => <RatedItemCard item={item} c={c} />}
+        ListFooterComponent={
+          hasMore ? (
+            <View style={{ alignItems: 'center', marginTop: 20 }}>
+              <TouchableOpacity
+                style={[styles.loadMoreBtn, { backgroundColor: c.accent }, loadingMore && { opacity: 0.6 }]}
+                onPress={fetchMore} disabled={loadingMore}
+              >
+                {loadingMore
+                  ? <ActivityIndicator size="small" color="#fff" />
+                  : <Text style={styles.loadMoreText}>Load More</Text>
+                }
+              </TouchableOpacity>
+            </View>
+          ) : null
+        }
+      />
+    </SafeAreaView>
   );
 };
 

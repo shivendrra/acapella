@@ -3,6 +3,7 @@ import {
   View, Text, FlatList, TouchableOpacity, Image,
   StyleSheet, ActivityIndicator,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   collection, query, where, getDocs, limit, orderBy,
   Timestamp, documentId, collectionGroup, startAfter,
@@ -166,42 +167,44 @@ export default function ActivityTab() {
   if (loading) return <ActivityIndicator style={{ flex: 1, backgroundColor: c.bg }} color={C.secondary} />;
 
   return (
-    <FlatList
-      data={activities}
-      keyExtractor={a => `${a._activityType}-${a.id}`}
-      style={{ backgroundColor: c.bg }}
-      contentContainerStyle={{ paddingBottom: 24 }}
-      ListHeaderComponent={
-        <View style={[styles.header, { borderBottomColor: c.border }]}>
-          <Text style={[styles.heading, { color: c.text }]}>My Activity</Text>
-          <Text style={[styles.sub, { color: c.muted }]}>Your personal diary on Acapella.</Text>
-        </View>
-      }
-      ListEmptyComponent={
-        <View style={[styles.emptyBox, { borderColor: c.border }]}>
-          <MaterialIcons name="history" size={32} color={c.muted} />
-          <Text style={{ color: c.muted, marginTop: 10, fontSize: 14 }}>No activity yet. Start reviewing and liking music!</Text>
-        </View>
-      }
-      renderItem={({ item }) => (
-        userProfile ? <DiaryItem activity={item} profile={userProfile} c={c} /> : null
-      )}
-      ListFooterComponent={
-        hasMore ? (
-          <View style={{ alignItems: 'center', marginTop: 16 }}>
-            <TouchableOpacity
-              style={[styles.loadMoreBtn, { backgroundColor: C.secondary }]}
-              onPress={fetchMore} disabled={loadingMore}
-            >
-              {loadingMore
-                ? <ActivityIndicator size="small" color="#fff" />
-                : <Text style={{ color: '#fff', fontWeight: '600' }}>Load More</Text>
-              }
-            </TouchableOpacity>
+    <SafeAreaView style={{ flex: 1 }}>
+      <FlatList
+        data={activities}
+        keyExtractor={a => `${a._activityType}-${a.id}`}
+        style={{ backgroundColor: c.bg }}
+        contentContainerStyle={{ paddingBottom: 24 }}
+        ListHeaderComponent={
+          <View style={[styles.header, { borderBottomColor: c.border }]}>
+            <Text style={[styles.heading, { color: c.text }]}>My Activity</Text>
+            <Text style={[styles.sub, { color: c.muted }]}>Your personal diary on Acapella.</Text>
           </View>
-        ) : null
-      }
-    />
+        }
+        ListEmptyComponent={
+          <View style={[styles.emptyBox, { borderColor: c.border }]}>
+            <MaterialIcons name="history" size={32} color={c.muted} />
+            <Text style={{ color: c.muted, marginTop: 10, fontSize: 14 }}>No activity yet. Start reviewing and liking music!</Text>
+          </View>
+        }
+        renderItem={({ item }) => (
+          userProfile ? <DiaryItem activity={item} profile={userProfile} c={c} /> : null
+        )}
+        ListFooterComponent={
+          hasMore ? (
+            <View style={{ alignItems: 'center', marginTop: 16 }}>
+              <TouchableOpacity
+                style={[styles.loadMoreBtn, { backgroundColor: C.secondary }]}
+                onPress={fetchMore} disabled={loadingMore}
+              >
+                {loadingMore
+                  ? <ActivityIndicator size="small" color="#fff" />
+                  : <Text style={{ color: '#fff', fontWeight: '600' }}>Load More</Text>
+                }
+              </TouchableOpacity>
+            </View>
+          ) : null
+        }
+      />
+    </SafeAreaView>
   );
 }
 
