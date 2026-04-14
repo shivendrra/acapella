@@ -234,7 +234,7 @@ const AuthenticatedHomePage: React.FC<{ c: any }> = ({ c }) => {
           aSnap.forEach(d => { map[d.id] = { id: d.id, ...d.data() } as Artist; });
           setArtistsMap(map);
         }
-                } catch {
+      } catch {
         setError('Could not load your feed. Check your network or database indexes.');
       } finally { setLoading(false); }
     };

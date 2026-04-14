@@ -14,12 +14,14 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { db } from '../../../../services/firebase';
 import { useAuth } from '../../../../hooks/useAuth';
 import { useTheme } from '../../../../hooks/useTheme';
-import { UserProfile, Review, Like, Song, Album, Follow, Playlist } from '../../../../types';
-import { RESERVED_SLUGS } from '../../../../utils/reserved-slugs';
-import { formatDate } from '../../../../utils/formatters';
+import { UserProfile, Review, Like, Song, Album, Playlist, Follow } from '../../../../types'
 import UserBadges from '../../../../components/common/UserBadges';
 import EditProfileModal from '../../../../components/profile/EditProfileModal';
 import PlaylistFormModal from '../../../../components/playlist/PlaylistFormModal';
+
+const RESERVED = new Set(['login', 'logout', 'signup', 'admin', 'settings', 'search', 'discover',
+  'curators', 'about', 'help', 'contact', 'terms', 'privacy', 'refunds', 'shipping',
+  'songs', 'albums', 'artists', 'playlist', 'review', 'legal', 'api']);
 
 type ActivityLog =
   | (Review & { _activityType: 'review' })
@@ -158,47 +160,47 @@ const CoverGrid: React.FC<{ items: any[]; getUrl: (i: any) => string | null; get
   );
 };
 
-const DiaryItem: React.FC<{ activity: ActivityLog; profile: UserProfile; c: any }> = ({ activity, profile, c }) => {
-  const router = useRouter();
-  const date = activity.createdAt instanceof Timestamp ? formatDate(activity.createdAt) : '';
-  let action = '', path = '', coverUrl = '';
+// const DiaryItem: React.FC<{ activity: ActivityLog; profile: UserProfile; c: any }> = ({ activity, profile, c }) => {
+//   const router = useRouter();
+//   const date = activity.createdAt instanceof Timestamp ? formatDate(activity.createdAt) : '';
+//   let action = '', path = '', coverUrl = '';
 
-  if (activity._activityType === 'review') {
-    const r = activity as Review;
-    action = r.reviewText ? `reviewed ${r.entityTitle}` : `rated ${r.entityTitle}`;
-    path = `/${r.entityType}/${r.entityId}`;
-    coverUrl = r.entityCoverArtUrl || '';
-  } else if (activity._activityType === 'like') {
-    const l = activity as Like;
-    action = `liked ${l.entityTitle}`;
-    path = `/${l.entityType}/${l.entityId}`;
-    coverUrl = l.entityCoverArtUrl || '';
-  } else {
-    const f = activity as Review;
-    action = `started following ${f.entityTitle}`;
-    path = `/${f.entityUsername}`;
-    coverUrl = f.entityCoverArtUrl || '';
-  }
+//   if (activity._activityType === 'review') {
+//     const r = activity as Review;
+//     action = r.reviewText ? `reviewed ${r.entityTitle}` : `rated ${r.entityTitle}`;
+//     path = `/${r.entityType}/${r.entityId}`;
+//     coverUrl = r.entityCoverArtUrl || '';
+//   } else if (activity._activityType === 'like') {
+//     const l = activity as Like;
+//     action = `liked ${l.entityTitle}`;
+//     path = `/${l.entityType}/${l.entityId}`;
+//     coverUrl = l.entityCoverArtUrl || '';
+//   } else {
+//     const f = activity as Review;
+//     action = `started following ${f.entityTitle}`;
+//     path = `/${f.entityUsername}`;
+//     coverUrl = f.entityCoverArtUrl || '';
+//   }
 
-  return (
-    <View style={[styles.diaryRow, { borderBottomColor: c.border }]}>
-      <TouchableOpacity onPress={() => router.push(`/${profile.username}` as any)}>
-        <Image source={{ uri: profile.photoURL || `https://ui-avatars.com/api/?name=${profile.displayName}` }} style={styles.diaryAvatar} />
-      </TouchableOpacity>
-      <View style={{ flex: 1 }}>
-        <Text style={{ fontSize: 13, color: c.text }}>
-          <Text style={{ fontWeight: '700' }}>{profile.displayName}</Text>{' '}{action}
-        </Text>
-        <Text style={{ fontSize: 11, color: c.muted, marginTop: 2 }}>{date}</Text>
-      </View>
-      {coverUrl ? (
-        <TouchableOpacity onPress={() => router.push(path as any)}>
-          <Image source={{ uri: coverUrl }} style={[styles.diaryThumb, { borderRadius: activity._activityType === 'follow' ? 20 : 6 }]} />
-        </TouchableOpacity>
-      ) : null}
-    </View>
-  );
-};
+//   return (
+//     <View style={[styles.diaryRow, { borderBottomColor: c.border }]}>
+//       <TouchableOpacity onPress={() => router.push(`/${profile.username}` as any)}>
+//         <Image source={{ uri: profile.photoURL || `https://ui-avatars.com/api/?name=${profile.displayName}` }} style={styles.diaryAvatar} />
+//       </TouchableOpacity>
+//       <View style={{ flex: 1 }}>
+//         <Text style={{ fontSize: 13, color: c.text }}>
+//           <Text style={{ fontWeight: '700' }}>{profile.displayName}</Text>{' '}{action}
+//         </Text>
+//         <Text style={{ fontSize: 11, color: c.muted, marginTop: 2 }}>{date}</Text>
+//       </View>
+//       {coverUrl ? (
+//         <TouchableOpacity onPress={() => router.push(path as any)}>
+//           <Image source={{ uri: coverUrl }} style={[styles.diaryThumb, { borderRadius: activity._activityType === 'follow' ? 20 : 6 }]} />
+//         </TouchableOpacity>
+//       ) : null}
+//     </View>
+//   );
+// };
 
 const ProfilePage: React.FC = () => {
   const { username } = useLocalSearchParams<{ username: string }>();
@@ -215,7 +217,6 @@ const ProfilePage: React.FC = () => {
   const [followLoading, setFollowLoading] = useState(true);
   const [followersCount, setFollowersCount] = useState(0);
   const [followingCount, setFollowingCount] = useState(0);
-  const [activities, setActivities] = useState<ActivityLog[]>([]);
   const [likedItems, setLikedItems] = useState<Like[]>([]);
   const [ratedItems, setRatedItems] = useState<Review[]>([]);
   const [favSongs, setFavSongs] = useState<Song[]>([]);
@@ -224,9 +225,10 @@ const ProfilePage: React.FC = () => {
   const [editOpen, setEditOpen] = useState(false);
   const [createPlaylistOpen, setCreatePlaylistOpen] = useState(false);
   const [followModal, setFollowModal] = useState<'followers' | 'following' | null>(null);
+  // const [activities, setActivities] = useState<ActivityLog[]>([])
 
   useEffect(() => {
-    if (!username || RESERVED_SLUGS.has(username.toLowerCase())) { setError('User not found.'); setLoading(false); return; }
+    if (!username || RESERVED.has(username.toLowerCase())) { setError('User not found.'); setLoading(false); return; }
     const run = async () => {
       setLoading(true); setError(null); setProfile(null);
       try {
@@ -297,7 +299,7 @@ const ProfilePage: React.FC = () => {
         }
 
         all.sort((a, b) => ((b.createdAt as Timestamp)?.toMillis() || 0) - ((a.createdAt as Timestamp)?.toMillis() || 0));
-        setActivities(all.slice(0, 10));
+        // setActivities(all.slice(0, 10));
       } catch { setError('An error occurred while fetching the profile.'); }
       finally { setLoading(false); }
     };
@@ -449,26 +451,7 @@ const ProfilePage: React.FC = () => {
         ))}
       </View>
 
-      {/* Diary */}
-      <View style={styles.section}>
-        <View style={styles.sectionHeader}>
-          <Text style={[styles.sectionTitle, { color: c.text }]}>Diary</Text>
-          {activities.length > 0 && (
-            <TouchableOpacity onPress={() => router.push(`/${username}/activity` as any)}>
-              <Text style={[styles.viewAll, { color: c.accent }]}>View all</Text>
-            </TouchableOpacity>
-          )}
-        </View>
-        {activities.length > 0
-          ? <View style={[styles.diaryList, { borderColor: c.border }]}>
-            {activities.map(a => <DiaryItem key={`${a._activityType}-${a.id}`} activity={a} profile={profile} c={c} />)}
-          </View>
-          : <View style={[styles.emptyBox, { borderColor: c.border }]}>
-            <MaterialIcons name="history" size={24} color={c.muted} />
-            <Text style={{ color: c.muted, marginTop: 6, fontSize: 13 }}>{"This user's activity will appear here."}</Text>
-          </View>
-        }
-      </View>
+
 
       {isOwn && editOpen && <EditProfileModal userProfile={profile} onClose={() => setEditOpen(false)} onSave={handleProfileUpdate} />}
       {isOwn && createPlaylistOpen && <PlaylistFormModal onClose={() => setCreatePlaylistOpen(false)} onSuccess={() => setCreatePlaylistOpen(false)} />}

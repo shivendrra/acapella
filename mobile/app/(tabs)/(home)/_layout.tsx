@@ -1,31 +1,64 @@
-import { Stack } from 'expo-router';
+import { Tabs } from 'expo-router';
+import { View, Image, StyleSheet, Platform } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { useAuth } from '../../../hooks/useAuth';
+import { useTheme } from '../../../hooks/useTheme';
+import { colors } from '../../../constants/theme';
 
-export default function HomeStack() {
+function ProfileTabIcon({ focused, color }: { focused: boolean; color: string }) {
+  const { userProfile } = useAuth();
+  const uri = userProfile?.photoURL
+    || `https://ui-avatars.com/api/?name=${encodeURIComponent(userProfile?.displayName || userProfile?.username || 'A')}&background=254D70&color=FAF8F1&size=64`;
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="index" />
-      <Stack.Screen name="album/[id]" />
-      <Stack.Screen name="song/[id]" />
-      <Stack.Screen name="artist/[id]" />
-      <Stack.Screen name="artist/[id]/songs" />
-      <Stack.Screen name="artist/[id]/albums" />
-      <Stack.Screen name="playlist/[id]" />
-      <Stack.Screen name="review/[id]" />
-      <Stack.Screen name="[username]/index" />
-      <Stack.Screen name="[username]/likes" />
-      <Stack.Screen name="[username]/ratings" />
-      <Stack.Screen name="[username]/reviews" />
-      <Stack.Screen name="[username]/activity" />
-      <Stack.Screen name="[username]/playlists" />
-      <Stack.Screen name="curators" />
-      <Stack.Screen name="about" />
-      <Stack.Screen name="help" />
-      <Stack.Screen name="legal/terms" />
-      <Stack.Screen name="legal/privacy" />
-      <Stack.Screen name="legal/refunds" />
-      <Stack.Screen name="legal/shipping" />
-      <Stack.Screen name="legal/contact" />
-      <Stack.Screen name="settings" />
-    </Stack>
+    <View style={[styles.avatarWrapper, { borderColor: focused ? color : 'transparent' }]}>
+      <Image source={{ uri }} style={styles.avatar} />
+    </View>
   );
 }
+
+export default function TabsLayout() {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+  const c = isDark ? colors.dark : colors.light;
+
+  return (
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: c.tabActive,
+        tabBarInactiveTintColor: c.tabInactive,
+        tabBarStyle: {
+          backgroundColor: c.tabBar,
+          borderTopColor: c.border,
+          borderTopWidth: 1,
+          height: Platform.OS === 'ios' ? 84 : 60,
+          paddingBottom: Platform.OS === 'ios' ? 28 : 8,
+          paddingTop: 8,
+        },
+      }}
+    >
+      <Tabs.Screen
+        name="(home)"
+        options={{ tabBarIcon: ({ color }) => <MaterialIcons name="home" size={26} color={color} /> }}
+      />
+      <Tabs.Screen
+        name="(search)"
+        options={{ tabBarIcon: ({ color }) => <MaterialIcons name="search" size={26} color={color} /> }}
+      />
+      <Tabs.Screen
+        name="(activity)"
+        options={{ tabBarIcon: ({ color }) => <MaterialIcons name="history" size={26} color={color} /> }}
+      />
+      <Tabs.Screen
+        name="(profile)"
+        options={{ tabBarIcon: ({ color, focused }) => <ProfileTabIcon focused={focused} color={color} /> }}
+      />
+    </Tabs>
+  );
+}
+
+const styles = StyleSheet.create({
+  avatarWrapper: { width: 30, height: 30, borderRadius: 15, borderWidth: 2, overflow: 'hidden' },
+  avatar: { width: '100%', height: '100%' },
+});
