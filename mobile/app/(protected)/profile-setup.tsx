@@ -7,13 +7,7 @@ import { doc, updateDoc, collection, query, where, getDocs, limit } from '@fireb
 import { useAuth } from '../../hooks/useAuth';
 import { useTheme } from '../../hooks/useTheme';
 import { db } from '../../services/firebase';
-
-const RESERVED_SLUGS = new Set([
-  'login', 'logout', 'signup', 'register', 'admin', 'settings', 'profile',
-  'search', 'discover', 'curators', 'about', 'help', 'contact', 'terms',
-  'privacy', 'refunds', 'shipping', 'songs', 'albums', 'artists', 'playlist',
-  'review', 'legal', 'api', 'static', 'null', 'undefined',
-]);
+import { RESERVED_SLUGS } from '../../utils/reserved-slugs';
 
 const ProfileSetupPage: React.FC = () => {
   const { userProfile, currentUser } = useAuth();
