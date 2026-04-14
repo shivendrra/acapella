@@ -5,11 +5,12 @@ import {
 } from 'react-native';
 import { doc, getDoc, collection, query, where, getDocs } from '@firebase/firestore';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { MaterialIcons } from '@expo/vector-icons';
 import { db } from '../../../../../services/firebase';
 import { useTheme } from '../../../../../hooks/useTheme';
 import { Artist, Album, Song } from '../../../../../types';
 import { formatDate } from '../../../../../utils/formatters';
+import { instagram, twitter, appleMusic, spotify, youtube, facebook, youtubeMusic } from '../../../../../constants/icons';
+import { SvgXml } from 'react-native-svg'
 
 const TOP_ALBUMS = 3, TOP_SONGS = 10;
 
@@ -27,10 +28,8 @@ const AlbumCard: React.FC<{ album: Album; c: any }> = ({ album, c }) => {
 };
 
 const PLATFORM_ICONS: Record<string, string> = {
-  twitter: 'alternate-email', instagram: 'photo-camera',
-  spotify: 'music-note', youtube: 'play-circle-outline',
-  youtubemusic: 'queue-music', applemusic: 'apple',
-  facebook: 'facebook', default: 'language',
+  twitter: twitter, instagram: instagram, facebook: facebook,
+  spotify: spotify, youtubemusic: youtube, applemusic: appleMusic,
 };
 
 const SocialLinks: React.FC<{ artist: Artist; c: any }> = ({ artist, c }) => {
@@ -47,7 +46,7 @@ const SocialLinks: React.FC<{ artist: Artist; c: any }> = ({ artist, c }) => {
         const icon = PLATFORM_ICONS[key] || PLATFORM_ICONS.default;
         return (
           <TouchableOpacity key={platform} onPress={() => Linking.openURL(url as string)} style={styles.socialBtn}>
-            <MaterialIcons name={icon as any} size={22} color={c.muted} />
+            <SvgXml xml={icon} width={24} height={24} color={c.muted} />
           </TouchableOpacity>
         );
       })}

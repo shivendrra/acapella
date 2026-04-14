@@ -11,6 +11,8 @@ import {
   collectionGroup, deleteDoc, setDoc,
 } from '@firebase/firestore';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { instagram, twitter } from '../../../../../constants/icons';
+import { SvgXml } from 'react-native-svg'
 import { MaterialIcons } from '@expo/vector-icons';
 import { db } from '../../../../../services/firebase';
 import { useAuth } from '../../../../../hooks/useAuth';
@@ -114,7 +116,7 @@ const FollowListModal: React.FC<{ title: string; onClose: () => void; targetUser
                   const following = followingIds.has(u.uid);
                   return (
                     <View style={[styles.followRow, { borderBottomColor: c.border }]}>
-                      <TouchableOpacity style={styles.followUser} onPress={() => { router.push(`/${u.username}` as any); onClose(); }}>
+                      <TouchableOpacity style={styles.followUser} onPress={() => { router.push(`../[username]/${u.username}` as any); onClose(); }}>
                         <Image source={{ uri: u.photoURL || `https://ui-avatars.com/api/?name=${u.displayName}` }} style={styles.followAvatar} />
                         <View>
                           <Text style={[{ fontWeight: '600' }, { color: c.text }]}>{u.displayName}</Text>
@@ -340,8 +342,27 @@ const ProfilePage: React.FC = () => {
       setFavAlbums(next.favoriteAlbumIds.map(id => d.find(x => x.id === id)).filter(Boolean) as Album[]);
     } else setFavAlbums([]);
   };
+  const SectionWrapper: React.FC<{
+    children: React.ReactNode;
+    showTop?: boolean;
+    showBottom?: boolean;
+    c: any;
+  }> = ({ children, showTop, showBottom, c }) => {
+    return (
+      <View
+        style={{
+          borderTopWidth: showTop ? 1 : 0,
+          borderBottomWidth: showBottom ? 1 : 0,
+          borderColor: c.border,
+          paddingVertical: 20,
+        }}
+      >
+        {children}
+      </View>
+    );
+  };
 
-  if (loading) return <ActivityIndicator style={{ flex: 1, marginTop: 64 }} color="#63479b" />;
+  if (loading) return <ActivityIndicator style={{ flex: 1, marginTop: 64 }} color="#6A9C89" />;
   if (error) return <Text style={[styles.center, { color: '#ef4444' }]}>{error}</Text>;
   if (!profile) return null;
 
@@ -349,157 +370,347 @@ const ProfilePage: React.FC = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-
       <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48 }}>
-        {/* Header */}
-        <View style={styles.profileHeader}>
-          <Image source={{ uri: profile.photoURL || `https://ui-avatars.com/api/?name=${profile.displayName || profile.email}&background=random&size=128` }} style={styles.profileAvatar} />
-          <View style={{ flex: 1 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
-              <Text style={[styles.profileName, { color: c.text }]}>{profile.displayName || profile.username}</Text>
-              <UserBadges user={profile} />
-            </View>
-            <Text style={{ color: c.muted, fontSize: 14, marginTop: 2 }}>@{profile.username}</Text>
-            <View style={styles.statsRow}>
-              <TouchableOpacity onPress={() => me && setFollowModal('followers')}>
-                <Text style={{ color: c.text }}><Text style={{ fontWeight: '700' }}>{followersCount}</Text> <Text style={{ color: c.muted }}>Followers</Text></Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => me && setFollowModal('following')}>
-                <Text style={{ color: c.text }}><Text style={{ fontWeight: '700' }}>{followingCount}</Text> <Text style={{ color: c.muted }}>Following</Text></Text>
-              </TouchableOpacity>
-            </View>
-            <SocialLinks socials={profile.socials} />
-          </View>
-          <View>
-            {isOwn
-              ? <TouchableOpacity style={[styles.editBtn, { borderColor: c.border }]} onPress={() => setEditOpen(true)}>
-                <Text style={[{ fontSize: 13, fontWeight: '500' }, { color: c.text }]}>Edit Profile</Text>
-              </TouchableOpacity>
-              : me && (
-                <TouchableOpacity
-                  style={[styles.followBtnLarge, isFollowing ? { borderWidth: 1, borderColor: '#ef4444' } : { backgroundColor: c.accent }]}
-                  onPress={toggleFollow} disabled={followLoading}
-                >
-                  {followLoading
-                    ? <ActivityIndicator size="small" color={isFollowing ? '#ef4444' : '#fff'} />
-                    : <>
-                      <MaterialIcons name={isFollowing ? 'how-to-reg' : 'person-add'} size={14} color={isFollowing ? '#ef4444' : '#fff'} />
-                      <Text style={{ color: isFollowing ? '#ef4444' : '#fff', fontSize: 13, fontWeight: '600', marginLeft: 4 }}>{isFollowing ? 'Following' : 'Follow'}</Text>
-                    </>
-                  }
-                </TouchableOpacity>
-              )
-            }
-          </View>
-        </View>
 
-        {profile.bio ? <Text style={[styles.bio, { color: c.bodyText }]}>{profile.bio}</Text> : null}
+        {/* Header (Centered) */}
+        <View style={styles.headerCenter}>
+          <Image
+            source={{ uri: profile.photoURL || `https://ui-avatars.com/api/?name=${profile.displayName}` }}
+            style={styles.avatarLarge}
+          />
+
+          <Text style={[styles.nameSerif, { color: c.text }]}>
+            {profile.displayName || profile.username}
+          </Text>
+
+          <View style={styles.usernameRow}>
+            <Text style={[styles.username, { color: c.muted }]}>
+              @{profile.username}
+            </Text>
+
+            <UserBadges user={profile} />
+          </View>
+
+          <View style={styles.statsRowCenter}>
+            <TouchableOpacity onPress={() => me && setFollowModal('followers')}>
+              <Text style={{ color: c.text }}>
+                <Text style={styles.statNumber}>{followersCount}</Text> Followers
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => me && setFollowModal('following')}>
+              <Text style={{ color: c.text }}>
+                <Text style={styles.statNumber}>{followingCount}</Text> Following
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {profile.bio && (
+            <Text style={[styles.bioCenter, { color: c.bodyText }]}>
+              {profile.bio}
+            </Text>
+          )}
+
+          {/* Social Icons */}
+          <View style={styles.socialRowModern}>
+            {profile.socials?.instagram && (
+              <TouchableOpacity onPress={() => Linking.openURL(profile.socials?.instagram || '')}>
+                <SvgXml xml={instagram} width={24} height={24} />
+              </TouchableOpacity>
+            )}
+
+            {profile.socials?.twitter && (
+              <TouchableOpacity onPress={() => Linking.openURL(profile.socials?.twitter || '')}>
+                <SvgXml xml={twitter} width={24} height={24} />
+              </TouchableOpacity>
+            )}
+          </View>
+
+          {/* Button */}
+          {isOwn ? (
+            <TouchableOpacity
+              style={[styles.editBtnModern, { borderColor: c.border }]}
+              onPress={() => setEditOpen(true)}
+            >
+              <Text style={[styles.buttonText, { color: c.text }]}>
+                Edit Profile
+              </Text>
+            </TouchableOpacity>
+          ) : me && (
+            <TouchableOpacity
+              style={[
+                styles.followBtnModern,
+                isFollowing
+                  ? { borderWidth: 1, borderColor: '#ef4444' }
+                  : { backgroundColor: c.accent }
+              ]}
+              onPress={toggleFollow}
+            >
+              <Text style={styles.buttonText}>
+                {isFollowing ? 'Following' : 'Follow'}
+              </Text>
+            </TouchableOpacity>
+          )}
+        </View>
 
         {/* Favorites */}
-        {(favSongs.length > 0 || favAlbums.length > 0) && (
-          <View style={styles.section}>
-            <Text style={[styles.sectionTitle, { color: c.text }]}>Favorites</Text>
-            {favSongs.length > 0 && (
-              <CoverGrid items={favSongs} getUrl={s => s.coverArtUrl} getPath={s => `/song/${s.id}`} c={c} />
-            )}
-            {favAlbums.length > 0 && (
-              <CoverGrid items={favAlbums} getUrl={a => a.coverArtUrl} getPath={a => `/album/${a.id}`} c={c} />
-            )}
-          </View>
-        )}
+        <SectionWrapper showBottom c={c}>
+          <Text style={[styles.sectionTitle, { color: c.text }]}>Favorites</Text>
+          <CoverGrid items={favSongs} getUrl={s => s.coverArtUrl} getPath={s => `/song/${s.id}`} c={c} />
+          <CoverGrid items={favAlbums} getUrl={a => a.coverArtUrl} getPath={a => `/album/${a.id}`} c={c} />
+        </SectionWrapper>
 
         {/* Playlists */}
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-              <Text style={[styles.sectionTitle, { color: c.text }]}>Playlists</Text>
-              {isOwn && (
-                <TouchableOpacity onPress={() => setCreatePlaylistOpen(true)}>
-                  <MaterialIcons name="add-circle-outline" size={20} color={c.accent} />
-                </TouchableOpacity>
-              )}
-            </View>
-            {playlists.length > 0 && (
-              <TouchableOpacity onPress={() => router.push(`/${username}/playlists` as any)}>
-                <Text style={[styles.viewAll, { color: c.accent }]}>View all</Text>
-              </TouchableOpacity>
-            )}
-          </View>
+        <SectionWrapper showTop showBottom c={c}>
+          <Text style={[styles.sectionTitle, { color: c.text }]}>Playlists</Text>
           {playlists.length > 0
-            ? <CoverGrid items={playlists} getUrl={p => p.coverArtUrl || null} getPath={p => `/playlist/${p.id}`} c={c} />
-            : <View style={[styles.emptyBox, { borderColor: c.border }]}><Text style={{ color: c.muted, fontSize: 13 }}>No items yet.</Text></View>
-          }
-        </View>
+            ? <CoverGrid items={playlists} getUrl={p => p.coverArtUrl} getPath={p => `/playlist/${p.id}`} c={c} />
+            : <Text style={{ color: c.muted }}>No items yet.</Text>}
+        </SectionWrapper>
 
-        {/* Liked / Reviews 2-col */}
-        <View style={styles.twoCol}>
-          {[
-            { title: 'Liked Items', items: likedItems, link: `/${username}/likes`, getUrl: (i: any) => i.entityCoverArtUrl, getPath: (i: any) => `/${i.entityType}/${i.entityId}` },
-            { title: 'Reviews', items: ratedItems, link: `/${username}/ratings`, getUrl: (i: any) => i.entityCoverArtUrl, getPath: (i: any) => `/review/${i.id}` },
-          ].map(sec => (
-            <View key={sec.title} style={{ flex: 1 }}>
-              <View style={styles.sectionHeader}>
-                <Text style={[styles.sectionTitle, { color: c.text, fontSize: 18 }]}>{sec.title}</Text>
-                {sec.items.length > 0 && (
-                  <TouchableOpacity onPress={() => router.push(sec.link as any)}>
-                    <Text style={[styles.viewAll, { color: c.accent }]}>View all</Text>
-                  </TouchableOpacity>
-                )}
-              </View>
-              {sec.items.length > 0
-                ? <CoverGrid items={sec.items} getUrl={sec.getUrl} getPath={sec.getPath} c={c} />
-                : <View style={[styles.emptyBox, { borderColor: c.border }]}><Text style={{ color: c.muted, fontSize: 12 }}>No items yet.</Text></View>
-              }
-            </View>
-          ))}
-        </View>
+        {/* Liked */}
+        <SectionWrapper showTop showBottom c={c}>
+          <Text style={[styles.sectionTitle, { color: c.text }]}>Liked Items</Text>
+          {likedItems.length > 0
+            ? <CoverGrid items={likedItems} getUrl={i => i.entityCoverArtUrl} getPath={i => `/${i.entityType}/${i.entityId}`} c={c} />
+            : <Text style={{ color: c.muted }}>No items yet.</Text>}
+        </SectionWrapper>
+
+        {/* Reviews (last → no bottom) */}
+        <SectionWrapper showTop c={c}>
+          <Text style={[styles.sectionTitle, { color: c.text }]}>Reviews</Text>
+          {ratedItems.length > 0
+            ? <CoverGrid items={ratedItems} getUrl={i => i.entityCoverArtUrl} getPath={i => `/review/${i.id}`} c={c} />
+            : <Text style={{ color: c.muted }}>No items yet.</Text>}
+        </SectionWrapper>
 
         {isOwn && editOpen && <EditProfileModal userProfile={profile} onClose={() => setEditOpen(false)} onSave={handleProfileUpdate} />}
         {isOwn && createPlaylistOpen && <PlaylistFormModal onClose={() => setCreatePlaylistOpen(false)} onSuccess={() => setCreatePlaylistOpen(false)} />}
-        {followModal && <FollowListModal title={followModal.charAt(0).toUpperCase() + followModal.slice(1)} onClose={() => setFollowModal(null)} targetUserId={profile.uid} fetchType={followModal} />}
+        {followModal && <FollowListModal title={followModal} onClose={() => setFollowModal(null)} targetUserId={profile.uid} fetchType={followModal} />}
+
       </ScrollView>
     </SafeAreaView>
   );
 };
 
 const colors = {
-  light: { bg: '#f9fafb', text: '#111827', bodyText: '#374151', muted: '#6b7280', accent: '#63479b', border: '#e5e7eb', pill: '#f3f4f6', icon: '#374151' },
-  dark: { bg: '#0f0f0f', text: '#f9fafb', bodyText: '#d1d5db', muted: '#9ca3af', accent: '#a78bdf', border: '#374151', pill: '#1f2937', icon: '#d1d5db' },
+  light: { bg: '#f9fafb', text: '#111827', bodyText: '#374151', muted: '#6b7280', accent: '#6A9C89', border: '#e5e7eb', pill: '#f3f4f6', icon: '#374151' },
+  dark: { bg: '#0f0f0f', text: '#f9fafb', bodyText: '#d1d5db', muted: '#9ca3af', accent: '#254D70', border: '#374151', pill: '#1f2937', icon: '#d1d5db' },
 };
 
 const styles = StyleSheet.create({
-  profileHeader: { flexDirection: 'row', gap: 12, alignItems: 'flex-start', marginBottom: 16 },
-  profileAvatar: { width: 80, height: 80, borderRadius: 40, borderWidth: 3, borderColor: '#a78bdf' },
-  profileName: { fontSize: 22, fontWeight: '700', fontFamily: 'serif' },
-  statsRow: { flexDirection: 'row', gap: 16, marginTop: 6 },
-  socialRow: { flexDirection: 'row', gap: 12, marginTop: 8 },
-  bio: { fontSize: 14, lineHeight: 20, marginBottom: 16 },
-  editBtn: { borderWidth: 1, borderRadius: 8, paddingHorizontal: 12, paddingVertical: 8 },
-  followBtnLarge: { flexDirection: 'row', alignItems: 'center', borderRadius: 8, paddingHorizontal: 14, paddingVertical: 8 },
-  section: { marginTop: 24 },
-  sectionHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 },
-  sectionTitle: { fontSize: 20, fontWeight: '700', fontFamily: 'serif' },
-  viewAll: { fontSize: 13, fontWeight: '600' },
-  twoCol: { flexDirection: 'row', gap: 16, marginTop: 24 },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
-  gridItem: { width: '22%' },
-  gridImg: { width: '100%', aspectRatio: 1, borderRadius: 8 },
-  emptyBox: { borderWidth: 2, borderStyle: 'dashed', borderRadius: 8, padding: 20, alignItems: 'center' },
-  diaryList: { borderWidth: 1, borderRadius: 10, overflow: 'hidden' },
-  diaryRow: { flexDirection: 'row', alignItems: 'center', gap: 10, padding: 12, borderBottomWidth: 1 },
-  diaryAvatar: { width: 40, height: 40, borderRadius: 20 },
-  diaryThumb: { width: 40, height: 40 },
-  overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.75)' },
-  followSheet: { position: 'absolute', bottom: 0, left: 0, right: 0, top: '20%', borderTopLeftRadius: 20, borderTopRightRadius: 20 },
-  modalHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 16, borderBottomWidth: 1 },
-  modalTitle: { fontSize: 18, fontWeight: '700', fontFamily: 'serif' },
-  followRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 12, borderBottomWidth: 1 },
-  followUser: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  followAvatar: { width: 44, height: 44, borderRadius: 22 },
-  followBtn: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999 },
-  followBtnText: { fontSize: 12, fontWeight: '600' },
-  emptyText: { textAlign: 'center', padding: 32 },
-  center: { textAlign: 'center', marginTop: 40 },
+  headerCenter: {
+    alignItems: 'center',
+    marginBottom: 28,
+  },
+
+  avatarLarge: {
+    width: 120,
+    height: 120,
+    borderRadius: 100,
+    marginBottom: 14,
+  },
+
+  nameSerif: {
+    fontSize: 26,
+    fontFamily: 'InstrumentSerif_400Regular',
+  },
+
+  usernameRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginTop: 4,
+  },
+
+  username: {
+    fontSize: 14,
+    fontFamily: 'Inter_400Regular',
+  },
+
+  statsRowCenter: {
+    flexDirection: 'row',
+    gap: 24,
+    marginTop: 12,
+  },
+
+  statNumber: {
+    fontWeight: '700',
+    fontFamily: 'Inter_700Bold',
+  },
+
+  bioCenter: {
+    textAlign: 'center',
+    marginTop: 12,
+    paddingHorizontal: 24,
+    fontFamily: 'Inter_400Regular',
+    lineHeight: 20,
+  },
+
+  socialRowModern: {
+    flexDirection: 'row',
+    gap: 18,
+    marginTop: 14,
+  },
+
+  iconWrap: {
+    padding: 8,
+    borderRadius: 20,
+    backgroundColor: '#f3f4f6',
+  },
+
+  iconBox: {
+    width: 18,
+    height: 18,
+    borderWidth: 2,
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  iconInner: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#000',
+  },
+
+  editBtnModern: {
+    marginTop: 16,
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+  },
+
+  followBtnModern: {
+    marginTop: 16,
+    borderRadius: 10,
+    paddingHorizontal: 18,
+    paddingVertical: 10,
+  },
+
+  buttonText: {
+    fontFamily: 'Inter_500Medium',
+    fontSize: 14,
+    color: '#fff',
+  },
+
+  section: {
+    marginTop: 28,
+  },
+
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    marginBottom: 12,
+  },
+
+  grid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+
+  gridItem: {
+    width: '23%',
+    marginBottom: 12,
+  },
+
+  gridImg: {
+    width: '100%',
+    aspectRatio: 1,
+    borderRadius: 12,
+  },
+  socialRow: {
+    flexDirection: 'row',
+    gap: 12,
+    marginTop: 8,
+  },
+
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.75)',
+  },
+
+  followSheet: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    top: '20%',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 16,
+    borderBottomWidth: 1,
+  },
+
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+  },
+
+  emptyText: {
+    textAlign: 'center',
+    padding: 32,
+  },
+
+  followRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 12,
+    borderBottomWidth: 1,
+  },
+
+  followUser: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+  },
+
+  followAvatar: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+  },
+
+  followBtn: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 999,
+  },
+
+  followBtnText: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+
+  center: {
+    textAlign: 'center',
+    marginTop: 40,
+  },
+
+  editBtn: {
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    marginTop: 12,
+  },
+
+  followBtnLarge: {
+    borderRadius: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    marginTop: 12,
+  },
 });
 
 export default ProfilePage;

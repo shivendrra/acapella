@@ -102,7 +102,7 @@ const SearchPage: React.FC = () => {
     },
     {
       title: 'Artists', data: results.artists, key: 'artists', render: (a: Artist) => (
-        <TouchableOpacity key={a.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/home/artists/${a.id}` as any)}>
+        <TouchableOpacity key={a.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/home/artist/${a.id}` as any)}>
           <Image source={{ uri: a.imageUrl || `https://ui-avatars.com/api/?name=${a.name}&background=random` }} style={[styles.avatar, { borderRadius: 8 }]} />
           <Text style={[styles.rowTitle, { color: c.text }]}>{a.name}</Text>
         </TouchableOpacity>
@@ -110,7 +110,7 @@ const SearchPage: React.FC = () => {
     },
     {
       title: 'Albums', data: results.albums, key: 'albums', render: (a: Album) => (
-        <TouchableOpacity key={a.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/home/albums/${a.id}` as any)}>
+        <TouchableOpacity key={a.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/home/album/${a.id}` as any)}>
           <Image source={{ uri: a.coverArtUrl || `https://picsum.photos/seed/${a.id}/100/100` }} style={[styles.avatar, { borderRadius: 8 }]} />
           <Text style={[styles.rowTitle, { color: c.text }]}>{a.title}</Text>
         </TouchableOpacity>
@@ -118,7 +118,7 @@ const SearchPage: React.FC = () => {
     },
     {
       title: 'Songs', data: results.songs, key: 'songs', render: (s: Song) => (
-        <TouchableOpacity key={s.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/home/songs/${s.id}` as any)}>
+        <TouchableOpacity key={s.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/home/song/${s.id}` as any)}>
           <Text style={[styles.rowTitle, { color: c.text }]}>{s.title}</Text>
         </TouchableOpacity>
       )

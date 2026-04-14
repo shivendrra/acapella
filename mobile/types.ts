@@ -5,7 +5,7 @@ export enum Role {
   USER = 'user',
   ARTIST = 'artist',
   ADMIN = 'admin',
-  MASTER_ADMIN = 'master_admin',
+  HQ = 'HQ',
 }
 
 export interface UserProfile {
