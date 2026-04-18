@@ -4,7 +4,6 @@ import {
   StyleSheet, ActivityIndicator,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
 import { collection, query, where, getDocs, limit, orderBy, startAfter, collectionGroup } from '@firebase/firestore';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -16,40 +15,46 @@ import { formatDate } from '../../../../../utils/formatters';
 
 const PAGE = 24;
 
+const routes = {
+  song: (id: string) => ({ pathname: '/(protected)/(stacks)/home/song/[id]' as const, params: { id } }),
+  album: (id: string) => ({ pathname: '/(protected)/(stacks)/home/album/[id]' as const, params: { id } }),
+  review: (id: string) => ({ pathname: '/(protected)/(stacks)/home/review/[id]' as const, params: { id } }),
+};
+
+const entityRoute = (type: string, id: string) =>
+  type === 'song' ? routes.song(id) : routes.album(id);
+
 const RatedItemCard: React.FC<{ item: Review; c: any }> = ({ item, c }) => {
   const router = useRouter();
   const coverArt = item.entityCoverArtUrl
     || `https://placehold.co/128x128/131010/FAF8F1?text=${encodeURIComponent(item.entityTitle?.charAt(0) || '?')}`;
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-
-      <View style={[styles.card, { borderBottomColor: c.border }]}>
-        <TouchableOpacity onPress={() => router.push(`/${item.entityType}/${item.entityId}` as any)}>
-          <Image source={{ uri: coverArt }} style={styles.cardImg} resizeMode="cover" />
+    <View style={[styles.card, { borderBottomColor: c.border }]}>
+      <TouchableOpacity onPress={() => router.push(entityRoute(item.entityType, item.entityId))}>
+        <Image source={{ uri: coverArt }} style={styles.cardImg} resizeMode="cover" />
+      </TouchableOpacity>
+      <View style={{ flex: 1 }}>
+        <TouchableOpacity onPress={() => router.push(entityRoute(item.entityType, item.entityId))}>
+          <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={2}>{item.entityTitle}</Text>
         </TouchableOpacity>
-        <View style={{ flex: 1 }}>
-          <TouchableOpacity onPress={() => router.push(`/${item.entityType}/${item.entityId}` as any)}>
-            <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={2}>{item.entityTitle}</Text>
-          </TouchableOpacity>
-          <View style={styles.starsRow}>
-            {[...Array(5)].map((_, i) => (
-              <MaterialIcons key={i} name="star" size={15} color={i < item.rating ? '#facc15' : c.starEmpty} />
-            ))}
-          </View>
-          <TouchableOpacity onPress={() => router.push(`/review/${item.id}` as any)}>
-            <Text style={[styles.dateText, { color: c.muted }]}>
-              {'Rated on '}{formatDate(item.createdAt) || 'a while ago'}
-            </Text>
-          </TouchableOpacity>
-          {item.reviewText?.trim() ? (
-            <Text style={[styles.reviewSnippet, { color: c.bodyText }]} numberOfLines={3}>
-              {item.reviewText}
-            </Text>
-          ) : null}
+        <View style={styles.starsRow}>
+          {[...Array(5)].map((_, i) => (
+            <MaterialIcons key={i} name="star" size={15} color={i < item.rating ? '#facc15' : c.starEmpty} />
+          ))}
         </View>
+        <TouchableOpacity onPress={() => router.push(routes.review(item.id))}>
+          <Text style={[styles.dateText, { color: c.muted }]}>
+            {'Rated on '}{formatDate(item.createdAt) || 'a while ago'}
+          </Text>
+        </TouchableOpacity>
+        {item.reviewText?.trim() ? (
+          <Text style={[styles.reviewSnippet, { color: c.bodyText }]} numberOfLines={3}>
+            {item.reviewText}
+          </Text>
+        ) : null}
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -57,8 +62,7 @@ const UserRatingsPage: React.FC = () => {
   const { username } = useLocalSearchParams<{ username: string }>();
   const { currentUser } = useAuth();
   const { theme } = useTheme();
-  const isDark = theme === 'dark';
-  const c = isDark ? colors.dark : colors.light;
+  const c = theme === 'dark' ? colors.dark : colors.light;
 
   const [user, setUser] = useState<UserProfile | null>(null);
   const [ratings, setRatings] = useState<Review[]>([]);
@@ -114,7 +118,6 @@ const UserRatingsPage: React.FC = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-
       <FlatList
         data={ratings}
         keyExtractor={i => i.id}
@@ -153,8 +156,8 @@ const UserRatingsPage: React.FC = () => {
 };
 
 const colors = {
-  light: { bg: '#f9fafb', text: '#111827', bodyText: '#374151', muted: '#6b7280', accent: '#63479b', border: '#e5e7eb', starEmpty: '#d1d5db' },
-  dark: { bg: '#0f0f0f', text: '#f9fafb', bodyText: '#d1d5db', muted: '#9ca3af', accent: '#a78bdf', border: '#374151', starEmpty: '#4b5563' },
+  light: { bg: '#f9fafb', text: '#111827', bodyText: '#374151', muted: '#6b7280', accent: '#6A9C89', border: '#e5e7eb', starEmpty: '#d1d5db' },
+  dark: { bg: '#0f0f0f', text: '#f9fafb', bodyText: '#d1d5db', muted: '#9ca3af', accent: '#6A9C89', border: '#374151', starEmpty: '#4b5563' },
 };
 
 const styles = StyleSheet.create({

@@ -122,8 +122,8 @@ const UserLikesPage: React.FC = () => {
 };
 
 const colors = {
-  light: { bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#63479b', border: '#e5e7eb' },
-  dark: { bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#a78bdf', border: '#374151' },
+  light: { bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#6A9C89', border: '#e5e7eb' },
+  dark: { bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#6A9C89', border: '#374151' },
 };
 
 const styles = StyleSheet.create({

@@ -1,354 +1,251 @@
 import React, { useState, useEffect } from 'react';
 import {
-  View, Text, ScrollView, FlatList, TouchableOpacity,
-  Image, StyleSheet, ActivityIndicator,
+  View, Text, TextInput, TouchableOpacity,
+  StyleSheet, Modal, Pressable, Image, ActivityIndicator,
+  ScrollView, KeyboardAvoidingView, Platform,
 } from 'react-native';
-import {
-  collection, query, where, getDocs, orderBy, limit,
-  Timestamp, collectionGroup, documentId,
-} from '@firebase/firestore';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { collection, query, where, getDocs, limit, orderBy } from '@firebase/firestore';
 import { useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useAuth } from '../../../hooks/useAuth';
-import { useTheme } from '../../../hooks/useTheme';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { db } from '../../../services/firebase';
-import { Review, Album, Song, Artist } from '../../../types';
+import { useTheme } from '../../../hooks/useTheme';
+import { UserProfile, Artist, Album, Song } from '../../../types';
 
-type ActivityItem = Review & { _type: 'review' };
-type ArtistsMap = Record<string, Artist>;
+const HISTORY_KEY = 'acapella_search_history';
 
-const Carousel: React.FC<{ items: any[]; renderItem: (item: any) => React.ReactNode }> = ({ items, renderItem }) => {
-  if (!items?.length) return null;
-  return (
-    <FlatList
-      data={items}
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      keyExtractor={item => item.id}
-      contentContainerStyle={{ gap: 16, paddingBottom: 8 }}
-      renderItem={({ item }) => <View style={{ width: 160 }}>{renderItem(item)}</View>}
-    />
-  );
+const routes = {
+  user: (username: string) => ({ pathname: '/(protected)/(stacks)/home/[username]' as const, params: { username } }),
+  artist: (id: string) => ({ pathname: '/(protected)/(stacks)/home/artist/[id]' as const, params: { id } }),
+  album: (id: string) => ({ pathname: '/(protected)/(stacks)/home/album/[id]' as const, params: { id } }),
+  song: (id: string) => ({ pathname: '/(protected)/(stacks)/home/song/[id]' as const, params: { id } }),
 };
 
-const AlbumCard: React.FC<{ album: Album; artist?: Artist; c: any }> = ({ album, artist, c }) => {
-  const router = useRouter();
-  return (
-    <TouchableOpacity onPress={() => router.push(`/album/${album.id}` as any)}>
-      <View style={styles.cardImg}>
-        <Image source={{ uri: album.coverArtUrl }} style={StyleSheet.absoluteFill} resizeMode="cover" />
-      </View>
-      <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={1}>{album.title}</Text>
-      {artist && <Text style={[styles.cardSub, { color: c.muted }]} numberOfLines={1}>{artist.name}</Text>}
-    </TouchableOpacity>
-  );
+const debounce = <F extends (...args: any[]) => any>(fn: F, wait: number) => {
+  let t: ReturnType<typeof setTimeout>;
+  return (...args: Parameters<F>) => { clearTimeout(t); t = setTimeout(() => fn(...args), wait); };
 };
 
-const SongCard: React.FC<{ song: Song; artist?: Artist; c: any }> = ({ song, artist, c }) => {
-  const router = useRouter();
-  const uri = song.coverArtUrl || `https://placehold.co/100x100/131010/FAF8F1?text=${encodeURIComponent(song.title.charAt(0))}`;
-  return (
-    <TouchableOpacity onPress={() => router.push(`/song/${song.id}` as any)}>
-      <View style={styles.cardImg}>
-        <Image source={{ uri }} style={StyleSheet.absoluteFill} resizeMode="cover" />
-      </View>
-      <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={1}>{song.title}</Text>
-      {artist && <Text style={[styles.cardSub, { color: c.muted }]} numberOfLines={1}>{artist.name}</Text>}
-    </TouchableOpacity>
-  );
+const getHistory = async (): Promise<string[]> => {
+  try { const h = await AsyncStorage.getItem(HISTORY_KEY); return h ? JSON.parse(h) : []; }
+  catch { return []; }
 };
-
-const ArtistCard: React.FC<{ artist: Artist; c: any }> = ({ artist, c }) => {
-  const router = useRouter();
-  return (
-    <TouchableOpacity style={{ alignItems: 'center' }} onPress={() => router.push(`/artist/${artist.id}` as any)}>
-      <Image source={{ uri: artist.imageUrl }} style={styles.artistImg} />
-      <Text style={[styles.cardTitle, { color: c.text, textAlign: 'center' }]} numberOfLines={1}>{artist.name}</Text>
-    </TouchableOpacity>
-  );
+const addHistory = async (term: string) => {
+  const h = await getHistory();
+  const next = [term, ...h.filter(i => i.toLowerCase() !== term.toLowerCase())].slice(0, 10);
+  await AsyncStorage.setItem(HISTORY_KEY, JSON.stringify(next));
 };
+const clearHistory = async () => AsyncStorage.removeItem(HISTORY_KEY);
 
-const ActivityFeedItem: React.FC<{ activity: ActivityItem; c: any }> = ({ activity, c }) => {
-  const router = useRouter();
-  return (
-    <View style={[styles.feedCard, { backgroundColor: c.cardBg, borderColor: c.border }]}>
-      <View style={styles.feedHeader}>
-        <TouchableOpacity onPress={() => router.push(`/${activity.entityUsername}` as any)}>
-          <Image
-            source={{ uri: activity.userPhotoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(activity.userDisplayName)}&background=random` }}
-            style={styles.feedAvatar}
-          />
-        </TouchableOpacity>
-        <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: 13, color: c.text }}>
-            <Text style={{ fontWeight: '700' }}>{activity.userDisplayName}</Text>
-            {' reviewed '}
-            <Text style={{ fontWeight: '700' }}>{activity.entityTitle}</Text>
-          </Text>
-          <View style={{ flexDirection: 'row', marginTop: 2 }}>
-            {[...Array(5)].map((_, i) => (
-              <MaterialIcons key={i} name="star" size={13} color={i < activity.rating ? '#facc15' : '#d1d5db'} />
-            ))}
-          </View>
-        </View>
-      </View>
-      <Text style={[styles.feedQuote, { color: c.muted }]} numberOfLines={4}>{activity.reviewText}</Text>
-      <TouchableOpacity onPress={() => router.push(`/review/${activity.id}` as any)}>
-        <Text style={[styles.feedLink, { color: c.muted }]}>View full review</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
+interface Results { users: UserProfile[]; artists: Artist[]; albums: Album[]; songs: Song[]; }
 
-const GuestLandingPage: React.FC<{ c: any }> = ({ c }) => {
+const SearchPageWrapper: React.FC = () => {
+  const { theme } = useTheme();
+  const c = theme === 'dark' ? colors.dark : colors.light;
   const router = useRouter();
-  const [featuredAlbums, setFeaturedAlbums] = useState<Album[]>([]);
+
+  const [input, setInput] = useState('');
+  const [q, setQ] = useState('');
+  const [results, setResults] = useState<Results>({ users: [], artists: [], albums: [], songs: [] });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [history, setHistory] = useState<string[]>([]);
+  const [showClear, setShowClear] = useState(false);
+
+  useEffect(() => { getHistory().then(setHistory); }, []);
+
+  const debouncedSetQ = React.useMemo(() => debounce((v: string) => setQ(v), 300), []);
+  const handleInput = (v: string) => { setInput(v); debouncedSetQ(v); };
+  const handleSubmit = async () => {
+    const t = input.trim();
+    if (t) { await addHistory(t); setHistory(await getHistory()); }
+    setQ(t);
+  };
+  const handleHistoryClick = (term: string) => { setInput(term); setQ(term); };
 
   useEffect(() => {
-    getDocs(query(collection(db, 'albums'), orderBy('reviewCount', 'desc'), limit(6)))
-      .then(snap => setFeaturedAlbums(snap.docs.map(d => ({ id: d.id, ...d.data() } as Album))))
-      .catch(console.error);
-  }, []);
+    if (!q) { setResults({ users: [], artists: [], albums: [], songs: [] }); return; }
+    const run = async () => {
+      setLoading(true); setError(null);
+      try {
+        const s = q.toLowerCase();
+        const [uSnap, arSnap, alSnap, soSnap] = await Promise.all([
+          getDocs(query(collection(db, 'users'), where('username', '>=', s), where('username', '<=', s + '\uf8ff'), limit(5))),
+          getDocs(query(collection(db, 'artists'), where('name_lowercase', '>=', s), where('name_lowercase', '<=', s + '\uf8ff'), orderBy('name_lowercase'), limit(5))),
+          getDocs(query(collection(db, 'albums'), where('title_lowercase', '>=', s), where('title_lowercase', '<=', s + '\uf8ff'), orderBy('title_lowercase'), limit(5))),
+          getDocs(query(collection(db, 'songs'), where('title_lowercase', '>=', s), where('title_lowercase', '<=', s + '\uf8ff'), orderBy('title_lowercase'), limit(5))),
+        ]);
+        setResults({
+          users: uSnap.docs.map(d => d.data() as UserProfile),
+          artists: arSnap.docs.map(d => ({ id: d.id, ...d.data() } as Artist)),
+          albums: alSnap.docs.map(d => ({ id: d.id, ...d.data() } as Album)),
+          songs: soSnap.docs.map(d => ({ id: d.id, ...d.data() } as Song)),
+        });
+      } catch { setError('An error occurred during search.'); }
+      finally { setLoading(false); }
+    };
+    run();
+  }, [q]);
 
-  const features = [
-    { icon: 'headphones', title: 'Listen & Log', desc: 'Track your listening history and build a rich library.' },
-    { icon: 'rate-review', title: 'Rate & Review', desc: 'Give star ratings and write detailed reviews to share your opinions.' },
-    { icon: 'group', title: 'Share & Discover', desc: 'Follow friends and curators to find your next favorite artist.' },
-  ];
+  const total = results.users.length + results.artists.length + results.albums.length + results.songs.length;
 
-  return (
-    <ScrollView style={{ backgroundColor: c.heroBg }} showsVerticalScrollIndicator={false}>
-      {/* Hero */}
-      <View style={[styles.hero, { backgroundColor: c.heroBg }]}>
-        <View style={styles.heroBgGrid}>
-          {featuredAlbums.concat(featuredAlbums).slice(0, 12).map((album, i) => (
-            <View key={i} style={styles.heroBgTile}>
-              {album?.coverArtUrl && <Image source={{ uri: album.coverArtUrl }} style={[StyleSheet.absoluteFill, { opacity: 0.15 }]} resizeMode="cover" />}
-            </View>
+  const sections = [
+    {
+      key: 'users', title: 'Users', data: results.users,
+      render: (u: UserProfile) => (
+        <TouchableOpacity key={u.uid} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(routes.user(u.username))}>
+          <Image source={{ uri: u.photoURL || `https://ui-avatars.com/api/?name=${u.displayName || u.username}` }} style={styles.avatar} />
+          <View>
+            <Text style={[styles.rowTitle, { color: c.text }]}>{u.displayName}</Text>
+            <Text style={[styles.rowSub, { color: c.muted }]}>@{u.username}</Text>
+          </View>
+        </TouchableOpacity>
+      ),
+    },
+    {
+      key: 'artists', title: 'Artists', data: results.artists,
+      render: (a: Artist) => (
+        <TouchableOpacity key={a.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(routes.artist(a.id))}>
+          <Image source={{ uri: a.imageUrl || `https://ui-avatars.com/api/?name=${a.name}&background=random` }} style={[styles.avatar, { borderRadius: 8 }]} />
+          <Text style={[styles.rowTitle, { color: c.text }]}>{a.name}</Text>
+        </TouchableOpacity>
+      ),
+    },
+    {
+      key: 'albums', title: 'Albums', data: results.albums,
+      render: (a: Album) => (
+        <TouchableOpacity key={a.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(routes.album(a.id))}>
+          <Image source={{ uri: a.coverArtUrl || `https://picsum.photos/seed/${a.id}/100/100` }} style={[styles.avatar, { borderRadius: 8 }]} />
+          <Text style={[styles.rowTitle, { color: c.text }]}>{a.title}</Text>
+        </TouchableOpacity>
+      ),
+    },
+    {
+      key: 'songs', title: 'Songs', data: results.songs,
+      render: (s: Song) => (
+        <TouchableOpacity key={s.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(routes.song(s.id))}>
+          <Text style={[styles.rowTitle, { color: c.text }]}>{s.title}</Text>
+        </TouchableOpacity>
+      ),
+    },
+  ].filter(s => s.data.length > 0);
+
+  const renderContent = () => {
+    if (loading && q) return <ActivityIndicator style={{ marginTop: 32 }} color={c.accent} />;
+    if (error) return <Text style={[styles.centerText, { color: '#ef4444' }]}>{error}</Text>;
+    if (!q) {
+      if (history.length === 0) return <Text style={[styles.centerText, { color: c.muted }]}>Start typing to search for music, artists, and friends.</Text>;
+      return (
+        <View style={{ marginTop: 24 }}>
+          <View style={styles.historyHeader}>
+            <Text style={[styles.sectionTitle, { color: c.text }]}>Recent Searches</Text>
+            <TouchableOpacity onPress={() => setShowClear(true)}>
+              <Text style={{ color: '#ef4444', fontSize: 13 }}>Clear</Text>
+            </TouchableOpacity>
+          </View>
+          {history.map((term, i) => (
+            <TouchableOpacity key={i} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => handleHistoryClick(term)}>
+              <MaterialIcons name="history" size={20} color={c.muted} style={{ marginRight: 12 }} />
+              <Text style={{ color: c.text }}>{term}</Text>
+            </TouchableOpacity>
           ))}
         </View>
-        <View style={{ alignItems: 'center', paddingHorizontal: 24, paddingTop: 48 }}>
-          <Text style={[styles.heroTitle, { color: c.heroText }]}>Your Personal{'\n'}Music Diary.</Text>
-          <Text style={[styles.heroSub, { color: c.heroMuted }]}>
-            Track your listening habits. Rate and review albums. Share your taste and discover your next favorite artist.
-          </Text>
-          <TouchableOpacity style={[styles.heroBtn, { backgroundColor: c.accent }]} onPress={() => router.push('/login')}>
-            <Text style={styles.heroBtnText}>Start Listening for Free</Text>
-          </TouchableOpacity>
-        </View>
+      );
+    }
+    if (total === 0) return (
+      <View style={{ alignItems: 'center', marginTop: 40 }}>
+        <Text style={[styles.centerText, { color: c.muted }]}>{`No results found for "${q}".`}</Text>
+        <Text style={{ color: c.muted, fontSize: 13, marginTop: 4 }}>Try searching for something else.</Text>
       </View>
-
-      {/* Featured Albums */}
-      {featuredAlbums.length > 0 && (
-        <View style={[styles.section, { backgroundColor: c.sectionAlt }]}>
-          <Text style={[styles.sectionTitle, { color: c.text, textAlign: 'center' }]}>What People Are Reviewing</Text>
-          <Text style={[styles.sectionSub, { color: c.muted, textAlign: 'center' }]}>{"Join the conversation on today's most talked-about albums."}</Text>
-          <View style={styles.albumGrid}>
-            {featuredAlbums.map(album => (
-              <TouchableOpacity key={album.id} style={{ width: '30%' }} onPress={() => router.push(`/album/${album.id}` as any)}>
-                <View style={[styles.cardImg, { borderRadius: 8 }]}>
-                  <Image source={{ uri: album.coverArtUrl }} style={StyleSheet.absoluteFill} resizeMode="cover" />
-                </View>
-              </TouchableOpacity>
-            ))}
-          </View>
-        </View>
-      )}
-
-      {/* How It Works */}
-      <View style={[styles.section, { backgroundColor: c.bg }]}>
-        <Text style={[styles.sectionTitle, { color: c.text, textAlign: 'center' }]}>A Home for Your Music Life</Text>
-        <Text style={[styles.sectionSub, { color: c.muted, textAlign: 'center' }]}>Keep track of every tune and story.</Text>
-        {features.map(f => (
-          <View key={f.title} style={styles.featureItem}>
-            <View style={[styles.featureIcon, { backgroundColor: c.accentFaint }]}>
-              <MaterialIcons name={f.icon as any} size={28} color={c.accent} />
-            </View>
-            <Text style={[styles.featureTitle, { color: c.text }]}>{f.title}</Text>
-            <Text style={[styles.featureDesc, { color: c.muted }]}>{f.desc}</Text>
+    );
+    return (
+      <View style={{ marginTop: 24 }}>
+        {sections.map(sec => (
+          <View key={sec.key} style={{ marginBottom: 24 }}>
+            <Text style={[styles.sectionTitle, { color: c.text, borderBottomColor: c.border }]}>{sec.title}</Text>
+            {sec.data.map((item: any) => sec.render(item))}
           </View>
         ))}
       </View>
-
-      {/* CTA */}
-      <View style={[styles.ctaSection, { backgroundColor: c.accent }]}>
-        <Text style={styles.ctaTitle}>Join a Community of Music Nerds</Text>
-        <Text style={styles.ctaSub}>Sign up today to start logging, reviewing, and connecting with fellow music fans from around the world.</Text>
-        <TouchableOpacity style={styles.ctaBtn} onPress={() => router.push('/login')}>
-          <Text style={[styles.ctaBtnText, { color: c.accent }]}>Create Your Free Account</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
-  );
-};
-
-const AuthenticatedHomePage: React.FC<{ c: any }> = ({ c }) => {
-  const { userProfile } = useAuth();
-  const router = useRouter();
-  const [activityFeed, setActivityFeed] = useState<ActivityItem[]>([]);
-  const [newReleases, setNewReleases] = useState<Album[]>([]);
-  const [trendingSongs, setTrendingSongs] = useState<Song[]>([]);
-  const [popularArtists, setPopularArtists] = useState<Artist[]>([]);
-  const [artistsMap, setArtistsMap] = useState<ArtistsMap>({});
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    if (!userProfile) return;
-    const run = async () => {
-      setLoading(true);
-      try {
-        const oneWeekAgo = Timestamp.fromDate(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000));
-        const [followSnap, relSnap, soSnap, arSnap] = await Promise.all([
-          getDocs(query(collection(db, 'follows'), where('followerId', '==', userProfile.uid))),
-          getDocs(query(collection(db, 'albums'), orderBy('releaseDate', 'desc'), limit(10))),
-          getDocs(query(collection(db, 'songs'), orderBy('reviewCount', 'desc'), limit(10))),
-          getDocs(query(collection(db, 'artists'), orderBy('name'), limit(10))),
-        ]);
-
-        const relData = relSnap.docs.map(d => ({ id: d.id, ...d.data() } as Album));
-        const soData = soSnap.docs.map(d => ({ id: d.id, ...d.data() } as Song));
-        setNewReleases(relData);
-        setTrendingSongs(soData);
-        setPopularArtists(arSnap.docs.map(d => ({ id: d.id, ...d.data() } as Artist)));
-
-        const followingIds = followSnap.docs.map(d => d.data().followingId);
-        if (followingIds.length > 0) {
-          const revSnap = await getDocs(query(
-            collectionGroup(db, 'reviews'),
-            where('userId', 'in', followingIds),
-            where('createdAt', '>=', oneWeekAgo),
-            orderBy('createdAt', 'desc'),
-          ));
-          setActivityFeed(revSnap.docs
-            .map(d => ({ ...(d.data() as Review), id: d.id, _type: 'review' } as ActivityItem))
-            .filter(i => i.reviewText?.trim()));
-        }
-
-        const artistIds = new Set<string>();
-        relData.forEach(a => a.artistIds.forEach(id => artistIds.add(id)));
-        soData.forEach(s => s.artistIds.forEach(id => artistIds.add(id)));
-        if (artistIds.size > 0) {
-          const aSnap = await getDocs(query(collection(db, 'artists'), where(documentId(), 'in', Array.from(artistIds))));
-          const map: ArtistsMap = {};
-          aSnap.forEach(d => { map[d.id] = { id: d.id, ...d.data() } as Artist; });
-          setArtistsMap(map);
-        }
-      } catch {
-        setError('Could not load your feed. Check your network or database indexes.');
-      } finally { setLoading(false); }
-    };
-    run();
-  }, [userProfile]);
-
-  if (loading) return <ActivityIndicator style={{ flex: 1, marginTop: 64 }} color={c.accent} />;
-  if (error) return <Text style={[{ color: '#ef4444', textAlign: 'center', margin: 32 }]}>{error}</Text>;
+    );
+  };
 
   return (
-    <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48, gap: 40 }}>
-      <View>
-        <Text style={[styles.sectionTitle, { color: c.text }]}>From Your Network</Text>
-        {activityFeed.length > 0 ? (
-          <FlatList
-            data={activityFeed}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={i => i.id}
-            contentContainerStyle={{ gap: 12, paddingBottom: 8 }}
-            renderItem={({ item }) => (
-              <View style={{ width: 280 }}><ActivityFeedItem activity={item} c={c} /></View>
-            )}
-          />
-        ) : (
-          <View style={[styles.emptyBox, { borderColor: c.border }]}>
-            <MaterialIcons name="group" size={28} color={c.muted} />
-            <Text style={{ color: c.muted, marginTop: 8 }}>Follow users to see their reviews here.</Text>
-            <TouchableOpacity onPress={() => router.push('/curators')}>
-              <Text style={{ color: c.accent, fontWeight: '600', marginTop: 4, fontSize: 13 }}>Find Curators to follow</Text>
+    <SafeAreaView style={{ flex: 1, backgroundColor: c.bg }}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <ScrollView
+          style={{ flex: 1 }}
+          contentContainerStyle={styles.content}
+          keyboardShouldPersistTaps="handled"
+        >
+          <Text style={[styles.pageTitle, { color: c.text }]}>Search</Text>
+          <View style={[styles.searchBar, { borderColor: c.border, backgroundColor: c.inputBg }]}>
+            <MaterialIcons name="search" size={20} color={c.muted} style={{ marginRight: 8 }} />
+            <TextInput
+              style={[styles.searchInput, { color: c.text }]}
+              placeholder="Search artists, albums, songs, users..."
+              placeholderTextColor={c.muted}
+              value={input}
+              onChangeText={handleInput}
+              onSubmitEditing={handleSubmit}
+              returnKeyType="search"
+            />
+            {input ? (
+              <TouchableOpacity onPress={() => { setInput(''); setQ(''); }}>
+                <MaterialIcons name="close" size={20} color={c.muted} />
+              </TouchableOpacity>
+            ) : null}
+          </View>
+          {renderContent()}
+        </ScrollView>
+      </KeyboardAvoidingView>
+
+      <Modal visible={showClear} transparent animationType="fade" onRequestClose={() => setShowClear(false)}>
+        <Pressable style={styles.overlay} onPress={() => setShowClear(false)} />
+        <View style={[styles.confirmBox, { backgroundColor: c.bg }]}>
+          <MaterialIcons name="warning" size={48} color="#ef4444" style={{ alignSelf: 'center', marginBottom: 12 }} />
+          <Text style={[styles.confirmTitle, { color: c.text }]}>Clear Search History?</Text>
+          <Text style={[styles.confirmSub, { color: c.muted }]}>This will permanently remove your recent searches.</Text>
+          <View style={styles.confirmBtns}>
+            <TouchableOpacity style={[styles.confirmBtn, { borderColor: c.border, borderWidth: 1 }]} onPress={() => setShowClear(false)}>
+              <Text style={{ color: c.text }}>Cancel</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.confirmBtn, { backgroundColor: '#ef4444' }]} onPress={async () => {
+              await clearHistory(); setHistory([]); setShowClear(false);
+            }}>
+              <Text style={{ color: '#fff' }}>Clear</Text>
             </TouchableOpacity>
           </View>
-        )}
-      </View>
-
-      <View>
-        <Text style={[styles.sectionTitle, { color: c.text }]}>New Releases</Text>
-        <Carousel items={newReleases} renderItem={a => <AlbumCard album={a} artist={artistsMap[a.artistIds[0]]} c={c} />} />
-      </View>
-
-      <View>
-        <Text style={[styles.sectionTitle, { color: c.text }]}>Trending Songs</Text>
-        <Carousel items={trendingSongs} renderItem={s => <SongCard song={s} artist={artistsMap[s.artistIds[0]]} c={c} />} />
-      </View>
-
-      <View>
-        <Text style={[styles.sectionTitle, { color: c.text }]}>Popular Artists</Text>
-        <Carousel items={popularArtists} renderItem={a => <ArtistCard artist={a} c={c} />} />
-      </View>
-    </ScrollView>
+        </View>
+      </Modal>
+    </SafeAreaView>
   );
-};
-
-const HomePage: React.FC = () => {
-  const { currentUser, loading } = useAuth();
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-  const c = isDark ? colors.dark : colors.light;
-
-  if (loading) return <ActivityIndicator style={{ flex: 1, marginTop: 64 }} color={c.accent} />;
-  return currentUser ? <AuthenticatedHomePage c={c} /> : <GuestLandingPage c={c} />;
 };
 
 const colors = {
-  light: {
-    bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#63479b',
-    accentFaint: 'rgba(99,71,155,0.1)', border: '#e5e7eb', cardBg: '#ffffff',
-    heroBg: '#2d0b4c', heroText: '#ffffff', heroMuted: 'rgba(255,255,255,0.8)',
-    sectionAlt: '#ffffff',
-  },
-  dark: {
-    bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#a78bdf',
-    accentFaint: 'rgba(167,139,223,0.1)', border: '#374151', cardBg: 'rgba(31,41,55,0.5)',
-    heroBg: '#1a0630', heroText: '#ffffff', heroMuted: 'rgba(255,255,255,0.7)',
-    sectionAlt: 'rgba(0,0,0,0.5)',
-  },
+  light: { bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#63479b', border: '#e5e7eb', inputBg: '#fff', rowBg: 'transparent' },
+  dark: { bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#a78bdf', border: '#374151', inputBg: '#1f2937', rowBg: 'transparent' },
 };
 
 const styles = StyleSheet.create({
-  sectionTitle: { fontSize: 26, fontWeight: '700', fontFamily: 'serif', marginBottom: 12 },
-  sectionSub: { fontSize: 14, marginTop: 4, marginBottom: 16 },
-  cardImg: { width: '100%', aspectRatio: 1, borderRadius: 10, overflow: 'hidden', backgroundColor: '#e5e7eb' },
-  cardTitle: { marginTop: 8, fontSize: 14, fontWeight: '600' },
-  cardSub: { fontSize: 12, marginTop: 2 },
-  artistImg: { width: 112, height: 112, borderRadius: 56 },
-
-  feedCard: { borderWidth: 1, borderRadius: 10, padding: 14 },
-  feedHeader: { flexDirection: 'row', gap: 10, marginBottom: 10 },
-  feedAvatar: { width: 40, height: 40, borderRadius: 20 },
-  feedQuote: { fontSize: 13, fontStyle: 'italic', marginBottom: 8 },
-  feedLink: { fontSize: 12, alignSelf: 'flex-end' },
-
-  hero: { paddingBottom: 48, overflow: 'hidden' },
-  heroBgGrid: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, flexDirection: 'row', flexWrap: 'wrap', opacity: 0.1 },
-  heroBgTile: { width: '33%', aspectRatio: 1, backgroundColor: '#374151' },
-  heroTitle: { fontSize: 40, fontWeight: '700', fontFamily: 'serif', textAlign: 'center', marginBottom: 16 },
-  heroSub: { fontSize: 16, textAlign: 'center', marginBottom: 32, lineHeight: 24 },
-  heroBtn: { paddingHorizontal: 32, paddingVertical: 16, borderRadius: 10 },
-  heroBtnText: { color: '#fff', fontWeight: '700', fontSize: 16 },
-
-  section: { padding: 24, gap: 8 },
-  albumGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 16, justifyContent: 'center' },
-  featureItem: { alignItems: 'center', paddingVertical: 16 },
-  featureIcon: { width: 64, height: 64, borderRadius: 32, alignItems: 'center', justifyContent: 'center', marginBottom: 12 },
-  featureTitle: { fontSize: 18, fontWeight: '700', fontFamily: 'serif', marginBottom: 8 },
-  featureDesc: { fontSize: 14, textAlign: 'center', lineHeight: 20 },
-
-  ctaSection: { padding: 40, alignItems: 'center' },
-  ctaTitle: { color: '#fff', fontSize: 28, fontWeight: '700', fontFamily: 'serif', textAlign: 'center' },
-  ctaSub: { color: 'rgba(255,255,255,0.9)', fontSize: 15, textAlign: 'center', marginTop: 12, lineHeight: 22 },
-  ctaBtn: { backgroundColor: '#fff', paddingHorizontal: 32, paddingVertical: 14, borderRadius: 10, marginTop: 24 },
-  ctaBtnText: { fontWeight: '700', fontSize: 15 },
-
-  emptyBox: { borderWidth: 2, borderStyle: 'dashed', borderRadius: 10, padding: 32, alignItems: 'center' },
+  content: { flexGrow: 1, padding: 16, paddingTop: 24, paddingBottom: 48 },
+  pageTitle: { fontSize: 28, fontWeight: '700', fontFamily: 'serif', marginBottom: 16 },
+  searchBar: { flexDirection: 'row', alignItems: 'center', borderWidth: 2, borderRadius: 999, paddingHorizontal: 16, paddingVertical: 10 },
+  searchInput: { flex: 1, fontSize: 15 },
+  sectionTitle: { fontSize: 20, fontWeight: '700', fontFamily: 'serif', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 12 },
+  row: { flexDirection: 'row', alignItems: 'center', padding: 12, borderRadius: 10, marginBottom: 4 },
+  avatar: { width: 48, height: 48, borderRadius: 24, marginRight: 12 },
+  rowTitle: { fontSize: 15, fontWeight: '600' },
+  rowSub: { fontSize: 13, marginTop: 2 },
+  historyHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 },
+  centerText: { textAlign: 'center', marginTop: 40, fontSize: 15 },
+  overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.75)' },
+  confirmBox: { position: 'absolute', bottom: 0, left: 0, right: 0, borderTopLeftRadius: 20, borderTopRightRadius: 20, padding: 24 },
+  confirmTitle: { fontSize: 18, fontWeight: '600', textAlign: 'center', marginBottom: 8 },
+  confirmSub: { fontSize: 13, textAlign: 'center', marginBottom: 24 },
+  confirmBtns: { flexDirection: 'row', gap: 12 },
+  confirmBtn: { flex: 1, paddingVertical: 12, borderRadius: 8, alignItems: 'center' },
 });
 
-export default HomePage;
+export default SearchPageWrapper;

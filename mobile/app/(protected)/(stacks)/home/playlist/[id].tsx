@@ -14,6 +14,7 @@ import { useAuth } from '../../../../../hooks/useAuth';
 import { useTheme } from '../../../../../hooks/useTheme';
 import { Playlist, Song } from '../../../../../types';
 import PlaylistFormModal from '../../../../../components/playlist/PlaylistFormModal';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const formatDur = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 const formatTotal = (s: number) => {
@@ -98,113 +99,119 @@ const PlaylistPage: React.FC = () => {
   const totalDur = songs.reduce((a, s) => a + (s.duration || 0), 0);
 
   return (
-    <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48, gap: 24 }}>
-      {/* Header */}
-      <View style={styles.hero}>
-        <Image
-          source={{ uri: playlist.coverArtUrl || 'https://placehold.co/400x400?text=Playlist' }}
-          style={styles.cover}
-          resizeMode="cover"
-        />
-        <View style={{ flex: 1 }}>
-          <Text style={[styles.title, { color: c.text }]}>{playlist.title}</Text>
-          {playlist.description ? <Text style={[styles.desc, { color: c.muted }]}>{playlist.description}</Text> : null}
-          <Text style={[styles.meta, { color: c.muted }]}>
-            {'by '}
-            <Text style={{ color: c.accent, fontWeight: '600' }} onPress={() => router.push(`/${playlist.userDisplayName}` as any)}>
-              {playlist.userDisplayName}
+    <SafeAreaView style={{ flex: 1 }}>
+
+      <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48, gap: 24 }}>
+        {/* Header */}
+        <View style={styles.hero}>
+          <Image
+            source={{ uri: playlist.coverArtUrl || 'https://placehold.co/400x400?text=Playlist' }}
+            style={styles.cover}
+            resizeMode="cover"
+          />
+          <View style={{ flex: 1 }}>
+            <Text style={[styles.title, { color: c.text }]}>{playlist.title}</Text>
+            {playlist.description ? <Text style={[styles.desc, { color: c.muted }]}>{playlist.description}</Text> : null}
+            <Text style={[styles.meta, { color: c.muted }]}>
+              {'by '}
+              <Text style={{ color: c.accent, fontWeight: '600' }} onPress={() => router.push(`/${playlist.userDisplayName}` as any)}>
+                {playlist.userDisplayName}
+              </Text>
+              {`  •  ${songs.length} songs  •  ${formatTotal(totalDur)}`}
             </Text>
-            {`  •  ${songs.length} songs  •  ${formatTotal(totalDur)}`}
-          </Text>
 
-          {/* Platform links */}
-          <View style={styles.platformRow}>
-            {playlist.platformLinks?.spotify && (
-              <TouchableOpacity style={[styles.platformBtn, { backgroundColor: '#1DB954' }]} onPress={() => Linking.openURL(playlist.platformLinks!.spotify!)}>
-                <Text style={styles.platformText}>Spotify</Text>
-              </TouchableOpacity>
-            )}
-            {playlist.platformLinks?.appleMusic && (
-              <TouchableOpacity style={[styles.platformBtn, { backgroundColor: '#000' }]} onPress={() => Linking.openURL(playlist.platformLinks!.appleMusic!)}>
-                <Text style={styles.platformText}>Apple Music</Text>
-              </TouchableOpacity>
-            )}
-            {playlist.platformLinks?.youtubeMusic && (
-              <TouchableOpacity style={[styles.platformBtn, { backgroundColor: '#FF0000' }]} onPress={() => Linking.openURL(playlist.platformLinks!.youtubeMusic!)}>
-                <Text style={styles.platformText}>YouTube Music</Text>
-              </TouchableOpacity>
-            )}
-          </View>
-
-          {isOwner && (
-            <View style={styles.ownerBtns}>
-              <TouchableOpacity style={styles.iconBtn} onPress={() => setEditOpen(true)}>
-                <MaterialIcons name="edit" size={20} color={c.muted} />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.iconBtn} onPress={handleDelete}>
-                <MaterialIcons name="delete-outline" size={20} color="#ef4444" />
-              </TouchableOpacity>
-            </View>
-          )}
-        </View>
-      </View>
-
-      {/* Tracklist */}
-      {songs.length > 0 ? (
-        <View style={[styles.trackList, { borderColor: c.border }]}>
-          {/* Header row */}
-          <View style={[styles.trackHeader, { backgroundColor: c.headerBg, borderBottomColor: c.border }]}>
-            <Text style={[styles.trackHeaderText, { width: 28 }]}>#</Text>
-            <Text style={[styles.trackHeaderText, { flex: 1 }]}>TITLE</Text>
-            <Text style={[styles.trackHeaderText, { width: 48, textAlign: 'right' }]}>TIME</Text>
-            {isOwner && <View style={{ width: 32 }} />}
-          </View>
-          {songs.map((song, i) => (
-            <TouchableOpacity
-              key={song.id}
-              style={[styles.trackRow, { backgroundColor: i % 2 === 0 ? 'transparent' : c.altRow, borderBottomColor: c.border }]}
-              onPress={() => router.push(`/song/${song.id}` as any)}
-            >
-              <Text style={[styles.trackNum, { color: c.muted }]}>{i + 1}</Text>
-              <Image source={{ uri: song.coverArtUrl }} style={styles.trackThumb} />
-              <View style={{ flex: 1 }}>
-                <Text style={[styles.trackTitle, { color: c.text }]} numberOfLines={1}>{song.title}</Text>
-                <Text style={[styles.trackGenre, { color: c.muted }]}>{song.genre}</Text>
-              </View>
-              <Text style={[styles.trackDur, { color: c.muted }]}>{formatDur(song.duration)}</Text>
-              {isOwner && (
-                <TouchableOpacity onPress={() => handleRemoveSong(song.id)} disabled={removingId === song.id}>
-                  {removingId === song.id
-                    ? <ActivityIndicator size="small" color="#ef4444" />
-                    : <MaterialIcons name="remove-circle-outline" size={18} color="#ef4444" />
-                  }
+            {/* Platform links */}
+            <View style={styles.platformRow}>
+              {playlist.platformLinks?.spotify && (
+                <TouchableOpacity style={[styles.platformBtn, { backgroundColor: '#1DB954' }]} onPress={() => Linking.openURL(playlist.platformLinks!.spotify!)}>
+                  <Text style={styles.platformText}>Spotify</Text>
                 </TouchableOpacity>
               )}
-            </TouchableOpacity>
-          ))}
-        </View>
-      ) : (
-        <View style={[styles.emptyBox, { borderColor: c.border }]}>
-          <MaterialIcons name="music-note" size={28} color={c.muted} />
-          <Text style={{ color: c.muted, marginTop: 8 }}>No songs in this playlist yet.</Text>
-          {isOwner && (
-            <TouchableOpacity onPress={() => setEditOpen(true)}>
-              <Text style={{ color: c.accent, fontWeight: '600', marginTop: 6, fontSize: 13 }}>Add some songs</Text>
-            </TouchableOpacity>
-          )}
-        </View>
-      )}
+              {playlist.platformLinks?.appleMusic && (
+                <TouchableOpacity style={[styles.platformBtn, { backgroundColor: '#000' }]} onPress={() => Linking.openURL(playlist.platformLinks!.appleMusic!)}>
+                  <Text style={styles.platformText}>Apple Music</Text>
+                </TouchableOpacity>
+              )}
+              {playlist.platformLinks?.youtubeMusic && (
+                <TouchableOpacity style={[styles.platformBtn, { backgroundColor: '#FF0000' }]} onPress={() => Linking.openURL(playlist.platformLinks!.youtubeMusic!)}>
+                  <Text style={styles.platformText}>YouTube Music</Text>
+                </TouchableOpacity>
+              )}
+            </View>
 
-      {editOpen && playlist && (
-        <PlaylistFormModal onClose={() => setEditOpen(false)} existingPlaylist={playlist} onSuccess={fetchData} />
-      )}
-    </ScrollView>
+            {isOwner && (
+              <View style={styles.ownerBtns}>
+                <TouchableOpacity style={styles.iconBtn} onPress={() => setEditOpen(true)}>
+                  <MaterialIcons name="edit" size={20} color={c.muted} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.iconBtn} onPress={handleDelete}>
+                  <MaterialIcons name="delete-outline" size={20} color="#ef4444" />
+                </TouchableOpacity>
+              </View>
+            )}
+          </View>
+        </View>
+
+        {/* Tracklist */}
+        {songs.length > 0 ? (
+          <View style={[styles.trackList, { borderColor: c.border }]}>
+            {/* Header row */}
+            <View style={[styles.trackHeader, { backgroundColor: c.headerBg, borderBottomColor: c.border }]}>
+              <Text style={[styles.trackHeaderText, { width: 28 }]}>#</Text>
+              <Text style={[styles.trackHeaderText, { flex: 1 }]}>TITLE</Text>
+              <Text style={[styles.trackHeaderText, { width: 48, textAlign: 'right' }]}>TIME</Text>
+              {isOwner && <View style={{ width: 32 }} />}
+            </View>
+            {songs.map((song, i) => (
+              <TouchableOpacity
+                key={song.id}
+                style={[styles.trackRow, { backgroundColor: i % 2 === 0 ? 'transparent' : c.altRow, borderBottomColor: c.border }]}
+                onPress={() => router.push({
+                  pathname: '../song/[id]',
+                  params: { id: song.id }
+                })}
+              >
+                <Text style={[styles.trackNum, { color: c.muted }]}>{i + 1}</Text>
+                <Image source={{ uri: song.coverArtUrl }} style={styles.trackThumb} />
+                <View style={{ flex: 1 }}>
+                  <Text style={[styles.trackTitle, { color: c.text }]} numberOfLines={1}>{song.title}</Text>
+                  <Text style={[styles.trackGenre, { color: c.muted }]}>{song.genre}</Text>
+                </View>
+                <Text style={[styles.trackDur, { color: c.muted }]}>{formatDur(song.duration)}</Text>
+                {isOwner && (
+                  <TouchableOpacity onPress={() => handleRemoveSong(song.id)} disabled={removingId === song.id}>
+                    {removingId === song.id
+                      ? <ActivityIndicator size="small" color="#ef4444" />
+                      : <MaterialIcons name="remove-circle-outline" size={18} color="#ef4444" />
+                    }
+                  </TouchableOpacity>
+                )}
+              </TouchableOpacity>
+            ))}
+          </View>
+        ) : (
+          <View style={[styles.emptyBox, { borderColor: c.border }]}>
+            <MaterialIcons name="music-note" size={28} color={c.muted} />
+            <Text style={{ color: c.muted, marginTop: 8 }}>No songs in this playlist yet.</Text>
+            {isOwner && (
+              <TouchableOpacity onPress={() => setEditOpen(true)}>
+                <Text style={{ color: c.accent, fontWeight: '600', marginTop: 6, fontSize: 13 }}>Add some songs</Text>
+              </TouchableOpacity>
+            )}
+          </View>
+        )}
+
+        {editOpen && playlist && (
+          <PlaylistFormModal onClose={() => setEditOpen(false)} existingPlaylist={playlist} onSuccess={fetchData} />
+        )}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const colors = {
-  light: { bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#63479b', border: '#e5e7eb', altRow: 'rgba(0,0,0,0.02)', headerBg: '#f3f4f6' },
-  dark: { bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#a78bdf', border: '#374151', altRow: 'rgba(255,255,255,0.02)', headerBg: 'rgba(31,41,55,0.5)' },
+  light: { bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#6A9C89', border: '#e5e7eb', altRow: 'rgba(0,0,0,0.02)', headerBg: '#f3f4f6' },
+  dark: { bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#6A9C89', border: '#374151', altRow: 'rgba(255,255,255,0.02)', headerBg: 'rgba(31,41,55,0.5)' },
 };
 
 const styles = StyleSheet.create({

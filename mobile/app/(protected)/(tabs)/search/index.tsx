@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  View, Text, TextInput, TouchableOpacity, FlatList,
+  View, Text, TextInput, TouchableOpacity,
   StyleSheet, Modal, Pressable, Image, ActivityIndicator,
+  ScrollView, KeyboardAvoidingView, Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { collection, query, where, getDocs, limit, orderBy } from '@firebase/firestore';
@@ -13,6 +14,13 @@ import { useTheme } from '../../../../hooks/useTheme';
 import { UserProfile, Artist, Album, Song } from '../../../../types';
 
 const HISTORY_KEY = 'acapella_search_history';
+
+const routes = {
+  user: (username: string) => ({ pathname: '/(protected)/(stacks)/home/[username]' as const, params: { username } }),
+  artist: (id: string) => ({ pathname: '/(protected)/(stacks)/home/artist/[id]' as const, params: { id } }),
+  album: (id: string) => ({ pathname: '/(protected)/(stacks)/home/album/[id]' as const, params: { id } }),
+  song: (id: string) => ({ pathname: '/(protected)/(stacks)/home/song/[id]' as const, params: { id } }),
+};
 
 const debounce = <F extends (...args: any[]) => any>(fn: F, wait: number) => {
   let t: ReturnType<typeof setTimeout>;
@@ -32,10 +40,9 @@ const clearHistory = async () => AsyncStorage.removeItem(HISTORY_KEY);
 
 interface Results { users: UserProfile[]; artists: Artist[]; albums: Album[]; songs: Song[]; }
 
-const SearchPage: React.FC = () => {
+const SearchPageWrapper: React.FC = () => {
   const { theme } = useTheme();
-  const isDark = theme === 'dark';
-  const c = isDark ? colors.dark : colors.light;
+  const c = theme === 'dark' ? colors.dark : colors.light;
   const router = useRouter();
 
   const [input, setInput] = useState('');
@@ -44,22 +51,17 @@ const SearchPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [history, setHistory] = useState<string[]>([]);
+  const [showClear, setShowClear] = useState(false);
 
   useEffect(() => { getHistory().then(setHistory); }, []);
 
-  const debouncedSetQ = React.useMemo(
-    () => debounce((v: string) => setQ(v), 300),
-    []
-  );
-
+  const debouncedSetQ = React.useMemo(() => debounce((v: string) => setQ(v), 300), []);
   const handleInput = (v: string) => { setInput(v); debouncedSetQ(v); };
-
   const handleSubmit = async () => {
     const t = input.trim();
     if (t) { await addHistory(t); setHistory(await getHistory()); }
     setQ(t);
   };
-
   const handleHistoryClick = (term: string) => { setInput(term); setQ(term); };
 
   useEffect(() => {
@@ -90,38 +92,42 @@ const SearchPage: React.FC = () => {
 
   const sections = [
     {
-      title: 'Users', data: results.users, key: 'users', render: (u: UserProfile) => (
-        <TouchableOpacity key={u.uid} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/home/${u.username}` as any)}>
+      key: 'users', title: 'Users', data: results.users,
+      render: (u: UserProfile) => (
+        <TouchableOpacity key={u.uid} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(routes.user(u.username))}>
           <Image source={{ uri: u.photoURL || `https://ui-avatars.com/api/?name=${u.displayName || u.username}` }} style={styles.avatar} />
           <View>
             <Text style={[styles.rowTitle, { color: c.text }]}>{u.displayName}</Text>
             <Text style={[styles.rowSub, { color: c.muted }]}>@{u.username}</Text>
           </View>
         </TouchableOpacity>
-      )
+      ),
     },
     {
-      title: 'Artists', data: results.artists, key: 'artists', render: (a: Artist) => (
-        <TouchableOpacity key={a.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/home/artist/${a.id}` as any)}>
+      key: 'artists', title: 'Artists', data: results.artists,
+      render: (a: Artist) => (
+        <TouchableOpacity key={a.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(routes.artist(a.id))}>
           <Image source={{ uri: a.imageUrl || `https://ui-avatars.com/api/?name=${a.name}&background=random` }} style={[styles.avatar, { borderRadius: 8 }]} />
           <Text style={[styles.rowTitle, { color: c.text }]}>{a.name}</Text>
         </TouchableOpacity>
-      )
+      ),
     },
     {
-      title: 'Albums', data: results.albums, key: 'albums', render: (a: Album) => (
-        <TouchableOpacity key={a.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/home/album/${a.id}` as any)}>
+      key: 'albums', title: 'Albums', data: results.albums,
+      render: (a: Album) => (
+        <TouchableOpacity key={a.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(routes.album(a.id))}>
           <Image source={{ uri: a.coverArtUrl || `https://picsum.photos/seed/${a.id}/100/100` }} style={[styles.avatar, { borderRadius: 8 }]} />
           <Text style={[styles.rowTitle, { color: c.text }]}>{a.title}</Text>
         </TouchableOpacity>
-      )
+      ),
     },
     {
-      title: 'Songs', data: results.songs, key: 'songs', render: (s: Song) => (
-        <TouchableOpacity key={s.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(`/home/song/${s.id}` as any)}>
+      key: 'songs', title: 'Songs', data: results.songs,
+      render: (s: Song) => (
+        <TouchableOpacity key={s.id} style={[styles.row, { backgroundColor: c.rowBg }]} onPress={() => router.push(routes.song(s.id))}>
           <Text style={[styles.rowTitle, { color: c.text }]}>{s.title}</Text>
         </TouchableOpacity>
-      )
+      ),
     },
   ].filter(s => s.data.length > 0);
 
@@ -134,7 +140,7 @@ const SearchPage: React.FC = () => {
         <View style={{ marginTop: 24 }}>
           <View style={styles.historyHeader}>
             <Text style={[styles.sectionTitle, { color: c.text }]}>Recent Searches</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setShowClear(true)}>
               <Text style={{ color: '#ef4444', fontSize: 13 }}>Clear</Text>
             </TouchableOpacity>
           </View>
@@ -149,9 +155,7 @@ const SearchPage: React.FC = () => {
     }
     if (total === 0) return (
       <View style={{ alignItems: 'center', marginTop: 40 }}>
-        <Text style={[styles.centerText, { color: c.muted }]}>
-          {`No results found for "${q}".`}
-        </Text>
+        <Text style={[styles.centerText, { color: c.muted }]}>{`No results found for "${q}".`}</Text>
         <Text style={{ color: c.muted, fontSize: 13, marginTop: 4 }}>Try searching for something else.</Text>
       </View>
     );
@@ -168,11 +172,13 @@ const SearchPage: React.FC = () => {
   };
 
   return (
-    <FlatList
-      data={[]}
-      renderItem={null}
-      ListHeaderComponent={
-        <View style={[styles.root, { backgroundColor: c.bg }]}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: c.bg }}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <ScrollView
+          style={{ flex: 1 }}
+          contentContainerStyle={styles.content}
+          keyboardShouldPersistTaps="handled"
+        >
           <Text style={[styles.pageTitle, { color: c.text }]}>Search</Text>
           <View style={[styles.searchBar, { borderColor: c.border, backgroundColor: c.inputBg }]}>
             <MaterialIcons name="search" size={20} color={c.muted} style={{ marginRight: 8 }} />
@@ -192,41 +198,28 @@ const SearchPage: React.FC = () => {
             ) : null}
           </View>
           {renderContent()}
-        </View>
-      }
-    />
-  );
-};
+        </ScrollView>
+      </KeyboardAvoidingView>
 
-// Clear history confirm modal rendered outside FlatList
-const SearchPageWrapper: React.FC = () => {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-  const c = isDark ? colors.dark : colors.light;
-  const [showClear, setShowClear] = useState(false);
-
-  return (
-    <>
-      <SafeAreaView style={{ flex: 1 }}>
-        <SearchPage />
-        <Modal visible={showClear} transparent animationType="fade" onRequestClose={() => setShowClear(false)}>
-          <Pressable style={styles.overlay} onPress={() => setShowClear(false)} />
-          <View style={[styles.confirmBox, { backgroundColor: c.bg }]}>
-            <MaterialIcons name="warning" size={48} color="#ef4444" style={{ alignSelf: 'center', marginBottom: 12 }} />
-            <Text style={[styles.confirmTitle, { color: c.text }]}>Clear Search History?</Text>
-            <Text style={[styles.confirmSub, { color: c.muted }]}>This will permanently remove your recent searches.</Text>
-            <View style={styles.confirmBtns}>
-              <TouchableOpacity style={[styles.confirmBtn, { borderColor: c.border, borderWidth: 1 }]} onPress={() => setShowClear(false)}>
-                <Text style={{ color: c.text }}>Cancel</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.confirmBtn, { backgroundColor: '#ef4444' }]} onPress={async () => { await clearHistory(); setShowClear(false); }}>
-                <Text style={{ color: '#fff' }}>Clear</Text>
-              </TouchableOpacity>
-            </View>
+      <Modal visible={showClear} transparent animationType="fade" onRequestClose={() => setShowClear(false)}>
+        <Pressable style={styles.overlay} onPress={() => setShowClear(false)} />
+        <View style={[styles.confirmBox, { backgroundColor: c.bg }]}>
+          <MaterialIcons name="warning" size={48} color="#ef4444" style={{ alignSelf: 'center', marginBottom: 12 }} />
+          <Text style={[styles.confirmTitle, { color: c.text }]}>Clear Search History?</Text>
+          <Text style={[styles.confirmSub, { color: c.muted }]}>This will permanently remove your recent searches.</Text>
+          <View style={styles.confirmBtns}>
+            <TouchableOpacity style={[styles.confirmBtn, { borderColor: c.border, borderWidth: 1 }]} onPress={() => setShowClear(false)}>
+              <Text style={{ color: c.text }}>Cancel</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.confirmBtn, { backgroundColor: '#ef4444' }]} onPress={async () => {
+              await clearHistory(); setHistory([]); setShowClear(false);
+            }}>
+              <Text style={{ color: '#fff' }}>Clear</Text>
+            </TouchableOpacity>
           </View>
-        </Modal>
-      </SafeAreaView>
-    </>
+        </View>
+      </Modal>
+    </SafeAreaView>
   );
 };
 
@@ -236,17 +229,11 @@ const colors = {
 };
 
 const styles = StyleSheet.create({
-  root: { flex: 1, padding: 16, paddingTop: 24 },
+  content: { flexGrow: 1, padding: 16, paddingTop: 24, paddingBottom: 48 },
   pageTitle: { fontSize: 28, fontWeight: '700', fontFamily: 'serif', marginBottom: 16 },
-  searchBar: {
-    flexDirection: 'row', alignItems: 'center',
-    borderWidth: 2, borderRadius: 999, paddingHorizontal: 16, paddingVertical: 10,
-  },
+  searchBar: { flexDirection: 'row', alignItems: 'center', borderWidth: 2, borderRadius: 999, paddingHorizontal: 16, paddingVertical: 10 },
   searchInput: { flex: 1, fontSize: 15 },
-  sectionTitle: {
-    fontSize: 20, fontWeight: '700', fontFamily: 'serif',
-    borderBottomWidth: 1, paddingBottom: 8, marginBottom: 12,
-  },
+  sectionTitle: { fontSize: 20, fontWeight: '700', fontFamily: 'serif', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 12 },
   row: { flexDirection: 'row', alignItems: 'center', padding: 12, borderRadius: 10, marginBottom: 4 },
   avatar: { width: 48, height: 48, borderRadius: 24, marginRight: 12 },
   rowTitle: { fontSize: 15, fontWeight: '600' },
@@ -254,10 +241,7 @@ const styles = StyleSheet.create({
   historyHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 },
   centerText: { textAlign: 'center', marginTop: 40, fontSize: 15 },
   overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.75)' },
-  confirmBox: {
-    position: 'absolute', bottom: 0, left: 0, right: 0,
-    borderTopLeftRadius: 20, borderTopRightRadius: 20, padding: 24,
-  },
+  confirmBox: { position: 'absolute', bottom: 0, left: 0, right: 0, borderTopLeftRadius: 20, borderTopRightRadius: 20, padding: 24 },
   confirmTitle: { fontSize: 18, fontWeight: '600', textAlign: 'center', marginBottom: 8 },
   confirmSub: { fontSize: 13, textAlign: 'center', marginBottom: 24 },
   confirmBtns: { flexDirection: 'row', gap: 12 },

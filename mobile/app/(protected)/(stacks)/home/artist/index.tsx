@@ -63,8 +63,8 @@ const ArtistsIndexPage: React.FC = () => {
 };
 
 const colors = {
-  light: { bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#63479b' },
-  dark: { bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#a78bdf' },
+  light: { bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#6A9C89' },
+  dark: { bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#6A9C89' },
 };
 
 const styles = StyleSheet.create({

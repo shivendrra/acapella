@@ -18,6 +18,33 @@ import { Review, Album, Song, Artist } from '../../../../types';
 type ActivityItem = Review & { _type: 'review' };
 type ArtistsMap = Record<string, Artist>;
 
+const routes = {
+  album: (id: string) => ({ pathname: '/(protected)/(stacks)/home/album/[id]' as const, params: { id } }),
+  song: (id: string) => ({ pathname: '/(protected)/(stacks)/home/song/[id]' as const, params: { id } }),
+  artist: (id: string) => ({ pathname: '/(protected)/(stacks)/home/artist/[id]' as const, params: { id } }),
+  review: (id: string) => ({ pathname: '/(protected)/(stacks)/home/review/[id]' as const, params: { id } }),
+  user: (username: string) => ({ pathname: '/(protected)/(stacks)/home/[username]' as const, params: { username } }),
+};
+
+const Header: React.FC<{ c: any }> = ({ c }) => {
+  const { toggleTheme, theme } = useTheme();
+  return (
+    <View style={[styles.header, { backgroundColor: c.bg, borderBottomColor: c.border }]}>
+      <View style={styles.headerSide} />
+      <Text style={[styles.headerTitle, { color: c.text }]}>Acapella</Text>
+      <View style={styles.headerSide}>
+        <TouchableOpacity onPress={toggleTheme} style={styles.themeBtn}>
+          <MaterialIcons
+            name={theme === 'dark' ? 'light-mode' : 'dark-mode'}
+            size={22}
+            color={c.text}
+          />
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
 const Carousel: React.FC<{ items: any[]; renderItem: (item: any) => React.ReactNode }> = ({ items, renderItem }) => {
   if (!items?.length) return null;
   return (
@@ -35,18 +62,13 @@ const Carousel: React.FC<{ items: any[]; renderItem: (item: any) => React.ReactN
 const AlbumCard: React.FC<{ album: Album; artist?: Artist; c: any }> = ({ album, artist, c }) => {
   const router = useRouter();
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <TouchableOpacity onPress={() => router.push({
-        pathname: '/(protected)/(stacks)/home/album/[id]',
-        params: { id: album.id }
-      })}>
-        <View style={styles.cardImg}>
-          <Image source={{ uri: album.coverArtUrl }} style={StyleSheet.absoluteFill} resizeMode="cover" />
-        </View>
-        <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={1}>{album.title}</Text>
-        {artist && <Text style={[styles.cardSub, { color: c.muted }]} numberOfLines={1}>{artist.name}</Text>}
-      </TouchableOpacity>
-    </SafeAreaView >
+    <TouchableOpacity onPress={() => router.push(routes.album(album.id))}>
+      <View style={styles.cardImg}>
+        <Image source={{ uri: album.coverArtUrl }} style={StyleSheet.absoluteFill} resizeMode="cover" />
+      </View>
+      <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={1}>{album.title}</Text>
+      {artist && <Text style={[styles.cardSub, { color: c.muted }]} numberOfLines={1}>{artist.name}</Text>}
+    </TouchableOpacity>
   );
 };
 
@@ -54,67 +76,55 @@ const SongCard: React.FC<{ song: Song; artist?: Artist; c: any }> = ({ song, art
   const router = useRouter();
   const uri = song.coverArtUrl || `https://placehold.co/100x100/131010/FAF8F1?text=${encodeURIComponent(song.title.charAt(0))}`;
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <TouchableOpacity onPress={() => router.push({
-        pathname: '/(protected)/(stacks)/home/song/[id]',
-        params: { id: song.id }
-      })}>
-        <View style={styles.cardImg}>
-          <Image source={{ uri }} style={StyleSheet.absoluteFill} resizeMode="cover" />
-        </View>
-        <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={1}>{song.title}</Text>
-        {artist && <Text style={[styles.cardSub, { color: c.muted }]} numberOfLines={1}>{artist.name}</Text>}
-      </TouchableOpacity>
-    </SafeAreaView>
+    <TouchableOpacity onPress={() => router.push(routes.song(song.id))}>
+      <View style={styles.cardImg}>
+        <Image source={{ uri }} style={StyleSheet.absoluteFill} resizeMode="cover" />
+      </View>
+      <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={1}>{song.title}</Text>
+      {artist && <Text style={[styles.cardSub, { color: c.muted }]} numberOfLines={1}>{artist.name}</Text>}
+    </TouchableOpacity>
   );
 };
 
 const ArtistCard: React.FC<{ artist: Artist; c: any }> = ({ artist, c }) => {
   const router = useRouter();
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <TouchableOpacity style={{ alignItems: 'center' }} onPress={() => router.push({
-        pathname: '/(protected)/(stacks)/home/artist/[id]',
-        params: { id: artist.id }
-      })}>
-        <Image source={{ uri: artist.imageUrl }} style={styles.artistImg} />
-        <Text style={[styles.cardTitle, { color: c.text, textAlign: 'center' }]} numberOfLines={1}>{artist.name}</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+    <TouchableOpacity style={{ alignItems: 'center' }} onPress={() => router.push(routes.artist(artist.id))}>
+      <Image source={{ uri: artist.imageUrl }} style={styles.artistImg} />
+      <Text style={[styles.cardTitle, { color: c.text, textAlign: 'center' }]} numberOfLines={1}>{artist.name}</Text>
+    </TouchableOpacity>
   );
 };
 
 const ActivityFeedItem: React.FC<{ activity: ActivityItem; c: any }> = ({ activity, c }) => {
   const router = useRouter();
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={[styles.feedCard, { backgroundColor: c.cardBg, borderColor: c.border }]}>
-        <View style={styles.feedHeader}>
-          <TouchableOpacity onPress={() => router.push(`/${activity.entityUsername}` as any)}>
-            <Image
-              source={{ uri: activity.userPhotoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(activity.userDisplayName)}&background=random` }}
-              style={styles.feedAvatar}
-            />
-          </TouchableOpacity>
-          <View style={{ flex: 1 }}>
-            <Text style={{ fontSize: 13, color: c.text }}>
-              <Text style={{ fontWeight: '700' }}>{activity.userDisplayName}</Text>
-              {' reviewed '}
-              <Text style={{ fontWeight: '700' }}>{activity.entityTitle}</Text>
-            </Text>
-            <View style={{ flexDirection: 'row', marginTop: 2 }}>
-              {[...Array(5)].map((_, i) => (
-                <MaterialIcons key={i} name="star" size={13} color={i < activity.rating ? '#facc15' : '#d1d5db'} />
-              ))}
-            </View>
+    <View style={[styles.feedCard, { backgroundColor: c.cardBg, borderColor: c.border }]}>
+      <View style={styles.feedHeader}>
+        <TouchableOpacity onPress={() => router.push(routes.user(activity.entityUsername))}>
+          <Image
+            source={{ uri: activity.userPhotoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(activity.userDisplayName)}&background=random` }}
+            style={styles.feedAvatar}
+          />
+        </TouchableOpacity>
+        <View style={{ flex: 1 }}>
+          <Text style={{ fontSize: 13, color: c.text }}>
+            <Text style={{ fontWeight: '700' }}>{activity.userDisplayName}</Text>
+            {' reviewed '}
+            <Text style={{ fontWeight: '700' }}>{activity.entityTitle}</Text>
+          </Text>
+          <View style={{ flexDirection: 'row', marginTop: 2 }}>
+            {[...Array(5)].map((_, i) => (
+              <MaterialIcons key={i} name="star" size={13} color={i < activity.rating ? '#facc15' : '#d1d5db'} />
+            ))}
           </View>
         </View>
-        <Text style={[styles.feedQuote, { color: c.muted }]} numberOfLines={4}>{activity.reviewText}</Text>
-        <TouchableOpacity onPress={() => router.push(`/review/${activity.id}` as any)}>
-          <Text style={[styles.feedLink, { color: c.muted }]}>View full review</Text>
-        </TouchableOpacity>
       </View>
-    </SafeAreaView>
+      <Text style={[styles.feedQuote, { color: c.muted }]} numberOfLines={4}>{activity.reviewText}</Text>
+      <TouchableOpacity onPress={() => router.push(routes.review(activity.id))}>
+        <Text style={[styles.feedLink, { color: c.muted }]}>View full review</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -135,70 +145,64 @@ const GuestLandingPage: React.FC<{ c: any }> = ({ c }) => {
   ];
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView style={{ backgroundColor: c.heroBg }} showsVerticalScrollIndicator={false}>
-        {/* Hero */}
-        <View style={[styles.hero, { backgroundColor: c.heroBg }]}>
-          <View style={styles.heroBgGrid}>
-            {featuredAlbums.concat(featuredAlbums).slice(0, 12).map((album, i) => (
-              <View key={i} style={styles.heroBgTile}>
-                {album?.coverArtUrl && <Image source={{ uri: album.coverArtUrl }} style={[StyleSheet.absoluteFill, { opacity: 0.15 }]} resizeMode="cover" />}
-              </View>
-            ))}
-          </View>
-          <View style={{ alignItems: 'center', paddingHorizontal: 24, paddingTop: 48 }}>
-            <Text style={[styles.heroTitle, { color: c.heroText }]}>Your Personal{'\n'}Music Diary.</Text>
-            <Text style={[styles.heroSub, { color: c.heroMuted }]}>
-              Track your listening habits. Rate and review albums. Share your taste and discover your next favorite artist.
-            </Text>
-            <TouchableOpacity style={[styles.heroBtn, { backgroundColor: c.accent }]} onPress={() => router.push('/login')}>
-              <Text style={styles.heroBtnText}>Start Listening for Free</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        {/* Featured Albums */}
-        {featuredAlbums.length > 0 && (
-          <View style={[styles.section, { backgroundColor: c.sectionAlt }]}>
-            <Text style={[styles.sectionTitle, { color: c.text, textAlign: 'center' }]}>What People Are Reviewing</Text>
-            <Text style={[styles.sectionSub, { color: c.muted, textAlign: 'center' }]}>{"Join the conversation on today's most talked-about albums."}</Text>
-            <View style={styles.albumGrid}>
-              {featuredAlbums.map(album => (
-                <TouchableOpacity key={album.id} style={{ width: '30%' }} onPress={() => router.push(`/album/${album.id}` as any)}>
-                  <View style={[styles.cardImg, { borderRadius: 8 }]}>
-                    <Image source={{ uri: album.coverArtUrl }} style={StyleSheet.absoluteFill} resizeMode="cover" />
-                  </View>
-                </TouchableOpacity>
-              ))}
-            </View>
-          </View>
-        )}
-
-        {/* How It Works */}
-        <View style={[styles.section, { backgroundColor: c.bg }]}>
-          <Text style={[styles.sectionTitle, { color: c.text, textAlign: 'center' }]}>A Home for Your Music Life</Text>
-          <Text style={[styles.sectionSub, { color: c.muted, textAlign: 'center' }]}>Keep track of every tune and story.</Text>
-          {features.map(f => (
-            <View key={f.title} style={styles.featureItem}>
-              <View style={[styles.featureIcon, { backgroundColor: c.accentFaint }]}>
-                <MaterialIcons name={f.icon as any} size={28} color={c.accent} />
-              </View>
-              <Text style={[styles.featureTitle, { color: c.text }]}>{f.title}</Text>
-              <Text style={[styles.featureDesc, { color: c.muted }]}>{f.desc}</Text>
+    <ScrollView style={{ backgroundColor: c.heroBg }} showsVerticalScrollIndicator={false}>
+      <View style={[styles.hero, { backgroundColor: c.heroBg }]}>
+        <View style={styles.heroBgGrid}>
+          {featuredAlbums.concat(featuredAlbums).slice(0, 12).map((album, i) => (
+            <View key={i} style={styles.heroBgTile}>
+              {album?.coverArtUrl && <Image source={{ uri: album.coverArtUrl }} style={[StyleSheet.absoluteFill, { opacity: 0.15 }]} resizeMode="cover" />}
             </View>
           ))}
         </View>
-
-        {/* CTA */}
-        <View style={[styles.ctaSection, { backgroundColor: c.accent }]}>
-          <Text style={styles.ctaTitle}>Join a Community of Music Nerds</Text>
-          <Text style={styles.ctaSub}>Sign up today to start logging, reviewing, and connecting with fellow music fans from around the world.</Text>
-          <TouchableOpacity style={styles.ctaBtn} onPress={() => router.push('/login')}>
-            <Text style={[styles.ctaBtnText, { color: c.accent }]}>Create Your Free Account</Text>
+        <View style={{ alignItems: 'center', paddingHorizontal: 24, paddingTop: 48 }}>
+          <Text style={[styles.heroTitle, { color: c.heroText }]}>Your Personal{'\n'}Music Diary.</Text>
+          <Text style={[styles.heroSub, { color: c.heroMuted }]}>
+            Track your listening habits. Rate and review albums. Share your taste and discover your next favorite artist.
+          </Text>
+          <TouchableOpacity style={[styles.heroBtn, { backgroundColor: c.accent }]} onPress={() => router.push('/login')}>
+            <Text style={styles.heroBtnText}>Start Listening for Free</Text>
           </TouchableOpacity>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+      </View>
+
+      {featuredAlbums.length > 0 && (
+        <View style={[styles.section, { backgroundColor: c.sectionAlt }]}>
+          <Text style={[styles.sectionTitle, { color: c.text, textAlign: 'center' }]}>What People Are Reviewing</Text>
+          <Text style={[styles.sectionSub, { color: c.muted, textAlign: 'center' }]}>{"Join the conversation on today's most talked-about albums."}</Text>
+          <View style={styles.albumGrid}>
+            {featuredAlbums.map(album => (
+              <TouchableOpacity key={album.id} style={{ width: '30%' }} onPress={() => router.push(routes.album(album.id))}>
+                <View style={[styles.cardImg, { borderRadius: 8 }]}>
+                  <Image source={{ uri: album.coverArtUrl }} style={StyleSheet.absoluteFill} resizeMode="cover" />
+                </View>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      )}
+
+      <View style={[styles.section, { backgroundColor: c.bg }]}>
+        <Text style={[styles.sectionTitle, { color: c.text, textAlign: 'center' }]}>A Home for Your Music Life</Text>
+        <Text style={[styles.sectionSub, { color: c.muted, textAlign: 'center' }]}>Keep track of every tune and story.</Text>
+        {features.map(f => (
+          <View key={f.title} style={styles.featureItem}>
+            <View style={[styles.featureIcon, { backgroundColor: c.accentFaint }]}>
+              <MaterialIcons name={f.icon as any} size={28} color={c.accent} />
+            </View>
+            <Text style={[styles.featureTitle, { color: c.text }]}>{f.title}</Text>
+            <Text style={[styles.featureDesc, { color: c.muted }]}>{f.desc}</Text>
+          </View>
+        ))}
+      </View>
+
+      <View style={[styles.ctaSection, { backgroundColor: c.accent }]}>
+        <Text style={styles.ctaTitle}>Join a Community of Music Nerds</Text>
+        <Text style={styles.ctaSub}>Sign up today to start logging, reviewing, and connecting with fellow music fans from around the world.</Text>
+        <TouchableOpacity style={styles.ctaBtn} onPress={() => router.push('/login')}>
+          <Text style={[styles.ctaBtnText, { color: c.accent }]}>Create Your Free Account</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -262,62 +266,65 @@ const AuthenticatedHomePage: React.FC<{ c: any }> = ({ c }) => {
   }, [userProfile]);
 
   if (loading) return <ActivityIndicator style={{ flex: 1, marginTop: 64 }} color={c.accent} />;
-  if (error) return <Text style={[{ color: '#ef4444', textAlign: 'center', margin: 32 }]}>{error}</Text>;
+  if (error) return <Text style={{ color: '#ef4444', textAlign: 'center', margin: 32 }}>{error}</Text>;
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48, gap: 40 }}>
-        <View>
-          <Text style={[styles.sectionTitle, { color: c.text }]}>From Your Network</Text>
-          {activityFeed.length > 0 ? (
-            <FlatList
-              data={activityFeed}
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              keyExtractor={i => i.id}
-              contentContainerStyle={{ gap: 12, paddingBottom: 8 }}
-              renderItem={({ item }) => (
-                <View style={{ width: 280 }}><ActivityFeedItem activity={item} c={c} /></View>
-              )}
-            />
-          ) : (
-            <View style={[styles.emptyBox, { borderColor: c.border }]}>
-              <MaterialIcons name="group" size={28} color={c.muted} />
-              <Text style={{ color: c.muted, marginTop: 8 }}>Follow users to see their reviews here.</Text>
-              <TouchableOpacity onPress={() => router.push('/curators')}>
-                <Text style={{ color: c.accent, fontWeight: '600', marginTop: 4, fontSize: 13 }}>Find Curators to follow</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-        </View>
+    <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48, gap: 40 }}>
+      <View>
+        <Text style={[styles.sectionTitle, { color: c.text }]}>From Your Network</Text>
+        {activityFeed.length > 0 ? (
+          <FlatList
+            data={activityFeed}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={i => i.id}
+            contentContainerStyle={{ gap: 12, paddingBottom: 8 }}
+            renderItem={({ item }) => (
+              <View style={{ width: 280 }}><ActivityFeedItem activity={item} c={c} /></View>
+            )}
+          />
+        ) : (
+          <View style={[styles.emptyBox, { borderColor: c.border }]}>
+            <MaterialIcons name="group" size={28} color={c.muted} />
+            <Text style={{ color: c.muted, marginTop: 8 }}>Follow users to see their reviews here.</Text>
+            <TouchableOpacity onPress={() => router.push('/curators')}>
+              <Text style={{ color: c.accent, fontWeight: '600', marginTop: 4, fontSize: 13 }}>Find Curators to follow</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      </View>
 
-        <View>
-          <Text style={[styles.sectionTitle, { color: c.text }]}>New Releases</Text>
-          <Carousel items={newReleases} renderItem={a => <AlbumCard album={a} artist={artistsMap[a.artistIds[0]]} c={c} />} />
-        </View>
+      <View>
+        <Text style={[styles.sectionTitle, { color: c.text }]}>New Releases</Text>
+        <Carousel items={newReleases} renderItem={a => <AlbumCard album={a} artist={artistsMap[a.artistIds[0]]} c={c} />} />
+      </View>
 
-        <View>
-          <Text style={[styles.sectionTitle, { color: c.text }]}>Trending Songs</Text>
-          <Carousel items={trendingSongs} renderItem={s => <SongCard song={s} artist={artistsMap[s.artistIds[0]]} c={c} />} />
-        </View>
+      <View>
+        <Text style={[styles.sectionTitle, { color: c.text }]}>Trending Songs</Text>
+        <Carousel items={trendingSongs} renderItem={s => <SongCard song={s} artist={artistsMap[s.artistIds[0]]} c={c} />} />
+      </View>
 
-        <View>
-          <Text style={[styles.sectionTitle, { color: c.text }]}>Popular Artists</Text>
-          <Carousel items={popularArtists} renderItem={a => <ArtistCard artist={a} c={c} />} />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+      <View>
+        <Text style={[styles.sectionTitle, { color: c.text }]}>Popular Artists</Text>
+        <Carousel items={popularArtists} renderItem={a => <ArtistCard artist={a} c={c} />} />
+      </View>
+    </ScrollView>
   );
 };
 
 const HomePage: React.FC = () => {
   const { currentUser, loading } = useAuth();
   const { theme } = useTheme();
-  const isDark = theme === 'dark';
-  const c = isDark ? colors.dark : colors.light;
+  const c = theme === 'dark' ? colors.dark : colors.light;
 
   if (loading) return <ActivityIndicator style={{ flex: 1, marginTop: 64 }} color={c.accent} />;
-  return currentUser ? <AuthenticatedHomePage c={c} /> : <GuestLandingPage c={c} />;
+
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: c.bg }}>
+      <Header c={c} />
+      {currentUser ? <AuthenticatedHomePage c={c} /> : <GuestLandingPage c={c} />}
+    </SafeAreaView>
+  );
 };
 
 const colors = {
@@ -336,6 +343,18 @@ const colors = {
 };
 
 const styles = StyleSheet.create({
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+  },
+  headerSide: { width: 40, alignItems: 'flex-end' },
+  headerTitle: { fontSize: 36, fontFamily: 'InstrumentSerif_400Regular' },
+  themeBtn: { padding: 4 },
+
   sectionTitle: { fontSize: 26, fontWeight: '700', fontFamily: 'serif', marginBottom: 12 },
   sectionSub: { fontSize: 14, marginTop: 4, marginBottom: 16 },
   cardImg: { width: '100%', aspectRatio: 1, borderRadius: 10, overflow: 'hidden', backgroundColor: '#e5e7eb' },

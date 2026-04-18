@@ -11,16 +11,16 @@ import {
   collectionGroup, deleteDoc, setDoc,
 } from '@firebase/firestore';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { instagram, twitter } from '../../../../../constants/icons';
+import { instagram, twitter } from '../../../../constants/icons';
 import { SvgXml } from 'react-native-svg'
 import { MaterialIcons } from '@expo/vector-icons';
-import { db } from '../../../../../services/firebase';
-import { useAuth } from '../../../../../hooks/useAuth';
-import { useTheme } from '../../../../../hooks/useTheme';
-import { UserProfile, Review, Like, Song, Album, Playlist, Follow } from '../../../../../types'
-import UserBadges from '../../../../../components/common/UserBadges';
-import EditProfileModal from '../../../../../components/profile/EditProfileModal';
-import PlaylistFormModal from '../../../../../components/playlist/PlaylistFormModal';
+import { db } from '../../../../services/firebase';
+import { useAuth } from '../../../../hooks/useAuth';
+import { useTheme } from '../../../../hooks/useTheme';
+import { UserProfile, Review, Like, Song, Album, Playlist, Follow } from '../../../../types'
+import UserBadges from '../../../../components/common/UserBadges';
+import EditProfileModal from '../../../../components/profile/EditProfileModal';
+import PlaylistFormModal from '../../../../components/playlist/PlaylistFormModal';
 
 const RESERVED = new Set(['login', 'logout', 'signup', 'admin', 'settings', 'search', 'discover',
   'curators', 'about', 'help', 'contact', 'terms', 'privacy', 'refunds', 'shipping',

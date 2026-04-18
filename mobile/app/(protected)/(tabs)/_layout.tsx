@@ -28,24 +28,30 @@ export default function TabsLayout() {
         tabBarShowLabel: false,
         tabBarActiveTintColor: c.tabActive,
         tabBarInactiveTintColor: c.tabInactive,
+        tabBarHideOnKeyboard: true,
         tabBarStyle: {
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
           backgroundColor: c.tabBar,
           borderTopColor: c.border,
           borderTopWidth: 1,
-          height: Platform.OS === 'ios' ? 84 : 60,
+          height: Platform.OS === 'ios' ? 84 : 70,
+          zIndex:20,
           paddingBottom: Platform.OS === 'ios' ? 28 : 8,
-          paddingTop: 8,
+          paddingTop: 15,
         },
       }}
     >
       <Tabs.Screen name="home" options={{
-        tabBarIcon: ({ color }) => <MaterialIcons name="home" size={24} color={color} />
+        tabBarIcon: ({ color }) => <MaterialIcons name="home" size={28} color={color} />
       }} />
       <Tabs.Screen name="search" options={{
-        tabBarIcon: ({ color }) => <MaterialIcons name="search" size={24} color={color} />
+        tabBarIcon: ({ color }) => <MaterialIcons name="search" size={28} color={color} />
       }} />
       <Tabs.Screen name="activity" options={{
-        tabBarIcon: ({ color }) => <MaterialIcons name="history" size={24} color={color} />
+        tabBarIcon: ({ color }) => <MaterialIcons name="history" size={28} color={color} />
       }} />
       <Tabs.Screen name="profile"
         options={{ tabBarIcon: ({ color, focused }) => <ProfileTabIcon focused={focused} color={color} /> }}

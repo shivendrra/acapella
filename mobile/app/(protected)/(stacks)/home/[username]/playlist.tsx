@@ -10,12 +10,15 @@ import { useTheme } from '../../../../../hooks/useTheme';
 import { db } from '../../../../../services/firebase';
 import { UserProfile, Playlist } from '../../../../../types';
 
+const routes = {
+  playlist: (id: string) => ({ pathname: '/(protected)/(stacks)/home/playlist/[id]' as const, params: { id } }),
+};
+
 const UserPlaylistsPage: React.FC = () => {
   const { username } = useLocalSearchParams<{ username: string }>();
   const { theme } = useTheme();
   const router = useRouter();
-  const isDark = theme === 'dark';
-  const c = isDark ? colors.dark : colors.light;
+  const c = theme === 'dark' ? colors.dark : colors.light;
 
   const [user, setUser] = useState<UserProfile | null>(null);
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
@@ -40,7 +43,7 @@ const UserPlaylistsPage: React.FC = () => {
           return tB - tA;
         });
         setPlaylists(all);
-      } catch { /* show empty on permission errors */ }
+      } catch { }
       finally { setLoading(false); }
     };
     run();
@@ -51,7 +54,6 @@ const UserPlaylistsPage: React.FC = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-
       <FlatList
         data={playlists}
         keyExtractor={p => p.id}
@@ -70,7 +72,7 @@ const UserPlaylistsPage: React.FC = () => {
           </View>
         }
         renderItem={({ item: pl }) => (
-          <TouchableOpacity style={styles.card} onPress={() => router.push(`/playlist/${pl.id}` as any)}>
+          <TouchableOpacity style={styles.card} onPress={() => router.push(routes.playlist(pl.id))}>
             <View style={styles.cardImgWrapper}>
               <Image
                 source={{ uri: pl.coverArtUrl || 'https://placehold.co/400x400?text=Playlist' }}
@@ -89,8 +91,8 @@ const UserPlaylistsPage: React.FC = () => {
 };
 
 const colors = {
-  light: { bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#63479b', border: '#e5e7eb' },
-  dark: { bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#a78bdf', border: '#374151' },
+  light: { bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#6A9C89', border: '#e5e7eb' },
+  dark: { bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#6A9C89', border: '#374151' },
 };
 
 const styles = StyleSheet.create({

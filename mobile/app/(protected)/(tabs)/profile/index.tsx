@@ -11,7 +11,7 @@ export default function ProfileTab() {
   return (
     <Redirect
       href={{
-        pathname: '/home/[username]',
+        pathname: '/profile/[username]',
         params: { username: userProfile.username },
       }}
     />
