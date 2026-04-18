@@ -36,14 +36,17 @@ const AlbumCard: React.FC<{ album: Album; artist?: Artist; c: any }> = ({ album,
   const router = useRouter();
   return (
     <SafeAreaView style={{ flex: 1 }}>
-    <TouchableOpacity onPress={() => router.push(`/album/${album.id}` as any)}>
-      <View style={styles.cardImg}>
-        <Image source={{ uri: album.coverArtUrl }} style={StyleSheet.absoluteFill} resizeMode="cover" />
-      </View>
-      <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={1}>{album.title}</Text>
-      {artist && <Text style={[styles.cardSub, { color: c.muted }]} numberOfLines={1}>{artist.name}</Text>}
-    </TouchableOpacity>
-    </SafeAreaView>
+      <TouchableOpacity onPress={() => router.push({
+        pathname: '/(protected)/(stacks)/home/album/[id]',
+        params: { id: album.id }
+      })}>
+        <View style={styles.cardImg}>
+          <Image source={{ uri: album.coverArtUrl }} style={StyleSheet.absoluteFill} resizeMode="cover" />
+        </View>
+        <Text style={[styles.cardTitle, { color: c.text }]} numberOfLines={1}>{album.title}</Text>
+        {artist && <Text style={[styles.cardSub, { color: c.muted }]} numberOfLines={1}>{artist.name}</Text>}
+      </TouchableOpacity>
+    </SafeAreaView >
   );
 };
 
@@ -52,7 +55,10 @@ const SongCard: React.FC<{ song: Song; artist?: Artist; c: any }> = ({ song, art
   const uri = song.coverArtUrl || `https://placehold.co/100x100/131010/FAF8F1?text=${encodeURIComponent(song.title.charAt(0))}`;
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <TouchableOpacity onPress={() => router.push(`/song/${song.id}` as any)}>
+      <TouchableOpacity onPress={() => router.push({
+        pathname: '/(protected)/(stacks)/home/song/[id]',
+        params: { id: song.id }
+      })}>
         <View style={styles.cardImg}>
           <Image source={{ uri }} style={StyleSheet.absoluteFill} resizeMode="cover" />
         </View>
@@ -67,7 +73,10 @@ const ArtistCard: React.FC<{ artist: Artist; c: any }> = ({ artist, c }) => {
   const router = useRouter();
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <TouchableOpacity style={{ alignItems: 'center' }} onPress={() => router.push(`/artist/${artist.id}` as any)}>
+      <TouchableOpacity style={{ alignItems: 'center' }} onPress={() => router.push({
+        pathname: '/(protected)/(stacks)/home/artist/[id]',
+        params: { id: artist.id }
+      })}>
         <Image source={{ uri: artist.imageUrl }} style={styles.artistImg} />
         <Text style={[styles.cardTitle, { color: c.text, textAlign: 'center' }]} numberOfLines={1}>{artist.name}</Text>
       </TouchableOpacity>
@@ -313,15 +322,15 @@ const HomePage: React.FC = () => {
 
 const colors = {
   light: {
-    bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#63479b',
+    bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#6A9C89',
     accentFaint: 'rgba(99,71,155,0.1)', border: '#e5e7eb', cardBg: '#ffffff',
-    heroBg: '#2d0b4c', heroText: '#ffffff', heroMuted: 'rgba(255,255,255,0.8)',
+    heroBg: '#254D70', heroText: '#ffffff', heroMuted: 'rgba(255,255,255,0.8)',
     sectionAlt: '#ffffff',
   },
   dark: {
-    bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#a78bdf',
+    bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#6A9C89',
     accentFaint: 'rgba(167,139,223,0.1)', border: '#374151', cardBg: 'rgba(31,41,55,0.5)',
-    heroBg: '#1a0630', heroText: '#ffffff', heroMuted: 'rgba(255,255,255,0.7)',
+    heroBg: '#254D70', heroText: '#ffffff', heroMuted: 'rgba(255,255,255,0.7)',
     sectionAlt: 'rgba(0,0,0,0.5)',
   },
 };

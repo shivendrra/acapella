@@ -17,7 +17,10 @@ const TOP_ALBUMS = 3, TOP_SONGS = 10;
 const AlbumCard: React.FC<{ album: Album; c: any }> = ({ album, c }) => {
   const router = useRouter();
   return (
-    <TouchableOpacity style={styles.albumCard} onPress={() => router.push(`/album/${album.id}` as any)}>
+    <TouchableOpacity style={styles.albumCard} onPress={() => router.push({
+      pathname: '../album/[id]',
+      params: { id: album.id }
+    })}>
       <View style={styles.albumImg}>
         <Image source={{ uri: album.coverArtUrl }} style={StyleSheet.absoluteFill} resizeMode="cover" />
       </View>
@@ -144,7 +147,14 @@ const ArtistPage: React.FC = () => {
           <View style={styles.rowBetween}>
             <Text style={[styles.subTitle, { color: c.text }]}>Albums</Text>
             {albums.length > TOP_ALBUMS && (
-              <TouchableOpacity onPress={() => router.push(`/artist/${id}/albums` as any)}>
+              <TouchableOpacity
+                onPress={() =>
+                  router.push({
+                    pathname: '/(protected)/(stacks)/home/artist/[id]/albums',
+                    params: { id }
+                  })
+                }
+              >
                 <Text style={[styles.seeAll, { color: c.accent }]}>See all</Text>
               </TouchableOpacity>
             )}
@@ -163,7 +173,14 @@ const ArtistPage: React.FC = () => {
           <View style={styles.rowBetween}>
             <Text style={[styles.subTitle, { color: c.text }]}>Songs</Text>
             {songs.length > TOP_SONGS && (
-              <TouchableOpacity onPress={() => router.push(`/artist/${id}/songs` as any)}>
+              <TouchableOpacity
+                onPress={() =>
+                  router.push({
+                    pathname: '/(protected)/(stacks)/home/artist/[id]/songs',
+                    params: { id }
+                  })
+                }
+              >
                 <Text style={[styles.seeAll, { color: c.accent }]}>See all</Text>
               </TouchableOpacity>
             )}
@@ -176,7 +193,10 @@ const ArtistPage: React.FC = () => {
                   <TouchableOpacity
                     key={song.id}
                     style={[styles.songRow, { backgroundColor: i % 2 === 0 ? 'transparent' : c.altRow, borderBottomColor: c.border }]}
-                    onPress={() => router.push(`/song/${song.id}` as any)}
+                    onPress={() => router.push({
+                      pathname: '../song/[id]',
+                      params: { id: song.id }
+                    })}
                   >
                     <Image
                       source={{ uri: song.coverArtUrl || `https://placehold.co/100x100/131010/FAF8F1?text=${song.title.charAt(0)}` }}
@@ -192,7 +212,7 @@ const ArtistPage: React.FC = () => {
             )}
         </View>
       </View>
-    </ScrollView>
+    </ScrollView >
   );
 };
 

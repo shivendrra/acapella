@@ -41,7 +41,7 @@ const CuratorProgramPage: React.FC = () => {
       amount: amount * 100,
       name: 'Acapella',
       prefill: { email: userProfile.email || '', name: userProfile.displayName || '' },
-      theme: { color: '#63479b' },
+      theme: { color: '#254D70' },
     };
 
     RazorpayCheckout.open(options)
@@ -149,12 +149,12 @@ const CuratorProgramPage: React.FC = () => {
 const colors = {
   light: {
     bg: '#f9fafb', text: '#111827', bodyText: '#374151', muted: '#6b7280',
-    accent: '#63479b', accentFaint: 'rgba(99,71,155,0.1)',
+    accent: '#254D70', accentFaint: 'rgba(99,71,155,0.1)',
     border: '#e5e7eb', cardBg: '#ffffff', heroBg: 'rgba(99,71,155,0.05)',
   },
   dark: {
     bg: '#0f0f0f', text: '#f9fafb', bodyText: '#d1d5db', muted: '#9ca3af',
-    accent: '#a78bdf', accentFaint: 'rgba(167,139,223,0.1)',
+    accent: '#254D70', accentFaint: 'rgba(167,139,223,0.1)',
     border: '#374151', cardBg: '#1f2937', heroBg: 'rgba(167,139,223,0.05)',
   },
 };
