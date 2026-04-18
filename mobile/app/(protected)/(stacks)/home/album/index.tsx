@@ -13,11 +13,15 @@ import { useAuth } from '../../../../../hooks/useAuth';
 import { useTheme } from '../../../../../hooks/useTheme';
 import { db } from '../../../../../services/firebase';
 import { Album, Review } from '../../../../../types';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const TrendingAlbumCard: React.FC<{ album: Album; c: any }> = ({ album, c }) => {
   const router = useRouter();
   return (
-    <TouchableOpacity style={styles.albumCard} onPress={() => router.push(`/album/${album.id}` as any)}>
+    <TouchableOpacity style={styles.albumCard} onPress={() => router.push({
+      pathname: '/home/album/[id]',
+      params: { id: album.id }
+    })}>
       <Image source={{ uri: album.coverArtUrl }} style={styles.albumImg} resizeMode="cover" />
       <Text style={[styles.albumTitle, { color: c.text }]} numberOfLines={1}>{album.title}</Text>
       <View style={styles.albumMeta}>
@@ -92,31 +96,34 @@ const AlbumsIndexPage: React.FC = () => {
   if (error) return <Text style={[styles.center, { color: '#ef4444' }]}>{error}</Text>;
 
   return (
-    <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48, gap: 32 }}>
-      <Text style={[styles.heading, { color: c.text }]}>Albums</Text>
+    <SafeAreaView style={{ flex: 1 }}>
 
-      {currentUser && networkReviews.length > 0 && (
-        <View>
-          <Text style={[styles.sectionTitle, { color: c.text }]}>Reviews from Your Network</Text>
-          <View style={{ gap: 10 }}>
-            {networkReviews.map(r => <FollowingReviewCard key={r.id} review={r} c={c} />)}
+      <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48, gap: 32 }}>
+        <Text style={[styles.heading, { color: c.text }]}>Albums</Text>
+
+        {currentUser && networkReviews.length > 0 && (
+          <View>
+            <Text style={[styles.sectionTitle, { color: c.text }]}>Reviews from Your Network</Text>
+            <View style={{ gap: 10 }}>
+              {networkReviews.map(r => <FollowingReviewCard key={r.id} review={r} c={c} />)}
+            </View>
           </View>
-        </View>
-      )}
+        )}
 
-      <View>
-        <Text style={[styles.sectionTitle, { color: c.text }]}>Trending Albums</Text>
-        <FlatList
-          data={trending}
-          numColumns={3}
-          keyExtractor={a => a.id}
-          scrollEnabled={false}
-          contentContainerStyle={{ gap: 10 }}
-          columnWrapperStyle={{ gap: 10 }}
-          renderItem={({ item }) => <TrendingAlbumCard album={item} c={c} />}
-        />
-      </View>
-    </ScrollView>
+        <View>
+          <Text style={[styles.sectionTitle, { color: c.text }]}>Trending Albums</Text>
+          <FlatList
+            data={trending}
+            numColumns={3}
+            keyExtractor={a => a.id}
+            scrollEnabled={false}
+            contentContainerStyle={{ gap: 10 }}
+            columnWrapperStyle={{ gap: 10 }}
+            renderItem={({ item }) => <TrendingAlbumCard album={item} c={c} />}
+          />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

@@ -287,7 +287,7 @@ const AuthenticatedHomePage: React.FC<{ c: any }> = ({ c }) => {
           <View style={[styles.emptyBox, { borderColor: c.border }]}>
             <MaterialIcons name="group" size={28} color={c.muted} />
             <Text style={{ color: c.muted, marginTop: 8 }}>Follow users to see their reviews here.</Text>
-            <TouchableOpacity onPress={() => router.push('/curators')}>
+            <TouchableOpacity onPress={() => router.push('/(protected)/(stacks)/search' as any)}>
               <Text style={{ color: c.accent, fontWeight: '600', marginTop: 4, fontSize: 13 }}>Find Curators to follow</Text>
             </TouchableOpacity>
           </View>
@@ -412,18 +412,18 @@ const colors = {
 };
 
 const navItems = [
-  { label: 'Songs', route: '/songs', icon: 'music-note' },
-  { label: 'Albums', route: '/albums', icon: 'album' },
-  { label: 'Artists', route: '/artists', icon: 'person' },
-  { label: 'Curators', route: '/curators', icon: 'group' },
+  { label: 'Songs', route: '/(protected)/(stacks)/home/song', icon: 'music-note' },
+  { label: 'Albums', route: '/(protected)/(stacks)/home/album/', icon: 'album' },
+  { label: 'Artists', route: '/(protected)/(stacks)/home/artist/', icon: 'person' },
+  { label: 'Curators', route: '/(protected)/(stacks)/profile/curator-program', icon: 'group' },
 ];
 
 const footerLinks = [
   { label: 'About', route: '/about' },
   { label: 'Help', route: '/help' },
-  { label: 'Contact', route: '/contact' },
-  { label: 'Privacy', route: '/privacy' },
-  { label: 'Terms', route: '/terms' },
+  { label: 'Contact', route: '/(protected)/(stacks)/home/legal/contact' },
+  { label: 'Privacy', route: '/(protected)/(stacks)/home/legal/privacy' },
+  { label: 'Terms', route: '/(protected)/(stacks)/home/legal/terms' },
 ];
 
 const styles = StyleSheet.create({
@@ -475,9 +475,9 @@ const styles = StyleSheet.create({
   container: { position: 'absolute', left: 0, top: 0, bottom: 0, width: '80%', paddingTop: 48 },
   sidebarHeader: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    paddingHorizontal: 15, paddingVertical: 10, borderBottomWidth: 1, marginTop: -30,
+    paddingHorizontal: 16, paddingVertical: 12, borderBottomWidth: 1,
   },
-  sidebarSection: { paddingHorizontal: 10, paddingTop: 20 },
+  sidebarSection: { paddingHorizontal: 16, paddingTop: 16 },
   link: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 10, paddingHorizontal: 16 },
   linkText: { fontSize: 18 },
   loginBtn: { margin: 16, padding: 14, borderRadius: 10, alignItems: 'center' },

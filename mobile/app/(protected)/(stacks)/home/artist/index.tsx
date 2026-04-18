@@ -8,11 +8,15 @@ import { useRouter } from 'expo-router';
 import { useTheme } from '../../../../../hooks/useTheme';
 import { db } from '../../../../../services/firebase';
 import { Artist } from '../../../../../types';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const ArtistCard: React.FC<{ artist: Artist; c: any }> = ({ artist, c }) => {
   const router = useRouter();
   return (
-    <TouchableOpacity style={styles.card} onPress={() => router.push(`/artist/${artist.id}` as any)}>
+    <TouchableOpacity style={styles.card} onPress={() => router.push({
+      pathname: '/home/artist/[id]',
+      params: { id: artist.id }
+    })}>
       <Image source={{ uri: artist.imageUrl }} style={styles.avatar} resizeMode="cover" />
       <Text style={[styles.name, { color: c.text }]} numberOfLines={1}>{artist.name}</Text>
       <Text style={[styles.genre, { color: c.muted }]} numberOfLines={1}>{artist.genres[0]}</Text>
@@ -45,20 +49,22 @@ const ArtistsIndexPage: React.FC = () => {
   if (error) return <Text style={[styles.center, { color: '#ef4444' }]}>{error}</Text>;
 
   return (
-    <FlatList
-      data={artists}
-      keyExtractor={a => a.id}
-      numColumns={3}
-      contentContainerStyle={{ padding: 16, paddingBottom: 48 }}
-      columnWrapperStyle={{ gap: 16, marginBottom: 24 }}
-      ListHeaderComponent={
-        <View style={{ marginBottom: 16 }}>
-          <Text style={[styles.heading, { color: c.text }]}>Artists</Text>
-          <Text style={[styles.sectionTitle, { color: c.text, marginTop: 16 }]}>Popular Artists</Text>
-        </View>
-      }
-      renderItem={({ item }) => <ArtistCard artist={item} c={c} />}
-    />
+    <SafeAreaView style={{ flex: 1, backgroundColor: c.bg }}>
+      <FlatList
+        data={artists}
+        keyExtractor={a => a.id}
+        numColumns={3}
+        contentContainerStyle={{ padding: 16, paddingBottom: 48 }}
+        columnWrapperStyle={{ gap: 16, marginBottom: 24 }}
+        ListHeaderComponent={
+          <View style={{ marginBottom: 16 }}>
+            <Text style={[styles.heading, { color: c.text }]}>Artists</Text>
+            <Text style={[styles.sectionTitle, { color: c.text, marginTop: 16 }]}>Popular Artists</Text>
+          </View>
+        }
+        renderItem={({ item }) => <ArtistCard artist={item} c={c} />}
+      />
+    </SafeAreaView>
   );
 };
 

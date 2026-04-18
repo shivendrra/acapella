@@ -13,12 +13,16 @@ import { useAuth } from '../../../../../hooks/useAuth';
 import { useTheme } from '../../../../../hooks/useTheme';
 import { db } from '../../../../../services/firebase';
 import { Song, Review } from '../../../../../types';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const TrendingSongCard: React.FC<{ song: Song; c: any }> = ({ song, c }) => {
   const router = useRouter();
   const uri = song.coverArtUrl || `https://placehold.co/400x400/131010/FAF8F1?text=${encodeURIComponent(song.title.charAt(0))}`;
   return (
-    <TouchableOpacity style={styles.songCard} onPress={() => router.push(`/song/${song.id}` as any)}>
+    <TouchableOpacity style={styles.songCard} onPress={() => router.push({
+      pathname: '/home/song/[id]',
+      params: { id: song.id }
+    })}>
       <Image source={{ uri }} style={styles.songCardImg} resizeMode="cover" />
       <View style={styles.songCardGradient} />
       <View style={styles.songCardInfo}>
@@ -97,38 +101,40 @@ const SongsIndexPage: React.FC = () => {
   if (error) return <Text style={[styles.center, { color: '#ef4444' }]}>{error}</Text>;
 
   return (
-    <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48, gap: 32 }}>
-      <Text style={[styles.heading, { color: c.text }]}>Songs</Text>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48, gap: 32 }}>
+        <Text style={[styles.heading, { color: c.text }]}>Songs</Text>
 
-      {currentUser && networkReviews.length > 0 && (
+        {currentUser && networkReviews.length > 0 && (
+          <View>
+            <Text style={[styles.sectionTitle, { color: c.text }]}>Reviews from Your Network</Text>
+            <FlatList
+              data={networkReviews}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              keyExtractor={r => r.id}
+              contentContainerStyle={{ gap: 12, paddingBottom: 4 }}
+              renderItem={({ item }) => (
+                <View style={{ width: 260 }}><FollowingReviewCard review={item} c={c} /></View>
+              )}
+            />
+          </View>
+        )}
+
         <View>
-          <Text style={[styles.sectionTitle, { color: c.text }]}>Reviews from Your Network</Text>
+          <Text style={[styles.sectionTitle, { color: c.text }]}>Trending Songs</Text>
           <FlatList
-            data={networkReviews}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={r => r.id}
-            contentContainerStyle={{ gap: 12, paddingBottom: 4 }}
-            renderItem={({ item }) => (
-              <View style={{ width: 260 }}><FollowingReviewCard review={item} c={c} /></View>
-            )}
+            data={trending}
+            numColumns={2}
+            keyExtractor={s => s.id}
+            scrollEnabled={false}
+            contentContainerStyle={{ gap: 12 }}
+            columnWrapperStyle={{ gap: 12 }}
+            renderItem={({ item }) => <TrendingSongCard song={item} c={c} />}
           />
         </View>
-      )}
-
-      <View>
-        <Text style={[styles.sectionTitle, { color: c.text }]}>Trending Songs</Text>
-        <FlatList
-          data={trending}
-          numColumns={2}
-          keyExtractor={s => s.id}
-          scrollEnabled={false}
-          contentContainerStyle={{ gap: 12 }}
-          columnWrapperStyle={{ gap: 12 }}
-          renderItem={({ item }) => <TrendingSongCard song={item} c={c} />}
-        />
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -142,7 +148,8 @@ const styles = StyleSheet.create({
   sectionTitle: { fontSize: 20, fontWeight: '700', fontFamily: 'serif', marginBottom: 12 },
   songCard: { flex: 1, aspectRatio: 1, borderRadius: 10, overflow: 'hidden', backgroundColor: '#e5e7eb' },
   songCardImg: { ...StyleSheet.absoluteFillObject, width: undefined, height: undefined },
-  songCardGradient: { ...StyleSheet.absoluteFillObject, backgroundColor: 'transparent',
+  songCardGradient: {
+    ...StyleSheet.absoluteFillObject, backgroundColor: 'transparent',
     // Simulate gradient with a semi-transparent bottom overlay
   },
   songCardInfo: { position: 'absolute', bottom: 0, left: 0, right: 0, padding: 10, backgroundColor: 'rgba(0,0,0,0.55)' },
