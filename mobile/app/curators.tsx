@@ -8,6 +8,7 @@ import { useRouter } from 'expo-router';
 import { db } from '../services/firebase';
 import { useTheme } from '../hooks/useTheme';
 import { UserProfile } from '../types';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const CuratorCard: React.FC<{ user: UserProfile; c: any }> = ({ user, c }) => {
   const router = useRouter();
@@ -56,29 +57,31 @@ const CuratorsPage: React.FC = () => {
   if (error) return <Text style={[styles.center, { color: '#ef4444' }]}>{error}</Text>;
 
   return (
-    <View style={[styles.root, { backgroundColor: c.bg }]}>
-      <View style={styles.headingBlock}>
-        <Text style={[styles.heading, { color: c.text }]}>Meet the Curators</Text>
-        <Text style={[styles.subheading, { color: c.muted }]}>
-          A special thanks to our Curators for supporting Acapella and helping build our community.
-        </Text>
-      </View>
-
-      {curators.length > 0 ? (
-        <FlatList
-          data={curators}
-          keyExtractor={u => u.uid}
-          numColumns={2}
-          contentContainerStyle={{ padding: 12, gap: 12 }}
-          columnWrapperStyle={{ gap: 12 }}
-          renderItem={({ item }) => <CuratorCard user={item} c={c} />}
-        />
-      ) : (
-        <View style={[styles.emptyBox, { borderColor: c.border }]}>
-          <Text style={{ color: c.muted }}>No curators yet. Be the first to support us!</Text>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={[styles.root, { backgroundColor: c.bg }]}>
+        <View style={styles.headingBlock}>
+          <Text style={[styles.heading, { color: c.text }]}>Meet the Curators</Text>
+          <Text style={[styles.subheading, { color: c.muted }]}>
+            A special thanks to our Curators for supporting Acapella and helping build our community.
+          </Text>
         </View>
-      )}
-    </View>
+
+        {curators.length > 0 ? (
+          <FlatList
+            data={curators}
+            keyExtractor={u => u.uid}
+            numColumns={2}
+            contentContainerStyle={{ padding: 12, gap: 12 }}
+            columnWrapperStyle={{ gap: 12 }}
+            renderItem={({ item }) => <CuratorCard user={item} c={c} />}
+          />
+        ) : (
+          <View style={[styles.emptyBox, { borderColor: c.border }]}>
+            <Text style={{ color: c.muted }}>No curators yet. Be the first to support us!</Text>
+          </View>
+        )}
+      </View>
+    </SafeAreaView>
   );
 };
 

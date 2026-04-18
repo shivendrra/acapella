@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   View, Text, ScrollView, FlatList, TouchableOpacity,
-  Image, StyleSheet, ActivityIndicator,
+  Image, StyleSheet, ActivityIndicator, Modal, Pressable,
 } from 'react-native';
 import {
   collection, query, where, getDocs, orderBy, limit,
@@ -10,13 +10,15 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
+import { signOut } from 'firebase/auth';
 import { useAuth } from '../../../../hooks/useAuth';
 import { useTheme } from '../../../../hooks/useTheme';
-import { db } from '../../../../services/firebase';
+import { db, auth } from '../../../../services/firebase';
 import { Review, Album, Song, Artist } from '../../../../types';
 
 type ActivityItem = Review & { _type: 'review' };
 type ArtistsMap = Record<string, Artist>;
+type SidebarProps = { visible: boolean; onClose: () => void };
 
 const routes = {
   album: (id: string) => ({ pathname: '/(protected)/(stacks)/home/album/[id]' as const, params: { id } }),
@@ -26,19 +28,17 @@ const routes = {
   user: (username: string) => ({ pathname: '/(protected)/(stacks)/home/[username]' as const, params: { username } }),
 };
 
-const Header: React.FC<{ c: any }> = ({ c }) => {
+const Header: React.FC<{ c: any; onMenuPress: () => void }> = ({ c, onMenuPress }) => {
   const { toggleTheme, theme } = useTheme();
   return (
     <View style={[styles.header, { backgroundColor: c.bg, borderBottomColor: c.border }]}>
-      <View style={styles.headerSide} />
+      <TouchableOpacity onPress={onMenuPress} style={styles.themeBtn}>
+        <MaterialIcons name="menu" size={22} color={c.text} />
+      </TouchableOpacity>
       <Text style={[styles.headerTitle, { color: c.text }]}>Acapella</Text>
       <View style={styles.headerSide}>
         <TouchableOpacity onPress={toggleTheme} style={styles.themeBtn}>
-          <MaterialIcons
-            name={theme === 'dark' ? 'light-mode' : 'dark-mode'}
-            size={22}
-            color={c.text}
-          />
+          <MaterialIcons name={theme === 'dark' ? 'light-mode' : 'dark-mode'} size={22} color={c.text} />
         </TouchableOpacity>
       </View>
     </View>
@@ -101,7 +101,7 @@ const ActivityFeedItem: React.FC<{ activity: ActivityItem; c: any }> = ({ activi
   return (
     <View style={[styles.feedCard, { backgroundColor: c.cardBg, borderColor: c.border }]}>
       <View style={styles.feedHeader}>
-        <TouchableOpacity onPress={() => router.push(routes.user(activity.entityUsername))}>
+        <TouchableOpacity onPress={() => activity.entityUsername && router.push(routes.user(activity.entityUsername))}>
           <Image
             source={{ uri: activity.userPhotoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(activity.userDisplayName)}&background=random` }}
             style={styles.feedAvatar}
@@ -312,17 +312,86 @@ const AuthenticatedHomePage: React.FC<{ c: any }> = ({ c }) => {
   );
 };
 
+const Sidebar: React.FC<SidebarProps> = ({ visible, onClose }) => {
+  const router = useRouter();
+  const { currentUser, userProfile } = useAuth();
+  const { theme } = useTheme();
+
+  const c = theme === 'dark' ? colors.dark : colors.light;
+
+  const navigate = (path: string) => {
+    onClose();
+    router.push(path as any);
+  };
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    onClose();
+    router.replace('/login');
+  };
+
+  return (
+    <Modal visible={visible} transparent animationType="none">
+      <Pressable style={styles.overlay} onPress={onClose} />
+
+      <View style={[styles.container, { backgroundColor: c.bg }]}>
+        <View style={[styles.sidebarHeader, { borderBottomColor: c.border }]}>
+          <Image source={require('../../../../assets/images/HeaderLogo.png')} style={{ width: 54, height: 54 }} resizeMode="contain" />
+          <TouchableOpacity onPress={onClose}>
+            <MaterialIcons name="close" size={28} color={c.text} />
+          </TouchableOpacity>
+        </View>
+
+        <View style={{ flex: 1 }}>
+          <ScrollView contentContainerStyle={{ paddingBottom: 8 }}>
+            <View style={styles.sidebarSection}>
+              {navItems.map(item => (
+                <TouchableOpacity key={item.label} style={styles.link} onPress={() => navigate(item.route)}>
+                  <MaterialIcons name={item.icon as any} size={28} color={c.text} />
+                  <Text style={[styles.linkText, { color: c.text }]}>{item.label}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </ScrollView>
+
+          <View style={[styles.sidebarBottom, { borderTopColor: c.border }]}>
+            {currentUser ? (
+              <TouchableOpacity onPress={handleLogout} style={styles.link}>
+                <MaterialIcons name="logout" size={20} color="#ef4444" />
+                <Text style={[styles.linkText, { color: '#ef4444' }]}>Logout</Text>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity style={[styles.loginBtn, { backgroundColor: c.accent }]} onPress={() => navigate('/login')}>
+                <Text style={styles.loginText}>Log In</Text>
+              </TouchableOpacity>
+            )}
+            <View style={styles.footerLinks}>
+              {footerLinks.map(link => (
+                <TouchableOpacity key={link.label} onPress={() => navigate(link.route)}>
+                  <Text style={[styles.footerText, { color: c.muted }]}>{link.label}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+        </View>
+      </View>
+    </Modal>
+  );
+};
+
 const HomePage: React.FC = () => {
   const { currentUser, loading } = useAuth();
   const { theme } = useTheme();
   const c = theme === 'dark' ? colors.dark : colors.light;
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   if (loading) return <ActivityIndicator style={{ flex: 1, marginTop: 64 }} color={c.accent} />;
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: c.bg }}>
-      <Header c={c} />
+      <Header c={c} onMenuPress={() => setSidebarOpen(true)} />
       {currentUser ? <AuthenticatedHomePage c={c} /> : <GuestLandingPage c={c} />}
+      <Sidebar visible={sidebarOpen} onClose={() => setSidebarOpen(false)} />
     </SafeAreaView>
   );
 };
@@ -342,14 +411,25 @@ const colors = {
   },
 };
 
+const navItems = [
+  { label: 'Songs', route: '/songs', icon: 'music-note' },
+  { label: 'Albums', route: '/albums', icon: 'album' },
+  { label: 'Artists', route: '/artists', icon: 'person' },
+  { label: 'Curators', route: '/curators', icon: 'group' },
+];
+
+const footerLinks = [
+  { label: 'About', route: '/about' },
+  { label: 'Help', route: '/help' },
+  { label: 'Contact', route: '/contact' },
+  { label: 'Privacy', route: '/privacy' },
+  { label: 'Terms', route: '/terms' },
+];
+
 const styles = StyleSheet.create({
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderBottomWidth: 1,
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+    paddingHorizontal: 16, paddingVertical: 12, borderBottomWidth: 1,
   },
   headerSide: { width: 40, alignItems: 'flex-end' },
   headerTitle: { fontSize: 36, fontFamily: 'InstrumentSerif_400Regular' },
@@ -390,6 +470,21 @@ const styles = StyleSheet.create({
   ctaBtnText: { fontWeight: '700', fontSize: 15 },
 
   emptyBox: { borderWidth: 2, borderStyle: 'dashed', borderRadius: 10, padding: 32, alignItems: 'center' },
+
+  overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.6)' },
+  container: { position: 'absolute', left: 0, top: 0, bottom: 0, width: '80%', paddingTop: 48 },
+  sidebarHeader: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+    paddingHorizontal: 15, paddingVertical: 10, borderBottomWidth: 1, marginTop: -30,
+  },
+  sidebarSection: { paddingHorizontal: 10, paddingTop: 20 },
+  link: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 10, paddingHorizontal: 16 },
+  linkText: { fontSize: 18 },
+  loginBtn: { margin: 16, padding: 14, borderRadius: 10, alignItems: 'center' },
+  loginText: { color: '#fff', fontWeight: '600' },
+  sidebarBottom: { borderTopWidth: 1, paddingTop: 8, paddingBottom: 24 },
+  footerLinks: { flexDirection: 'column', flexWrap: 'wrap', gap: 8, paddingHorizontal: 16, paddingTop: 8 },
+  footerText: { fontSize: 13 },
 });
 
 export default HomePage;

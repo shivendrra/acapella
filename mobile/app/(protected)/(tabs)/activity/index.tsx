@@ -23,40 +23,51 @@ type ActivityLog =
   | (Like & { _activityType: 'like' })
   | (Review & { _activityType: 'follow' });
 
+const routes = {
+  song: (id: string) => ({ pathname: '/(protected)/(stacks)/home/song/[id]' as const, params: { id } }),
+  album: (id: string) => ({ pathname: '/(protected)/(stacks)/home/album/[id]' as const, params: { id } }),
+  review: (id: string) => ({ pathname: '/(protected)/(stacks)/home/review/[id]' as const, params: { id } }),
+  user: (username: string) => ({ pathname: '/(protected)/(stacks)/home/[username]' as const, params: { username } }),
+};
+
+const entityRoute = (type: string, id: string) =>
+  type === 'song' ? routes.song(id) : routes.album(id);
+
 const DiaryItem: React.FC<{ activity: ActivityLog; profile: UserProfile; c: any }> = ({ activity, profile, c }) => {
   const router = useRouter();
   const date = activity.createdAt instanceof Timestamp
     ? activity.createdAt.toDate().toLocaleDateString()
     : null;
 
-  let action = '', path = '', coverUrl = '', isRound = false;
+  let action = '', coverUrl = '', isRound = false;
+  let destination: ReturnType<typeof routes[keyof typeof routes]>;
 
   if (activity._activityType === 'review') {
     const r = activity as Review;
     action = r.reviewText ? `reviewed ${r.entityTitle}` : `rated ${r.entityTitle}`;
-    path = `/${r.entityType}/${r.entityId}`;
+    destination = routes.review(r.id);
     coverUrl = r.entityCoverArtUrl || '';
   } else if (activity._activityType === 'like') {
     const l = activity as Like;
     if (l.entityType === 'review') {
       action = `liked a review for ${l.reviewOnEntityTitle}`;
-      path = `/review/${l.entityId}`;
+      destination = routes.review(l.entityId);
     } else {
       action = `liked ${l.entityTitle}`;
-      path = `/${l.entityType}/${l.entityId}`;
+      destination = entityRoute(l.entityType, l.entityId);
     }
     coverUrl = l.entityCoverArtUrl || '';
   } else {
     const f = activity as Review;
     action = `started following ${f.entityTitle}`;
-    path = `/${f.entityUsername}`;
+    destination = routes.user(f.entityUsername!);
     coverUrl = f.entityCoverArtUrl || '';
     isRound = true;
   }
 
   return (
     <View style={[styles.row, { borderBottomColor: c.border }]}>
-      <TouchableOpacity onPress={() => router.push(`/${profile.username}` as any)}>
+      <TouchableOpacity onPress={() => router.push(routes.user(profile.username))}>
         <Image
           source={{ uri: profile.photoURL || `https://ui-avatars.com/api/?name=${profile.displayName}` }}
           style={styles.avatar}
@@ -70,11 +81,8 @@ const DiaryItem: React.FC<{ activity: ActivityLog; profile: UserProfile; c: any 
         {date ? <Text style={{ fontSize: 11, color: c.muted, marginTop: 2 }}>{date}</Text> : null}
       </View>
       {coverUrl ? (
-        <TouchableOpacity onPress={() => router.push(path as any)}>
-          <Image
-            source={{ uri: coverUrl }}
-            style={[styles.cover, { borderRadius: isRound ? 20 : 6 }]}
-          />
+        <TouchableOpacity onPress={() => router.push(destination)}>
+          <Image source={{ uri: coverUrl }} style={[styles.cover, { borderRadius: isRound ? 20 : 6 }]} />
         </TouchableOpacity>
       ) : null}
     </View>
@@ -84,8 +92,7 @@ const DiaryItem: React.FC<{ activity: ActivityLog; profile: UserProfile; c: any 
 export default function ActivityTab() {
   const { currentUser, userProfile } = useAuth();
   const { theme } = useTheme();
-  const isDark = theme === 'dark';
-  const c = isDark ? colors.dark : colors.light;
+  const c = theme === 'dark' ? colors.dark : colors.light;
 
   const [activities, setActivities] = useState<ActivityLog[]>([]);
   const [loading, setLoading] = useState(true);
@@ -150,7 +157,7 @@ export default function ActivityTab() {
     try {
       const result = await fetchActivities(lastTimestamp);
       if (result) { setActivities(p => [...p, ...result.page]); setLastTimestamp(result.newLast); setHasMore(result.hasMore); }
-    } catch { /* ignore */ }
+    } catch { }
     finally { setLoadingMore(false); }
   };
 
@@ -167,7 +174,7 @@ export default function ActivityTab() {
   if (loading) return <ActivityIndicator style={{ flex: 1, backgroundColor: c.bg }} color={C.secondary} />;
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, marginBottom: 50, backgroundColor: c.bg }}>
       <FlatList
         data={activities}
         keyExtractor={a => `${a._activityType}-${a.id}`}

@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTheme } from '../hooks/useTheme';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const FAQ = [
   { q: 'What is Acapella?', a: 'Acapella is a social platform for music lovers. Log music you listen to, rate and review songs and albums, and share your musical taste with a community of friends and fellow fans. Think of it like Letterboxd or Goodreads, but for music.' },
@@ -37,35 +38,37 @@ const HelpPage: React.FC = () => {
   const c = isDark ? colors.dark : colors.light;
 
   return (
-    <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={styles.root}>
-      <Text style={[styles.title, { color: c.text }]}>Help & Support</Text>
-      <Text style={[styles.sub, { color: c.muted }]}>Find answers to your questions and get in touch with our team.</Text>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={styles.root}>
+        <Text style={[styles.title, { color: c.text }]}>Help & Support</Text>
+        <Text style={[styles.sub, { color: c.muted }]}>Find answers to your questions and get in touch with our team.</Text>
 
-      <Text style={[styles.sectionTitle, { color: c.text }]}>Frequently Asked Questions</Text>
-      <View style={styles.faqList}>
-        {FAQ.map((item, i) => <AccordionItem key={i} item={item} c={c} />)}
-      </View>
+        <Text style={[styles.sectionTitle, { color: c.text }]}>Frequently Asked Questions</Text>
+        <View style={styles.faqList}>
+          {FAQ.map((item, i) => <AccordionItem key={i} item={item} c={c} />)}
+        </View>
 
-      <View style={[styles.ctaBox, { borderColor: c.border }]}>
-        <Text style={[styles.ctaTitle, { color: c.text }]}>Still have questions?</Text>
-        <Text style={[styles.ctaSub, { color: c.muted }]}>
-          {"If you can't find the answer you're looking for, feel free to reach out."}
-        </Text>
-        <TouchableOpacity
-          style={[styles.ctaBtn, { backgroundColor: c.accent }]}
-          onPress={() => Linking.openURL('mailto:freakingaura@gmail.com')}
-        >
-          <MaterialIcons name="email" size={18} color="#fff" style={{ marginRight: 8 }} />
-          <Text style={styles.ctaBtnText}>Contact Support</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+        <View style={[styles.ctaBox, { borderColor: c.border }]}>
+          <Text style={[styles.ctaTitle, { color: c.text }]}>Still have questions?</Text>
+          <Text style={[styles.ctaSub, { color: c.muted }]}>
+            {"If you can't find the answer you're looking for, feel free to reach out."}
+          </Text>
+          <TouchableOpacity
+            style={[styles.ctaBtn, { backgroundColor: c.accent }]}
+            onPress={() => Linking.openURL('mailto:freakingaura@gmail.com')}
+          >
+            <MaterialIcons name="email" size={18} color="#fff" style={{ marginRight: 8 }} />
+            <Text style={styles.ctaBtnText}>Contact Support</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const colors = {
-  light: { bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#63479b', border: '#e5e7eb' },
-  dark: { bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#a78bdf', border: '#374151' },
+  light: { bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#6A9C89', border: '#e5e7eb' },
+  dark: { bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#6A9C89', border: '#374151' },
 };
 
 const styles = StyleSheet.create({
