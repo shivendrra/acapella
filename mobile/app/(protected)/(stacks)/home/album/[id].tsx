@@ -8,6 +8,7 @@ import {
   serverTimestamp, Timestamp, setDoc, updateDoc, arrayUnion,
   arrayRemove, increment, writeBatch,
 } from '@firebase/firestore';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 import { db } from '../../../../../services/firebase';
@@ -69,7 +70,10 @@ const ReviewCard: React.FC<{ review: ReviewType; albumId: string; c: any }> = ({
         <View style={{ flex: 1 }}>
           <View style={styles.reviewMeta}>
             <Text style={[styles.reviewUser, { color: c.text }]}>{review.userDisplayName}</Text>
-            <TouchableOpacity onPress={() => router.push(`/review/${review.id}` as any)}>
+            <TouchableOpacity onPress={() => router.push({
+              pathname: '../review/[id]',
+              params: { id: review.id }
+            })}>
               <Text style={[styles.reviewDate, { color: c.muted }]}>
                 {review.createdAt instanceof Timestamp ? formatDate(review.createdAt) : 'Just now'}
               </Text>
@@ -83,7 +87,7 @@ const ReviewCard: React.FC<{ review: ReviewType; albumId: string; c: any }> = ({
         <MaterialIcons name="favorite" size={16} color={liked ? '#ef4444' : c.muted} />
         <Text style={[styles.likeCount, { color: c.muted }]}>{count}</Text>
       </TouchableOpacity>
-    </View>
+    </View >
   );
 };
 
@@ -200,19 +204,23 @@ const AlbumPage: React.FC = () => {
   if (!album) return null;
 
   return (
-    <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48, gap: 40 }}>
-      {/* Hero */}
-      <View style={styles.hero}>
-        <Image source={{ uri: album.coverArtUrl || 'https://picsum.photos/seed/album/400/400' }} style={styles.cover} />
-        <View style={{ flex: 1 }}>
-          <Text style={[styles.title, { color: c.text }]}>{album.title}</Text>
-          <Text style={{ color: c.muted, fontSize: 14, marginTop: 4 }}>
-            by {artists.map((a, i) => (
-              <Text key={a.id}>
-                <Text style={{ color: c.accent, fontWeight: '600' }} onPress={() => router.push(`/artist/${a.id}` as any)}>{a.name}</Text>
-                {i < artists.length - 1 ? ', ' : ''}
-              </Text>
-            ))}
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48, gap: 40 }}>
+        {/* Hero */}
+        <View style={styles.hero}>
+          <Image source={{ uri: album.coverArtUrl || 'https://picsum.photos/seed/album/400/400' }} style={styles.cover} />
+          <View style={{ flex: 1 }}>
+            <Text style={[styles.title, { color: c.text }]}>{album.title}</Text>
+            <Text style={{ color: c.muted, fontSize: 14, marginTop: 4 }}>
+              by {artists.map((a, i) => (
+                <Text key={a.id}>
+                  <Text style={{ color: c.accent, fontWeight: '600' }} onPress={() => router.push({
+                    pathname: '../artist/[id]',
+                    params: { id: a.id }
+                  })}>{a.name}</Text>
+                  { i<artists.length - 1 ? ', ' : '' }
+                </Text>
+              ))}
           </Text>
           <Text style={{ color: c.muted, fontSize: 13, marginTop: 4 }}>{formatDate(album.releaseDate)}</Text>
           <View style={styles.likeRow}>
@@ -241,22 +249,25 @@ const AlbumPage: React.FC = () => {
         <Text style={[styles.sectionTitle, { color: c.text }]}>Tracklist</Text>
         {tracklist.length === 0
           ? <View style={[styles.emptyBox, { borderColor: c.border }]}>
-              <MaterialIcons name="music-note" size={28} color={c.muted} />
-              <Text style={{ color: c.muted, marginTop: 8 }}>Tracklist is not available yet.</Text>
-            </View>
+            <MaterialIcons name="music-note" size={28} color={c.muted} />
+            <Text style={{ color: c.muted, marginTop: 8 }}>Tracklist is not available yet.</Text>
+          </View>
           : <View style={[styles.trackList, { borderColor: c.border }]}>
-              {tracklist.map((song, i) => (
-                <TouchableOpacity
-                  key={song.id}
-                  style={[styles.trackRow, { backgroundColor: i % 2 === 0 ? 'transparent' : c.altRow, borderBottomColor: c.border }]}
-                  onPress={() => router.push(`/song/${song.id}` as any)}
-                >
-                  <Text style={[styles.trackNum, { color: c.muted }]}>{i + 1}</Text>
-                  <Text style={[styles.trackTitle, { color: c.text }]} numberOfLines={1}>{song.title}</Text>
-                  <Text style={[styles.trackDuration, { color: c.muted }]}>{formatDuration(song.duration)}</Text>
-                </TouchableOpacity>
-              ))}
-            </View>
+            {tracklist.map((song, i) => (
+              <TouchableOpacity
+                key={song.id}
+                style={[styles.trackRow, { backgroundColor: i % 2 === 0 ? 'transparent' : c.altRow, borderBottomColor: c.border }]}
+                onPress={() => router.push({
+                  pathname: '../song/[id]',
+                  params: { id: song.id }
+                })}
+              >
+                <Text style={[styles.trackNum, { color: c.muted }]}>{i + 1}</Text>
+                <Text style={[styles.trackTitle, { color: c.text }]} numberOfLines={1}>{song.title}</Text>
+                <Text style={[styles.trackDuration, { color: c.muted }]}>{formatDuration(song.duration)}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
         }
       </View>
 
@@ -266,21 +277,22 @@ const AlbumPage: React.FC = () => {
         {currentUser && <ReviewForm album={album} onSubmit={fetchData} c={c} />}
         {reviews.length > 0
           ? <View style={[styles.reviewList, { borderColor: c.border }]}>
-              {reviews.map(r => <ReviewCard key={r.id} review={r} albumId={album.id} c={c} />)}
-            </View>
+            {reviews.map(r => <ReviewCard key={r.id} review={r} albumId={album.id} c={c} />)}
+          </View>
           : <View style={[styles.emptyBox, { borderColor: c.border }]}>
-              <MaterialIcons name="edit" size={28} color={c.muted} />
-              <Text style={{ color: c.muted, marginTop: 8 }}>Be the first to review this album.</Text>
-            </View>
+            <MaterialIcons name="edit" size={28} color={c.muted} />
+            <Text style={{ color: c.muted, marginTop: 8 }}>Be the first to review this album.</Text>
+          </View>
         }
       </View>
     </ScrollView>
+    </SafeAreaView >
   );
 };
 
 const colors = {
-  light: { bg: '#f9fafb', text: '#111827', bodyText: '#374151', muted: '#6b7280', accent: '#63479b', border: '#e5e7eb', inputBg: '#ffffff', altRow: 'rgba(0,0,0,0.02)', starEmpty: '#d1d5db' },
-  dark: { bg: '#0f0f0f', text: '#f9fafb', bodyText: '#d1d5db', muted: '#9ca3af', accent: '#a78bdf', border: '#374151', inputBg: '#1f2937', altRow: 'rgba(255,255,255,0.02)', starEmpty: '#4b5563' },
+  light: { bg: '#f9fafb', text: '#111827', bodyText: '#374151', muted: '#6b7280', accent: '#6A9C89', border: '#e5e7eb', inputBg: '#ffffff', altRow: 'rgba(0,0,0,0.02)', starEmpty: '#d1d5db' },
+  dark: { bg: '#0f0f0f', text: '#f9fafb', bodyText: '#d1d5db', muted: '#9ca3af', accent: '#6A9C89', border: '#374151', inputBg: '#1f2937', altRow: 'rgba(255,255,255,0.02)', starEmpty: '#4b5563' },
 };
 
 const styles = StyleSheet.create({

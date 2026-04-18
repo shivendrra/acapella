@@ -15,6 +15,7 @@ import { useAuth } from '../../../../../hooks/useAuth';
 import { useTheme } from '../../../../../hooks/useTheme';
 import { Song, Artist, Review as ReviewType, Like } from '../../../../../types';
 import { formatDate } from '../../../../../utils/formatters';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const formatDuration = (s: number) => `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`;
 
@@ -69,7 +70,10 @@ const ReviewCard: React.FC<{ review: ReviewType; songId: string; c: any }> = ({ 
         <View style={{ flex: 1 }}>
           <View style={styles.reviewMeta}>
             <Text style={[styles.reviewUser, { color: c.text }]}>{review.userDisplayName}</Text>
-            <TouchableOpacity onPress={() => router.push(`/review/${review.id}` as any)}>
+            <TouchableOpacity onPress={() => router.push({
+              pathname: '../review/[id]',
+              params: { id: review.id }
+            })}>
               <Text style={[styles.reviewDate, { color: c.muted }]}>
                 {review.createdAt instanceof Timestamp ? formatDate(review.createdAt) : 'Just now'}
               </Text>
@@ -83,7 +87,7 @@ const ReviewCard: React.FC<{ review: ReviewType; songId: string; c: any }> = ({ 
         <MaterialIcons name="favorite" size={16} color={liked ? '#ef4444' : c.muted} />
         <Text style={[styles.likeCount, { color: c.muted }]}>{count}</Text>
       </TouchableOpacity>
-    </View>
+    </View >
   );
 };
 
@@ -200,92 +204,97 @@ const SongPage: React.FC = () => {
   if (!song) return null;
 
   return (
-    <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48, gap: 40 }}>
-      {/* Hero */}
-      <View style={styles.hero}>
-        <Image source={{ uri: song.coverArtUrl || `https://placehold.co/400x400/131010/FAF8F1?text=${song.title.charAt(0)}` }} style={styles.cover} />
-        <View style={{ flex: 1 }}>
-          <Text style={[styles.title, { color: c.text }]}>{song.title}</Text>
-          <Text style={{ color: c.muted, fontSize: 15, marginTop: 4 }}>
-            by {artists.map((a, i) => (
-              <Text key={a.id}>
-                <Text style={{ color: c.accent, fontWeight: '600' }} onPress={() => router.push(`/artist/${a.id}` as any)}>{a.name}</Text>
-                {i < artists.length - 1 ? ', ' : ''}
-              </Text>
-            ))}
-          </Text>
-          <View style={{ gap: 6, marginTop: 12 }}>
-            {[
-              { icon: 'calendar-today', label: formatDate(song.releaseDate) },
-              { icon: 'access-time', label: formatDuration(song.duration) },
-              { icon: 'music-note', label: song.genre },
-            ].map(({ icon, label }) => (
-              <View key={icon} style={styles.metaRow}>
-                <MaterialIcons name={icon as any} size={14} color={c.muted} />
-                <Text style={[styles.metaText, { color: c.muted }]}>{label}</Text>
-              </View>
-            ))}
-          </View>
-          <View style={styles.likeRow}>
-            <TouchableOpacity onPress={toggleLike} disabled={!currentUser || likeLoading}>
-              <MaterialIcons name="favorite" size={24} color={liked ? '#ef4444' : c.muted} />
-            </TouchableOpacity>
-            <Text style={[{ fontSize: 16, fontWeight: '600' }, { color: c.text }]}>{likesCount}</Text>
-          </View>
-        </View>
-      </View>
-
-      {/* Listen On */}
-      {(song.platformLinks?.spotify || song.platformLinks?.appleMusic || song.platformLinks?.youtubeMusic) && (
-        <View>
-          <Text style={[styles.sectionTitle, { color: c.text }]}>Listen On</Text>
-          <View style={styles.platformRow}>
-            {song.platformLinks.spotify && <TouchableOpacity style={[styles.platformBtn, { backgroundColor: '#1DB954' }]} onPress={() => Linking.openURL(song.platformLinks!.spotify!)}><Text style={styles.platformText}>Spotify</Text></TouchableOpacity>}
-            {song.platformLinks.appleMusic && <TouchableOpacity style={[styles.platformBtn, { backgroundColor: '#000' }]} onPress={() => Linking.openURL(song.platformLinks!.appleMusic!)}><Text style={styles.platformText}>Apple Music</Text></TouchableOpacity>}
-            {song.platformLinks.youtubeMusic && <TouchableOpacity style={[styles.platformBtn, { backgroundColor: '#FF0000' }]} onPress={() => Linking.openURL(song.platformLinks!.youtubeMusic!)}><Text style={styles.platformText}>YouTube Music</Text></TouchableOpacity>}
-          </View>
-        </View>
-      )}
-
-      {/* Credits */}
-      <View>
-        <Text style={[styles.sectionTitle, { color: c.text }]}>Credits</Text>
-        <View style={styles.creditsGrid}>
-          {Object.entries(song.credits).map(([role, names]) => (
-            <View key={role} style={[styles.creditCard, { backgroundColor: c.cardBg, borderColor: c.border }]}>
-              <View style={[styles.creditIcon, { backgroundColor: c.iconBg }]}>
-                <MaterialIcons name={getCreditIcon(role) as any} size={18} color={c.muted} />
-              </View>
-              <View style={{ flex: 1 }}>
-                <Text style={[styles.creditRole, { color: c.muted }]}>{role.toUpperCase()}</Text>
-                <Text style={[styles.creditNames, { color: c.text }]}>{Array.isArray(names) ? names.join(', ') : ''}</Text>
-              </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48, gap: 40 }}>
+        {/* Hero */}
+        <View style={styles.hero}>
+          <Image source={{ uri: song.coverArtUrl || `https://placehold.co/400x400/131010/FAF8F1?text=${song.title.charAt(0)}` }} style={styles.cover} />
+          <View style={{ flex: 1 }}>
+            <Text style={[styles.title, { color: c.text }]}>{song.title}</Text>
+            <Text style={{ color: c.muted, fontSize: 15, marginTop: 4 }}>
+              by {artists.map((a, i) => (
+                <Text key={a.id}>
+                  <Text style={{ color: c.accent, fontWeight: '600' }} onPress={() => router.push({
+                    pathname: '../artist/[id]',
+                    params: { id: a.id }
+                  })}>{a.name}</Text>
+                  {i < artists.length - 1 ? ', ' : ''}
+                </Text>
+              ))}
+            </Text>
+            <View style={{ gap: 6, marginTop: 12 }}>
+              {[
+                { icon: 'calendar-today', label: formatDate(song.releaseDate) },
+                { icon: 'access-time', label: formatDuration(song.duration) },
+                { icon: 'music-note', label: song.genre },
+              ].map(({ icon, label }) => (
+                <View key={icon} style={styles.metaRow}>
+                  <MaterialIcons name={icon as any} size={14} color={c.muted} />
+                  <Text style={[styles.metaText, { color: c.muted }]}>{label}</Text>
+                </View>
+              ))}
             </View>
-          ))}
+            <View style={styles.likeRow}>
+              <TouchableOpacity onPress={toggleLike} disabled={!currentUser || likeLoading}>
+                <MaterialIcons name="favorite" size={24} color={liked ? '#ef4444' : c.muted} />
+              </TouchableOpacity>
+              <Text style={[{ fontSize: 16, fontWeight: '600' }, { color: c.text }]}>{likesCount}</Text>
+            </View>
+          </View>
         </View>
-      </View>
 
-      {/* Reviews */}
-      <View>
-        <Text style={[styles.sectionTitle, { color: c.text }]}>Reviews</Text>
-        {currentUser && <ReviewForm song={song} onSubmit={fetchData} c={c} />}
-        {reviews.length > 0
-          ? <View style={[styles.reviewList, { borderColor: c.border }]}>
+        {/* Listen On */}
+        {(song.platformLinks?.spotify || song.platformLinks?.appleMusic || song.platformLinks?.youtubeMusic) && (
+          <View>
+            <Text style={[styles.sectionTitle, { color: c.text }]}>Listen On</Text>
+            <View style={styles.platformRow}>
+              {song.platformLinks.spotify && <TouchableOpacity style={[styles.platformBtn, { backgroundColor: '#1DB954' }]} onPress={() => Linking.openURL(song.platformLinks!.spotify!)}><Text style={styles.platformText}>Spotify</Text></TouchableOpacity>}
+              {song.platformLinks.appleMusic && <TouchableOpacity style={[styles.platformBtn, { backgroundColor: '#000' }]} onPress={() => Linking.openURL(song.platformLinks!.appleMusic!)}><Text style={styles.platformText}>Apple Music</Text></TouchableOpacity>}
+              {song.platformLinks.youtubeMusic && <TouchableOpacity style={[styles.platformBtn, { backgroundColor: '#FF0000' }]} onPress={() => Linking.openURL(song.platformLinks!.youtubeMusic!)}><Text style={styles.platformText}>YouTube Music</Text></TouchableOpacity>}
+            </View>
+          </View>
+        )}
+
+        {/* Credits */}
+        <View>
+          <Text style={[styles.sectionTitle, { color: c.text }]}>Credits</Text>
+          <View style={styles.creditsGrid}>
+            {Object.entries(song.credits).map(([role, names]) => (
+              <View key={role} style={[styles.creditCard, { backgroundColor: c.cardBg, borderColor: c.border }]}>
+                <View style={[styles.creditIcon, { backgroundColor: c.iconBg }]}>
+                  <MaterialIcons name={getCreditIcon(role) as any} size={18} color={c.muted} />
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text style={[styles.creditRole, { color: c.muted }]}>{role.toUpperCase()}</Text>
+                  <Text style={[styles.creditNames, { color: c.text }]}>{Array.isArray(names) ? names.join(', ') : ''}</Text>
+                </View>
+              </View>
+            ))}
+          </View>
+        </View>
+
+        {/* Reviews */}
+        <View>
+          <Text style={[styles.sectionTitle, { color: c.text }]}>Reviews</Text>
+          {currentUser && <ReviewForm song={song} onSubmit={fetchData} c={c} />}
+          {reviews.length > 0
+            ? <View style={[styles.reviewList, { borderColor: c.border }]}>
               {reviews.map(r => <ReviewCard key={r.id} review={r} songId={song.id} c={c} />)}
             </View>
-          : <View style={[styles.emptyBox, { borderColor: c.border }]}>
+            : <View style={[styles.emptyBox, { borderColor: c.border }]}>
               <MaterialIcons name="edit" size={28} color={c.muted} />
               <Text style={{ color: c.muted, marginTop: 8 }}>Be the first to review this song.</Text>
             </View>
-        }
-      </View>
-    </ScrollView>
+          }
+        </View>
+      </ScrollView>
+    </SafeAreaView >
   );
 };
 
 const colors = {
-  light: { bg: '#f9fafb', text: '#111827', bodyText: '#374151', muted: '#6b7280', accent: '#63479b', border: '#e5e7eb', cardBg: '#ffffff', inputBg: '#ffffff', iconBg: '#f3f4f6', starEmpty: '#d1d5db' },
-  dark: { bg: '#0f0f0f', text: '#f9fafb', bodyText: '#d1d5db', muted: '#9ca3af', accent: '#a78bdf', border: '#374151', cardBg: 'rgba(31,41,55,0.5)', inputBg: '#1f2937', iconBg: '#374151', starEmpty: '#4b5563' },
+  light: { bg: '#f9fafb', text: '#111827', bodyText: '#374151', muted: '#6b7280', accent: '#6A9C89', border: '#e5e7eb', cardBg: '#ffffff', inputBg: '#ffffff', iconBg: '#f3f4f6', starEmpty: '#d1d5db' },
+  dark: { bg: '#0f0f0f', text: '#f9fafb', bodyText: '#d1d5db', muted: '#9ca3af', accent: '#6A9C89', border: '#374151', cardBg: 'rgba(31,41,55,0.5)', inputBg: '#1f2937', iconBg: '#374151', starEmpty: '#4b5563' },
 };
 
 const styles = StyleSheet.create({

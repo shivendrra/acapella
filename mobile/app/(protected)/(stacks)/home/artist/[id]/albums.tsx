@@ -10,11 +10,15 @@ import { useTheme } from '../../../../../../hooks/useTheme';
 import { db } from '../../../../../../services/firebase';
 import { Artist, Album } from '../../../../../../types';
 import { formatDate } from '../../../../../../utils/formatters';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const AlbumTileCard: React.FC<{ album: Album; c: any }> = ({ album, c }) => {
   const router = useRouter();
   return (
-    <TouchableOpacity style={styles.tile} onPress={() => router.push(`/album/${album.id}` as any)}>
+    <TouchableOpacity style={styles.tile} onPress={() => router.push({
+      pathname: '/(protected)/(stacks)/home/album/[id]',
+      params: { id: album.id }
+    })}>
       <Image source={{ uri: album.coverArtUrl }} style={styles.tileImg} resizeMode="cover" />
       <Text style={[styles.tileName, { color: c.text }]} numberOfLines={1}>{album.title}</Text>
       <Text style={[styles.tileMeta, { color: c.muted }]}>{formatDate(album.releaseDate)}</Text>
@@ -27,7 +31,10 @@ const AlbumListItem: React.FC<{ album: Album; c: any }> = ({ album, c }) => {
   return (
     <TouchableOpacity
       style={[styles.listRow, { borderBottomColor: c.border }]}
-      onPress={() => router.push(`/album/${album.id}` as any)}
+      onPress={() => router.push({
+        pathname: '../album/[id]',
+        params: { id: album.id }
+      })}
     >
       <Image source={{ uri: album.coverArtUrl }} style={styles.listThumb} resizeMode="cover" />
       <View style={{ flex: 1 }}>
@@ -73,20 +80,22 @@ const ArtistAlbumsPage: React.FC = () => {
   if (error) return <Text style={[styles.center, { color: '#ef4444' }]}>{error}</Text>;
 
   const Header = () => (
-    <View style={styles.pageHeader}>
-      <Text style={[styles.heading, { color: c.text }]}>All Albums by {artist?.name}</Text>
-      <View style={[styles.layoutToggle, { backgroundColor: c.toggleBg }]}>
-        {(['grid', 'list'] as const).map(l => (
-          <TouchableOpacity
-            key={l}
-            style={[styles.layoutBtn, layout === l && [styles.layoutBtnActive, { backgroundColor: c.toggleActive }]]}
-            onPress={() => setLayout(l)}
-          >
-            <MaterialIcons name={l === 'grid' ? 'grid-view' : 'list'} size={20} color={layout === l ? c.text : c.muted} />
-          </TouchableOpacity>
-        ))}
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.pageHeader}>
+        <Text style={[styles.heading, { color: c.text }]}>All Albums by {artist?.name}</Text>
+        <View style={[styles.layoutToggle, { backgroundColor: c.toggleBg }]}>
+          {(['grid', 'list'] as const).map(l => (
+            <TouchableOpacity
+              key={l}
+              style={[styles.layoutBtn, layout === l && [styles.layoutBtnActive, { backgroundColor: c.toggleActive }]]}
+              onPress={() => setLayout(l)}
+            >
+              <MaterialIcons name={l === 'grid' ? 'grid-view' : 'list'} size={20} color={layout === l ? c.text : c.muted} />
+            </TouchableOpacity>
+          ))}
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 
   if (albums.length === 0) return (
@@ -122,8 +131,8 @@ const ArtistAlbumsPage: React.FC = () => {
 };
 
 const colors = {
-  light: { bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#63479b', border: '#e5e7eb', toggleBg: '#f3f4f6', toggleActive: '#ffffff' },
-  dark: { bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#a78bdf', border: '#374151', toggleBg: '#1f2937', toggleActive: '#374151' },
+  light: { bg: '#f9fafb', text: '#111827', muted: '#6b7280', accent: '#6A9C89', border: '#e5e7eb', toggleBg: '#f3f4f6', toggleActive: '#ffffff' },
+  dark: { bg: '#0f0f0f', text: '#f9fafb', muted: '#9ca3af', accent: '#6A9C89', border: '#374151', toggleBg: '#1f2937', toggleActive: '#374151' },
 };
 
 const styles = StyleSheet.create({

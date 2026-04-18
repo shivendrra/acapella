@@ -17,6 +17,7 @@ import { useAuth } from '../../../../../hooks/useAuth';
 import { useTheme } from '../../../../../hooks/useTheme';
 import { Review, Song, Album, Artist, UserProfile, Like } from '../../../../../types';
 import { formatDate } from '../../../../../utils/formatters';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type Entity = (Song | Album) & { artists: Artist[] };
 
@@ -199,90 +200,101 @@ const ReviewPage: React.FC = () => {
   const isAuthor = currentUser?.uid === review.userId;
 
   return (
-    <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48, alignItems: 'center' }}>
-      {/* Entity header */}
-      <TouchableOpacity
-        style={styles.coverWrapper}
-        onPress={() => router.push(`/${review.entityType}/${review.entityId}` as any)}
-      >
-        <Image source={{ uri: entity.coverArtUrl }} style={styles.cover} resizeMode="cover" />
-      </TouchableOpacity>
-      <Text style={[styles.entityTitle, { color: c.text }]}>{entity.title}</Text>
-      <Text style={{ color: c.muted, fontSize: 14, marginTop: 4 }}>
-        {'by '}
-        {entity.artists.map((a, i) => (
-          <Text key={a.id}>
-            <Text style={{ color: c.accent, fontWeight: '600' }} onPress={() => router.push(`/artist/${a.id}` as any)}>{a.name}</Text>
-            {i < entity.artists.length - 1 ? ', ' : ''}
-          </Text>
-        ))}
-      </Text>
-      <Text style={[styles.entityDate, { color: c.muted }]}>{formatDate((entity as any).releaseDate)}</Text>
-
-      {/* Review card */}
-      <View style={[styles.card, { backgroundColor: c.cardBg, borderColor: c.border }]}>
-        {/* Reviewer */}
-        <View style={styles.reviewerRow}>
-          <TouchableOpacity onPress={() => router.push(`/${reviewer.username}` as any)}>
-            <Image source={{ uri: reviewer.photoURL || `https://ui-avatars.com/api/?name=${reviewer.displayName}` }} style={styles.reviewerAvatar} />
-          </TouchableOpacity>
-          <View style={{ flex: 1 }}>
-            <TouchableOpacity onPress={() => router.push(`/${reviewer.username}` as any)}>
-              <Text style={[styles.reviewerName, { color: c.text }]}>{reviewer.displayName}</Text>
-            </TouchableOpacity>
-            <Text style={[{ fontSize: 12 }, { color: c.muted }]}>{'Reviewed on '}{formatDate(review.createdAt)}</Text>
-          </View>
-        </View>
-
-        {/* Rating pill */}
-        <View style={[styles.ratingPill, { backgroundColor: c.pillBg }]}>
-          <StarRow rating={review.rating} size={20} c={c} />
-          <Text style={[styles.ratingNum, { color: c.text }]}>{review.rating}/5</Text>
-        </View>
-
-        {/* Review text */}
-        <Text style={[styles.reviewText, { color: c.bodyText }]}>
-          {review.reviewText || <Text style={{ color: c.muted, fontStyle: 'italic' }}>No text review.</Text>}
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ padding: 16, paddingBottom: 48, alignItems: 'center' }}>
+        {/* Entity header */}
+        <TouchableOpacity
+          style={styles.coverWrapper}
+          onPress={() => router.push(`/${review.entityType}/${review.entityId}` as any)}
+        >
+          <Image source={{ uri: entity.coverArtUrl }} style={styles.cover} resizeMode="cover" />
+        </TouchableOpacity>
+        <Text style={[styles.entityTitle, { color: c.text }]}>{entity.title}</Text>
+        <Text style={{ color: c.muted, fontSize: 14, marginTop: 4 }}>
+          {'by '}
+          {entity.artists.map((a, i) => (
+            <Text key={a.id}>
+              <Text style={{ color: c.accent, fontWeight: '600' }} onPress={() => router.push({
+                pathname: '../artist/[id]',
+                params: { id: a.id }
+              })}>{a.name}</Text>
+              {i < entity.artists.length - 1 ? ', ' : ''}
+            </Text>
+          ))}
         </Text>
+        <Text style={[styles.entityDate, { color: c.muted }]}>{formatDate((entity as any).releaseDate)}</Text>
 
-        {/* Footer */}
-        <View style={[styles.footer, { borderTopColor: c.border }]}>
-          <View style={styles.likeRow}>
-            <TouchableOpacity onPress={currentUser ? toggleLike : undefined} style={styles.likeBtn} disabled={!currentUser}>
-              <MaterialIcons name="favorite" size={20} color={liked ? '#ef4444' : c.muted} />
-              <Text style={[{ fontSize: 14, fontWeight: '600', marginLeft: 6 }, { color: liked ? '#ef4444' : c.muted }]}>{likesCount} Likes</Text>
+        {/* Review card */}
+        <View style={[styles.card, { backgroundColor: c.cardBg, borderColor: c.border }]}>
+          {/* Reviewer */}
+          <View style={styles.reviewerRow}>
+            <TouchableOpacity onPress={() => router.push({
+              pathname: '../[username]',
+              params: { username: reviewer.username }
+            })}>
+              <Image source={{ uri: reviewer.photoURL || `https://ui-avatars.com/api/?name=${reviewer.displayName}` }} style={styles.reviewerAvatar} />
             </TouchableOpacity>
-            {likers.length > 0 && (
-              <View style={styles.likerAvatars}>
-                {likers.map(l => (
-                  <Image key={l.uid} source={{ uri: l.photoURL || '' }} style={styles.likerAvatar} />
-                ))}
+            <View style={{ flex: 1 }}>
+              <TouchableOpacity onPress={() => router.push({
+                pathname: '../[username]',
+                params: { username: reviewer.username }
+              })}>
+                <Text style={[styles.reviewerName, { color: c.text }]}>{reviewer.displayName}</Text>
+              </TouchableOpacity>
+              <Text style={[{ fontSize: 12 }, { color: c.muted }]}>{'Reviewed on '}{formatDate(review.createdAt)}</Text>
+            </View>
+          </View>
+
+          {/* Rating pill */}
+          <View style={[styles.ratingPill, { backgroundColor: c.pillBg }]}>
+            <StarRow rating={review.rating} size={20} c={c} />
+            <Text style={[styles.ratingNum, { color: c.text }]}>{review.rating}/5</Text>
+          </View>
+
+          {/* Review text */}
+          <Text style={[styles.reviewText, { color: c.bodyText }]}>
+            {review.reviewText || <Text style={{ color: c.muted, fontStyle: 'italic' }}>No text review.</Text>}
+          </Text>
+
+          {/* Footer */}
+          <View style={[styles.footer, { borderTopColor: c.border }]}>
+            <View style={styles.likeRow}>
+              <TouchableOpacity onPress={currentUser ? toggleLike : undefined} style={styles.likeBtn} disabled={!currentUser}>
+                <MaterialIcons name="favorite" size={20} color={liked ? '#ef4444' : c.muted} />
+                <Text style={[{ fontSize: 14, fontWeight: '600', marginLeft: 6 }, { color: liked ? '#ef4444' : c.muted }]}>{likesCount} Likes</Text>
+              </TouchableOpacity>
+              {likers.length > 0 && (
+                <View style={styles.likerAvatars}>
+                  {likers.map(l => (
+                    <Image key={l.uid} source={{ uri: l.photoURL || '' }} style={styles.likerAvatar} />
+                  ))}
+                </View>
+              )}
+            </View>
+            {isAuthor && (
+              <View style={styles.authorBtns}>
+                <TouchableOpacity style={styles.authorBtn} onPress={() => setEditOpen(true)}>
+                  <MaterialIcons name="edit" size={15} color={c.muted} />
+                  <Text style={[{ fontSize: 13, marginLeft: 4 }, { color: c.muted }]}>Edit</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.authorBtn} onPress={handleDelete}>
+                  <MaterialIcons name="delete-outline" size={15} color="#ef4444" />
+                  <Text style={[{ fontSize: 13, marginLeft: 4 }, { color: '#ef4444' }]}>Delete</Text>
+                </TouchableOpacity>
               </View>
             )}
           </View>
-          {isAuthor && (
-            <View style={styles.authorBtns}>
-              <TouchableOpacity style={styles.authorBtn} onPress={() => setEditOpen(true)}>
-                <MaterialIcons name="edit" size={15} color={c.muted} />
-                <Text style={[{ fontSize: 13, marginLeft: 4 }, { color: c.muted }]}>Edit</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.authorBtn} onPress={handleDelete}>
-                <MaterialIcons name="delete-outline" size={15} color="#ef4444" />
-                <Text style={[{ fontSize: 13, marginLeft: 4 }, { color: '#ef4444' }]}>Delete</Text>
-              </TouchableOpacity>
-            </View>
-          )}
         </View>
-      </View>
 
-      {editOpen && review && <EditModal review={review} onClose={() => setEditOpen(false)} onSave={handleUpdate} c={c} />}
-    </ScrollView>
+        {editOpen && review && <EditModal review={review} onClose={() => setEditOpen(false)} onSave={handleUpdate} c={c} />}
+      </ScrollView >
+    </SafeAreaView >
   );
 };
 
 const colors = {
-  light: { bg: '#f9fafb', text: '#111827', bodyText: '#374151', muted: '#6b7280', label: '#374151', accent: '#63479b', border: '#e5e7eb', cardBg: '#ffffff', inputBg: '#ffffff', pillBg: '#f3f4f6', starEmpty: '#d1d5db', icon: '#374151' },
-  dark: { bg: '#0f0f0f', text: '#f9fafb', bodyText: '#d1d5db', muted: '#9ca3af', label: '#d1d5db', accent: '#a78bdf', border: '#374151', cardBg: '#1f2937', inputBg: '#374151', pillBg: 'rgba(31,41,55,0.5)', starEmpty: '#4b5563', icon: '#d1d5db' },
+  light: { bg: '#f9fafb', text: '#111827', bodyText: '#374151', muted: '#6b7280', label: '#374151', accent: '#6A9C89', border: '#e5e7eb', cardBg: '#ffffff', inputBg: '#ffffff', pillBg: '#f3f4f6', starEmpty: '#d1d5db', icon: '#374151' },
+  dark: { bg: '#0f0f0f', text: '#f9fafb', bodyText: '#d1d5db', muted: '#9ca3af', label: '#d1d5db', accent: '#6A9C89', border: '#374151', cardBg: '#1f2937', inputBg: '#374151', pillBg: 'rgba(31,41,55,0.5)', starEmpty: '#4b5563', icon: '#d1d5db' },
 };
 
 const styles = StyleSheet.create({

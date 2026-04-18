@@ -3,6 +3,7 @@ import {
   View, Text, ScrollView, TouchableOpacity, Image,
   StyleSheet, ActivityIndicator, Linking,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { doc, getDoc, collection, query, where, getDocs } from '@firebase/firestore';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { db } from '../../../../../services/firebase';
@@ -101,130 +102,132 @@ const ArtistPage: React.FC = () => {
   if (!artist) return null;
 
   return (
-    <ScrollView style={{ backgroundColor: c.bg }} showsVerticalScrollIndicator={false}>
-      {/* Cover */}
-      <Image
-        source={{ uri: artist.coverImageUrl || 'https://placehold.co/800x400/131010/FAF8F1?text=+' }}
-        style={styles.cover}
-        resizeMode="cover"
-      />
-
-      {/* Profile header */}
-      <View style={styles.profileSection}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView style={{ backgroundColor: c.bg }} showsVerticalScrollIndicator={false}>
+        {/* Cover */}
         <Image
-          source={{ uri: artist.imageUrl || `https://ui-avatars.com/api/?name=${artist.name}&background=random&size=128` }}
-          style={[styles.avatar, { borderColor: c.bg }]}
+          source={{ uri: artist.coverImageUrl || 'https://placehold.co/800x400/131010/FAF8F1?text=+' }}
+          style={styles.cover}
+          resizeMode="cover"
         />
-        <Text style={[styles.artistName, { color: c.text }]}>{artist.name}</Text>
-        <View style={styles.genreRow}>
-          {artist.genres.map(g => (
-            <View key={g} style={[styles.genrePill, { backgroundColor: c.pill }]}>
-              <Text style={[styles.genreText, { color: c.pillText }]}>{g}</Text>
+
+        {/* Profile header */}
+        <View style={styles.profileSection}>
+          <Image
+            source={{ uri: artist.imageUrl || `https://ui-avatars.com/api/?name=${artist.name}&background=random&size=128` }}
+            style={[styles.avatar, { borderColor: c.bg }]}
+          />
+          <Text style={[styles.artistName, { color: c.text }]}>{artist.name}</Text>
+          <View style={styles.genreRow}>
+            {artist.genres.map(g => (
+              <View key={g} style={[styles.genrePill, { backgroundColor: c.pill }]}>
+                <Text style={[styles.genreText, { color: c.pillText }]}>{g}</Text>
+              </View>
+            ))}
+          </View>
+          <SocialLinks artist={artist} c={c} />
+        </View>
+
+        <View style={{ paddingHorizontal: 16, paddingBottom: 48 }}>
+          {/* Bio */}
+          {artist.bio && (
+            <View style={{ marginBottom: 32 }}>
+              <Text style={[styles.bioText, { color: c.bodyText }]} numberOfLines={bioExpanded ? undefined : 3}>
+                {artist.bio}
+              </Text>
+              <TouchableOpacity onPress={() => setBioExpanded(v => !v)}>
+                <Text style={[styles.readMore, { color: c.accent }]}>{bioExpanded ? 'Read less' : 'Read more'}</Text>
+              </TouchableOpacity>
             </View>
-          ))}
-        </View>
-        <SocialLinks artist={artist} c={c} />
-      </View>
+          )}
 
-      <View style={{ paddingHorizontal: 16, paddingBottom: 48 }}>
-        {/* Bio */}
-        {artist.bio && (
-          <View style={{ marginBottom: 32 }}>
-            <Text style={[styles.bioText, { color: c.bodyText }]} numberOfLines={bioExpanded ? undefined : 3}>
-              {artist.bio}
-            </Text>
-            <TouchableOpacity onPress={() => setBioExpanded(v => !v)}>
-              <Text style={[styles.readMore, { color: c.accent }]}>{bioExpanded ? 'Read less' : 'Read more'}</Text>
-            </TouchableOpacity>
+          {/* Discography */}
+          <Text style={[styles.sectionTitle, { color: c.text, borderBottomColor: c.border }]}>Discography</Text>
+
+          {/* Albums */}
+          <View style={{ marginTop: 20, marginBottom: 32 }}>
+            <View style={styles.rowBetween}>
+              <Text style={[styles.subTitle, { color: c.text }]}>Albums</Text>
+              {albums.length > TOP_ALBUMS && (
+                <TouchableOpacity
+                  onPress={() =>
+                    router.push({
+                      pathname: '/(protected)/(stacks)/home/artist/[id]/albums',
+                      params: { id }
+                    })
+                  }
+                >
+                  <Text style={[styles.seeAll, { color: c.accent }]}>See all</Text>
+                </TouchableOpacity>
+              )}
+            </View>
+            {albums.length === 0
+              ? <Text style={{ color: c.muted }}>No albums found for this artist.</Text>
+              : (
+                <View style={styles.albumGrid}>
+                  {albums.slice(0, TOP_ALBUMS).map(a => <AlbumCard key={a.id} album={a} c={c} />)}
+                </View>
+              )}
           </View>
-        )}
 
-        {/* Discography */}
-        <Text style={[styles.sectionTitle, { color: c.text, borderBottomColor: c.border }]}>Discography</Text>
-
-        {/* Albums */}
-        <View style={{ marginTop: 20, marginBottom: 32 }}>
-          <View style={styles.rowBetween}>
-            <Text style={[styles.subTitle, { color: c.text }]}>Albums</Text>
-            {albums.length > TOP_ALBUMS && (
-              <TouchableOpacity
-                onPress={() =>
-                  router.push({
-                    pathname: '/(protected)/(stacks)/home/artist/[id]/albums',
-                    params: { id }
-                  })
-                }
-              >
-                <Text style={[styles.seeAll, { color: c.accent }]}>See all</Text>
-              </TouchableOpacity>
-            )}
+          {/* Songs */}
+          <View>
+            <View style={styles.rowBetween}>
+              <Text style={[styles.subTitle, { color: c.text }]}>Songs</Text>
+              {songs.length > TOP_SONGS && (
+                <TouchableOpacity
+                  onPress={() =>
+                    router.push({
+                      pathname: '/(protected)/(stacks)/home/artist/[id]/songs',
+                      params: { id }
+                    })
+                  }
+                >
+                  <Text style={[styles.seeAll, { color: c.accent }]}>See all</Text>
+                </TouchableOpacity>
+              )}
+            </View>
+            {songs.length === 0
+              ? <Text style={{ color: c.muted, marginTop: 8 }}>No individual songs found for this artist.</Text>
+              : (
+                <View style={[styles.songList, { borderColor: c.border }]}>
+                  {songs.slice(0, TOP_SONGS).map((song, i) => (
+                    <TouchableOpacity
+                      key={song.id}
+                      style={[styles.songRow, { backgroundColor: i % 2 === 0 ? 'transparent' : c.altRow, borderBottomColor: c.border }]}
+                      onPress={() => router.push({
+                        pathname: '../song/[id]',
+                        params: { id: song.id }
+                      })}
+                    >
+                      <Image
+                        source={{ uri: song.coverArtUrl || `https://placehold.co/100x100/131010/FAF8F1?text=${song.title.charAt(0)}` }}
+                        style={styles.songThumb}
+                      />
+                      <View style={{ flex: 1 }}>
+                        <Text style={[styles.songTitle, { color: c.text }]} numberOfLines={1}>{song.title}</Text>
+                        <Text style={[styles.songDate, { color: c.muted }]}>{formatDate(song.releaseDate)}</Text>
+                      </View>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              )}
           </View>
-          {albums.length === 0
-            ? <Text style={{ color: c.muted }}>No albums found for this artist.</Text>
-            : (
-              <View style={styles.albumGrid}>
-                {albums.slice(0, TOP_ALBUMS).map(a => <AlbumCard key={a.id} album={a} c={c} />)}
-              </View>
-            )}
         </View>
-
-        {/* Songs */}
-        <View>
-          <View style={styles.rowBetween}>
-            <Text style={[styles.subTitle, { color: c.text }]}>Songs</Text>
-            {songs.length > TOP_SONGS && (
-              <TouchableOpacity
-                onPress={() =>
-                  router.push({
-                    pathname: '/(protected)/(stacks)/home/artist/[id]/songs',
-                    params: { id }
-                  })
-                }
-              >
-                <Text style={[styles.seeAll, { color: c.accent }]}>See all</Text>
-              </TouchableOpacity>
-            )}
-          </View>
-          {songs.length === 0
-            ? <Text style={{ color: c.muted, marginTop: 8 }}>No individual songs found for this artist.</Text>
-            : (
-              <View style={[styles.songList, { borderColor: c.border }]}>
-                {songs.slice(0, TOP_SONGS).map((song, i) => (
-                  <TouchableOpacity
-                    key={song.id}
-                    style={[styles.songRow, { backgroundColor: i % 2 === 0 ? 'transparent' : c.altRow, borderBottomColor: c.border }]}
-                    onPress={() => router.push({
-                      pathname: '../song/[id]',
-                      params: { id: song.id }
-                    })}
-                  >
-                    <Image
-                      source={{ uri: song.coverArtUrl || `https://placehold.co/100x100/131010/FAF8F1?text=${song.title.charAt(0)}` }}
-                      style={styles.songThumb}
-                    />
-                    <View style={{ flex: 1 }}>
-                      <Text style={[styles.songTitle, { color: c.text }]} numberOfLines={1}>{song.title}</Text>
-                      <Text style={[styles.songDate, { color: c.muted }]}>{formatDate(song.releaseDate)}</Text>
-                    </View>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            )}
-        </View>
-      </View>
-    </ScrollView >
+      </ScrollView >
+    </SafeAreaView>
   );
 };
 
 const colors = {
   light: {
     bg: '#f9fafb', text: '#111827', bodyText: '#374151', muted: '#6b7280',
-    accent: '#63479b', border: '#e5e7eb', pill: '#f3f4f6', pillText: '#374151',
+    accent: '#6A9C89', border: '#e5e7eb', pill: '#f3f4f6', pillText: '#374151',
     altRow: 'rgba(0,0,0,0.02)',
   },
   dark: {
     bg: '#0f0f0f', text: '#f9fafb', bodyText: '#d1d5db', muted: '#9ca3af',
-    accent: '#a78bdf', border: '#374151', pill: '#1f2937', pillText: '#d1d5db',
+    accent: '#6A9C89', border: '#374151', pill: '#1f2937', pillText: '#d1d5db',
     altRow: 'rgba(255,255,255,0.02)',
   },
 };
